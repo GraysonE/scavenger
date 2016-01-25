@@ -1,0 +1,57 @@
+.opacity_wrap {
+    background: rgba(255,255,255,.85);
+}
+
+.user_info {
+    margin-bottom: 40px;
+}
+
+.account_photo {
+    float: left;
+    margin-right: 10px;
+}
+
+h3.screen_name {
+    margin-top: 12px;
+    width: 70%;
+    float:left;
+}
+
+.floating_box {
+    float:left;
+    width: 10%;
+    height: auto;
+}
+
+.navbar .navbar-header .navbar-brand img {
+    display: none;
+}
+
+.accounts {
+    float: left;
+    width: 224px;
+    text-align: center;
+    margin: 10px 10px;
+    border: 1px solid #55ACEE;
+    transition: background 1s;
+}
+
+.accounts:hover {
+    background: #00bbfb;
+}
+
+.main-content .page-login .panel {
+    padding: 15px;
+}
+
+.main-content .page-form-actions {
+    height: 36px;
+}
+
+.main-content .page-form-actions button {
+    left: 0;
+}
+
+input[name="model_user"] {
+    width: 100%;
+}

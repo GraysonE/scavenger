@@ -1,0 +1,10 @@
+/vendor
+*node_modules
+*.sass-cache
+Homestead.yaml
+Homestead.json
+.env
+/public/*
+!/public/assets
+!/public/admin-files
+!/public/*.*
