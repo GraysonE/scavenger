@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class Friends extends Migration
+class FriendsTable extends Migration
 {
     /**
      * Run the migrations.

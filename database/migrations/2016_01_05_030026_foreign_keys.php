@@ -20,7 +20,7 @@ class ForeignKeys extends Migration
                 ->onDelete('cascade');
         });
 
-        Schema::table('im_following', function (Blueprint $table) {
+        Schema::table('friends', function (Blueprint $table) {
             $table->integer('social_media_account_id')->unsigned();
             $table->foreign('social_media_account_id')
                 ->references('id')
@@ -28,7 +28,7 @@ class ForeignKeys extends Migration
                 ->onDelete('cascade');
         });
 
-        Schema::table('following_me', function (Blueprint $table) {
+        Schema::table('followers', function (Blueprint $table) {
             $table->integer('social_media_account_id')->unsigned();
             $table->foreign('social_media_account_id')
                 ->references('id')
