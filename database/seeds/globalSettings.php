@@ -21,7 +21,8 @@ class globalSettings extends Seeder
 	    
 	    foreach ($social_media_account_values as $social_media_account_value)
 	    {
-		    $db = DB::table('social_media_account')->insert($social_media_account_value);
+//		    $db =
 	    }
+		DB::table('social_media_accounts')->insert($social_media_account_value);
     }
 }
