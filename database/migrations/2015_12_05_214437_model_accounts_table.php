@@ -19,7 +19,7 @@ class ModelAccountsTable extends Migration
             $table->string('screen_name');
             $table->integer('model_user_id');
             $table->integer('sort_order')->nullable();
-            $table->integer('api_cursor', 30);
+            $table->integer('api_cursor', 30)->nullable();
         });
     }
 
