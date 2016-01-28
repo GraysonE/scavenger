@@ -1,0 +1,507 @@
+/* ---------------------------------------------------------------------- */
+/*  Theme 6
+/* ---------------------------------------------------------------------- */
+/* line 41, ../../../master/sass/themes/theme-6.scss */
+body {
+  background: #F0F3F4;
+}
+
+@media (max-width: 991px) {
+  /* line 45, ../../../master/sass/themes/theme-6.scss */
+  .app-content {
+    background: #F0F3F4;
+  }
+}
+
+/* line 52, ../../../master/sass/themes/theme-6.scss */
+header .navbar-header {
+  background: #1C2B36 !important;
+  border-right-color: rgba(0, 0, 0, 0.2) !important;
+  border-bottom-color: rgba(0, 0, 0, 0.2) !important;
+}
+/* line 57, ../../../master/sass/themes/theme-6.scss */
+header .navbar-header .sidebar-toggler, header .navbar-header .sidebar-mobile-toggler {
+  color: #5c798f !important;
+}
+/* line 61, ../../../master/sass/themes/theme-6.scss */
+header .navbar-header .navbar-brand {
+  color: #ffffff !important;
+}
+/* line 65, ../../../master/sass/themes/theme-6.scss */
+header .navbar-header .menu-toggler {
+  color: #5c798f !important;
+}
+/* line 70, ../../../master/sass/themes/theme-6.scss */
+header .navbar-collapse {
+  background: #ffffff !important;
+  border-bottom-color: rgba(0, 0, 0, 0.2) !important;
+  box-shadow: 0 0 4px rgba(0, 0, 0, 0.2) !important;
+}
+/* line 77, ../../../master/sass/themes/theme-6.scss */
+header .navbar-collapse .navbar-right > li > a {
+  color: #141719;
+}
+/* line 80, ../../../master/sass/themes/theme-6.scss */
+header .navbar-collapse .navbar-right > li > a i {
+  color: #3E4B5C !important;
+}
+/* line 84, ../../../master/sass/themes/theme-6.scss */
+header .navbar-collapse .navbar-right > li > a:hover, header .navbar-collapse .navbar-right > li > a:focus, header .navbar-collapse .navbar-right > li > a:active {
+  background: #ebebeb !important;
+}
+/* line 89, ../../../master/sass/themes/theme-6.scss */
+header .navbar-collapse .navbar-right > li.open > a {
+  background: #ebebeb !important;
+}
+/* line 94, ../../../master/sass/themes/theme-6.scss */
+header .navbar-collapse .navbar-right .dot-badge {
+  border-color: #ffffff;
+}
+@media (max-width: 991px) {
+  /* line 70, ../../../master/sass/themes/theme-6.scss */
+  header .navbar-collapse {
+    background: #1C2B36 !important;
+    box-shadow: none;
+  }
+  /* line 105, ../../../master/sass/themes/theme-6.scss */
+  header .navbar-collapse .navbar-right > li > a {
+    color: #ffffff;
+  }
+  /* line 108, ../../../master/sass/themes/theme-6.scss */
+  header .navbar-collapse .navbar-right > li > a i {
+    color: #5c798f !important;
+  }
+  /* line 112, ../../../master/sass/themes/theme-6.scss */
+  header .navbar-collapse .navbar-right > li > a:hover, header .navbar-collapse .navbar-right > li > a:focus, header .navbar-collapse .navbar-right > li > a:active {
+    background: #0e161b !important;
+  }
+  /* line 117, ../../../master/sass/themes/theme-6.scss */
+  header .navbar-collapse .navbar-right > li.open > a {
+    background: #0e161b !important;
+  }
+}
+@media (max-width: 991px) and (max-width: 767px) {
+  /* line 104, ../../../master/sass/themes/theme-6.scss */
+  header .navbar-collapse .navbar-right > li {
+    border-bottom: 1px solid #2C2F3B !important;
+  }
+}
+@media (max-width: 991px) {
+  /* line 126, ../../../master/sass/themes/theme-6.scss */
+  header .navbar-collapse .navbar-right .dot-badge {
+    border-color: #1C2B36;
+  }
+}
+@media (max-width: 767px) {
+  /* line 70, ../../../master/sass/themes/theme-6.scss */
+  header .navbar-collapse {
+    background: #131e25 !important;
+  }
+  /* line 135, ../../../master/sass/themes/theme-6.scss */
+  header .navbar-collapse .close-handle {
+    background: #1C2B36;
+  }
+  /* line 138, ../../../master/sass/themes/theme-6.scss */
+  header .navbar-collapse .close-handle .arrow-left, header .navbar-collapse .close-handle .arrow-right {
+    background-color: #5c798f;
+  }
+  /* line 146, ../../../master/sass/themes/theme-6.scss */
+  header .navbar-collapse .navbar-right .current-user a i {
+    color: #ffffff !important;
+    background: rgba(92, 121, 143, 0.3);
+  }
+}
+/* line 156, ../../../master/sass/themes/theme-6.scss */
+header .dropdown-off-sidebar {
+  border-left-color: rgba(0, 0, 0, 0.2) !important;
+  background: #ffffff !important;
+  color: #3E4B5C !important;
+}
+@media (max-width: 991px) {
+  /* line 156, ../../../master/sass/themes/theme-6.scss */
+  header .dropdown-off-sidebar {
+    background: #1C2B36 !important;
+    border-left-color: rgba(0, 0, 0, 0.2) !important;
+    color: #5c798f !important;
+  }
+}
+
+/* line 169, ../../../master/sass/themes/theme-6.scss */
+#sidebar {
+  background: #1C2B36 !important;
+}
+/* line 172, ../../../master/sass/themes/theme-6.scss */
+#sidebar:before {
+  border-right-width: 0 !important;
+  border-right-style: solid;
+  border-right-color: transparent !important;
+}
+/* line 178, ../../../master/sass/themes/theme-6.scss */
+#sidebar nav {
+  border-right-width: 0 !important;
+  border-right-style: solid;
+  border-right-color: transparent !important;
+}
+/* line 183, ../../../master/sass/themes/theme-6.scss */
+#sidebar nav .navbar-title {
+  color: #96abbb;
+}
+/* line 187, ../../../master/sass/themes/theme-6.scss */
+#sidebar nav > ul {
+  background: #16232D !important;
+  border-bottom-color: #141518 !important;
+  border-top-color: #141518 !important;
+}
+/* line 194, ../../../master/sass/themes/theme-6.scss */
+#sidebar nav > ul > li a:active:focus {
+  background: #05080b !important;
+}
+/* line 201, ../../../master/sass/themes/theme-6.scss */
+#sidebar nav > ul > li > a .item-media > i {
+  color: #51C6EA !important;
+}
+/* line 206, ../../../master/sass/themes/theme-6.scss */
+#sidebar nav > ul > li > a .item-media .fa-stack .fa-square {
+  color: #131E26 !important;
+}
+/* line 212, ../../../master/sass/themes/theme-6.scss */
+#sidebar nav > ul > li > a .item-inner {
+  color: #b4bcc8 !important;
+  border-bottom-color: #141518;
+}
+/* line 218, ../../../master/sass/themes/theme-6.scss */
+#sidebar nav > ul > li.hover {
+  background: #0e161c !important;
+}
+/* line 222, ../../../master/sass/themes/theme-6.scss */
+#sidebar nav > ul > li.open {
+  background: #0e161c !important;
+}
+/* line 227, ../../../master/sass/themes/theme-6.scss */
+.no-touch #sidebar nav > ul > li:hover {
+  background: #0e161c !important;
+}
+/* line 234, ../../../master/sass/themes/theme-6.scss */
+#sidebar nav > ul > li.active {
+  background: #131E26 !important;
+}
+/* line 237, ../../../master/sass/themes/theme-6.scss */
+#sidebar nav > ul > li.active:hover {
+  background: #131E26 !important;
+}
+@media (min-width: 992px) {
+  /* line 242, ../../../master/sass/themes/theme-6.scss */
+  #sidebar nav > ul > li.active:before {
+    border-right-color: transparent !important;
+  }
+  /* line 246, ../../../master/sass/themes/theme-6.scss */
+  #sidebar nav > ul > li.active:after {
+    border-right-color: #F0F3F4 !important;
+  }
+}
+/* line 252, ../../../master/sass/themes/theme-6.scss */
+#sidebar nav > ul > li.active > a:active:focus {
+  background: #0a1115 !important;
+}
+/* line 256, ../../../master/sass/themes/theme-6.scss */
+#sidebar nav > ul > li.active > a .item-inner {
+  color: #ffffff !important;
+}
+/* line 261, ../../../master/sass/themes/theme-6.scss */
+#sidebar nav > ul > li.active > a .item-media > i {
+  color: #ffffff !important;
+}
+/* line 266, ../../../master/sass/themes/theme-6.scss */
+#sidebar nav > ul > li.active > a .item-media .fa-stack .fa-square {
+  color: #007aff !important;
+}
+/* line 273, ../../../master/sass/themes/theme-6.scss */
+#sidebar nav > ul > li.active .sub-menu {
+  background: #111b23;
+}
+/* line 279, ../../../master/sass/themes/theme-6.scss */
+#sidebar nav > ul .sub-menu {
+  background: #111b23;
+}
+/* line 283, ../../../master/sass/themes/theme-6.scss */
+#sidebar nav > ul .sub-menu > li.open {
+  background: #0e161c !important;
+}
+/* line 287, ../../../master/sass/themes/theme-6.scss */
+#sidebar nav > ul .sub-menu > li a {
+  color: #b4bcc8;
+}
+/* line 292, ../../../master/sass/themes/theme-6.scss */
+#sidebar nav > ul .sub-menu > li.active a {
+  background: #020304 !important;
+}
+/* line 303, ../../../master/sass/themes/theme-6.scss */
+#sidebar nav ul > li.hover {
+  background: #0e161c;
+}
+/* line 308, ../../../master/sass/themes/theme-6.scss */
+.no-touch #sidebar nav ul > li:hover {
+  background: #0e161c;
+}
+/* line 313, ../../../master/sass/themes/theme-6.scss */
+#sidebar nav ul > li.open {
+  background: #0e161c;
+}
+/* line 319, ../../../master/sass/themes/theme-6.scss */
+#sidebar nav .button-o {
+  border-color: #51C6EA !important;
+  color: #51C6EA !important;
+}
+
+@media (min-width: 992px) {
+  /* line 330, ../../../master/sass/themes/theme-6.scss */
+  .app-sidebar-closed .app-aside .search-form {
+    background: #121b22 !important;
+    border-bottom-color: transparent !important;
+  }
+  /* line 334, ../../../master/sass/themes/theme-6.scss */
+  .app-sidebar-closed .app-aside .search-form > a {
+    color: #5c798f;
+  }
+  /* line 339, ../../../master/sass/themes/theme-6.scss */
+  .app-sidebar-closed .app-aside .navbar-form {
+    background: #121b22 !important;
+  }
+  /* line 342, ../../../master/sass/themes/theme-6.scss */
+  .app-sidebar-closed .app-aside .navbar-form a {
+    color: #5c798f !important;
+  }
+  /* line 347, ../../../master/sass/themes/theme-6.scss */
+  .app-sidebar-closed .app-aside .navbar-form .form-group input {
+    background: rgba(255, 255, 255, 0.4);
+  }
+  /* line 350, ../../../master/sass/themes/theme-6.scss */
+  .app-sidebar-closed .app-aside .navbar-form .form-group input::-webkit-input-placeholder {
+    /* WebKit browsers */
+    color: #5c798f;
+  }
+  /* line 354, ../../../master/sass/themes/theme-6.scss */
+  .app-sidebar-closed .app-aside .navbar-form .form-group input:-moz-placeholder {
+    /* Mozilla Firefox 4 to 18 */
+    color: #5c798f;
+  }
+  /* line 358, ../../../master/sass/themes/theme-6.scss */
+  .app-sidebar-closed .app-aside .navbar-form .form-group input::-moz-placeholder {
+    /* Mozilla Firefox 19+ */
+    color: #5c798f;
+  }
+  /* line 362, ../../../master/sass/themes/theme-6.scss */
+  .app-sidebar-closed .app-aside .navbar-form .form-group input:-ms-input-placeholder {
+    /* Internet Explorer 10+ */
+    color: #5c798f;
+  }
+  /* line 369, ../../../master/sass/themes/theme-6.scss */
+  .app-sidebar-closed .app-aside > .item-inner {
+    background: #05080b !important;
+  }
+  /* line 372, ../../../master/sass/themes/theme-6.scss */
+  .app-sidebar-closed .app-aside > .item-inner .title {
+    color: #b4bcc8 !important;
+  }
+  /* line 376, ../../../master/sass/themes/theme-6.scss */
+  .app-sidebar-closed .app-aside > .item-inner.active {
+    background: #05080b !important;
+  }
+  /* line 379, ../../../master/sass/themes/theme-6.scss */
+  .app-sidebar-closed .app-aside > .item-inner.active:before {
+    border-left: 12px solid transparent;
+  }
+  /* line 383, ../../../master/sass/themes/theme-6.scss */
+  .app-sidebar-closed .app-aside > .item-inner.active:after {
+    border-left: 12px solid #131E26 !important;
+  }
+  /* line 388, ../../../master/sass/themes/theme-6.scss */
+  .app-sidebar-closed .app-aside > .item-inner:before {
+    border-left: 12px solid transparent;
+  }
+  /* line 392, ../../../master/sass/themes/theme-6.scss */
+  .app-sidebar-closed .app-aside > .item-inner:after {
+    border-left: 12px solid #0e161c !important;
+  }
+  /* line 397, ../../../master/sass/themes/theme-6.scss */
+  .app-sidebar-closed .app-aside .form-group {
+    background: #121b22 !important;
+    border-color: transparent !important;
+  }
+  /* line 402, ../../../master/sass/themes/theme-6.scss */
+  .app-sidebar-closed .app-aside .sub-menu {
+    background: #16232D;
+  }
+  /* line 406, ../../../master/sass/themes/theme-6.scss */
+  .app-sidebar-closed .app-aside .sub-menu li a {
+    color: #b4bcc8 !important;
+  }
+  /* line 409, ../../../master/sass/themes/theme-6.scss */
+  .app-sidebar-closed .app-aside .sub-menu li a.hover {
+    background: #05080b !important;
+  }
+  /* line 414, ../../../master/sass/themes/theme-6.scss */
+  .no-touch .app-sidebar-closed .app-aside .sub-menu li a:hover {
+    background: #05080b !important;
+  }
+  /* line 420, ../../../master/sass/themes/theme-6.scss */
+  .app-sidebar-closed .app-aside .sub-menu li.active > a, .app-sidebar-closed .app-aside .sub-menu li.open > a {
+    background: #05080b !important;
+  }
+}
+@media (min-width: 992px) {
+  /* line 430, ../../../master/sass/themes/theme-6.scss */
+  .app-sidebar-closed ul.sub-menu {
+    border-right-color: #141518 !important;
+    border-bottom-color: #141518 !important;
+  }
+}
+
+/* line 438, ../../../master/sass/themes/theme-6.scss */
+.navbar-form {
+  background: #121b22 !important;
+}
+/* line 441, ../../../master/sass/themes/theme-6.scss */
+.navbar-form .search-button {
+  color: #5c798f;
+}
+/* line 446, ../../../master/sass/themes/theme-6.scss */
+.navbar-form .form-control::-webkit-input-placeholder {
+  /* WebKit browsers */
+  color: rgba(92, 121, 143, 0.5);
+}
+/* line 450, ../../../master/sass/themes/theme-6.scss */
+.navbar-form .form-control:-moz-placeholder {
+  /* Mozilla Firefox 4 to 18 */
+  color: rgba(92, 121, 143, 0.5);
+}
+/* line 454, ../../../master/sass/themes/theme-6.scss */
+.navbar-form .form-control::-moz-placeholder {
+  /* Mozilla Firefox 19+ */
+  color: rgba(92, 121, 143, 0.5);
+}
+/* line 458, ../../../master/sass/themes/theme-6.scss */
+.navbar-form .form-control:-ms-input-placeholder {
+  /* Internet Explorer 10+ */
+  color: rgba(92, 121, 143, 0.5);
+}
+/* line 462, ../../../master/sass/themes/theme-6.scss */
+.navbar-form .form-control:focus {
+  background-color: #ffffff !important;
+  border-color: #ffffff;
+  transition: all 300ms ease-in 0s;
+}
+/* line 467, ../../../master/sass/themes/theme-6.scss */
+.navbar-form .form-control:focus + .search-button {
+  color: #7c7c7c;
+}
+/* line 471, ../../../master/sass/themes/theme-6.scss */
+.navbar-form .form-control:focus::-webkit-input-placeholder {
+  /* WebKit browsers */
+  color: #bbbbbb !important;
+}
+/* line 475, ../../../master/sass/themes/theme-6.scss */
+.navbar-form .form-control:focus:-moz-placeholder {
+  /* Mozilla Firefox 4 to 18 */
+  color: #bbbbbb !important;
+}
+/* line 479, ../../../master/sass/themes/theme-6.scss */
+.navbar-form .form-control:focus::-moz-placeholder {
+  /* Mozilla Firefox 19+ */
+  color: #bbbbbb !important;
+}
+/* line 483, ../../../master/sass/themes/theme-6.scss */
+.navbar-form .form-control:focus:-ms-input-placeholder {
+  /* Internet Explorer 10+ */
+  color: #bbbbbb !important;
+}
+
+/* line 490, ../../../master/sass/themes/theme-6.scss */
+#off-sidebar {
+  background: #ffffff !important;
+  border-color: #c8c7cc !important;
+}
+/* line 494, ../../../master/sass/themes/theme-6.scss */
+#off-sidebar .sidebar-back {
+  color: #6254B2;
+}
+/* line 498, ../../../master/sass/themes/theme-6.scss */
+#off-sidebar .tab-content {
+  background: #ffffff !important;
+}
+/* line 504, ../../../master/sass/themes/theme-6.scss */
+#off-sidebar .nav-tabs.nav-justified > li > a {
+  border-color: #c8c7cc;
+  color: rgba(98, 84, 178, 0.7);
+  background: #f2f2f2;
+}
+/* line 509, ../../../master/sass/themes/theme-6.scss */
+#off-sidebar .nav-tabs.nav-justified > li > a:hover, #off-sidebar .nav-tabs.nav-justified > li > a:focus {
+  background: #e6e6e6;
+  color: rgba(98, 84, 178, 0.8);
+}
+/* line 515, ../../../master/sass/themes/theme-6.scss */
+#off-sidebar .nav-tabs.nav-justified > li.active > a, #off-sidebar .nav-tabs.nav-justified > li.active > a:hover, #off-sidebar .nav-tabs.nav-justified > li.active > a:focus {
+  color: #6254B2;
+  background: #ffffff;
+  border-bottom-color: #ffffff;
+}
+/* line 523, ../../../master/sass/themes/theme-6.scss */
+#off-sidebar .media-list .media {
+  border-color: #c8c7cc;
+  color: #777;
+}
+/* line 527, ../../../master/sass/themes/theme-6.scss */
+#off-sidebar .media-list .media a:hover {
+  background: #e6e6e6;
+}
+/* line 531, ../../../master/sass/themes/theme-6.scss */
+#off-sidebar .media-list .media .media-heading {
+  color: #777 !important;
+}
+/* line 535, ../../../master/sass/themes/theme-6.scss */
+#off-sidebar .media-list .media .media-body span {
+  color: #919191;
+}
+/* line 540, ../../../master/sass/themes/theme-6.scss */
+#off-sidebar .sidebar-title {
+  color: #777;
+}
+/* line 545, ../../../master/sass/themes/theme-6.scss */
+#off-sidebar .discussion .messages-date {
+  color: #777;
+}
+/* line 549, ../../../master/sass/themes/theme-6.scss */
+#off-sidebar .discussion .message-name {
+  color: #777;
+}
+/* line 554, ../../../master/sass/themes/theme-6.scss */
+#off-sidebar .message-bar {
+  background: #e6e6e6;
+  border-top-color: #c8c7cc;
+}
+/* line 558, ../../../master/sass/themes/theme-6.scss */
+#off-sidebar .message-bar textarea {
+  background: #fff;
+  border-color: #c8c7cc;
+}
+/* line 563, ../../../master/sass/themes/theme-6.scss */
+#off-sidebar .message-bar .link {
+  color: #6254B2;
+}
+/* line 567, ../../../master/sass/themes/theme-6.scss */
+#off-sidebar .message-bar a.icon-only {
+  color: #777;
+}
+
+/* line 573, ../../../master/sass/themes/theme-6.scss */
+.ps-container > .ps-scrollbar-y-rail > .ps-scrollbar-y {
+  background-color: #999 !important;
+}
+
+/* line 577, ../../../master/sass/themes/theme-6.scss */
+#app > footer {
+  background: #1C2B36 !important;
+  border-top-color: rgba(0, 0, 0, 0.2) !important;
+  color: #ffffff;
+}

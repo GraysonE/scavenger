@@ -1,0 +1,23 @@
+.opacity_wrap {
+    background: rgba(255,255,255,.85);
+}
+
+.user_info {
+    margin-bottom: 40px;
+}
+
+.account_photo {
+    float: left;
+    margin-right: 10px;
+}
+
+h3.screen_name {
+    margin-top: 12px;
+    width: 70%;
+}
+
+.floating_box {
+    float:left;
+    width: 10%;
+    height: auto;
+}
