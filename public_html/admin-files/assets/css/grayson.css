@@ -16,8 +16,76 @@ h3.screen_name {
     width: 70%;
 }
 
+#publishSideBar {
+	position: relative;
+	width: 100%;
+}
+
+#publishSideBar button {
+	width: 100%;
+}
+
 .floating_box {
     float:left;
     width: 10%;
     height: auto;
+}
+
+.main-content .page-login .user_accounts {
+	width: 200px;
+	float: left;
+	padding: 20px;
+	box-shadow: 0px 0px 3px 3px #333;
+	transition: background 1s;
+}
+
+.user_accounts:hover {
+	background: #222;
+}
+
+.user_accounts a {
+	margin-top: 30px;
+	text-align: center;
+	width: 100%;
+}
+
+.user_accounts input {
+	color: white;
+	width: 100%;
+	text-align: center;
+}
+
+.user_accounts input[type="text"]:hover {
+	border: 1px solid #222;
+}
+
+.user_accounts label {
+	color: white;
+}
+
+.user_accounts input[type="checkbox"] {
+	float: right;
+	width: auto;
+}
+
+#main-form {
+	min-height: 350px;
+}
+
+.user_accounts h4 {
+	width: 100%;
+    text-align: center;
+    font-weight: bold;
+    color: white;
+}
+
+input[name="model_user"] {
+	width: 100%;
+    text-align: center;
+}
+
+input[value="Search Users"] {
+	text-align: center;
+	margin: 0 auto;
+    display: block;
 }
