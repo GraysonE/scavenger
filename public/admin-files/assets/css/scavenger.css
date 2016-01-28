@@ -1,0 +1,27 @@
+.navbar {
+	min-width:300px;
+}
+
+.navbar h1, .navbar img, .navbar h5 {
+	float: left;
+}
+
+.navbar img {
+	height: 70px;
+}
+
+.navbar h1 {
+	margin-top: 10px;
+}
+
+.navbar .navbar-header .navbar-brand h5 {
+	margin: 13px 0px 0px 5px;
+}
+
+.navbar .navbar-header .navbar-brand img {
+    margin-left: -45px;
+    width: 100px;
+    height: 100px;
+    margin-top: -20px;
+    margin-right: -20px;
+}
