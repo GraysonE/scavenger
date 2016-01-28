@@ -22,9 +22,6 @@ public_html/phpinfo.php.bak
 public_html/web.config
 /public_html/*
 
-!/public_html/assets
-!/public_html/admin-files
-
 .bash_history
 .bash_logout
 .bash_profile
