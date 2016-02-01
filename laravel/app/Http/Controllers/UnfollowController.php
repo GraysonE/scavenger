@@ -11,12 +11,10 @@ use Scavenger\Twitter\TwitterOAuth;
 use Scavenger\ModelAccount;
 use Scavenger\Friend;
 use Scavenger\Follower;
-use Scavenger\TargetUser;
-use Scavenger\TempTargetUser;
 use Carbon\Carbon;
 use Scavenger\Helpers\Helper;
 
-class FollowController extends Controller
+class UnfollowController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -25,15 +23,18 @@ class FollowController extends Controller
      */
     public function index()
     {
+	    
+	    $oneWeekOld = Carbon::today('America/Denver')->subweek();
+	    
+	    $i = 1;
+	    
         $socialMediaAccounts = SocialMediaAccount::get()->all();
-
-		
 
         foreach($socialMediaAccounts as $socialMediaAccount) {
 
             echo "<h2>$socialMediaAccount->screen_name</h2>";
-
-			if ($socialMediaAccount->id == 4) {
+            
+            if ($socialMediaAccount->id == 4) {
 	            echo "<h3>SKIPPED!</h3>";
 				continue;
 			}
@@ -44,31 +45,42 @@ class FollowController extends Controller
                 $socialMediaAccount->access_token,
                 $socialMediaAccount->access_token_secret);
 
-            $targetUsers = TargetUser::where('social_media_account_id', $socialMediaAccount->id)->get();
+            $friends = Friend::where('social_media_account_id', $socialMediaAccount->id)
+            	->where('whitelisted', 0)
+            	->where('created_at', '>=', $oneWeekOld)
+            	->select('account_id')
+            	->get()
+            	->toArray();
+
+			$oldFriends_ids = array();
+			
+			foreach($friends as $account_id) {
+				$oldFriends_ids[] = $account_id['account_id'];
+			}
 
 			$limit = 142;
-			$i=1;
 
-            if (is_null($targetUsers)) {
+            if (is_null($oldFriends_ids)) {
 	            
-                echo "No Target Users in DB.";
-                continue;
+                echo "No friends in DB.";
                 
             } else {
 	            
-                foreach ($targetUsers as $targetUser) {
+                foreach ($oldFriends_ids as $oldFriend) {
 	                
 	                if ($limit == 0) {
 		                break;
 	                }
 	                
-                    $follow = $connection->post("https://api.twitter.com/1.1/friendships/create.json?user_id=$targetUser->account_id&follow=true");
+	                
+	                
+                    $destroyFriendship = $connection->post("https://api.twitter.com/1.1/friendships/destroy.json?user_id=$oldFriend&follow=true");
 
-                    if (isset($follow->errors)) {
+                    if (isset($destroyFriendship->errors)) {
 
-                        $errorObject = $follow->errors;
+                        $errorObject = $destroyFriendship->errors;
                         $error = $errorObject[0]->code;
-                        $errorMessage = "Friendship creator to needs to refresh. " . $errorObject[0]->message;
+                        $errorMessage = "Friend destroyer to needs to refresh. " . $errorObject[0]->message;
 
                         echo "<div class='errorMessage'>$errorMessage</div>";
 
@@ -78,17 +90,15 @@ class FollowController extends Controller
 
                     } else {
 	                    
-                        echo "<br>$i: $targetUser->screen_name followed!";
+                        echo "<br>$i: $oldFriend - friendship destroyed!";
 
-                        Friend::create([
-                            'account_id' => $targetUser->account_id,
-                            'screen_name' => ($targetUser->screen_name) ? $targetUser->screen_name : '',
-                            'whitelisted' => ($targetUser->whitelist) ? true : false,
-                            'social_media_account_id' => $socialMediaAccount->id
-                        ]);
-
-                        $oldTargetUser = TargetUser::findOrFail($targetUser->id)->delete();
-                        echo " - Target User deleted from DB.";
+                        $friend = Friend::where('social_media_account_id', $socialMediaAccount->id)
+			            	->where('account_id', $oldFriend)
+			            	->get()
+			            	->first();
+			            	
+			            $friend->delete();
+                        echo " - Deleted from DB.";
                         
                         
                         
@@ -98,11 +108,10 @@ class FollowController extends Controller
                 }
             }
             
-            $message = "$i friendships created!";
+            $message = "$i account friendships destroyed. These people have never interacted with your content.";
             Helper::email_admin($message, $socialMediaAccount->screen_name);
             
         }
-
     }
 
     /**

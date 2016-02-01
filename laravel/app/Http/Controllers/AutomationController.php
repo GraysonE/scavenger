@@ -37,11 +37,9 @@ class AutomationController extends Controller
 
         foreach($socialMediaAccounts as $socialMediaAccount) {
 
-/*
-			if ($socialMediaAccount->id == 3) {
+			if ($socialMediaAccount->id == 4) {
 				continue;
 			}
-*/
 
             $api_requests = 15;
 
@@ -199,7 +197,8 @@ class AutomationController extends Controller
 					
 					$friendToDelete = Friend::where('social_media_account_id', $socialMediaAccount->id)
 						->where('account_id', $friend_id)
-						->get();
+						->get()
+						->first();
 											
 					$friendToDelete->delete();
                     
@@ -334,8 +333,9 @@ class AutomationController extends Controller
 					
 					$followerToDelete = Follower::where('social_media_account_id', $socialMediaAccount->id)
 						->where('account_id', $follower_id)
-						->get();
-						
+						->get()
+						->first();
+					
 					$followerToDelete->delete();
                     
 				}
