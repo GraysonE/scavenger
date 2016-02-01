@@ -1,0 +1,30 @@
+<?php $__env->startSection('content'); ?>
+
+    <div class="container-fluid container-fullw page-login">
+        <div class="row">
+            <div class="col-sm-12">
+
+                <form id="main-form" method="POST" action="<?php echo e(url('set-user/'.$socialMediaAccount->id.'/search')); ?>">
+                    <?php echo csrf_field(); ?>
+
+                        <input name="model_user" placeholder="Search a user to follow. . ." />
+                        <br>
+                        <input type="submit" value="Search Users"/>
+                </form>
+
+                <?php if(isset($modelAccounts)): ?>
+                    <?php foreach($modelAccounts as $model): ?>
+                        <ul class="ui-sortable expandable" data-type="model_users">
+                        <li class="subpanel form-inline" data-id="<?php echo e($model->id); ?>">
+                            <h3 class="screen_name col-lg-6"><?php echo e('@'.$model->screen_name); ?></h3>
+                            <a class="btn alert-danger pull-right" href="<?php echo e(url('set-user/'.$socialMediaAccount->id.'/'.$model->id.'/destroy')); ?>">Delete User</a>
+                        </li>
+                        </ul>
+                    <?php endforeach; ?>
+                <?php endif; ?>
+
+            </div>
+        </div>
+    </div>
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('master', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

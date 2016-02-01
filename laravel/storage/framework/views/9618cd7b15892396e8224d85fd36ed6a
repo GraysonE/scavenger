@@ -1,0 +1,27 @@
+
+<form method="post" action="<?php echo e(url('settings')); ?>" id="globalCTAForm">
+  <?php echo e(csrf_field()); ?>
+
+
+  <div class="form-group">
+    <input type="text" placeholder="Link Text" name="text" class="form-control">
+  </div>
+  <div class="form-group">
+    <input type="text" placeholder="URL" name="url" class="form-control">
+  </div>
+
+  <div class="form-group">
+    <div class="input-group input-group-select">
+      <select name="" class="form-control">
+        <option value="">- Target -</option>
+        <option value="_self">_self</option>
+        <option value="_blank">_blank</option>
+      </select>
+    </div>
+  </div>
+
+<input type="hidden" value="<?php echo e($column); ?>" name="column" />
+
+<button class="btn btn-success" type="submit">Add Column <?php echo e($column); ?> Footer Link</button>
+
+</form>

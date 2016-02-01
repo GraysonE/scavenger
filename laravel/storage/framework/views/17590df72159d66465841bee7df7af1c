@@ -1,0 +1,44 @@
+<?php $__env->startSection('content'); ?>
+<h1><?php echo e($movie->title); ?></h1> 
+
+<h4>Select the area below you want to edit:</h4>
+<br>
+
+<div class="editWrap">
+	
+	<div id="aboutTabs">
+	
+		<ul>
+			<li class="aboutIndTab"><a href="#aboutTabs-1">Synopsis</a></li>
+			<li class="aboutIndTab"><a href="#aboutTabs-2">Cast</a></li>
+			<li class="aboutIndTab"><a href="#aboutTabs-3">Crew</a></li>
+		</ul>
+	
+		<div id="aboutTabs-1">
+			<?php echo $__env->make('movies.about', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+		</div>
+		
+		<div id="aboutTabs-2">
+			<?php echo $__env->make('sections.people.index', array('occupation' => 'cast', 'tab' => 'aboutTabs-2'), array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+			
+			<h5>Add a Cast Member</h5>
+			
+			<?php echo $__env->make('sections.people.create', array('occupation' => 'cast', 'tab' => 'aboutTabs-2'), array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+		</div>
+		
+		<div id="aboutTabs-3">
+			<?php echo $__env->make('sections.people.index', array('occupation' => 'crew', 'tab' => 'aboutTabs-3'), array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+			
+			<h5>Add a Crew Member</h5>
+			
+			<?php echo $__env->make('sections.people.create', array('occupation' => 'crew', 'tab' => 'aboutTabs-3'), array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+		</div>
+	
+	</div>
+	
+</div>
+
+
+
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('master', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

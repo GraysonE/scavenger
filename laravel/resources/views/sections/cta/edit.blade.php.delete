@@ -1,0 +1,12 @@
+<form action="cta" method="post">
+	{!! csrf_field() !!}
+	<label>Add a Call to Action button:</label><br>
+	<input type="text" name="text" id="buttonTextInput" placeholder="button text">
+	<input type="text" name="url" id="extURLInput" placeholder="external URL">
+	<select name="sectionId">
+		@foreach ($sections as $section)
+			<option value="{{ $section->id}}">{{ $section->title }}</option>
+		@endforeach
+	</select>
+	<button type="submit">Add CTA Button</button>
+</form>

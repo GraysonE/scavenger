@@ -1,0 +1,92 @@
+<?php $__env->startSection('content'); ?>
+
+<?php echo $__env->make('movies.title', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+
+
+<!-- VIDEOS SECTION -->
+<div class="container-fluid container-fullw block-about">
+
+  <div class="row page-description">
+    <div class="col-sm-8 col-lg-9">
+      <p class="main-description">Select the area below you want to edit:</p>
+    </div>
+
+    <?php if(Auth::user() && $editMovie): ?>
+    <?php echo $__env->make('admin.publish', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+    <?php endif; ?>
+
+  </div>
+
+
+
+  <div class="row">
+    <div class="col-sm-12">
+
+      <form method="POST" action="<?php echo e(url('admin/movies/'.$movie->id.'/edit/sections/'.$currentSection->id.'/about')); ?>" id="main-form" enctype="multipart/form-data">
+        <?php echo e(csrf_field()); ?>  
+        
+        <input type="hidden" name="tab" value=""/>
+         
+        <!-- TAB CONTENT -->
+        <div class="tab-content" id="aboutTabs">
+
+          <!-- TABS -->
+          <ul class="nav nav-tabs" role="tablist">
+            <li role="presentation" class="active"><a href="#synopsis" aria-controls="synopsis" role="tab" data-toggle="tab">Synopsis</a></li>
+            <li role="presentation" class=""><a href="#cast" aria-controls="cast" role="tab" data-toggle="tab">Cast</a></li>
+            <li role="presentation" class=""><a href="#crew" aria-controls="crew" role="tab" data-toggle="tab">Crew</a></li>
+          </ul>
+
+
+
+          <div role="tabpanel" id="synopsis" class="tab-pane active">
+            <?php echo $__env->make('movies.about', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+          </div>
+
+          <div role="tabpanel" id="cast" class="tab-pane">
+            <div class="panel">
+              <?php echo $__env->make('sections.people.index', array('occupation' => 'cast', 'tab' => 'cast'), array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+              <a href="<?php echo e(url('/admin/movies/'.$movie->id.'/edit/sections/'.$currentSection->id.'/about/create?occ=cast')); ?>" class="btn btn-success" type="submit">Add Cast Member</a>
+            </div>
+          </div>
+
+          <div role="tabpanel" id="crew" class="tab-pane">
+            <div class="panel">
+              <?php echo $__env->make('sections.people.index', array('occupation' => 'crew', 'tab' => 'crew'), array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+              <a href="<?php echo e(url('/admin/movies/'.$movie->id.'/edit/sections/'.$currentSection->id.'/about/create?occ=crew')); ?>" class="btn btn-success" type="submit">Add Crew Member</a>
+            </div>
+          </div>
+        </div>
+      </form>
+
+
+      <!-- SYNOPSIS IMAGE UPLOAD -->
+      <div class="panel panel-white panel-file-upload">
+        <div class="panel-heading">
+          <h5 class="panel-title">About the Film Block Background Content</h5>
+        </div>
+
+        <div class="panel-body">
+
+          <!-- FILE UPLOADER WIDGET -->
+          <div class="file-uploader">
+            <div class="row">
+              <?php echo $__env->make('sections.images.edit', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+              <?php echo $__env->make('sections.images.create', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+            </div>
+          </div>
+          <!-- end: FILE UPLOADER WIDGET -->
+
+          <!-- COLOR PICKER -->
+          <?php echo $__env->make('sections.colorpicker.edit', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+</div>
+
+
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('master', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

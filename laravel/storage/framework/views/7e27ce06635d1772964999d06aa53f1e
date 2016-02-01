@@ -1,0 +1,14 @@
+<?php $__env->startSection('content'); ?>
+<!-- start: DASHBOARD TITLE -->
+<section id="page-title" class="">
+  <div class="row">
+    <div class="col-sm-12">
+      <h1>All Movies</h1>
+      	<span class="breadcrumb">&nbsp;</span>
+    </div>
+  </div>
+</section>
+<!-- end: DASHBOARD TITLE -->
+	<?php echo $__env->make('movies.show', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('master', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

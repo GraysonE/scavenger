@@ -1,0 +1,72 @@
+<?php $__env->startSection('content'); ?>
+
+<!-- start: DASHBOARD TITLE -->
+<section id="page-title" class="">
+  <div class="row">
+    <div class="col-sm-12">
+      <h1>Secret In Their Eyes</h1>
+      <span class="breadcrumb">
+        Content Blocks > SEO &amp; Social
+      </span>
+    </div>
+</section>
+<!-- end: DASHBOARD TITLE -->
+
+<!-- MARQUEE SECTION -->
+<div class="container-fluid container-fullw block-seo">
+
+  <div class="row page-description">
+    <div class="col-sm-8 col-lg-9">
+      <p class="main-description">[ text here ]</p>
+    </div>
+
+    <?php if(Auth::user() && $editMovie): ?>
+    <?php echo $__env->make('admin.publish', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+    <?php endif; ?>
+
+  </div>
+
+  <div class="row">
+    <div class="col-sm-12">
+      <form method="post" action="<?php echo e(url('/admin/movies/'.$movie->id.'/edit/seo-social')); ?>" id="main-form" enctype="multipart/form-data">
+        <?php echo e(csrf_field()); ?>
+
+
+        <!-- META TAGS FORM -->
+        <div class="panel panel-white">
+          <div class="panel-heading">
+            <div class="panel-title">Meta tags</div>
+          </div>
+
+          <?php echo $__env->make('seoandsocial.metatags.edit', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+
+
+
+        </div>
+
+        <!-- SOCIAL FORM -->
+
+        <?php echo $__env->make('seoandsocial.socialmedia.edit', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+
+        <!-- ANALYTICS FORM -->
+        <div class="panel panel-white">
+          <div class="panel-heading">
+            <div class="panel-title">Analytics</div>
+          </div>
+
+          <?php echo $__env->make('seoandsocial.googleanalytics.edit', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+
+        </div>
+
+        <!--button type="submit">Save All Changes</button-->
+      </form>
+    </div>
+
+  </div>
+</div>
+
+
+
+<?php $__env->stopSection(); ?>
+
+<?php echo $__env->make('master', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

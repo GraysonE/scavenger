@@ -1,0 +1,102 @@
+<?php
+  /*
+   * Derive path from movie title
+   */
+   
+   use App\Helpers\Helper;
+   $movieDir = Helper::movieTitle($movie->title);
+  
+?>
+
+
+<?php $__env->startSection('content'); ?>
+
+<!-- start: DASHBOARD TITLE -->
+<section id="page-title" class="">
+  <div class="row">
+    <div class="col-sm-12">
+      <h1><?php echo e($movie->title); ?></h1>
+      <span class="breadcrumb">
+        Content Blocks > Site Publishing
+
+      </span>
+    </div>
+</section>
+<!-- end: DASHBOARD TITLE -->
+
+<!-- MARQUEE SECTION -->
+<div class="container-fluid container-fullw bg-white block-publishing">
+
+  <form method="post" action="<?php echo e(url('admin/movies/'.$movie->id.'/publishing/env')); ?>" id="main-form">
+
+    <?php echo e(csrf_field()); ?>
+
+    <div class="row page-description">
+      <div class="col-sm-12">
+
+        <p class="main-description">Please make sure you have reviewed and approved all changes prior to moving to QA and LIVE.</p>
+        <p class="main-description">Drag and drop Content Blocks from left to right to promote to next server:</p>
+        
+        <input type="submit" class="btn btn-orange pull-right margin-bottom-30" value="SAVE ALL BLOCKS AND PUBLISH"/>
+        <br/><br/><br/>
+        <div class="row panel-servers">
+          <div class="col col-sm-4 dev server" data-server="dev">
+            <h4>Development Server</h4>
+            <a class="btn-view" href="<?php echo e(url('admin/movies/'.$movie->id.'/publish/html')); ?>" target="stxdev">VIEW</a>
+
+
+            <?php foreach($sections as $section): ?>
+            <div data-position="<?php echo e($section->sort_order); ?>" data-block-id="<?php echo e($section->id); ?>" data-block-type="<?php echo e($section->view); ?>" class="content-block"><?php echo e($section->title); ?><i class="fa fa-close icon-actions"></i></div>
+            <?php endforeach; ?>
+
+          </div>
+          <div class="col col-sm-4 qa server" data-server="qa">
+            <h4>QA Server</h4>
+            <?php if(File::exists(public_path($movieDir.'/qa/index.html'))): ?>
+            	<a class="btn-view" href="<?php echo e(url($movieDir.'/qa')); ?>" target="stxqa">VIEW</a>
+			<?php endif; ?>
+
+            <?php foreach($sections as $section): ?>
+            <?php if($section->qa): ?>
+            <div data-position="<?php echo e($section->sort_order); ?>" data-block-id="<?php echo e($section->id); ?>" data-block-type="<?php echo e($section->view); ?>" class="content-block"><?php echo e($section->title); ?><i class="fa fa-close icon-actions"></i></div>
+            <?php endif; ?>
+            <?php endforeach; ?>
+
+          </div>
+          <div class="col col-sm-4 live server" data-server="live">
+            <h4>Live Server</h4>
+            <?php if(File::exists(public_path($movieDir.'/index.html'))): ?>
+            	<a class="btn-view" href="<?php echo e(url($movieDir)); ?>" target="stxlive">VIEW</a>
+			<?php endif; ?>
+			
+            <?php foreach($sections as $section): ?>
+            <?php if($section->live): ?>
+            <div data-position="<?php echo e($section->sort_order); ?>" data-block-id="<?php echo e($section->id); ?>" data-block-type="<?php echo e($section->view); ?>" class="content-block"><?php echo e($section->title); ?><i class="fa fa-close icon-actions"></i></div>
+            <?php endif; ?>
+            <?php endforeach; ?>
+
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <br/><br/><br/>
+
+    <select name="qa[]" multiple style="height:250px; width:200px; margin-left:100px;">
+      <?php foreach($sections as $section): ?>      
+      <option value="<?php echo e($section->id); ?>" <?php echo e($section->qa ? 'selected' : ''); ?>><?php echo e($section->title); ?></option>
+      <?php endforeach; ?>
+    </select>
+    <select name="live[]" multiple style="height:250px; width:200px; margin-left:100px;">
+      <?php foreach($sections as $section): ?>
+      <option value="<?php echo e($section->id); ?>" <?php echo e($section->live ? 'selected' : ''); ?>><?php echo e($section->title); ?></option>
+      <?php endforeach; ?>
+    </select>
+
+  </form>
+  <!--a href="<?php echo e(url('admin/movies/'.$movie->id.'/publish/html')); ?>">Publish Link</a-->
+</div>
+
+
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('master', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
