@@ -19,8 +19,9 @@ class Helper {
 	}
 
 	public static function email_admin($errorMessage, $screen_name) {
+		
 		$time = Carbon::now();
-		$email = "web@graysonerhard.com";
+		$email = "gator3029.hostgator.com";
 
 		// To send HTML mail, the Content-type header must be set
 		$headers  = 'MIME-Version: 1.0' . "\r\n";
@@ -39,7 +40,13 @@ class Helper {
 		$message = wordwrap($message, 70, "\r\n");
 
 		// Send
-		mail($email, "Scavenger Error Report", $message, $headers);
+		$success = mail($email, "Scavenger Error Report", $message, $headers);
+		
+		if ($success) {
+			echo "<h2>MAIL SENT.</h2>";
+		} else {
+			echo "<h2>MAIL FAILED TO SEND.</h2>";
+		}
 	}
 	
 }

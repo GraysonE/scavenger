@@ -10,7 +10,6 @@ use Auth;
 use Scavenger\Twitter\TwitterOAuth;
 use Scavenger\ModelAccount;
 use Scavenger\Friend;
-use Scavenger\Follower;
 use Carbon\Carbon;
 use Scavenger\Helpers\Helper;
 

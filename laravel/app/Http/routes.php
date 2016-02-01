@@ -70,6 +70,10 @@ Route::group(array('middleware' => 'auth'), function(){
 
 
 
+	// mail test
+	Route::get('mail', 'CronController@create');
+
+
 
 
 
