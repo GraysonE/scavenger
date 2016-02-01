@@ -35,14 +35,13 @@ class AutomationController extends Controller
 
         $socialMediaAccounts = SocialMediaAccount::get()->all();
 
-        // GraysonErhard = 3
-        // iamabadass4real = 4
-        // AspenHourglass = 5
-        // pandasandpeeps = 6
-
-//        $socialMediaAccount = SocialMediaAccount::findOrFail(6);
-
         foreach($socialMediaAccounts as $socialMediaAccount) {
+
+/*
+			if ($socialMediaAccount->id == 3) {
+				continue;
+			}
+*/
 
             $api_requests = 15;
 
@@ -53,28 +52,72 @@ class AutomationController extends Controller
                 $socialMediaAccount->access_token_secret);
 
 
-            $screenName = $socialMediaAccount->screen_name;
+			if (!is_null($connection->http_code)) {
+			
+				($connection->http_code) ? '' : "<h1>HTTP code: $connection->http_code</h1>";
+				echo "<h3>Error establishing initial connection. If no HTTP code is provided it is NULL.</h3>";
+			
+				$errorMessage = "Error code: $connection->http_code";
+				
+				Helper::email_admin($errorMessage, $socialMediaAccount->screen_name);
+				
+				if ($connection->http_code == '401') {
+					return view('errors.401')->with(compact('http_code'));
+				}
+				
+				continue;
+			}
+			
             $myScreenName = $socialMediaAccount->screen_name;
 
             echo "<h1>$myScreenName</h1>";
 
-            /** 1
+
+
+
+			
+
+
+
+
+
+
+            /** 
              *
              *
              * Who am I following? / FRIENDS
              *
              *
              */
+             
             echo '<h2>ONLINE FRIENDS</h2><br>';
             echo "<h4>API requests left: $api_requests</h4>";
 
             $cursor = "-1";
             $i=0;
 
+			// GET CURRENT DB FRIENDS
+			$oldFriends = Friend::where('social_media_account_id', $socialMediaAccount->id)->select('account_id')->get()->all();
+			
+			
+			
+			// PROCESS THEM INTO AN ARRAY
+			$oldFriends_ids = array();
+			foreach($oldFriends as $account_id) {
+				$oldFriends_ids[$i] = $account_id['account_id'];
+				$i++;
+			}
+	
+	
+			
+			// ARRAY FOR ONLINE FRIENDS
+			$onlineFriends_ids = array();
+			
+			
+			// PROCESS ONLINE FRIENDS
             do {
 
-
-                $searchFriendsAPI = "https://api.twitter.com/1.1/friends/list.json?cursor=$cursor&screen_name=$screenName&skip_status=true&include_user_entities=false&count=200";
+                $searchFriendsAPI = "https://api.twitter.com/1.1/friends/ids.json?cursor=$cursor&screen_name=$myScreenName&skip_status=true&include_user_entities=false&count=$count";
 
                 $friends = $connection->get("$searchFriendsAPI");
 
@@ -91,41 +134,14 @@ class AutomationController extends Controller
 
                 } else {
 
-//                    print_r(json_encode($friends));echo '<br>';
+//                      print_r(json_encode($friends));echo '<br>';
 
-                    $friendUsers = $friends->users;
                     $cursor = $friends->next_cursor;
 
-                    foreach ($friendUsers as $friend) {
-
-                        if ($i %9 == 0) {
-                            echo "<div class='floating_box'>";
-                        }
-
-//                         echo "<br><strong>Online: </strong>$friend->screen_name";
-
-                        if ($i %19 == 0) {
-                            echo "</div>";
-                        }
-
-                        $oldFriend = Friend::where('social_media_account_id', $socialMediaAccount->id)
-                            ->where('account_id', $friend->id)
-                            ->where('screen_name', $friend->screen_name)
-                            ->get()
-                            ->first();
-
-                        if (is_null($oldFriend)) {
-
-                            $newFriend = Friend::create([
-                                'account_id' => $friend->id,
-                                'screen_name' => $friend->screen_name,
-                                'social_media_account_id' => $socialMediaAccount->id
-                            ]);
-
-//                            echo "<br>"; print_r($newFriend);
-
-                        }
-
+					// ADD ONLINE FRIENDS INTO ARRAY
+                    foreach ($friends->ids as $friend) {
+                        
+                        $onlineFriends_ids[$i] = $friend;
 
                         $i++;
                     }
@@ -136,17 +152,72 @@ class AutomationController extends Controller
 
                 $api_requests--;
 
-            } while (($api_requests > 0) && ($cursor > 0));
+            } while ($cursor > 0);
 
+			
+			if (isset($oldFriends_ids)) {
+				
+				
+				// FIND FRIENDS THAT ARE NOT IN THE DATABASE BUT ARE ONLINE AND ADD THEM
+				$friendsToAdd_ids = array_diff($onlineFriends_ids, $oldFriends_ids);
+				
+				foreach($friendsToAdd_ids as $friend_id) {
+					
+					$newFriend = Friend::create([
+                        'account_id' => $friend_id,
+                        'social_media_account_id' => $socialMediaAccount->id
+                    ]);
+                    
+				}
+				
+				// FIND DUPLICATES IN DATABASE AND DELETE THEM
+				$dups = array();
+				foreach(array_count_values($oldFriends_ids) as $val => $c) {
+					if($c > 1) {
+						$dups[] = $val;
+					}
+				}
+				
+				foreach($dups as $duplicateAccount_id) {
+					
+					$friendToDelete = Friend::where('social_media_account_id', $socialMediaAccount->id)
+						->where('account_id', $duplicateAccount_id)
+						->get();
+					
+					foreach($friendToDelete as $duplicateFriend) {
+						$duplicateFriend->delete();
+					}
+									
+					
+				}
+				    
+				
+				// FIND FRIENDS THAT ARE IN THE DATABASE BUT NOT ONLINE AND DELETE THEM
+				$friendsToDelete_ids = array_diff($oldFriends_ids, $onlineFriends_ids);
+				
+				foreach($friendsToDelete_ids as $friend_id) {
+					
+					$friendToDelete = Friend::where('social_media_account_id', $socialMediaAccount->id)
+						->where('account_id', $friend_id)
+						->get();
+											
+					$friendToDelete->delete();
+                    
+				}
 
-
-            echo '<br><br><h2>FRIENDS IN DATABASE</h2><BR>';
-
-            $friendsComprehensive = Friend::where('social_media_account_id', $socialMediaAccount->id)->get();
-
-            foreach ($friendsComprehensive as $friend) {
-//                 echo '<br><strong>DB: </strong>'. $friend->screen_name;
-            }
+				
+			} else {
+// 				dd('hello');
+				foreach($onlineFriends_ids as $friend_id) {
+					
+					$newFriend = Friend::create([
+                        'account_id' => $friend_id,
+                        'social_media_account_id' => $socialMediaAccount->id
+                    ]);
+                    
+				}
+				
+			}
 
 
 
@@ -160,79 +231,128 @@ class AutomationController extends Controller
              *
              */
 
-            echo '<h2>ONLINE FOLLOWERS</h2>';echo '<br>';
+            echo '<h2>ONLINE FOLLOWERS</h2><br>';
             echo "<h4>API requests left: $api_requests</h4>";
 
             $cursor = "-1";
             $i=0;
 
-
+			// GET CURRENT DB Followers
+			$oldFollowers = Follower::where('social_media_account_id', $socialMediaAccount->id)->select('account_id')->get()->all();
+			
+			$oldFollowers_ids = array();
+			
+			foreach($oldFollowers as $account_id) {
+				$oldFollowers_ids[$i] = $account_id['account_id'];
+				$i++;
+			}
+	
+			
+			// ARRAY FOR ONLINE Followers
+			$onlineFollowers_ids = array();
+			
             do {
 
-                $i++;
-
-
-                $searchFollowersAPI = "https://api.twitter.com/1.1/followers/ids.json?cursor=$cursor&screen_name=$screenName&count=$count";
+                $searchFollowersAPI = "https://api.twitter.com/1.1/followers/ids.json?cursor=$cursor&screen_name=$myScreenName&skip_status=true&include_user_entities=false&count=$count";
 
                 $followers = $connection->get("$searchFollowersAPI");
+
                 if (isset($followers->errors)) {
 
                     $errorObject = $followers->errors;
                     $error = $errorObject[0]->code;
-                    $errorMessage = $errorObject[0]->message;
                     $errorMessage = "Follower lookup needs to refresh. " . $errorObject[0]->message;
 
                     echo "<div class='errorMessage'>$errorMessage</div>";
-
                     Helper::email_admin($errorMessage, $socialMediaAccount->screen_name);
 
                     break;
 
                 } else {
 
+//                      print_r(json_encode($followers));echo '<br>';
+
                     $cursor = $followers->next_cursor;
-                    $onlineFollowers = $followers->ids;
 
-                    foreach ($onlineFollowers as $follower) {
+                    foreach ($followers->ids as $follower) {
+                        
+                        $onlineFollowers_ids[$i] = $follower;
 
-//                        echo "<br><br>type: ".gettype($follower);
-
-                        if ($i %10 == 0) {
-                            echo "<div class='floating_box'>";
-                        }
-
-//                         echo "<br><strong>Online: </strong>$follower";
-
-                        if ($i %20 == 0) {
-                            echo "</div>";
-                        }
-
-
-                        $oldFollower = Follower::where('social_media_account_id', $socialMediaAccount->id)
-                            ->where('account_id', $follower)
-                            ->get()
-                            ->first();
-
-                        if (is_null($oldFollower)) {
-
-
-                            $newFollower = Follower::create([
-                                'account_id' => $follower,
-                                'social_media_account_id' => $socialMediaAccount->id
-                            ]);
-
-//                            echo "<br>"; print_r($newFollower);
-                        }
-
-
-
+                        $i++;
                     }
 
-
                 }
-                $api_requests--;
+
                 echo "<br><br><strong>Next Cursor: </strong>$cursor";
-            } while (($api_requests > 0) && ($cursor > 0));
+
+                $api_requests--;
+
+            } while ($cursor > 0);
+
+
+			if (isset($oldFollowers_ids)) {
+				
+				
+				// FIND followers THAT ARE NOT IN THE DATABASE BUT ARE ONLINE AND ADD THEM
+				$followersToAdd_ids = array_diff($onlineFollowers_ids, $oldFollowers_ids);
+				
+				foreach($followersToAdd_ids as $follower_id) {
+					
+					$newFollower = Follower::create([
+                        'account_id' => $follower_id,
+                        'social_media_account_id' => $socialMediaAccount->id
+                    ]);
+                    
+				}
+				
+				
+				// FIND DUPLICATES IN DATABASE AND DELETE THEM
+				$dups = array();
+				foreach(array_count_values($oldFollowers_ids) as $val => $c) {
+					if($c > 1) {
+						$dups[] = $val;
+					}
+				}
+				
+				foreach($dups as $duplicateAccount_id) {
+					
+					$followerToDelete = Follower::where('social_media_account_id', $socialMediaAccount->id)
+						->where('account_id', $duplicateAccount_id)
+						->get();
+					
+					foreach($followerToDelete as $duplicateFollower) {
+						$duplicateFollower->delete();
+					}
+							
+				}
+				
+				
+				// FIND followers THAT ARE IN THE DATABASE BUT NOT ONLINE AND DELETE THEM
+				$followersToDelete_ids = array_diff($oldFollowers_ids, $onlineFollowers_ids);
+				
+				foreach($followersToDelete_ids as $follower_id) {
+					
+					$followerToDelete = Follower::where('social_media_account_id', $socialMediaAccount->id)
+						->where('account_id', $follower_id)
+						->get();
+						
+					$followerToDelete->delete();
+                    
+				}
+
+
+			} else {
+				
+				foreach($onlineFollowers_ids as $follower_id) {
+					
+					$newFollower = Follower::create([
+                        'account_id' => $follower_id,
+                        'social_media_account_id' => $socialMediaAccount->id
+                    ]);
+                    
+				}
+				
+			}
 
 
 
@@ -240,11 +360,10 @@ class AutomationController extends Controller
 
 
 
-
-            /** 1
+            /** 
              *
              *
-             * How many followers do I have?
+             * COMPARE DATABASE TO ONLINE
              *
              *
              */
@@ -265,13 +384,11 @@ class AutomationController extends Controller
 
                 Helper::email_admin($errorMessage, $socialMediaAccount->screen_name);
 
-                break;
+                continue;
             }
 
-            $dbFriends = Friend::where('social_media_account_id', '=', $socialMediaAccount->id)
-                ->get();
-            $dbFollowers = Follower::where('social_media_account_id', '=', $socialMediaAccount->id)
-                ->get();
+            $dbFriends = Friend::where('social_media_account_id', $socialMediaAccount->id)->get();
+            $dbFollowers = Follower::where('social_media_account_id', $socialMediaAccount->id)->get();
 
             echo "<br>$myScreenName online followers count: " . $numberOfFollowersURL_json[0]->followers_count;
             echo "<br>$myScreenName db followers count: " . count($dbFollowers);
@@ -280,7 +397,13 @@ class AutomationController extends Controller
             echo "<br>$myScreenName db friends count: " . count($dbFriends);
 
 
-            /** 2
+
+
+
+
+
+
+            /** 
              *
              *
              * AUTO-WHITELIST
@@ -305,7 +428,7 @@ class AutomationController extends Controller
 
                 Helper::email_admin($errorMessage, $socialMediaAccount->screen_name);
 
-                break;
+                continue;
 
             }
 
@@ -321,14 +444,18 @@ class AutomationController extends Controller
                 $screenName = $dm->recipient->screen_name;
                 $text = $dm->text;
                 $genericString = "Hey, thanks so much for following";
+                $genericString2 = "Hey thanks so much for following";
+                $genericString3 = "Hey thank you so much for following";
                 $containsGeneric = preg_match("/^$genericString/", $text);
+                $containsGeneric2 = preg_match("/^$genericString2/", $text);
+                $containsGeneric3 = preg_match("/^$genericString3/", $text);
                 //echo $containsGeneric;
 
 
-                if (!$containsGeneric) {
+                if ((!$containsGeneric) && (!$containsGeneric2) && (!$containsGeneric3)) {
 
                     if (!in_array($screenName, $dmArray_ScreenNames)) {
-                        echo "<br>$screenName was messaged: $text<br>";
+                        echo "$screenName was messaged: $text<br>";
                         $dmArray_ScreenNames[$i] = $screenName;
                     }
                     if (!in_array($userID, $dmArray_IDs)) {
@@ -342,10 +469,12 @@ class AutomationController extends Controller
             }
 
             // CONTINUE WITH TWO ARRAYS FOR SCREEN_NAME AND IDS
+/*
             echo "<h2>GOOD DM ARRAYS:</h2>";
             print_r($dmArray_ScreenNames);
             echo "<br>";
             print_r($dmArray_IDs);
+*/
 
 
             // FIND VALID MENTIONS
@@ -375,7 +504,7 @@ class AutomationController extends Controller
 
                     if (!$genericFollow) {
 
-                        echo "<br>$screenName mentioned: $fullMention<br>";
+                        echo "<br>$screenName mentioned: $fullMention";
                         if (!in_array($screenName, $goodMentionsArray_ScreenNames)) {
                             $goodMentionsArray_ScreenNames[$i] = $screenName;
                         }
@@ -393,10 +522,12 @@ class AutomationController extends Controller
 
             }
 
+/*
             echo "<h2>GOOD MENTIONS ARRAYS:</h2>";
             print_r($goodMentionsArray_ScreenNames);
             echo "<br>";
             print_r($goodMentionsArray_IDs);
+*/
 
             // CONTINUE WITH GOOD MENTIONS ARRAYS WITH SCREEN NAMES AND IDS
 
@@ -413,23 +544,23 @@ class AutomationController extends Controller
 
             if (count($goodMentionsArray_IDs)) {
                 echo "<br>1";
+                
                 foreach ($goodMentionsArray_IDs as $id) {
-                    echo "<br>2";
+                    echo " - 2";
 
                     $oldFriend = Friend::where('social_media_account_id', $socialMediaAccount->id)
                         ->where('account_id', $id)
-                        ->where('screen_name', $goodMentionsArray_ScreenNames[$k])
                         ->get()
                         ->first();
 
                     if ((!$whitelist->isEmpty()) && (!is_null($oldFriend))) {
-                        echo "<br>3";
+                        echo ", 3";
 
                             if ($id != $oldFriend->account_id) {
-                                echo "<br>4";
+                                echo ", 4";
+                                
                                 $oldTarget = TargetUser::where('social_media_account_id', $socialMediaAccount->id)
                                     ->where('account_id', $id)
-                                    ->where('screen_name', $goodMentionsArray_ScreenNames[$k])
                                     ->get()
                                     ->first();
 
@@ -443,12 +574,13 @@ class AutomationController extends Controller
                                         'social_media_account_id' => $socialMediaAccount->id
                                     ]);
 
-                                    echo "<br>Mention Whitelisted: "; print_r($newTarget);
+//                                     echo "<br>Mention Whitelisted: "; print_r($newTarget);
 
                                 }
 
                             } else {
-                                echo "<br>5";
+                                echo ", 5";
+                                
                                 $friend_to_be_whitelisted = Friend::findOrFail($oldFriend->id);
                                 $friend_to_be_whitelisted->whitelisted = 1;
                                 $saved = $friend_to_be_whitelisted->save();
@@ -459,10 +591,9 @@ class AutomationController extends Controller
                             }
 
                     } else {
-                        echo "<br>6";
+                        echo ", 6";
                         $oldFriend = Friend::where('social_media_account_id', $socialMediaAccount->id)
                             ->where('account_id', $id)
-                            ->where('screen_name', $goodMentionsArray_ScreenNames[$k])
                             ->get()
                             ->first();
 
@@ -470,7 +601,6 @@ class AutomationController extends Controller
 
                             $oldTarget = TargetUser::where('social_media_account_id', $socialMediaAccount->id)
                                 ->where('account_id', $id)
-                                ->where('screen_name', $goodMentionsArray_ScreenNames[$k])
                                 ->get()
                                 ->first();
 
@@ -484,14 +614,14 @@ class AutomationController extends Controller
                                     'social_media_account_id' => $socialMediaAccount->id
                                 ]);
 
-                                echo "<br>Mention Whitelisted: "; print_r($newTarget);
+//                                 echo "<br>Mention Whitelisted: "; print_r($newTarget);
 
                             }
 
 
 
                         } else {
-                            echo "<br>5";
+                            echo ", 7";
                             $friend_to_be_whitelisted = Friend::findOrFail($oldFriend->id);
                             $friend_to_be_whitelisted->whitelisted = 1;
                             $saved = $friend_to_be_whitelisted->save();
@@ -517,21 +647,21 @@ class AutomationController extends Controller
                 echo "<br>1";
 
                 foreach ($dmArray_IDs as $id) {
-                    echo "<br>2";
+                    echo " - 2";
 
                     $oldFriend = Friend::where('social_media_account_id', $socialMediaAccount->id)
                         ->where('account_id', $id)
-                        ->where('screen_name', $dmArray_ScreenNames[$k])
                         ->get()
                         ->first();
 
                     if ((!$whitelist->isEmpty()) && (!is_null($oldFriend))) {
+						echo ", 3";
 
                         if ($id != $oldFriend->account_id) {
-                            echo "<br>4";
+                            echo ", 4";
+                            
                             $oldTarget = TargetUser::where('social_media_account_id', $socialMediaAccount->id)
                                 ->where('account_id', $id)
-                                ->where('screen_name', $dmArray_ScreenNames[$k])
                                 ->get()
                                 ->first();
 
@@ -544,13 +674,16 @@ class AutomationController extends Controller
                                     'whitelist' => 1,
                                     'social_media_account_id' => $socialMediaAccount->id
                                 ]);
-
-                                echo "<br>DM Whitelisted: "; print_r($newTarget);
-
+								
+								if ($newTarget) {
+									echo "<br>DM Whitelisted and Added to Target Table: $newTarget->screen_name";
+								}
+								
                             }
 
                         } else {
-                            echo "<br>5";
+                            echo ", 5";
+                            
                             $friend_to_be_whitelisted = Friend::findOrFail($oldFriend->id);
                             $friend_to_be_whitelisted->whitelisted = 1;
                             $saved = $friend_to_be_whitelisted->save();
@@ -561,10 +694,10 @@ class AutomationController extends Controller
                         }
 
                     } else {
-                        echo "<br>6";
+                        echo ", 6";
+                        
                         $oldFriend = Friend::where('social_media_account_id', $socialMediaAccount->id)
                             ->where('account_id', $id)
-                            ->where('screen_name', $dmArray_ScreenNames[$k])
                             ->get()
                             ->first();
 
@@ -572,7 +705,6 @@ class AutomationController extends Controller
 
                             $oldTarget = TargetUser::where('social_media_account_id', $socialMediaAccount->id)
                                 ->where('account_id', $id)
-                                ->where('screen_name', $dmArray_ScreenNames[$k])
                                 ->get()
                                 ->first();
 
@@ -586,14 +718,16 @@ class AutomationController extends Controller
                                     'social_media_account_id' => $socialMediaAccount->id
                                 ]);
 
-                                echo "<br>DM Whitelisted: "; print_r($newTarget);
+                                if ($newTarget) {
+									echo "<br>DM Whitelisted and Added to Target Table: $newTarget->screen_name";
+								}
 
                             }
 
 
 
                         } else {
-                            echo "<br>5";
+                            echo ", 7";
                             $friend_to_be_whitelisted = Friend::findOrFail($oldFriend->id);
                             $friend_to_be_whitelisted->whitelisted = 1;
                             $saved = $friend_to_be_whitelisted->save();
@@ -613,7 +747,12 @@ class AutomationController extends Controller
 
 
 
-            /** 2
+
+			
+			
+			
+			
+			/** 
              *
              *
              * GET MODEL ACCOUNTS'S FOLLOWERS, FILTER IF ALREADY FOLLOWING OR FRIEND, ADD TO TEMP TARGET USERS TABLE
@@ -628,6 +767,7 @@ class AutomationController extends Controller
             // TODO: ADD SORT_ORDER TO QUERY
             $modelAccount = ModelAccount::where('social_media_account_id', $socialMediaAccount->id)
                 ->where('api_cursor', '!=', 0)
+                ->where('sort_order', 1)
                 ->get()
                 ->first();
 
@@ -638,14 +778,12 @@ class AutomationController extends Controller
 
             if (!is_null($modelAccount)) {
 
-                echo "<h4>Model User: $modelAccount->screen_name</h4>";
+				echo "<h2>@". $modelAccount->screen_name . "'s ONLINE FOLLOWERS</h2><br>";
 
                 do {
 
                     $i++;
-
-                    echo '<h2>MODEL ACCOUNT ONLINE FOLLOWERS</h2>';echo '<br>';
-
+                    
                     $cursor = $modelAccount->api_cursor;
 
                     $searchFollowersAPI = "https://api.twitter.com/1.1/followers/ids.json?cursor=$cursor&screen_name=$modelAccount->screen_name&count=$count";
@@ -672,9 +810,7 @@ class AutomationController extends Controller
 
                         foreach ($onlineFollowers as $follower) {
 
-//                        echo "<br><br>type: ".gettype($follower);
-
-                            echo "<br><strong>Online: </strong>$follower";
+//                             echo "<br><strong>Online: </strong>$follower";
 
                             $oldFollower = Follower::where('social_media_account_id', $socialMediaAccount->id)
                                 ->where('account_id', $follower)
@@ -722,14 +858,21 @@ class AutomationController extends Controller
                     $api_requests--;
                     $cursor = $followers->next_cursor;
 
-                    $modelAccount->api_cursor = $followers->next_cursor;
+                    $modelAccount->api_cursor = $cursor;
                     $modelAccount->save();
 
 
                     echo "<br><br><strong>Next Cursor: </strong>$cursor";
-                } while (($api_requests > 0) && ($cursor > 0));
+                } while (($api_requests > 14) && ($cursor > 0));
+            } else {
+	            echo "<h1>Add a model account that hasn't been finished!</h1>";
             }
+			
+			
+			
+			
 
+            
 
 
 
@@ -814,18 +957,6 @@ class AutomationController extends Controller
 
                         $last_status = (int)strtotime($userInvestigation->status->created_at); // MUST BE UNDER 30 DAYS OLD
 
-                        // MAKE CSV WITH ALL RELEVANT TWITTER USER DATA
-//                        if (isset($content)) {
-//                            if ($content != "$requestScreenName,$temp_account_id,$followersCount,$friendsCount,$favoritesCount,$statuses_count,$last_status,$created_at,1,\n") {
-//                                $content = "$requestScreenName,$temp_account_id,$followersCount,$friendsCount,$favoritesCount,$statuses_count,$last_status,$created_at,1,\n";
-//                            }
-//                        } else {
-//                            $content = "$requestScreenName,$temp_account_id,$followersCount,$friendsCount,$favoritesCount,$statuses_count,$last_status,$created_at,1,\n";
-//                        }
-//
-//                        $file = "/Applications/XAMPP/xamppfiles/htdocs/scavvy/laravel/public/twitter-users.csv";
-//                        file_put_contents($file, $content, FILE_APPEND | LOCK_EX);
-
                         if($created_at > ($time-$one_month_unix_time)) { // HAS TO HAVE BEEN CREATED AT LEAST A MONTH AGO
 
                             if ($last_status < ($time - ($one_day_unix_time*2))) { // LAST STATUS HAS TO HAVE BEEN IN THE PAST WEEK
@@ -835,7 +966,6 @@ class AutomationController extends Controller
                                         if ($favoritesCount > 50) {
 
                                             if ($friendsCount >= ($followersCount - 50)) { // MORE PEOPLE FOLLOWING THAN FOLLOWING THEM
-
 
 
                                             $oldTarget = TargetUser::where('social_media_account_id', $socialMediaAccount->id)
@@ -863,7 +993,6 @@ class AutomationController extends Controller
                                             echo " - Doesn't have more friends than followers.";
                                         }
                                     } else {
-
                                         echo " - Only $favoritesCount favorites.";
                                     }
                                 } else {
@@ -877,19 +1006,6 @@ class AutomationController extends Controller
                         }
                     } else {
                         echo " - Has never made a status.";
-
-                        // MAKE CSV WITH ALL RELEVANT TWITTER USER DATA
-//                        if (isset($content)) {
-//                            if ($content != "$requestScreenName,$temp_account_id,$followersCount,$friendsCount,$favoritesCount,0,NULL,$created_at,2,\n") {
-//                                $content = "$requestScreenName,$temp_account_id,$followersCount,$friendsCount,$favoritesCount,0,NULL,$created_at,2,\n";
-//                            }
-//                        } else {
-//                            $content = "$requestScreenName,$temp_account_id,$followersCount,$friendsCount,$favoritesCount,0,NULL,$created_at,2,\n";
-//                        }
-//
-//                        $file = "/Applications/XAMPP/xamppfiles/htdocs/scavvy/laravel/public/twitter-users.csv";
-//                        file_put_contents($file, $content, FILE_APPEND | LOCK_EX);
-
                     }
 
                     // Delete temporary account

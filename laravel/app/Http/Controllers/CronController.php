@@ -24,6 +24,9 @@ class CronController extends Controller
 
         $month = $now->month;
         echo "<br>$month";                            // 1
+        
+        $weekOfMonth = $now->weekOfMonth;
+        echo "<br>$weekOfMonth";                      // 2
 
         $dayOfWeek = $now->dayOfWeek;
         echo "<br>$dayOfWeek";                        // 1
@@ -34,18 +37,21 @@ class CronController extends Controller
         $hour = $now->hour;
         echo "<br>$hour";                             // 12
 
-        if (($hour <= 16) || ($hour >= 20)) {
+        if (($hour <= 11) || ($hour >= 13)) {
 
             return redirect('automate');
 
-        } elseif ($dayOfWeek < 5) {
-
-            return redirect('follow');
-
         } else {
+	        
+	        if ($weekOfMonth % 2 != 0) { // if week is 1st or 3rd of month, follow
 
-            return redirect('unfollow');
+            	return redirect('follow');
 
+        	} else {
+
+            	return redirect('unfollow');
+			
+			}
         }
 
 

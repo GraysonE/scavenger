@@ -97,6 +97,7 @@
     <script src="<?php echo asset('admin-files/vendor/ckeditor/adapters/jquery.js'); ?>"></script>
     <script src="<?php echo asset('admin-files/assets/js/main.js'); ?>"></script>	
     <script src="<?php echo asset('admin-files/assets/js/stx.js'); ?>"></script>
+    <script src="<?php echo asset('admin-files/assets/js/grayson.js'); ?>"></script>
 
   </body>
 </html>

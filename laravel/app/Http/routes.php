@@ -58,13 +58,14 @@ Route::group(array('middleware' => 'auth'), function(){
 	// AUTOMATION - Friends, Followers, Whitelist, Model Account Temp Users
 	Route::get('automate', 'AutomationController@index');
 
-	// AUTOMATION - Filter for Temp Accounts into Target Table
-	Route::get('filter', 'FilterController@index');
-
 	// AUTOMATION - Follow accounts in Target_Users Table
 	Route::get('follow', 'FollowController@index');
+	
+	// AUTOMATION - Unfollow accounts in Target_Users Table
+	Route::get('unfollow', 'UnfollowController@index');
 
-
+	// SORT
+	Route::post('set-user/{id}/sort-order', 'SortController@modelAccountSortOrder');
 
 
 

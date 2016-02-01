@@ -13,14 +13,23 @@
                 </form>
 
                 <?php if(isset($modelAccounts)): ?>
-                    <?php foreach($modelAccounts as $model): ?>
                         <ul class="ui-sortable expandable" data-type="model_users">
-                        <li class="subpanel form-inline" data-id="<?php echo e($model->id); ?>">
-                            <h3 class="screen_name col-lg-6"><?php echo e('@'.$model->screen_name); ?></h3>
-                            <a class="btn alert-danger pull-right" href="<?php echo e(url('set-user/'.$socialMediaAccount->id.'/'.$model->id.'/destroy')); ?>">Delete User</a>
-                        </li>
-                        </ul>
+                    <?php foreach($modelAccounts as $model): ?>
+	                        <li class="subpanel form-inline" data-id="<?php echo e($model->id); ?>">
+	                        	
+	                            <h4 class="screen_name pull-left">
+		                            <i class="ti-move handle"></i>
+		                            <?php echo e('@'.$model->screen_name); ?> 
+		                            <span><?php echo e(($model->api_cursor) ? '- Queued' : '- Finished'); ?></span>
+		                        </h4>
+	                            
+	                            <a class=" pull-right" href="<?php echo e(url('set-user/'.$socialMediaAccount->id.'/'.$model->id.'/destroy')); ?>">
+		                            <i class="fa fa-minus-circle handle fa-lg"></i>
+		                        </a>
+	                        </li>
+                        
                     <?php endforeach; ?>
+                    </ul>
                 <?php endif; ?>
 
             </div>

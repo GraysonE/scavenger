@@ -54,7 +54,7 @@ return [
     |
     */
 
-    'from' => ['address' => 'dickon@dsiredesign.com', 'name' => 'STX Application'],
+    'from' => ['address' => 'web@graysonerhard.com', 'name' => 'Scavenger'],
 
     /*
     |--------------------------------------------------------------------------

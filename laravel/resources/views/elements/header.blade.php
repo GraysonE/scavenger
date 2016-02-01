@@ -3,10 +3,11 @@
   <a href="#" class="sidebar-mobile-toggler pull-left hidden-md hidden-lg" class="btn btn-navbar sidebar-toggle" data-toggle-class="app-slide-off" data-toggle-target="#app" data-toggle-click-outside="#sidebar">
     <i class="ti-align-justify"></i>
   </a>
+  <img src="{{ asset('/assets/images/ghost-loading.gif') }}" alt="Scavenger"/>
   <a class="navbar-brand" href="{{ url('/') }}">
-   <img src="{{ asset('/assets/images/ghost-loading.gif') }}" alt="Scavenger"/>
+   
    	<h1>Scavenger</h1>
-    <h5>Social Media Management System</h5>
+<!--     <h5>Social Media Management System</h5> -->
   </a>
 
   <a class="pull-right menu-toggler visible-xs-block" id="menu-toggler" data-toggle="collapse" href=".navbar-collapse">

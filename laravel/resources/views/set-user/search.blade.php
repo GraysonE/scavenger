@@ -14,14 +14,23 @@
                 </form>
 
                 @if (isset($modelAccounts))
-                    @foreach($modelAccounts as $model)
                         <ul class="ui-sortable expandable" data-type="model_users">
-                        <li class="subpanel form-inline" data-id="{{ $model->id }}">
-                            <h3 class="screen_name col-lg-6">{{ '@'.$model->screen_name }}</h3>
-                            <a class="btn alert-danger pull-right" href="{{ url('set-user/'.$socialMediaAccount->id.'/'.$model->id.'/destroy') }}">Delete User</a>
-                        </li>
-                        </ul>
+                    @foreach($modelAccounts as $model)
+	                        <li class="subpanel form-inline" data-id="{{ $model->id }}">
+	                        	
+	                            <h4 class="screen_name pull-left">
+		                            <i class="ti-move handle"></i>
+		                            {{ '@'.$model->screen_name }} 
+		                            <span>{{ ($model->api_cursor) ? '- Queued' : '- Finished'}}</span>
+		                        </h4>
+	                            
+	                            <a class=" pull-right" href="{{ url('set-user/'.$socialMediaAccount->id.'/'.$model->id.'/destroy') }}">
+		                            <i class="fa fa-minus-circle handle fa-lg"></i>
+		                        </a>
+	                        </li>
+                        
                     @endforeach
+                    </ul>
                 @endif
 
             </div>

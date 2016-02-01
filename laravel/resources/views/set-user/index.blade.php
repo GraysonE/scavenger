@@ -10,7 +10,7 @@
                 </div>
 
                 @foreach($socialMediaAccounts as $sma)
-                    <a class="panel user_accounts" href="{{ url('set-user/'.$sma->id) }}" {{($sma->account_type == 'twitter') ? "style=background:#0084b4;" : ''}}>
+                    <a class="panel-white" href="{{ url('set-user/'.$sma->id) }}" {{($sma->account_type == 'twitter') ? "style=background:#0084b4;" : ''}}>
                         <h4>{{$sma->screen_name}}</h4>
                     </a>
                 @endforeach

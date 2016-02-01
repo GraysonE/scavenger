@@ -10,6 +10,7 @@ use Scavenger\SocialMediaAccount;
 use Auth;
 use Scavenger\Twitter\TwitterOAuth;
 use Scavenger\ModelAccount;
+use Scavenger\Helpers\Helper;
 
 class ModelAccountController extends Controller
 {
@@ -24,7 +25,7 @@ class ModelAccountController extends Controller
         if ($id != 'select' && 'search') {
 
             $socialMediaAccount = SocialMediaAccount::findOrFail($id);
-            $modelAccounts = ModelAccount::where('social_media_account_id', $id)->get();
+            $modelAccounts = ModelAccount::where('social_media_account_id', $id)->orderBy('sort_order', 'ASC')->get();
 
             $bladeVariables = compact('socialMediaAccount', 'modelAccounts');
 
@@ -67,6 +68,7 @@ class ModelAccountController extends Controller
         $data->screen_name = $requestData->screen_name;
         $data->social_media_account_id = $id;
         $data->api_cursor = '-1';
+        $data->sort_order = 1;
         $data->save();
 
         return redirect("set-user/$id");
@@ -103,6 +105,13 @@ class ModelAccountController extends Controller
         $http_code = $connection->http_code;
 
 		if ($http_code != '200') {
+			
+			$errorMessage = "HTTP code: $http_code";
+			$errorMessage .= "<br><h4>Data Dump</h4>";
+			$errorMessage .= var_dump($connection);
+			
+			Helper::email_admin($errorMessage, $socialMediaAccount->screen_name);
+			
 			
 			if ($http_code == '401') {
 				return view('errors.401')->with(compact('http_code'));

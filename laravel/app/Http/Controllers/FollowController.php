@@ -49,10 +49,20 @@ class FollowController extends Controller
 
             $i = 1;
 
+			$dailyFollowLimit = 142;
+
             if (is_null($targetUsers)) {
                 echo "No Target Users in DB.";
             } else {
+	            
+	            
+	            
                 foreach ($targetUsers as $targetUser) {
+	                
+	                if ($dailyFollowLimit == 0) {
+		                break;
+	                }
+	                
                     $follow = $connection->post("https://api.twitter.com/1.1/friendships/create.json?user_id=$targetUser->account_id&follow=true");
 
                     if (isset($follow->errors)) {
@@ -68,6 +78,7 @@ class FollowController extends Controller
                         break;
 
                     } else {
+	                    
                         echo "<br>$i: $targetUser->screen_name followed!";
 
                         Friend::create([
@@ -79,6 +90,9 @@ class FollowController extends Controller
 
                         $oldTargetUser = TargetUser::findOrFail($targetUser->id)->delete();
                         echo " - Target User deleted from DB.";
+                        
+                        $dailyFollowLimit--;
+                        
                     }
                     $i++;
                 }

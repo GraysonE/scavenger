@@ -1,8 +1,6 @@
 <form method="GET" action="{{ url("accounts/create") }}">
     {!! csrf_field() !!}
 
-    <div class="panel panel-white">
-
         <div class="panel-heading">
             <h5 class="panel-title">REGISTER A NEW ACCOUNT:</h5>
         </div>
@@ -44,5 +42,4 @@
             </div>
         </div>
 
-    </div>
 </form>
