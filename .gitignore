@@ -14,6 +14,7 @@ test/**
 tmp/**
 Volumes/**
 laravel/vendor/**
+laravel/storage/framework/sessions/**
 .cphorde/**
 public_html/.qidb/**
 public_html/cgi-bin/**
@@ -24,6 +25,7 @@ public_html/phpinfo.php.bak
 public_html/web.config
 /public_html/*
 
+laravel/storage/logs/laravel.log
 .bash_history
 .bash_logout
 .bash_profile
