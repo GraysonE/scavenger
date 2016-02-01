@@ -1,5 +1,0 @@
-suites:
-    main:
-        namespace: Scavenger
-        psr4_prefix: Scavenger
-        src_path: app
