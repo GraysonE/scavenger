@@ -26,11 +26,14 @@ class Kernel extends ConsoleKernel
     {
 /*
         $schedule->command('inspire')
-                 ->hourly();
+            ->cron('* * * * * *')
+            ->sendOutputTo('/home4/grayson/public_html/output.txt');
 */
+
 		$schedule->call(function() {
-			return redirect('cron');
-		})->cron('*/16 * * * * *');               
-        
+			redirect('cron');
+		})->cron('* * * * * *')
+		->sendOutputTo('/home4/grayson/public_html/output.txt');
+		
     }
 }

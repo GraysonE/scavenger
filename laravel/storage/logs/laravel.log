@@ -24358,3 +24358,18 @@ Stack trace:
 [2016-02-01 22:46:48] local.ERROR: exception 'Symfony\Component\Debug\Exception\FatalErrorException' with message 'Class 'Mailgun\Mailgun' not found' in /home4/grayson/laravel/app/Http/Controllers/CronController.php:73
 Stack trace:
 #0 {main}  
+[2016-02-01 23:20:08] local.ERROR: exception 'Symfony\Component\Debug\Exception\FatalErrorException' with message 'Class 'Scavenger\Http\Controllers\Mail' not found' in /home4/grayson/laravel/app/Http/Controllers/CronController.php:70
+Stack trace:
+#0 {main}  
+[2016-02-01 23:20:24] local.ERROR: exception 'Symfony\Component\Debug\Exception\FatalErrorException' with message 'Class 'Scavenger\Mail' not found' in /home4/grayson/laravel/app/Http/Controllers/CronController.php:71
+Stack trace:
+#0 {main}  
+[2016-02-01 23:41:22] local.ERROR: exception 'Symfony\Component\Debug\Exception\FatalErrorException' with message 'Class 'GuzzleHttp\Client' not found' in /home4/grayson/laravel/vendor/laravel/framework/src/Illuminate/Console/Scheduling/Event.php:735
+Stack trace:
+#0 {main}  
+[2016-02-01 23:42:05] local.ERROR: exception 'Symfony\Component\Debug\Exception\FatalErrorException' with message 'Class 'GuzzleHttp\Client' not found' in /home4/grayson/laravel/vendor/laravel/framework/src/Illuminate/Console/Scheduling/Event.php:735
+Stack trace:
+#0 {main}  
+[2016-02-01 23:42:12] local.ERROR: exception 'Symfony\Component\Debug\Exception\FatalErrorException' with message 'Class 'GuzzleHttp\Client' not found' in /home4/grayson/laravel/vendor/laravel/framework/src/Illuminate/Console/Scheduling/Event.php:735
+Stack trace:
+#0 {main}  

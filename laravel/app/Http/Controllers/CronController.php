@@ -8,6 +8,7 @@ use Scavenger\Http\Controllers\Controller;
 use Carbon\Carbon;
 use Scavenger\Helpers\Helper;
 use Mailgun\Mailgun;
+use Scavenger\Mail;
 
 
 class CronController extends Controller
@@ -67,22 +68,10 @@ class CronController extends Controller
      */
     public function create()
     {
-        $message = "This is a test message";
-        Helper::email_admin($message, 'GraysonErhard');		
-/*
-		# Instantiate the client.
-		$mgClient = new Mailgun('key-953a2849b0d5b0a27836662e060eaf47');
-		$domain = "sandboxfecd9afae20348628e71034295465d25.mailgun.org";
-		
-		# Make the call to the client.
-		$result = $mgClient->sendMessage("$domain",
-      array('from'    => 'Mailgun Sandbox <postmaster@sandboxfecd9afae20348628e71034295465d25.mailgun.org>',
-            'to'      => 'Grayson Erhard <web@graysonerhard.com>',
-            'subject' => 'Hello Grayson Erhard',
-            'text'    => 'Congratulations Grayson Erhard, you just sent an email with Mailgun!  You are truly awesome!  You can see a record of this email in your logs: https://mailgun.com/cp/log .  You can send up to 300 emails/day from this sandbox server.  Next, you should add your own domain so you can send 10,000 emails/month for free.'));
-		    
-        
-*/
+        Mail::send('emails.welcome', compact(), function($message)
+		{
+		    $message->to('web@graysonerhard.com', 'Grayson Erhard')->subject('Error Detected!');
+		});
         
     }
 
