@@ -13,7 +13,7 @@ cache/**
 test/**
 tmp/**
 Volumes/**
-laravel/vendor
+laravel/vendor/**
 .cphorde/**
 public_html/.qidb/**
 public_html/cgi-bin/**
