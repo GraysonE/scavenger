@@ -59,18 +59,23 @@ Route::group(array('middleware' => 'auth'), function(){
 	Route::resource('users', 'UserController');
 	Route::get('auth/register/{user_id}/delete', 'UserController@destroy');
 
-	// ACCOUNTS
-	Route::resource('accounts', 'AccountController');
-	Route::get('accounts/destroy/{id}', 'AccountController@destroy');
-
 	// SET USER
 	Route::get('set-user/{id}', 'ModelAccountController@index');
 	Route::post('set-user/{id}/search', 'ModelAccountController@search');
 	Route::get('set-user/{id}/{model_account_id}', 'ModelAccountController@store');
 	Route::get('set-user/{id}/{model_account_id}/destroy', 'ModelAccountController@destroy');
+	
+	// ACCOUNTS
+	Route::resource('accounts', 'AccountController');
+	Route::get('accounts/destroy/{id}', 'AccountController@destroy');
+	
+	// SETTINGS
+	Route::get('settings', 'SettingController@index');
 
 	// SORT
 	Route::post('set-user/{id}/sort-order', 'SortController@modelAccountSortOrder');
+	
+	
 
 });
 

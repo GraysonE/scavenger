@@ -30,6 +30,8 @@ class AutomationController extends Controller
     public function index()
     {
 
+		$message = "Beginning automation!";
+		Helper::email_user($message, 1);
 
         $count = 5000;
 
@@ -775,21 +777,18 @@ class AutomationController extends Controller
                 ->first();
 
 
-            $i=0;
-
+            
 
 
             if (!is_null($modelAccount)) {
 
 				echo "<h2>@". $modelAccount->screen_name . "'s ONLINE FOLLOWERS</h2><br>";
 
+				$i=1;
+
                 do {
 
-                    $i++;
-                    
-                    $cursor = $modelAccount->api_cursor;
-
-                    $searchFollowersAPI = "https://api.twitter.com/1.1/followers/ids.json?cursor=$cursor&screen_name=$modelAccount->screen_name&count=$count";
+                    $searchFollowersAPI = "https://api.twitter.com/1.1/followers/ids.json?cursor=$modelAccount->api_cursor&screen_name=$modelAccount->screen_name&count=$count";
 
                     $followers = $connection->get("$searchFollowersAPI");
 
@@ -841,6 +840,8 @@ class AutomationController extends Controller
                                             'social_media_account_id' => $socialMediaAccount->id
                                         ]);
 
+										$i++;
+
 //                                        echo "<br>"; print_r($newTemp);
 
                                     }
@@ -859,14 +860,20 @@ class AutomationController extends Controller
 
                     }
                     $api_requests--;
-                    $cursor = $followers->next_cursor;
 
-                    $modelAccount->api_cursor = $cursor;
+                    $modelAccount->api_cursor = $followers->next_cursor;
+                    
+                    if ($modelAccount->api_cursor == 0) {
+	                    $errorMessage = "Model Account API cursor equals 0.<br>";
+	                    $errorMessage = "Out of a list of 5000, $i were added to temp_target_users table.<br>";
+	                    Helper::email_admin($errorMessage, $socialMediaAccount->screen_name);
+                    }
+                    
                     $modelAccount->save();
 
 
-                    echo "<br><br><strong>Next Cursor: </strong>$cursor";
-                } while (($api_requests > 14) && ($cursor > 0));
+                    echo "<br><br><strong>Next Cursor: </strong>$followers->next_cursor";
+                } while ($followers->next_cursor > 0);
             } else {
 	            echo "<h1>Add a model account that hasn't been finished!</h1>";
             }

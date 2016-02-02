@@ -25,7 +25,8 @@ class UnfollowController extends Controller
 	    
 	    $oneWeekOld = Carbon::today('America/Denver')->subweek();
 	    
-	    
+		$message = "Beginning unfollow!";
+		Helper::email_user($message, 1);
 	    
         $socialMediaAccounts = SocialMediaAccount::get()->all();
 

@@ -21,27 +21,10 @@ class SettingController extends Controller
      */
     public function index()
     {
-         $users = User::all();
-	    
-// 	    dd($users);
-	    $editMovie = false;
 	    
 	    $currentUser = Auth::user();
-	    	$lastInitial = substr($currentUser->last_name, 0, 1);
-	    	        
-	    $globalCTAs = GlobalCta::orderBy('sort_order', 'asc')->get();
-	    $globalSocialMedia = GlobalSocialMedia::all();
 	    
-	    $globalSocialMediaImage = Image::where('movie_id', '=', NULL)
-		    ->where('section_id', '=', NULL)
-		    ->where('site_location', '=', 'global_social')
-		    ->get()->first();
-	    
-// 	    dd($globalSocialMediaImage);
-	       
-	    $bladeVariables = compact('currentUser', 'lastInitial', 'editMovie', 'users', 'globalCTAs', 'globalSocialMedia', 'globalSocialMediaImage');
-	    
-        return view('settings.index', $bladeVariables); 
+        return view('settings.index', compact('currentUser')); 
     }
 
     /**

@@ -53,9 +53,6 @@ class CronController extends Controller
 
         if (($hour <= 11) || ($hour >= 13)) {
 
-			$message = "Beginning automation!";
-			Helper::email_user($message, 1);
-
 			$automate = new AutomationController();
             $automate->index();
 
@@ -63,16 +60,10 @@ class CronController extends Controller
 	        
 	        if ($weekOfMonth % 2 != 0) { // if week is 1st or 3rd of month, follow
 
-				$message = "Beginning follow!";
-				Helper::email_user($message, 1);
-
 				$follow = new FollowController();
 				$follow->index();
 				
         	} else {
-
-				$message = "Beginning unfollow!";
-				Helper::email_user($message, 1);
 				
 				$unfollow = new UnfollowController();
 				$unfollow->index();

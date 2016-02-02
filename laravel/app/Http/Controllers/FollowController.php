@@ -27,7 +27,8 @@ class FollowController extends Controller
     {
         $socialMediaAccounts = SocialMediaAccount::get()->all();
 
-		
+		$message = "Beginning follow!";
+		Helper::email_user($message, 1);		
 
         foreach($socialMediaAccounts as $socialMediaAccount) {
 
