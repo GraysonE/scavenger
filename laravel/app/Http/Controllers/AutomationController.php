@@ -54,8 +54,9 @@ class AutomationController extends Controller
 			
 				($connection->http_code) ? '' : "<h1>HTTP code: $connection->http_code</h1>";
 				echo "<h3>Error establishing initial connection. If no HTTP code is provided it is NULL.</h3>";
-			
-				$errorMessage = "Error code: $connection->http_code";
+				
+				$errorMessage = "<h3>Error establishing initial connection. If no HTTP code is provided it is NULL.</h3>";
+				$errorMessage .= "Error code: $connection->http_code";
 				
 				Helper::email_admin($errorMessage, $socialMediaAccount->screen_name);
 				
@@ -180,6 +181,7 @@ class AutomationController extends Controller
 					
 					$friendToDelete = Friend::where('social_media_account_id', $socialMediaAccount->id)
 						->where('account_id', $duplicateAccount_id)
+						->where('to_unfollow', 0)
 						->get();
 					
 					foreach($friendToDelete as $duplicateFriend) {
@@ -199,8 +201,9 @@ class AutomationController extends Controller
 						->where('account_id', $friend_id)
 						->get()
 						->first();
-											
-					$friendToDelete->delete();
+					
+					$friendToDelete->to_unfollow = 1;
+			        $friendToDelete->save();
                     
 				}
 
@@ -378,7 +381,7 @@ class AutomationController extends Controller
             if (isset($numberOfFollowersURL_json->errors)) {
                 $errorObject = $numberOfFollowersURL_json->errors;
                 $ErrorCode = $errorObject[0]->code;
-                $errorMessage = "Could not look up your user information. " . $errorObject[0]->message;
+                $errorMessage = "Could not look up your user information to compare online to database records. " . $errorObject[0]->message;
 
                 echo "<div class='errorMessage'>$errorMessage</div>";
 
@@ -919,7 +922,7 @@ class AutomationController extends Controller
 
                     $errorObject = $userInvestigation_json->errors;
                     $ErrorCode = $errorObject[0]->code;
-                    $errorMessage = "Could not research potential user. " . $errorObject[0]->message;
+                    $errorMessage = "Could not research potential user for filtration. " . $errorObject[0]->message;
 
                     echo "<div class='errorMessage'>$errorMessage</div>";
 

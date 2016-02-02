@@ -98,8 +98,8 @@ class FollowController extends Controller
                 }
             }
             
-            $message = "$i friendships created!";
-            Helper::email_user($message, $socialMediaAccount->screen_name, $socialMediaAccount->user_id);
+            $message = "$i friendships created for $socialMediaAccount->screen_name!";
+            Helper::email_user($message, $socialMediaAccount->user_id);
             
         }
 

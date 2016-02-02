@@ -8,6 +8,17 @@ use Scavenger\Http\Controllers\Controller;
 use Carbon\Carbon;
 use Scavenger\Helpers\Helper;
 use Mail;
+use Scavenger\SocialMediaAccount;
+use Auth;
+use Scavenger\Twitter\TwitterOAuth;
+use Scavenger\ModelAccount;
+use Scavenger\Friend;
+use Scavenger\Follower;
+use Scavenger\TargetUser;
+use Scavenger\TempTargetUser;
+use Scavenger\Http\Controllers\AutomationController;
+use Scavenger\Http\Controllers\FollowController;
+use Scavenger\Http\Controllers\UnfollowController;
 
 
 class CronController extends Controller
@@ -42,23 +53,39 @@ class CronController extends Controller
 
         if (($hour <= 11) || ($hour >= 13)) {
 
-            return redirect('automate');
+			$message = "Beginning automation!";
+			Helper::email_user($message, 1);
+
+			$automate = new AutomationController();
+            $automate->index();
 
         } else {
 	        
 	        if ($weekOfMonth % 2 != 0) { // if week is 1st or 3rd of month, follow
 
-            	return redirect('follow');
+				$message = "Beginning follow!";
+				Helper::email_user($message, 1);
 
+				$follow = new FollowController();
+				$follow->index();
+				
         	} else {
 
-            	return redirect('unfollow');
+				$message = "Beginning unfollow!";
+				Helper::email_user($message, 1);
+				
+				$unfollow = new UnfollowController();
+				$unfollow->index();
 			
 			}
         }
 
 
     }
+    
+    
+
+
 
     /**
      * Show the form for creating a new resource.
@@ -67,11 +94,7 @@ class CronController extends Controller
      */
     public function create()
     {
-        Mail::send('emails.error', ['key' => 'value'], function($message)
-		{
-		    $message->to('web@graysonerhard.com', 'Grayson Erhard')->subject('Error Detected!');
-		});
-        
+        //
     }
 
     /**

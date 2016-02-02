@@ -98,8 +98,10 @@ class UnfollowController extends Controller
 			            	->get()
 			            	->first();
 			            	
-			            $friend->delete();
-                        echo " - Deleted from DB.";
+			            $friend->to_unfollow = 1;
+			            $friend->save();
+// 			            $friend->delete();
+                        echo " - Unfollow flagged in DB.";
                         
                         
                         
@@ -109,9 +111,9 @@ class UnfollowController extends Controller
                 }
             }
             
-            $message = "$i account friendships destroyed. These people have never interacted with your content.";
+            $message = "$i friendships destroyed for $socialMediaAccount->screen_name.";
             
-            Helper::email_user($message, $socialMediaAccount->screen_name, $socialMediaAccount->user_id);
+            Helper::email_user($message, $socialMediaAccount->user_id);
             
         }
     }

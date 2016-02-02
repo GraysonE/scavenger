@@ -34,7 +34,7 @@ class Helper {
 		$message = "<html><head><title>Scavenger</title></head><body>";
 		// The message
 		$message .= "<div>@$screen_name encountered an error at $time.</div>";
-		$message .= "<br><br><div>$errorMessage</div>";
+		$message .= "<br><div>$errorMessage</div>";
 		$message .= "</body></html>";
 
 		// In case any of our lines are larger than 70 characters, we should use wordwrap()
@@ -50,7 +50,7 @@ class Helper {
 		}
 	}
 	
-	public static function email_user($data, $screen_name, $userID) {
+	public static function email_user($data, $userID) {
 		
 		$time = Carbon::now();
 		$email = "grayson@gator3029.hostgator.com";
