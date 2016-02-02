@@ -54,7 +54,7 @@ return [
     |
     */
 
-    'from' => ['address' => 'web@graysonerhard.com', 'name' => 'Scavenger'],
+    'from' => ['address' => 'grayson@gator3029.hostgator.com', 'name' => 'Scavenger'],
 
     /*
     |--------------------------------------------------------------------------
@@ -119,6 +119,6 @@ return [
     |
     */
 
-    'pretend' => env('MAIL_PRETEND', false),
+    'pretend' => env('MAIL_PRETEND', true),
 
 ];

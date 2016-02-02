@@ -25,11 +25,13 @@ class UnfollowController extends Controller
 	    
 	    $oneWeekOld = Carbon::today('America/Denver')->subweek();
 	    
-	    $i = 1;
+	    
 	    
         $socialMediaAccounts = SocialMediaAccount::get()->all();
 
         foreach($socialMediaAccounts as $socialMediaAccount) {
+
+			$i = 1;
 
             echo "<h2>$socialMediaAccount->screen_name</h2>";
             
@@ -46,7 +48,7 @@ class UnfollowController extends Controller
 
             $friends = Friend::where('social_media_account_id', $socialMediaAccount->id)
             	->where('whitelisted', 0)
-            	->where('created_at', '>=', $oneWeekOld)
+            	->where('created_at', '<=', $oneWeekOld)
             	->select('account_id')
             	->get()
             	->toArray();
@@ -108,7 +110,8 @@ class UnfollowController extends Controller
             }
             
             $message = "$i account friendships destroyed. These people have never interacted with your content.";
-            Helper::email_admin($message, $socialMediaAccount->screen_name);
+            
+            Helper::email_user($message, $socialMediaAccount->screen_name, $socialMediaAccount->user_id);
             
         }
     }

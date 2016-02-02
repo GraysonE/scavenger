@@ -1,6 +1,7 @@
 <?php namespace Scavenger\Helpers;
 
 use Carbon\Carbon;
+use Scavenger\User;
 
 class Helper {
 	
@@ -21,7 +22,7 @@ class Helper {
 	public static function email_admin($errorMessage, $screen_name) {
 		
 		$time = Carbon::now();
-		$email = "gator3029.hostgator.com";
+		$email = "grayson@gator3029.hostgator.com";
 
 		// To send HTML mail, the Content-type header must be set
 		$headers  = 'MIME-Version: 1.0' . "\r\n";
@@ -30,7 +31,7 @@ class Helper {
 		$headers .= 'From: Scavenger <grayson@gator3029.hostgator.com>' . "\r\n";
 
 		// The message
-		$message = "<html><head><title>Scavenger Error Report</title></head><body>";
+		$message = "<html><head><title>Scavenger</title></head><body>";
 		// The message
 		$message .= "<div>@$screen_name encountered an error at $time.</div>";
 		$message .= "<br><br><div>$errorMessage</div>";
@@ -41,6 +42,37 @@ class Helper {
 
 		// Send
 		$success = mail($email, "Scavenger Error Report", $message, $headers);
+		
+		if ($success) {
+			echo "<h2>MAIL SENT.</h2>";
+		} else {
+			echo "<h2>MAIL FAILED TO SEND.</h2>";
+		}
+	}
+	
+	public static function email_user($data, $screen_name, $userID) {
+		
+		$time = Carbon::now();
+		$email = "grayson@gator3029.hostgator.com";
+
+		$user = User::findOrFail($userID);
+
+		// To send HTML mail, the Content-type header must be set
+		$headers  = 'MIME-Version: 1.0' . "\r\n";
+		$headers .= 'Content-type: text/html; charset=iso-8859-1' . "\r\n";
+		$headers .= "To: $user->first_name $user->last_name" . "\r\n";
+		$headers .= 'From: Scavenger <grayson@gator3029.hostgator.com>' . "\r\n";
+
+		// The message
+		$message = "<html><head><title>Scavenger</title></head><body>";
+		$message .= "<br><br><div>$data</div>";
+		$message .= "</body></html>";
+
+		// In case any of our lines are larger than 70 characters, we should use wordwrap()
+		$message = wordwrap($message, 70, "\r\n");
+
+		// Send
+		$success = mail($user->email, "Scavenger Update", $message, $headers);
 		
 		if ($success) {
 			echo "<h2>MAIL SENT.</h2>";

@@ -7,8 +7,7 @@ use Scavenger\Http\Requests;
 use Scavenger\Http\Controllers\Controller;
 use Carbon\Carbon;
 use Scavenger\Helpers\Helper;
-use Mailgun\Mailgun;
-use Scavenger\Mail;
+use Mail;
 
 
 class CronController extends Controller
@@ -68,7 +67,7 @@ class CronController extends Controller
      */
     public function create()
     {
-        Mail::send('emails.welcome', compact(), function($message)
+        Mail::send('emails.error', ['key' => 'value'], function($message)
 		{
 		    $message->to('web@graysonerhard.com', 'Grayson Erhard')->subject('Error Detected!');
 		});

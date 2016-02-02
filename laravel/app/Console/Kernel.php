@@ -30,10 +30,12 @@ class Kernel extends ConsoleKernel
             ->sendOutputTo('/home4/grayson/public_html/output.txt');
 */
 
+/*
 		$schedule->call(function() {
 			redirect('cron');
 		})->cron('* * * * * *')
 		->sendOutputTo('/home4/grayson/public_html/output.txt');
+*/
 		
     }
 }
