@@ -45,6 +45,8 @@ Route::get('follow', 'FollowController@index');
 // AUTOMATION - Unfollow accounts in Target_Users Table
 Route::get('unfollow', 'UnfollowController@index');
 
+// FILTER
+Route::get('filter', 'FilterController@index');
 
 
 

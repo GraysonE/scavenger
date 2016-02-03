@@ -33,13 +33,19 @@ class AutomationController extends Controller
 		Helper::email_user($message, 1);
 
         $count = 5000;
-		
-// 		$socialMediaAccount = SocialMediaAccount::findOrFail(5);
 
         $socialMediaAccounts = SocialMediaAccount::get()->all();
 
         foreach($socialMediaAccounts as $socialMediaAccount) {
 
+
+/*
+			if (($socialMediaAccount->id == 3) || ($socialMediaAccount->id == 4) || ($socialMediaAccount->id == 5)){
+				continue;
+			}
+*/
+
+// 			$socialMediaAccount = SocialMediaAccount::findOrFail(4);
 
 			if ($socialMediaAccount->id == 4) {
 				continue;
@@ -300,7 +306,10 @@ class AutomationController extends Controller
 						->where('account_id', $follower_id)
 						->get()->first();
 					
-					$followerToDelete->delete();   
+					if (isset($followerToDelete)) {
+						$followerToDelete->delete();   
+					}
+					
 					                 
 				}
 
@@ -627,16 +636,15 @@ class AutomationController extends Controller
                 ->where('sort_order', 1)
                 ->get()
                 ->first();
-
+			
 
             if (!is_null($modelAccount)) {
-
+				
 				echo "<h2>@". $modelAccount->screen_name . "'s ONLINE FOLLOWERS</h2><br>";
 
-                $searchFollowersAPI = "https://api.twitter.com/1.1/followers/ids.json?cursor=$modelAccount->api_cursor&screen_name=$modelAccount->screen_name&count=$count";
-
+                $searchFollowersAPI = "https://api.twitter.com/1.1/followers/ids.json?cursor=$modelAccount->api_cursor&screen_name=$modelAccount->screen_name&count=5000";
+				
                 $followers = $connection->get("$searchFollowersAPI");
-
 
                 if (isset($followers->errors)) {
 
@@ -664,11 +672,12 @@ class AutomationController extends Controller
 						$filterFollowers = array_diff($modelFollowers_ids, $oldFollowers_ids);
 						$filterFriends = array_diff($filterFollowers, $oldFriends_ids);
 						$filterTargets = array_diff($filterFriends, $targetUsers_ids);
+ 						
 						
 						foreach ($filterTargets as $id) {
 							
 							$newTarget = TargetUser::create([
-                                        'account_id' => $follower,
+                                        'account_id' => $id,
                                         'social_media_account_id' => $socialMediaAccount->id
                                     ]);
 							
@@ -707,6 +716,7 @@ class AutomationController extends Controller
             echo '<hr>';
             $now = Carbon::now('America/Denver');
             echo "<br>$now";
+//             die();
          } // main foreach that goes through $socialMediaAccounts
 
 

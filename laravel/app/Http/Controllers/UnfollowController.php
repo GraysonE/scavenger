@@ -99,9 +99,9 @@ class UnfollowController extends Controller
 			            	->get()
 			            	->first();
 			            	
-			            $friend->to_unfollow = 1;
+			            $friend->unfollowed = 1;
+			            $friend->unfollowed_timestamp = Carbon::now('America/Denver');
 			            $friend->save();
-// 			            $friend->delete();
                         echo " - Unfollow flagged in DB.";
                         
                         

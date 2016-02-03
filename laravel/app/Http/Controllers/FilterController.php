@@ -47,11 +47,12 @@ class FilterController extends Controller
              */
 
 
-            echo "<h2>TEMP TARGET USERS:</h2>";
+            echo "<h2>@$socialMediaAccount->screen_name - TARGET USERS:</h2>";
 
 
 			// TODO: LOAD ONLY 180 ACCOUNTS
-            $tempAccounts = TempTargetUser::where('social_media_account_id', $socialMediaAccount->id)
+            $tempAccounts = TargetUser::where('social_media_account_id', $socialMediaAccount->id)
+            	->where('to_follow', 0)
                 ->get();
 
             $api_limit = 180;
@@ -70,7 +71,7 @@ class FilterController extends Controller
                     break;
                 }
 
-                echo "<br>Temp Account: $temp_account_id";
+                echo "<br>Target Account: $temp_account_id";
 
                 //Investigate User Before Following
                 $userInvestigationURL = "https://api.twitter.com/1.1/users/lookup.json?user_id=$temp_account_id";
@@ -87,7 +88,7 @@ class FilterController extends Controller
 
                     Helper::email_admin($errorMessage, $socialMediaAccount->screen_name);
 
-                    continue;
+                    break;
 
                 } else {
 
@@ -128,29 +129,18 @@ class FilterController extends Controller
 
                                        if ($friendsCount >= ($followersCount - 50)) { // MORE PEOPLE FOLLOWING THAN FOLLOWING THEM
 
-										   // TODO: ALREADY IN THIS TABLE, JUST UPDATE
-
-                                            $oldTarget = TargetUser::where('social_media_account_id', $socialMediaAccount->id)
-                                                ->where('account_id', $temp_account_id)
-                                                ->where('screen_name', $requestScreenName)
-                                                ->get()
-                                                ->first();
-
-                                            if (is_null($oldTarget)) {
-
                                                 echo "<br>Target id: $temp_account_id";
-                                                $newTarget = TargetUser::create([
-                                                    'account_id' => $temp_account_id,
-                                                    'screen_name' => $requestScreenName,
-                                                    'whitelist' => 0,
-                                                    'social_media_account_id' => $socialMediaAccount->id
-                                                ]);
+                                                
+                                                $target = TargetUser::where('social_media_account_id', $socialMediaAccount->id)
+                                                			->where('account_id', $temp_account_id)->get()->first();
+                                                			
+                                                $target->screen_name = $requestScreenName;
+                                                $target->whitelist = 0;
+                                                $target->to_follow = 1;
+                                                $target->save();                                                
 
-                                                echo " - $requestScreenName - <strong>ADDED!!!</strong>";
-
-                                            } else {
-                                                echo " - <strong>Already in target_users table.</strong>";
-                                            }
+                                                echo " - $requestScreenName - <strong>FLAGGED!!!</strong>";
+                                                
                                         } else {
                                             echo " - Doesn't have more friends than followers.";
                                         }
@@ -170,21 +160,18 @@ class FilterController extends Controller
                         echo " - Has never made a status.";
                     }
 
-                    // Delete temporary account
-
-                    $tempAccountToDelete = TempTargetUser::where('account_id', $temp_account_id)
-                        ->where('social_media_account_id', $socialMediaAccount->id)
-                        ->get()
-                        ->first()
-                        ->delete();
-
-                    if ($tempAccountToDelete) {
-                        echo " - Deleted from Temp_Target_Users.";
-                    }
-
                     $api_limit--;
 
                 }
+                
+                $target = TargetUser::where('social_media_account_id', $socialMediaAccount->id)
+                            ->where('account_id', $temp_account_id)->get()->first();
+                
+                if (!$target->to_follow) {
+		            $target->delete();
+		            echo " - DELETED.";
+                }
+                
 
                 $iteration++;
             }
