@@ -12,7 +12,6 @@ use Scavenger\ModelAccount;
 use Scavenger\Friend;
 use Scavenger\Follower;
 use Scavenger\TargetUser;
-use Scavenger\TempTargetUser;
 use Carbon\Carbon;
 use Scavenger\Helpers\Helper;
 
@@ -75,7 +74,7 @@ class FollowController extends Controller
 
                         Helper::email_admin($errorMessage, $socialMediaAccount->screen_name);
 
-                        break;
+                        continue;
 
                     } else {
 	                    

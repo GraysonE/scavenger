@@ -44,14 +44,6 @@ class ForeignKeys extends Migration
                 ->onDelete('cascade');
         });
 
-        Schema::table('temp_target_users', function (Blueprint $table) {
-            $table->integer('social_media_account_id')->unsigned();
-            $table->foreign('social_media_account_id')
-                ->references('id')
-                ->on('social_media_accounts')
-                ->onDelete('cascade');
-        });
-
         Schema::table('model_accounts', function (Blueprint $table) {
             $table->integer('social_media_account_id')->unsigned();
             $table->foreign('social_media_account_id')

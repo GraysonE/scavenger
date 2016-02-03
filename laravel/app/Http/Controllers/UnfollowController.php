@@ -88,7 +88,7 @@ class UnfollowController extends Controller
 
                         Helper::email_admin($errorMessage, $socialMediaAccount->screen_name);
 
-                        break;
+                        continue;
 
                     } else {
 	                    

@@ -10,6 +10,7 @@ class TargetUser extends Model
         'account_id',
         'screen_name',
         'whitelist',
+        'to_follow',
         'social_media_account_id'
     ];
 }

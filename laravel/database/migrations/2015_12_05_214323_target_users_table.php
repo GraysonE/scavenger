@@ -18,6 +18,7 @@ class TargetUsersTable extends Migration
             
             $table->string('account_id');
             $table->string('screen_name');
+            $table->boolean('to_follow');
             $table->boolean('whitelist');
         });
     }

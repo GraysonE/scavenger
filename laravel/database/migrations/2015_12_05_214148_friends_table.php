@@ -18,11 +18,9 @@ class FriendsTable extends Migration
 
             $table->string('account_id');
             $table->string('screen_name');
-            $table->boolean('user_followed');
-            $table->date('followed_timestamp');
             $table->date('unfollowed_timestamp');
             $table->boolean('whitelisted');
-            $table->date('last_active');
+            $table->boolean('unfollowed');
             $table->boolean('to_unfollow');
         });
     }

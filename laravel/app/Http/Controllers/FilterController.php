@@ -12,7 +12,6 @@ use Scavenger\ModelAccount;
 use Scavenger\Friend;
 use Scavenger\Follower;
 use Scavenger\TargetUser;
-use Scavenger\TempTargetUser;
 use Carbon\Carbon;
 use Scavenger\Helpers\Helper;
 
@@ -27,199 +26,172 @@ class FilterController extends Controller
     {
         $socialMediaAccounts = SocialMediaAccount::get()->all();
 
-        // GraysonErhard = 3
-        // iamabadass4real = 4
-        // AspenHourglass = 5
-        // pandasandpeeps = 6
-        // SELECT * FROM `temp_target_users` WHERE `social_media_account_id` like "6"
+        foreach($socialMediaAccounts as $socialMediaAccount) {
 
-        $socialMediaAccount = SocialMediaAccount::findOrFail(6);
+	        $connection = new TwitterOAuth(
+	            $socialMediaAccount->consumer_key,
+	            $socialMediaAccount->consumer_secret,
+	            $socialMediaAccount->access_token,
+	            $socialMediaAccount->access_token_secret);
 
-//        foreach($socialMediaAccounts as $socialMediaAccount) {
-
-        $connection = new TwitterOAuth(
-            $socialMediaAccount->consumer_key,
-            $socialMediaAccount->consumer_secret,
-            $socialMediaAccount->access_token,
-            $socialMediaAccount->access_token_secret);
-
-
-        /**
-         *
-         *
-         * FILTER THE TEMP ACCOUNTS BASED ON USER LOOKUP
-         *
-         */
+			if ($socialMediaAccount->id == 4) {
+				continue;
+			}
+        
+        
+			/**
+             *
+             *
+             * FILTER THE TEMP ACCOUNTS BASED ON USER LOOKUP
+             *
+             */
 
 
-        echo "<h2>TEMP TARGET USERS:</h2>";
-
-        $tempAccounts = TempTargetUser::where('social_media_account_id', $socialMediaAccount->id)
-            ->get();
-
-        $api_limit = 180;
-
-        // BEGINNING CONTENT FOR CSV FILE (CAN'T BE INSIDE LOOP)
-//            $content = "screen_name,followers_count,friends_count,favorites_count,statuses_count,last_status,created_at,\n";
-
-        $iteration = 1;
-
-        foreach($tempAccounts as $tempAccount) {
-
-            $temp_account_id = (int)$tempAccount->account_id;
-
-            if ($tempAccount->account_id == '4722600750') {
-                continue;
-            }
-
-            if ($api_limit == 1) {
-                break;
-            }
-
-            echo "<br>Temp Account: $temp_account_id";
-
-            //Investigate User Before Following
-            $userInvestigationURL = "https://api.twitter.com/1.1/users/lookup.json?user_id=$temp_account_id";
-            $userInvestigation_json = $connection->get("$userInvestigationURL");
+            echo "<h2>TEMP TARGET USERS:</h2>";
 
 
-            if (isset($userInvestigation_json->errors)) {
+			// TODO: LOAD ONLY 180 ACCOUNTS
+            $tempAccounts = TempTargetUser::where('social_media_account_id', $socialMediaAccount->id)
+                ->get();
 
-                $errorObject = $userInvestigation_json->errors;
-                $ErrorCode = $errorObject[0]->code;
-                $errorMessage = "Could not research potential user. " . $errorObject[0]->message;
+            $api_limit = 180;
 
-                echo "<div class='errorMessage'>$errorMessage</div>";
+            $iteration = 1;
 
-                Helper::email_admin($errorMessage, $socialMediaAccount->screen_name);
+            foreach($tempAccounts as $tempAccount) {
 
-                break;
+                $temp_account_id = (int)$tempAccount->account_id;
 
-            } else {
+                if ($tempAccount->account_id == '1895920429') {
+                    continue;
+                }
 
-                $userInvestigation = $userInvestigation_json[0];
+                if ($api_limit == 1) {
+                    break;
+                }
 
+                echo "<br>Temp Account: $temp_account_id";
 
-                $time = (int)strtotime(Carbon::now());
-                $thirty_days_unix_time = (int)2963452 / 2;
-                $sixty_days_unix_time = (int)2963452;
-                $created_at = (int)strtotime($userInvestigation->created_at);
-
-                $requestScreenName = "$userInvestigation->screen_name";
-                $followersCount = (int)$userInvestigation->followers_count;
-                $friendsCount = (int)$userInvestigation->friends_count;
-                $favoritesCount = (int)$userInvestigation->favourites_count;
-                $list_count = (int)$userInvestigation->listed_count; // doesnt matter
-                $statuses_count = (int)$userInvestigation->statuses_count;
+                //Investigate User Before Following
+                $userInvestigationURL = "https://api.twitter.com/1.1/users/lookup.json?user_id=$temp_account_id";
+                $userInvestigation_json = $connection->get("$userInvestigationURL");
 
 
-                /**
-                 *
-                 *
-                 * THE FILTER
-                 *
-                 */
-                if (isset($userInvestigation->status->created_at)) {
+                if (isset($userInvestigation_json->errors)) {
 
-                    $last_status = (int)strtotime($userInvestigation->status->created_at); // MUST BE UNDER 30 DAYS OLD
+                    $errorObject = $userInvestigation_json->errors;
+                    $ErrorCode = $errorObject[0]->code;
+                    $errorMessage = "Could not research potential user for filtration. " . $errorObject[0]->message;
 
-                    // MAKE CSV WITH ALL RELEVANT TWITTER USER DATA
-                    if (isset($content)) {
-                        if ($content != "$requestScreenName,$temp_account_id,$followersCount,$friendsCount,$favoritesCount,$statuses_count,$last_status,$created_at,1,\n") {
-                            $content = "$requestScreenName,$temp_account_id,$followersCount,$friendsCount,$favoritesCount,$statuses_count,$last_status,$created_at,1,\n";
-                        }
-                    } else {
-                        $content = "$requestScreenName,$temp_account_id,$followersCount,$friendsCount,$favoritesCount,$statuses_count,$last_status,$created_at,1,\n";
-                    }
+                    echo "<div class='errorMessage'>$errorMessage</div>";
 
-                    $file = "/Applications/XAMPP/xamppfiles/htdocs/scavvy/laravel/public/twitter-users.csv";
-                    file_put_contents($file, $content, FILE_APPEND | LOCK_EX);
+                    Helper::email_admin($errorMessage, $socialMediaAccount->screen_name);
 
-                    if ($last_status < ($time - $thirty_days_unix_time)) { // LAST STATUS HAS TO HAVE BEEN IN THE PAST MONTH
+                    continue;
 
-                        if ($statuses_count > 20) {
+                } else {
 
-                            if ($friendsCount >= ($followersCount - 50)) { // MORE PEOPLE FOLLOWING THAN FOLLOWING THEM
+                    $userInvestigation = $userInvestigation_json[0];
 
-                                if ($favoritesCount > 20) {
 
-//                                        if($created_at > ($time-$thirty_days_unix_time)) { // HAS TO HAVE BEEN CREATED AT LEAST A MONTH AGO
+                    $time = (int)strtotime(Carbon::now());
+                    $one_month_unix_time = (int)86400*30;
+                    $one_day_unix_time = (int)86400;
+                    $accountCreated_at = (int)strtotime($userInvestigation->created_at);
 
-                                    $oldTarget = TargetUser::where('social_media_account_id', $socialMediaAccount->id)
-                                        ->where('account_id', $temp_account_id)
-                                        ->where('screen_name', $requestScreenName)
-                                        ->get()
-                                        ->first();
+                    $requestScreenName = "$userInvestigation->screen_name";
+                    $followersCount = (int)$userInvestigation->followers_count;
+                    $friendsCount = (int)$userInvestigation->friends_count;
+                    $favoritesCount = (int)$userInvestigation->favourites_count;
+                    $statuses_count = (int)$userInvestigation->statuses_count;
 
-                                    if (is_null($oldTarget)) {
 
-                                        echo "<br>Target id: $temp_account_id";
-                                        $newTarget = TargetUser::create([
-                                            'account_id' => $temp_account_id,
-                                            'screen_name' => $requestScreenName,
-                                            'whitelist' => 0,
-                                            'social_media_account_id' => $socialMediaAccount->id
-                                        ]);
+                    /**
+                     *
+                     *
+                     * THE FILTER
+                     *
+                     */
 
-                                        echo " - $requestScreenName - <strong>ADDED!!!</strong>";
 
+                    if (isset($userInvestigation->status->created_at)) {
+
+                        $last_status = (int)strtotime($userInvestigation->status->created_at); // MUST BE UNDER 30 DAYS OLD
+
+                        if($accountCreated_at > ($time-$one_month_unix_time)) { // HAS TO HAVE BEEN CREATED AT LEAST A MONTH AGO
+
+                            if ($last_status < ($time - ($one_day_unix_time*2))) { // LAST STATUS HAS TO HAVE BEEN IN THE PAST 48 HOURS
+
+                                if ($statuses_count > 50) {
+
+                                    if ($favoritesCount > 50) {
+
+                                       if ($friendsCount >= ($followersCount - 50)) { // MORE PEOPLE FOLLOWING THAN FOLLOWING THEM
+
+										   // TODO: ALREADY IN THIS TABLE, JUST UPDATE
+
+                                            $oldTarget = TargetUser::where('social_media_account_id', $socialMediaAccount->id)
+                                                ->where('account_id', $temp_account_id)
+                                                ->where('screen_name', $requestScreenName)
+                                                ->get()
+                                                ->first();
+
+                                            if (is_null($oldTarget)) {
+
+                                                echo "<br>Target id: $temp_account_id";
+                                                $newTarget = TargetUser::create([
+                                                    'account_id' => $temp_account_id,
+                                                    'screen_name' => $requestScreenName,
+                                                    'whitelist' => 0,
+                                                    'social_media_account_id' => $socialMediaAccount->id
+                                                ]);
+
+                                                echo " - $requestScreenName - <strong>ADDED!!!</strong>";
+
+                                            } else {
+                                                echo " - <strong>Already in target_users table.</strong>";
+                                            }
+                                        } else {
+                                            echo " - Doesn't have more friends than followers.";
+                                        }
                                     } else {
-                                        echo " - <strong>Already in target_users table.</strong>";
+                                        echo " - Only $favoritesCount favorites.";
                                     }
-
-//                                        } else {
-//                                        echo " - Account created less than a month ago";
-//
-//                                        }
                                 } else {
-                                    echo " - Only $favoritesCount favorites.";
+                                    echo " - Only $statuses_count statuses.";
                                 }
                             } else {
-                                echo " - Doesn't have more friends than followers.";
+                                echo " - Hasn't made a status in the last month";
                             }
                         } else {
-                            echo " - Only $statuses_count statuses.";
+                            echo " - Account created less than a month ago";
                         }
                     } else {
-                        echo " - Hasn't made a status in the last month";
-                    }
-                } else {
-                    echo " - Has never made a status.";
-
-                    // MAKE CSV WITH ALL RELEVANT TWITTER USER DATA
-                    if (isset($content)) {
-                        if ($content != "$requestScreenName,$temp_account_id,$followersCount,$friendsCount,$favoritesCount,0,NULL,$created_at,2,\n") {
-                            $content = "$requestScreenName,$temp_account_id,$followersCount,$friendsCount,$favoritesCount,0,NULL,$created_at,2,\n";
-                        }
-                    } else {
-                        $content = "$requestScreenName,$temp_account_id,$followersCount,$friendsCount,$favoritesCount,0,NULL,$created_at,2,\n";
+                        echo " - Has never made a status.";
                     }
 
-                    $file = "/Applications/XAMPP/xamppfiles/htdocs/scavvy/laravel/public/twitter-users.csv";
-                    file_put_contents($file, $content, FILE_APPEND | LOCK_EX);
+                    // Delete temporary account
+
+                    $tempAccountToDelete = TempTargetUser::where('account_id', $temp_account_id)
+                        ->where('social_media_account_id', $socialMediaAccount->id)
+                        ->get()
+                        ->first()
+                        ->delete();
+
+                    if ($tempAccountToDelete) {
+                        echo " - Deleted from Temp_Target_Users.";
+                    }
+
+                    $api_limit--;
 
                 }
 
-                // Delete temporary account
-
-                $tempAccountToDelete = TempTargetUser::where('account_id', $temp_account_id)
-                    ->where('social_media_account_id', $socialMediaAccount->id)
-                    ->get()
-                    ->first()
-                    ->delete();
-
-                if ($tempAccountToDelete) {
-                    echo " - Deleted from Temp_Target_Users.";
-                }
-
-                $api_limit--;
-
+                $iteration++;
             }
-
-            $iteration++;
-        }
-
-        // } // foreach of socialMediaAccounts
+        
+        
+        
+        } // foreach of socialMediaAccounts
     }
 
     /**

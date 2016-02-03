@@ -15,10 +15,10 @@ use Scavenger\ModelAccount;
 use Scavenger\Friend;
 use Scavenger\Follower;
 use Scavenger\TargetUser;
-use Scavenger\TempTargetUser;
 use Scavenger\Http\Controllers\AutomationController;
 use Scavenger\Http\Controllers\FollowController;
 use Scavenger\Http\Controllers\UnfollowController;
+use Scavenger\Http\Controllers\FilterController;
 
 
 class CronController extends Controller
@@ -50,26 +50,66 @@ class CronController extends Controller
 
         $hour = $now->hour;
         echo "<br>$hour";                             // 12
+        
+        $minute = $now->minute;
+        echo "<br>$minute";                             // 38
 
-        if (($hour <= 11) || ($hour >= 13)) {
+        if (($hour == 0) || ($hour == 8) || ($hour == 16)) {
 
-			$automate = new AutomationController();
-            $automate->index();
-
+			if ($minute == 0) {
+				
+				$automate = new AutomationController();
+				$automate->index();
+				
+			} elseif (($minute == 15) || ($minute == 30) || ($minute == 45)) {
+				
+				$filter = new FilterController();
+				$filter->index();
+				
+			}
+			
         } else {
 	        
-	        if ($weekOfMonth % 2 != 0) { // if week is 1st or 3rd of month, follow
-
-				$follow = new FollowController();
-				$follow->index();
-				
-        	} else {
-				
-				$unfollow = new UnfollowController();
-				$unfollow->index();
+	        if (($minute == 15) || ($minute == 30) || ($minute == 45)) {
+	        
+		        $filter = new FilterController();
+				$filter->index();
 			
 			}
+			
         }
+	       
+	    
+	        
+        if ($weekOfMonth % 2 != 0) { // if week is 1st or 3rd of month, follow
+
+			if ($hour == 12) {
+				
+				if (($minute == 15) || ($minute == 30) || ($minute == 45)) {
+				
+					$follow = new FollowController();
+					$follow->index();
+				
+				}
+				
+			}
+			
+    	} else {
+			
+			if ($hour == 12) {
+				
+				if (($minute == 15) || ($minute == 30) || ($minute == 45)) {
+				
+					$unfollow = new UnfollowController();
+					$unfollow->index();
+				
+				}
+				
+			}
+		
+		}
+		
+// 		return false;
 
 
     }

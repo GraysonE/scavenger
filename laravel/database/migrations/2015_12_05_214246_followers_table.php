@@ -18,9 +18,6 @@ class FollowersTable extends Migration
 
             $table->string('account_id');
             $table->string('screen_name');
-            $table->boolean('user_following');
-            $table->date('unfollowed_timestamp');
-            $table->boolean('dm_flag');
         });
     }
 

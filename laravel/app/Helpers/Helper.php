@@ -22,13 +22,15 @@ class Helper {
 	public static function email_admin($errorMessage, $screen_name) {
 		
 		$time = Carbon::now();
-		$email = "grayson@gator3029.hostgator.com";
+		$applicationName = "Scavenger";
+		$applicationEmail = "grayson@gator3029.hostgator.com";
+		$adminEmail = "web@graysonerhard.com";
 
 		// To send HTML mail, the Content-type header must be set
 		$headers  = 'MIME-Version: 1.0' . "\r\n";
 		$headers .= 'Content-type: text/html; charset=iso-8859-1' . "\r\n";
 		$headers .= "To: Grayson Erhard" . "\r\n";
-		$headers .= 'From: Scavenger <grayson@gator3029.hostgator.com>' . "\r\n";
+		$headers .= "From: $applicationName <$applicationEmail>" . "\r\n";
 
 		// The message
 		$message = "<html><head><title>Scavenger</title></head><body>";
@@ -41,7 +43,7 @@ class Helper {
 		$message = wordwrap($message, 70, "\r\n");
 
 		// Send
-		$success = mail($email, "Scavenger Error Report", $message, $headers);
+		$success = mail($adminEmail, "Scavenger Error Report", $message, $headers);
 		
 		if ($success) {
 			echo "<h2>MAIL SENT.</h2>";
