@@ -18,21 +18,12 @@
       </div>
     </a>
   </li>
+<!--
   <li class="active">
     <a href="{{ url('/settings') }}">
       <div class="item-content">
         <div class="item-inner">
           <span class="title"> Settings </span>
-        </div>
-      </div>
-    </a>
-  </li>
-<!--
-  <li class="active">
-    <a href="{{ url('/automate') }}">
-      <div class="item-content">
-        <div class="item-inner">
-          <span class="title"> Automate </span>
         </div>
       </div>
     </a>

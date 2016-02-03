@@ -6,16 +6,18 @@
         </div>
 
         <div class="panel-body">
+<!--
             <div class="form-group">
                 <input class="form-control" name="account_type" placeholder="account type" value="{{ old('account_type') }}">
             </div>
+-->
 
             <div class="form-group">
                 <input class="form-control" name="screen_name" placeholder="social media account username" id="username" value="{{ old('screen_name') }}">
             </div>
 
             <div class="form-group">
-                <input class="form-control" name="account_password" placeholder="social media account password" value="{{ old('account_password') }}">
+                <input type="password" class="form-control" name="account_password" placeholder="social media account password" value="{{ old('account_password') }}">
             </div>
 
             <div class="form-group">

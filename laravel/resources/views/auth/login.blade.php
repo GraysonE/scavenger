@@ -7,7 +7,7 @@
   <div class="container-fluid container-fullw block-about page-login">
     <div class="row">
       <div class="col-sm-12">
-        <div class="panel panel-white">
+        <div class="panel">
           <div class="panel-heading">
             <h5 class="panel-title">LOG IN:</h5>
           </div>
