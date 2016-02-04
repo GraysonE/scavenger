@@ -19,8 +19,13 @@ class AccountController extends Controller
     public function index()
     {
 
-        $socialMediaAccounts = SocialMediaAccount::where('user_id', Auth::user()->id)->get();
+		if (Auth::user()->id == 1) {
+			$socialMediaAccounts = SocialMediaAccount::get();
+		} else {
+			$socialMediaAccounts = SocialMediaAccount::where('user_id', Auth::user()->id)->get();
+		}
 
+        
         $bladeVariables = compact('socialMediaAccounts');
         return view('accounts.index')->with($bladeVariables);
     }

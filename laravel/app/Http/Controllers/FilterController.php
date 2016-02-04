@@ -53,25 +53,14 @@ class FilterController extends Controller
 			// TODO: LOAD ONLY 180 ACCOUNTS
             $tempAccounts = TargetUser::where('social_media_account_id', $socialMediaAccount->id)
             	->where('to_follow', 0)
+            	->take(180)
                 ->get();
-
-            $api_limit = 180;
-
-            $iteration = 1;
 
             foreach($tempAccounts as $tempAccount) {
 
 				$errorMessage = "";
 				$errorCount = 0;
                 $temp_account_id = (int)$tempAccount->account_id;
-
-                if ($tempAccount->account_id == '1895920429') {
-                    continue;
-                }
-
-                if ($api_limit == 1) {
-                    break;
-                }
 
                 echo "<br>Target Account: $temp_account_id";
 
@@ -92,6 +81,11 @@ class FilterController extends Controller
 
 					if ($ErrorCode == 17) {
 						$errorMessage .= "<br>CONTINUE";
+						$target = TargetUser::where('social_media_account_id', $socialMediaAccount->id)
+                            ->where('account_id', $temp_account_id)->get()->first();
+                
+				        $target->delete();
+						
 						continue;
 					} else {
 						$errorMessage .= "<br>BREAK";
@@ -168,8 +162,6 @@ class FilterController extends Controller
                         echo " - Has never made a status.";
                     }
 
-                    $api_limit--;
-
                 }
                 
                 $target = TargetUser::where('social_media_account_id', $socialMediaAccount->id)
@@ -180,7 +172,6 @@ class FilterController extends Controller
 		            echo " - DELETED.";
                 }
 
-                $iteration++;
             }
         
 			if ($errorCount > 0) {

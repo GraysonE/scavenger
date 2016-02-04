@@ -5,11 +5,14 @@
     <div class="container-fluid container-fullw page-login">
         <div class="row">
             <div class="col-sm-12">
+	            
+	            <a class="btn btn-info" href="{{ url('set-user/'.$socialMediaAccount->id) }}">Search Again</a>
 
                 @if (isset($searchJson))
                     @foreach($searchJson as $search)
                         <div class="panel">
-                            <form method="GET" action="{{ url('set-user/'.$socialMediaAccount->id.'/'.$search->id) }}">
+                            <form method="POST" action="{{ url('set-user/'.$socialMediaAccount->id.'/'.$search->id) }}">
+	                            {{ csrf_field() }}
                                 <img class="account_photo" src="{{$search->profile_image_url}}" />
                                 <h3 class="screen_name">{{ '@'.$search->screen_name }}</h3><br>
                                 <h4>{{$search->name}}</h4>

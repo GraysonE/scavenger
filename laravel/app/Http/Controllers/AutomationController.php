@@ -36,6 +36,7 @@ class AutomationController extends Controller
         foreach($socialMediaAccounts as $socialMediaAccount) {
 
 			$errorCount = 0;
+			$errorMessage = "";
 /*
 			if (($socialMediaAccount->id == 3) || ($socialMediaAccount->id == 4) || ($socialMediaAccount->id == 5)){
 				continue;
@@ -64,7 +65,7 @@ class AutomationController extends Controller
 				($connection->http_code) ? '' : "<h1>HTTP code: $connection->http_code</h1>";
 				echo "<h3>Error establishing initial connection. If no HTTP code is provided it is NULL.</h3>";
 				
-				$errorMessage = "<h2>Error $errorCount</h2>";
+				$errorMessage .= "<h2>Error $errorCount</h2>";
 				$errorMessage .= "<h3>Error establishing initial connection. If no HTTP code is provided it is NULL.</h3>";
 				$errorMessage .= "Error code: $connection->http_code";
 				
@@ -363,7 +364,7 @@ class AutomationController extends Controller
 
                 echo "<div class='errorMessage'>$errorMessage</div>";
 
-                break;
+                continue;
             }
 
             $dbFriends = Friend::where('social_media_account_id', $socialMediaAccount->id)
@@ -547,7 +548,7 @@ class AutomationController extends Controller
                     
                     
                     
-                    $follow = $connection->post("https://api.twitter.com/1.1/friendships/create.json?user_id=$id->account_id&follow=true");
+                    $follow = $connection->post("https://api.twitter.com/1.1/friendships/create.json?user_id=$id&follow=true");
 
                     if (isset($follow->errors)) {
 
@@ -700,26 +701,27 @@ class AutomationController extends Controller
 							
 					}
 
+					if (isset($modelAccount)) {
+					
+						$modelAccount->api_cursor = $followers->next_cursor;
+						$modelAccount->save();
+						
+						if ($modelAccount->api_cursor == 0) {
+							$errorCount++;
+							$errorMessage .= "<h2>Error $errorCount</h2>";
+			                $errorMessage .= "Model Account API cursor equals 0.<br>";
+			                $errorMessage .= "Out of a list of 5000, $i were added to target_users table.<br>";
+			                
+			            }
+					}
+					
+					echo "<br><br><strong>Next Cursor: </strong>$followers->next_cursor";
+
                 }
                 
                 $api_requests--;
 
-				if (isset($modelAccount)) {
-					
-					$modelAccount->api_cursor = $followers->next_cursor;
-					$modelAccount->save();
-					
-					if ($modelAccount->api_cursor == 0) {
-						$errorCount++;
-						$errorMessage .= "<h2>Error $errorCount</h2>";
-		                $errorMessage .= "Model Account API cursor equals 0.<br>";
-		                $errorMessage .= "Out of a list of 5000, $i were added to temp_target_users table.<br>";
-		                
-		            }
-				}
                 
-
-                echo "<br><br><strong>Next Cursor: </strong>$followers->next_cursor";
 
             } else {
 	            echo "<h1>Add a model account that hasn't been finished!</h1>";

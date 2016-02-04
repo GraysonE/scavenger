@@ -64,7 +64,7 @@ Route::group(array('middleware' => 'auth'), function(){
 	// SET USER
 	Route::get('set-user/{id}', 'ModelAccountController@index');
 	Route::post('set-user/{id}/search', 'ModelAccountController@search');
-	Route::get('set-user/{id}/{model_account_id}', 'ModelAccountController@store');
+	Route::post('set-user/{id}/{model_account_id}', 'ModelAccountController@store');
 	Route::get('set-user/{id}/{model_account_id}/destroy', 'ModelAccountController@destroy');
 	
 	// ACCOUNTS

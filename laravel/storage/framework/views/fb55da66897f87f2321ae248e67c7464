@@ -3,11 +3,15 @@
     <div class="container-fluid container-fullw page-login">
         <div class="row">
             <div class="col-sm-12">
+	            
+	            <a class="btn btn-info" href="<?php echo e(url('set-user/'.$socialMediaAccount->id)); ?>">Search Again</a>
 
                 <?php if(isset($searchJson)): ?>
                     <?php foreach($searchJson as $search): ?>
                         <div class="panel">
-                            <form method="GET" action="<?php echo e(url('set-user/'.$socialMediaAccount->id.'/'.$search->id)); ?>">
+                            <form method="POST" action="<?php echo e(url('set-user/'.$socialMediaAccount->id.'/'.$search->id)); ?>">
+	                            <?php echo e(csrf_field()); ?>
+
                                 <img class="account_photo" src="<?php echo e($search->profile_image_url); ?>" />
                                 <h3 class="screen_name"><?php echo e('@'.$search->screen_name); ?></h3><br>
                                 <h4><?php echo e($search->name); ?></h4>
