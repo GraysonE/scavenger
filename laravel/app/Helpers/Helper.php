@@ -19,9 +19,9 @@ class Helper {
 	    
 	}
 
-	public static function email_admin($errorMessage, $screen_name) {
+	public static function email_admin($errorMessage, $errorCount, $controller, $screen_name) {
 		
-		$time = Carbon::now();
+		$time = Carbon::now('America/Denver');
 		$applicationName = "Scavenger";
 		$applicationEmail = "grayson@gator3029.hostgator.com";
 		$adminEmail = "web@graysonerhard.com";
@@ -35,7 +35,7 @@ class Helper {
 		// The message
 		$message = "<html><head><title>Scavenger</title></head><body>";
 		// The message
-		$message .= "<div>@$screen_name encountered an error at $time.</div>";
+		$message .= "<div>@$screen_name encountered $errorCount errors in $controller at $time.</div>";
 		$message .= "<br><div>$errorMessage</div>";
 		$message .= "</body></html>";
 
@@ -54,7 +54,7 @@ class Helper {
 	
 	public static function email_user($data, $userID) {
 		
-		$time = Carbon::now();
+		$time = Carbon::now('America/Denver');
 		$email = "grayson@gator3029.hostgator.com";
 
 		$user = User::findOrFail($userID);

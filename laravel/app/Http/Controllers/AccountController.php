@@ -35,7 +35,6 @@ class AccountController extends Controller
         $data = $request->all();
 
         $this->validate($request, [
-            'account_type' => 'required',
             'password' => 'min:6',
             'consumer_key' => 'required|min:25',
             'consumer_secret' => 'required|min:50',
@@ -47,7 +46,8 @@ class AccountController extends Controller
         SocialMediaAccount::create([
             'user_id' => Auth::user()->id,
             'account_id' => 0,
-            'account_type' => strtolower($data['account_type']),
+//             'account_type' => strtolower($data['account_type']),
+			'account_type' => 'twitter',
             'screen_name' => $data['screen_name'],
             'account_password' => $data['account_password'],
             'consumer_key' => $data['consumer_key'],
@@ -97,9 +97,9 @@ class AccountController extends Controller
                 "screen_name-$socialMedia_id" => 'required'
             ]);
 
-            $socialMediaUpdate->account_type = $data["account_type-$socialMedia_id"];
+//             $socialMediaUpdate->account_type = $data["account_type-$socialMedia_id"];
             $socialMediaUpdate->screen_name = $data["screen_name-$socialMedia_id"];
-            $socialMediaUpdate->account_id = $data["account_id-$socialMedia_id"];
+//             $socialMediaUpdate->account_id = $data["account_id-$socialMedia_id"];
             $socialMediaUpdate->auto_follow = $data["auto_follow-$socialMedia_id"];
             $socialMediaUpdate->auto_unfollow = $data["auto_unfollow-$socialMedia_id"];
             $socialMediaUpdate->auto_whitelist = $data["auto_whitelist-$socialMedia_id"];

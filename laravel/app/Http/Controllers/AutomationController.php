@@ -29,16 +29,13 @@ class AutomationController extends Controller
     public function index()
     {
 
-		$message = "Beginning automation!";
-		Helper::email_user($message, 1);
-
         $count = 5000;
 
         $socialMediaAccounts = SocialMediaAccount::get()->all();
 
         foreach($socialMediaAccounts as $socialMediaAccount) {
 
-
+			$errorCount = 0;
 /*
 			if (($socialMediaAccount->id == 3) || ($socialMediaAccount->id == 4) || ($socialMediaAccount->id == 5)){
 				continue;
@@ -62,13 +59,16 @@ class AutomationController extends Controller
 
 			if (!is_null($connection->http_code)) {
 			
+				$errorCount++;
+			
 				($connection->http_code) ? '' : "<h1>HTTP code: $connection->http_code</h1>";
 				echo "<h3>Error establishing initial connection. If no HTTP code is provided it is NULL.</h3>";
 				
-				$errorMessage = "<h3>Error establishing initial connection. If no HTTP code is provided it is NULL.</h3>";
+				$errorMessage = "<h2>Error $errorCount</h2>";
+				$errorMessage .= "<h3>Error establishing initial connection. If no HTTP code is provided it is NULL.</h3>";
 				$errorMessage .= "Error code: $connection->http_code";
 				
-				Helper::email_admin($errorMessage, $socialMediaAccount->screen_name);
+				
 				
 				if ($connection->http_code == '401') {
 					return view('errors.401')->with(compact('http_code'));
@@ -131,13 +131,16 @@ class AutomationController extends Controller
                 $friends = $connection->get("$searchFriendsAPI");
 
                 if (isset($friends->errors)) {
-
+					$errorCount++;
+					
                     $errorObject = $friends->errors;
                     $error = $errorObject[0]->code;
-                    $errorMessage = "Friend lookup needs to refresh. " . $errorObject[0]->message;
+                    
+                    $errorMessage .= "<h2>Error $errorCount</h2>";
+                    $errorMessage .= "Friend lookup needs to refresh. " . $errorObject[0]->message;
 
                     echo "<div class='errorMessage'>$errorMessage</div>";
-                    Helper::email_admin($errorMessage, $socialMediaAccount->screen_name);
+                    
 
                     break;
 
@@ -250,13 +253,14 @@ class AutomationController extends Controller
                 $followers = $connection->get("$searchFollowersAPI");
 
                 if (isset($followers->errors)) {
-
+					$errorCount++;
                     $errorObject = $followers->errors;
                     $error = $errorObject[0]->code;
-                    $errorMessage = "Follower lookup needs to refresh. " . $errorObject[0]->message;
+                    $errorMessage .= "<h2>Error $errorCount</h2>";
+                    $errorMessage .= "Follower lookup needs to refresh. " . $errorObject[0]->message;
 
                     echo "<div class='errorMessage'>$errorMessage</div>";
-                    Helper::email_admin($errorMessage, $socialMediaAccount->screen_name);
+                    
 
                     break;
 
@@ -349,13 +353,15 @@ class AutomationController extends Controller
             $api_requests--;
 
             if (isset($numberOfFollowersURL_json->errors)) {
+	            
+	            $errorCount++;
                 $errorObject = $numberOfFollowersURL_json->errors;
                 $ErrorCode = $errorObject[0]->code;
-                $errorMessage = "Could not look up your user information to compare online to database records. " . $errorObject[0]->message;
+                
+                $errorMessage .= "<h2>Error $errorCount</h2>";
+                $errorMessage .= "Could not look up your user information to compare online to database records. " . $errorObject[0]->message;
 
                 echo "<div class='errorMessage'>$errorMessage</div>";
-
-                Helper::email_admin($errorMessage, $socialMediaAccount->screen_name);
 
                 break;
             }
@@ -397,13 +403,13 @@ class AutomationController extends Controller
 
             if (isset($directMessagesAPI->errors)) {
 
+				$errorCount++;
                 $errorObject = $directMessagesAPI->errors;
                 $error = $errorObject[0]->code;
-                $errorMessage = "Direct message request needs to refresh. " . $errorObject[0]->message;
+                $errorMessage .= "<h2>Error $errorCount</h2>";
+                $errorMessage .= "Direct message request needs to refresh. " . $errorObject[0]->message;
 
                 echo "<div class='errorMessage'>$errorMessage</div>";
-
-                Helper::email_admin($errorMessage, $socialMediaAccount->screen_name);
 
                 break;
 
@@ -545,13 +551,16 @@ class AutomationController extends Controller
 
                     if (isset($follow->errors)) {
 
+						$errorCount++;
                         $errorObject = $follow->errors;
                         $error = $errorObject[0]->code;
-                        $errorMessage = "Friendship creator to needs to refresh. " . $errorObject[0]->message;
+                        
+                        $errorMessage .= "<h2>Error $errorCount</h2>";
+                        $errorMessage .= "Friendship creator to needs to refresh. " . $errorObject[0]->message;
 
                         echo "<div class='errorMessage'>$errorMessage</div>";
 
-                        Helper::email_admin($errorMessage, $socialMediaAccount->screen_name);
+                        
 
                         break;
 
@@ -596,13 +605,16 @@ class AutomationController extends Controller
 
                     if (isset($follow->errors)) {
 
+						$errorCount++;
                         $errorObject = $follow->errors;
                         $error = $errorObject[0]->code;
-                        $errorMessage = "Friendship creator to needs to refresh. " . $errorObject[0]->message;
+                        
+                        $errorMessage .= "<h2>Error $errorCount</h2>";
+                        $errorMessage .= "Friendship creator to needs to refresh. " . $errorObject[0]->message;
 
                         echo "<div class='errorMessage'>$errorMessage</div>";
 
-                        Helper::email_admin($errorMessage, $socialMediaAccount->screen_name);
+                        
 
                         break;
 
@@ -647,14 +659,17 @@ class AutomationController extends Controller
                 $followers = $connection->get("$searchFollowersAPI");
 
                 if (isset($followers->errors)) {
-
+					
+					$errorCount++;
                     $errorObject = $followers->errors;
                     $error = $errorObject[0]->code;
-                    $errorMessage = "Model account follower lookup to needs to refresh. " . $errorObject[0]->message;
+                    
+                    $errorMessage .= "<h2>Error $errorCount</h2>";
+                    $errorMessage .= "Model account follower lookup to needs to refresh. " . $errorObject[0]->message;
 
                     echo "<div class='errorMessage'>$errorMessage</div>";
 
-                    Helper::email_admin($errorMessage, $socialMediaAccount->screen_name);
+                    
 
                     break;
 
@@ -695,9 +710,11 @@ class AutomationController extends Controller
 					$modelAccount->save();
 					
 					if ($modelAccount->api_cursor == 0) {
-		                $errorMessage = "Model Account API cursor equals 0.<br>";
+						$errorCount++;
+						$errorMessage .= "<h2>Error $errorCount</h2>";
+		                $errorMessage .= "Model Account API cursor equals 0.<br>";
 		                $errorMessage .= "Out of a list of 5000, $i were added to temp_target_users table.<br>";
-		                Helper::email_admin($errorMessage, $socialMediaAccount->screen_name);
+		                
 		            }
 				}
                 
@@ -716,7 +733,12 @@ class AutomationController extends Controller
             echo '<hr>';
             $now = Carbon::now('America/Denver');
             echo "<br>$now";
-//             die();
+            
+            if ($errorCount > 0) {
+	            Helper::email_admin($errorMessage, $errorCount, "AutomationController", $socialMediaAccount->screen_name);
+            }
+            
+            
          } // main foreach that goes through $socialMediaAccounts
 
 

@@ -61,6 +61,8 @@ class FilterController extends Controller
 
             foreach($tempAccounts as $tempAccount) {
 
+				$errorMessage = "";
+				$errorCount = 0;
                 $temp_account_id = (int)$tempAccount->account_id;
 
                 if ($tempAccount->account_id == '1895920429') {
@@ -82,14 +84,20 @@ class FilterController extends Controller
 
                     $errorObject = $userInvestigation_json->errors;
                     $ErrorCode = $errorObject[0]->code;
-                    $errorMessage = "Could not research potential user for filtration. " . $errorObject[0]->message;
+                    $errorCount++;
+					$errorMessage .= "<h2>Error $errorCount</h2>";
+                    $errorMessage .= "Could not research $temp_account_id for filtration. Error Code: $ErrorCode - " . $errorObject[0]->message;
 
                     echo "<div class='errorMessage'>$errorMessage</div>";
 
-                    Helper::email_admin($errorMessage, $socialMediaAccount->screen_name);
-
-                    break;
-
+					if ($ErrorCode == 17) {
+						$errorMessage .= "<br>CONTINUE";
+						continue;
+					} else {
+						$errorMessage .= "<br>BREAK";
+						break;
+					}
+						
                 } else {
 
                     $userInvestigation = $userInvestigation_json[0];
@@ -171,12 +179,13 @@ class FilterController extends Controller
 		            $target->delete();
 		            echo " - DELETED.";
                 }
-                
 
                 $iteration++;
             }
         
-        
+			if ($errorCount > 0) {
+	            Helper::email_admin($errorMessage, $errorCount, "FilterController", $socialMediaAccount->screen_name);
+            }
         
         } // foreach of socialMediaAccounts
     }

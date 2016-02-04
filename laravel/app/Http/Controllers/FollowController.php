@@ -24,13 +24,14 @@ class FollowController extends Controller
      */
     public function index()
     {
-        $socialMediaAccounts = SocialMediaAccount::get()->all();
-
-		$message = "Beginning follow!";
-		Helper::email_user($message, 1);		
+        $socialMediaAccounts = SocialMediaAccount::get()->all();	
 
         foreach($socialMediaAccounts as $socialMediaAccount) {
 
+
+			$errorMessage = "";
+			$errorCount = 0;
+			
             echo "<h2>$socialMediaAccount->screen_name</h2>";
 
 			if ($socialMediaAccount->id == 4) {
@@ -68,11 +69,11 @@ class FollowController extends Controller
 
                         $errorObject = $follow->errors;
                         $error = $errorObject[0]->code;
-                        $errorMessage = "Friendship creator to needs to refresh. " . $errorObject[0]->message;
+                        $errorCount++;
+						$errorMessage .= "<h2>Error $errorCount</h2>";
+                        $errorMessage .= "Friendship creator to needs to refresh. " . $errorObject[0]->message;
 
                         echo "<div class='errorMessage'>$errorMessage</div>";
-
-                        Helper::email_admin($errorMessage, $socialMediaAccount->screen_name);
 
                         continue;
 
@@ -101,6 +102,9 @@ class FollowController extends Controller
             $message = "$i friendships created for $socialMediaAccount->screen_name!";
             Helper::email_user($message, $socialMediaAccount->user_id);
             
+            if ($errorCount > 0) {
+	            Helper::email_admin($errorMessage, $errorCount, "FollowController", $socialMediaAccount->screen_name);
+            }
         }
 
     }

@@ -25,13 +25,12 @@ class UnfollowController extends Controller
 	    
 	    $oneWeekOld = Carbon::today('America/Denver')->subweek();
 	    
-		$message = "Beginning unfollow!";
-		Helper::email_user($message, 1);
-	    
         $socialMediaAccounts = SocialMediaAccount::get()->all();
 
         foreach($socialMediaAccounts as $socialMediaAccount) {
 
+			$errorMessage = "";
+			$errorCount = 0;
 			$i = 1;
 
             echo "<h2>$socialMediaAccount->screen_name</h2>";
@@ -82,11 +81,11 @@ class UnfollowController extends Controller
 
                         $errorObject = $destroyFriendship->errors;
                         $error = $errorObject[0]->code;
-                        $errorMessage = "Friend destroyer to needs to refresh. " . $errorObject[0]->message;
+                        $errorCount++;
+						$errorMessage .= "<h2>Error $errorCount</h2>";
+                        $errorMessage .= "Friend destroyer to needs to refresh. " . $errorObject[0]->message;
 
                         echo "<div class='errorMessage'>$errorMessage</div>";
-
-                        Helper::email_admin($errorMessage, $socialMediaAccount->screen_name);
 
                         continue;
 
@@ -115,6 +114,10 @@ class UnfollowController extends Controller
             $message = "$i friendships destroyed for $socialMediaAccount->screen_name.";
             
             Helper::email_user($message, $socialMediaAccount->user_id);
+            
+            if ($errorCount > 0) {
+	            Helper::email_admin($errorMessage, $errorCount, "UnfollowController", $socialMediaAccount->screen_name);
+            }
             
         }
     }
