@@ -22,7 +22,7 @@ class Helper {
 	public static function email_admin($errorMessage, $errorCount, $controller, $screen_name) {
 		
 		$time = Carbon::now('America/Denver');
-		$applicationName = "Scavenger";
+		$name = "Scavenger Error";
 		$applicationEmail = "grayson@gator3029.hostgator.com";
 		$adminEmail = "web@graysonerhard.com";
 
@@ -55,7 +55,8 @@ class Helper {
 	public static function email_user($data, $userID) {
 		
 		$time = Carbon::now('America/Denver');
-		$email = "grayson@gator3029.hostgator.com";
+		$name = "Scavenger Update";
+		$applicationEmail = "grayson@gator3029.hostgator.com";
 
 		$user = User::findOrFail($userID);
 
@@ -63,7 +64,7 @@ class Helper {
 		$headers  = 'MIME-Version: 1.0' . "\r\n";
 		$headers .= 'Content-type: text/html; charset=iso-8859-1' . "\r\n";
 		$headers .= "To: $user->first_name $user->last_name" . "\r\n";
-		$headers .= 'From: Scavenger <grayson@gator3029.hostgator.com>' . "\r\n";
+		$headers .= "From: $name <$applicationEmail>" . "\r\n";
 
 		// The message
 		$message = "<html><head><title>Scavenger</title></head><body>";

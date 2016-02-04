@@ -37,17 +37,10 @@ class AutomationController extends Controller
 
 			$errorCount = 0;
 			$errorMessage = "";
-/*
-			if (($socialMediaAccount->id == 3) || ($socialMediaAccount->id == 4) || ($socialMediaAccount->id == 5)){
-				continue;
-			}
-*/
 
-// 			$socialMediaAccount = SocialMediaAccount::findOrFail(4);
+ 			$socialMediaAccount = SocialMediaAccount::findOrFail(7);
 
-			if ($socialMediaAccount->id == 4) {
-				continue;
-			}
+
 
             $api_requests = 15;
 
@@ -567,6 +560,13 @@ class AutomationController extends Controller
 
                     } else {
 	                	echo " and followed!";
+	                	
+	                	TargetUser::where('social_media_account_id', $socialMediaAccount->id)
+                            ->where('account_id', $id)
+                            ->get()
+                            ->first()
+                            ->delete();
+	                	
 	                }
                     
 				}
@@ -602,7 +602,7 @@ class AutomationController extends Controller
                     
                     
                     
-                    $follow = $connection->post("https://api.twitter.com/1.1/friendships/create.json?user_id=$id->account_id&follow=true");
+                    $follow = $connection->post("https://api.twitter.com/1.1/friendships/create.json?user_id=$id&follow=true");
 
                     if (isset($follow->errors)) {
 
@@ -621,6 +621,13 @@ class AutomationController extends Controller
 
                     } else {
 	                	echo " and followed!";
+	                	
+	                	TargetUser::where('social_media_account_id', $socialMediaAccount->id)
+                            ->where('account_id', $id)
+                            ->get()
+                            ->first()
+                            ->delete();
+	                	
 	                }
                     
 				}
@@ -653,9 +660,11 @@ class AutomationController extends Controller
 
             if (!is_null($modelAccount)) {
 				
+				$cursor = (int)$modelAccount->api_cursor;
+				
 				echo "<h2>@". $modelAccount->screen_name . "'s ONLINE FOLLOWERS</h2><br>";
 
-                $searchFollowersAPI = "https://api.twitter.com/1.1/followers/ids.json?cursor=$modelAccount->api_cursor&screen_name=$modelAccount->screen_name&count=5000";
+                $searchFollowersAPI = "https://api.twitter.com/1.1/followers/ids.json?cursor=$cursor&screen_name=$modelAccount->screen_name&count=5000";
 				
                 $followers = $connection->get("$searchFollowersAPI");
 
@@ -669,8 +678,6 @@ class AutomationController extends Controller
                     $errorMessage .= "Model account follower lookup to needs to refresh. " . $errorObject[0]->message;
 
                     echo "<div class='errorMessage'>$errorMessage</div>";
-
-                    
 
                     break;
 
@@ -700,9 +707,8 @@ class AutomationController extends Controller
 						}
 							
 					}
-
-					if (isset($modelAccount)) {
 					
+					if (count($modelFollowers) > 0) {
 						$modelAccount->api_cursor = $followers->next_cursor;
 						$modelAccount->save();
 						
@@ -714,6 +720,7 @@ class AutomationController extends Controller
 			                
 			            }
 					}
+					
 					
 					echo "<br><br><strong>Next Cursor: </strong>$followers->next_cursor";
 

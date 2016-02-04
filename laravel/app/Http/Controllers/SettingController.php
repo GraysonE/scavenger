@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Scavenger\Http\Requests;
 use Scavenger\Http\Controllers\Controller;
 use Scavenger\User;
+use Scavenger\ModelAccount;
 use Auth;
 
 class SettingController extends Controller
@@ -20,7 +21,19 @@ class SettingController extends Controller
 	    
 	    $currentUser = Auth::user();
 	    
-        return view('settings.index', compact('currentUser')); 
+	    $modelAccount = ModelAccount::where('social_media_account_id', 3)
+                ->where('api_cursor', '!=', 0)
+                ->where('sort_order', 1)
+                ->get()
+                ->first();
+                
+        echo (int)$modelAccount->api_cursor;
+        
+        if ((int)$modelAccount->api_cursor === 2147483647) {
+	        echo 'true';
+        }
+	    
+//         return view('settings.index', compact('currentUser')); 
     }
 
     /**

@@ -53,7 +53,7 @@ class FilterController extends Controller
 			// TODO: LOAD ONLY 180 ACCOUNTS
             $tempAccounts = TargetUser::where('social_media_account_id', $socialMediaAccount->id)
             	->where('to_follow', 0)
-            	->take(180)
+            	->take(179)
                 ->get();
 
             foreach($tempAccounts as $tempAccount) {
