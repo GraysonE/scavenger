@@ -45,7 +45,9 @@ class FollowController extends Controller
                 $socialMediaAccount->access_token,
                 $socialMediaAccount->access_token_secret);
 
-            $targetUsers = TargetUser::where('social_media_account_id', $socialMediaAccount->id)->get();
+            $targetUsers = TargetUser::where('social_media_account_id', $socialMediaAccount->id)
+            	->where('to_follow', 1)
+            	->get();
 
 			$limit = 142;
 			$i=1;

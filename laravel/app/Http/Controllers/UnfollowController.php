@@ -59,7 +59,7 @@ class UnfollowController extends Controller
 				$oldFriends_ids[] = $account_id['account_id'];
 			}
 
-			$limit = 142;
+			$limit = 141;
 
             if (is_null($oldFriends_ids)) {
 	            
