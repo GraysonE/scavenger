@@ -30,7 +30,7 @@ class Helper {
 		$headers  = 'MIME-Version: 1.0' . "\r\n";
 		$headers .= 'Content-type: text/html; charset=iso-8859-1' . "\r\n";
 		$headers .= "To: Grayson Erhard" . "\r\n";
-		$headers .= "From: $applicationName <$applicationEmail>" . "\r\n";
+		$headers .= "From: $name <$applicationEmail>" . "\r\n";
 
 		// The message
 		$message = "<html><head><title>Scavenger</title></head><body>";

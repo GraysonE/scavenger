@@ -98,7 +98,7 @@ class AccountController extends Controller
             $socialMediaUpdate = SocialMediaAccount::findOrFail($socialMedia_id);
 
             $this->validate($data, [
-                "account_type-$socialMedia_id" => 'required',
+//                 "account_type-$socialMedia_id" => 'required',
                 "screen_name-$socialMedia_id" => 'required'
             ]);
 

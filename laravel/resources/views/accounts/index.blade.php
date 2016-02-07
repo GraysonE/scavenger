@@ -6,12 +6,15 @@
 
     <div class="container-fluid container-fullw page-login">
 
+		@include('accounts.create')
+
         <form id="main-form" method="POST" action="{{ url('accounts') }}">
+	        @include('admin.publish')
             {!! csrf_field() !!}
-            <div class="panel col-lg-12">
+            <div class="panel col-lg-12" id="account_accordion">
                 @foreach($socialMediaAccounts as $sma)
-                    <div class="panel user_accounts" {{($sma->account_type == 'twitter') ? "style=background:#0084b4;" : ''}}>
-                        <h4><input type="text" {{($sma->account_type == 'twitter') ? "style=background:#0084b4;" : ''}} name="screen_name-{{$sma->id}}" value="{{$sma->screen_name}}" placeholder="Screen Name"/></h4>
+                        <h3 class="{{($sma->account_type == 'crunch') ? 'crunch_account' : 'twitter_account'}}"><input type="text" name="screen_name-{{$sma->id}}" value="{{$sma->screen_name}}" placeholder="Screen Name"/></h3>
+                    <div>
                         <br>
 <!--
                         <input name="account_id-{{$sma->id}}" value="{{$sma->account_id}}" placeholder="Account ID"/>
@@ -30,11 +33,11 @@
                     </div>
                 @endforeach
         	</div>
-            @include('admin.publish')
+            
         </form>
 
 
-        @include('accounts.create')
+        
 
     </div>
 @stop

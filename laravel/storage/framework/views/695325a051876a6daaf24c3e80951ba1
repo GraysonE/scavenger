@@ -94,7 +94,7 @@
     <script src="<?php echo asset('admin-files/vendor/mjolnic-bootstrap-colorpicker/dist/js/bootstrap-colorpicker.min.js'); ?>"></script>
     <script src="<?php echo asset('admin-files/vendor/bootstrap-datepicker/bootstrap-datepicker.min.js'); ?>"></script>
     <script src="<?php echo asset('admin-files/vendor/ckeditor/ckeditor.js'); ?>"></script>
-    <script src="<?php echo asset('admin-files/vendor/ckeditor/adapters/jquery.js'); ?>"></script>
+<!--     <script src="<?php echo asset('admin-files/vendor/ckeditor/adapters/jquery.js'); ?>"></script> -->
     <script src="<?php echo asset('admin-files/assets/js/main.js'); ?>"></script>	
     <script src="<?php echo asset('admin-files/assets/js/stx.js'); ?>"></script>
     <script src="<?php echo asset('admin-files/assets/js/grayson.js'); ?>"></script>

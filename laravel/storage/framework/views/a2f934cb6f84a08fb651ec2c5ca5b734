@@ -4,13 +4,16 @@
 
     <div class="container-fluid container-fullw page-login">
 
+		<?php echo $__env->make('accounts.create', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+
         <form id="main-form" method="POST" action="<?php echo e(url('accounts')); ?>">
+	        <?php echo $__env->make('admin.publish', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
             <?php echo csrf_field(); ?>
 
-            <div class="panel col-lg-12">
+            <div class="panel col-lg-12" id="account_accordion">
                 <?php foreach($socialMediaAccounts as $sma): ?>
-                    <div class="panel user_accounts" <?php echo e(($sma->account_type == 'twitter') ? "style=background:#0084b4;" : ''); ?>>
-                        <h4><input type="text" <?php echo e(($sma->account_type == 'twitter') ? "style=background:#0084b4;" : ''); ?> name="screen_name-<?php echo e($sma->id); ?>" value="<?php echo e($sma->screen_name); ?>" placeholder="Screen Name"/></h4>
+                        <h3 class="<?php echo e(($sma->account_type == 'crunch') ? 'crunch_account' : 'twitter_account'); ?>"><input type="text" name="screen_name-<?php echo e($sma->id); ?>" value="<?php echo e($sma->screen_name); ?>" placeholder="Screen Name"/></h3>
+                    <div>
                         <br>
 <!--
                         <input name="account_id-<?php echo e($sma->id); ?>" value="<?php echo e($sma->account_id); ?>" placeholder="Account ID"/>
@@ -29,11 +32,11 @@
                     </div>
                 <?php endforeach; ?>
         	</div>
-            <?php echo $__env->make('admin.publish', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+            
         </form>
 
 
-        <?php echo $__env->make('accounts.create', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+        
 
     </div>
 <?php $__env->stopSection(); ?>

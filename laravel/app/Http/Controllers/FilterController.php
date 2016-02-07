@@ -34,9 +34,11 @@ class FilterController extends Controller
 	            $socialMediaAccount->access_token,
 	            $socialMediaAccount->access_token_secret);
 
+/*
 			if ($socialMediaAccount->id == 4) {
 				continue;
 			}
+*/
         
         
 			/**
@@ -55,6 +57,18 @@ class FilterController extends Controller
             	->where('to_follow', 0)
             	->take(179)
                 ->get();
+                
+            
+                
+            $crunchAccount = false;
+                
+            if ($tempAccounts->isEmpty()) {
+	            $tempAccounts = TargetUser::where('to_follow', 0)
+            	->take(179)
+                ->get();
+                
+                $crunchAccount = true;
+            }
 
             foreach($tempAccounts as $tempAccount) {
 
@@ -81,12 +95,10 @@ class FilterController extends Controller
 
 					if ($ErrorCode == 17) {
 						$errorMessage .= "<br>CONTINUE";
-						$target = TargetUser::where('social_media_account_id', $socialMediaAccount->id)
-                            ->where('account_id', $temp_account_id)->get()->first();
-                
-				        $target->delete();
+						$target = TargetUser::where('account_id', $temp_account_id)->get()->first()->delete();
 						
 						continue;
+						
 					} else {
 						$errorMessage .= "<br>BREAK";
 						break;
@@ -129,13 +141,17 @@ class FilterController extends Controller
 
                                     if ($favoritesCount > 50) {
 
-                                       if ($friendsCount >= ($followersCount - 50)) { // MORE PEOPLE FOLLOWING THAN FOLLOWING THEM
+//                                        if ($friendsCount >= ($followersCount - 50)) { // MORE PEOPLE FOLLOWING THAN FOLLOWING THEM
 
                                                 echo "<br>Target id: $temp_account_id";
                                                 
-                                                $target = TargetUser::where('social_media_account_id', $socialMediaAccount->id)
+                                                if ($crunchAccount) {
+	                                                $target = TargetUser::where('account_id', $temp_account_id)->get()->first();
+                                                } else {
+	                                                $target = TargetUser::where('social_media_account_id', $socialMediaAccount->id)
                                                 			->where('account_id', $temp_account_id)->get()->first();
-                                                			
+                                                }
+                                                
                                                 $target->screen_name = $requestScreenName;
                                                 $target->whitelist = 0;
                                                 $target->to_follow = 1;
@@ -143,29 +159,35 @@ class FilterController extends Controller
 
                                                 echo " - $requestScreenName - <strong>FLAGGED!!!</strong>";
                                                 
+/*
                                         } else {
                                             echo " - Doesn't have more friends than followers.";
                                         }
+*/
                                     } else {
-                                        echo " - Only $favoritesCount favorites.";
+                                        echo " - Only $favoritesCount favorites";
                                     }
                                 } else {
-                                    echo " - Only $statuses_count statuses.";
+                                    echo " - Only $statuses_count statuses";
                                 }
                             } else {
-                                echo " - Hasn't made a status in the last month";
+                                echo " - Hasn't made a status in the last 48 hours";
                             }
                         } else {
                             echo " - Account created less than a month ago";
                         }
                     } else {
-                        echo " - Has never made a status.";
+                        echo " - Has never made a status";
                     }
 
                 }
                 
-                $target = TargetUser::where('social_media_account_id', $socialMediaAccount->id)
+                if ($crunchAccount) {
+                    $target = TargetUser::where('account_id', $temp_account_id)->get()->first();
+                } else {
+                    $target = TargetUser::where('social_media_account_id', $socialMediaAccount->id)
                             ->where('account_id', $temp_account_id)->get()->first();
+                }
                 
                 if (!$target->to_follow) {
 		            $target->delete();

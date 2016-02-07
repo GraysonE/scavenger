@@ -49,13 +49,15 @@ h3.screen_name {
 }
 
 #publishSideBar {
-	position: relative;
+	bottom: 0;
+	position: fixed;
 	width: 100%;
 }
 
 #publishSideBar button {
 	width: 100%;
-	margin-bottom: 100px;
+	float: right;
+	max-width: 150px;
 }
 
 #main-form {
@@ -66,6 +68,14 @@ h3.screen_name {
     float:left;
     width: 10%;
     height: auto;
+}
+
+.ui-state-active.twitter_account {
+	background: #0084b4 !important;
+}
+
+.ui-state-active.crunch_account {
+	background: green !important;
 }
 
 .main-content .page-login .user_accounts {
@@ -96,8 +106,22 @@ h3.screen_name {
 	border: 1px solid #222;
 }
 
-.user_accounts label {
-	color: white;
+label {
+	margin: 10px;
+}
+
+.ui-widget-content a {
+	float: right;
+}
+
+#account_accordion .twitter_account input[type="text"] {
+	color: #0084b4 !important;
+	border: none !important;
+}
+
+#account_accordion .crunch_account input[type="text"] {
+	color: green !important;
+	border: none !important;
 }
 
 .user_accounts input[type="checkbox"] {
@@ -136,6 +160,16 @@ input[value="Search Users"] {
 	.main-content .page-login .user_accounts {
 		float: left;
 		margin: 40px;
+	}
+	
+	#publishSideBar {
+		position: relative;
+	}
+	
+	#publishSideBar button {
+		width: 100%;
+		float: right;
+		max-width: 200px;
 	}
 	
 }

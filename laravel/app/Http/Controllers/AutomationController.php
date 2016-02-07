@@ -31,7 +31,7 @@ class AutomationController extends Controller
 
         $count = 5000;
 
-        $socialMediaAccounts = SocialMediaAccount::get()->all();
+        $socialMediaAccounts = SocialMediaAccount::where('account_type', 'twitter')->get()->all();
 
         foreach($socialMediaAccounts as $socialMediaAccount) {
 

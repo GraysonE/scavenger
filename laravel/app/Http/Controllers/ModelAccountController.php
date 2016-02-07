@@ -114,7 +114,7 @@ class ModelAccountController extends Controller
 			$errorMessage .= "<br><h4>Data Dump</h4>";
 			$errorMessage .= var_dump($connection);
 			
-			Helper::email_admin($errorMessage, $socialMediaAccount->screen_name);
+			Helper::email_admin($errorMessage, 1, "ModelAccountController", $socialMediaAccount->screen_name);
 			
 			
 			if ($http_code == '401') {
