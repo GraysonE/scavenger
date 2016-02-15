@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use Scavenger\Http\Requests;
 use Scavenger\Http\Controllers\Controller;
 use Scavenger\SocialMediaAccount;
+use Scavenger\User;
 use Auth;
 
 class AccountController extends Controller
@@ -24,9 +25,10 @@ class AccountController extends Controller
 		} else {
 			$socialMediaAccounts = SocialMediaAccount::where('user_id', Auth::user()->id)->get();
 		}
-
-        
-        $bladeVariables = compact('socialMediaAccounts');
+		
+		$currentAccount = User::where('id', Auth::user()->id)->get()->first()->username;
+		
+        $bladeVariables = compact('socialMediaAccounts', 'currentAccount');
         return view('accounts.index')->with($bladeVariables);
     }
 
@@ -108,7 +110,7 @@ class AccountController extends Controller
             $socialMediaUpdate->auto_follow = $data["auto_follow-$socialMedia_id"];
             $socialMediaUpdate->auto_unfollow = $data["auto_unfollow-$socialMedia_id"];
             $socialMediaUpdate->auto_whitelist = $data["auto_whitelist-$socialMedia_id"];
-            $socialMediaUpdate->user_id = Auth::user()->id;
+//             $socialMediaUpdate->user_id = Auth::user()->id;
             $socialMediaUpdate->save();
         }
 

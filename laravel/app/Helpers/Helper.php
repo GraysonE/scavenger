@@ -4,20 +4,6 @@ use Carbon\Carbon;
 use Scavenger\User;
 
 class Helper {
-	
-	public static function movieTitle($data) 
-    {
-		
-	    $separator = "-";
-		$ignore_words = ''; //add any words to ignore from the movie title, e.g. 'a, an, as, at, the'
-		$ignore_words_regex = preg_replace(array('/^[,\s]+|[,\s]+$/', '/[,\s]+/'), array('', '\b|\b'), $ignore_words);
-		
-		$movieDir = strtolower(trim($data));
-		$movieDir = preg_replace('/'.$ignore_words_regex.'/i', '', $movieDir);
-		$movieDir = preg_replace(array('/[^a-z0-9-\s]+/', '/[\s]+/'), '', $movieDir);
-		return $movieDir;  
-	    
-	}
 
 	public static function email_admin($errorMessage, $errorCount, $controller, $screen_name) {
 		

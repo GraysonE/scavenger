@@ -24,7 +24,10 @@ class FollowController extends Controller
      */
     public function index()
     {
-        $socialMediaAccounts = SocialMediaAccount::get()->all();	
+        $socialMediaAccounts = SocialMediaAccount::where('account_type', 'twitter')
+	        ->where('auto-follow', 1)
+	        ->get()
+	        ->all();	
 
         foreach($socialMediaAccounts as $socialMediaAccount) {
 
@@ -34,10 +37,12 @@ class FollowController extends Controller
 			
             echo "<h2>$socialMediaAccount->screen_name</h2>";
 
+/*
 			if ($socialMediaAccount->id == 4) {
 	            echo "<h3>SKIPPED!</h3>";
 				continue;
 			}
+*/
 
             $connection = new TwitterOAuth(
                 $socialMediaAccount->consumer_key,
@@ -100,6 +105,9 @@ class FollowController extends Controller
                     $i++;
                 }
             }
+            
+            $i--; // Accurate amount of friendships
+            
             
             $message = "$i friendships created for $socialMediaAccount->screen_name!";
             Helper::email_user($message, $socialMediaAccount->user_id);

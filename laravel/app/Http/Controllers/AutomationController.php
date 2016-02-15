@@ -32,13 +32,13 @@ class AutomationController extends Controller
         $count = 5000;
 
         $socialMediaAccounts = SocialMediaAccount::where('account_type', 'twitter')->get()->all();
-
+		
         foreach($socialMediaAccounts as $socialMediaAccount) {
 
 			$errorCount = 0;
 			$errorMessage = "";
 
- 			$socialMediaAccount = SocialMediaAccount::findOrFail(7);
+//  			$socialMediaAccount = SocialMediaAccount::findOrFail(7);
 
 
 
@@ -107,8 +107,8 @@ class AutomationController extends Controller
 			// PROCESS THEM INTO AN ARRAY
 			$oldFriends_ids = array();
 			foreach($oldFriends as $account_id) {
-				$oldFriends_ids[$i] = $account_id['account_id'];
-				$i++;
+				$oldFriends_ids[] = $account_id['account_id'];
+				
 			}
 	
 	
@@ -147,9 +147,7 @@ class AutomationController extends Controller
 					// ADD ONLINE FRIENDS INTO ARRAY
                     foreach ($friends->ids as $friend) {
                         
-                        $onlineFriends_ids[$i] = $friend;
-
-                        $i++;
+                        $onlineFriends_ids[] = $friend;
                     }
 
                 }
@@ -197,7 +195,7 @@ class AutomationController extends Controller
 			} else {
 				
 				foreach($onlineFriends_ids as $friend_id) {
-					
+					// IF THIS IS THE FIRST TIME YOU SIGN UP YOUR ACCOUNT, ADD EVERYONE
 					$newFriend = Friend::create([
                         'account_id' => $friend_id,
                         'social_media_account_id' => $socialMediaAccount->id
@@ -211,7 +209,7 @@ class AutomationController extends Controller
 
 
 
-            /** 1
+            /** 
              *
              *
              * Who is following me? / FOLLOWERS
@@ -231,8 +229,8 @@ class AutomationController extends Controller
 			$oldFollowers_ids = array();
 			
 			foreach($oldFollowers as $account_id) {
-				$oldFollowers_ids[$i] = $account_id['account_id'];
-				$i++;
+				$oldFollowers_ids[] = $account_id['account_id'];
+				
 			}
 			
 			$i=0;
@@ -255,7 +253,6 @@ class AutomationController extends Controller
 
                     echo "<div class='errorMessage'>$errorMessage</div>";
                     
-
                     break;
 
                 } else {
@@ -266,9 +263,7 @@ class AutomationController extends Controller
 
                     foreach ($followers->ids as $follower) {
                         
-                        $onlineFollowers_ids[$i] = $follower;
-
-                        $i++;
+                        $onlineFollowers_ids[] = $follower;
                     }
 
                 }
@@ -278,7 +273,6 @@ class AutomationController extends Controller
                 $api_requests--;
 
             } while ($cursor > 0);
-
 
 			if (isset($oldFollowers_ids)) {
 				
@@ -305,7 +299,7 @@ class AutomationController extends Controller
 						->get()->first();
 					
 					if (isset($followerToDelete)) {
-						$followerToDelete->delete();   
+						Follower::findOrFail($followerToDelete['id'])->delete();
 					}
 					
 					                 
@@ -313,7 +307,7 @@ class AutomationController extends Controller
 
 
 			} else {
-				
+				// IF THIS IS THE FIRST TIME YOU SIGN UP YOUR ACCOUNT, ADD EVERYONE
 				foreach($onlineFollowers_ids as $follower_id) {
 					
 					$newFollower = Follower::create([
@@ -324,8 +318,6 @@ class AutomationController extends Controller
 				}
 				
 			}
-
-
 
 
 
@@ -383,16 +375,27 @@ class AutomationController extends Controller
              *
              *
              * AUTO-WHITELIST
+             * TODO: REMOVE SCREEN_NAME PROCESSING
              * 
              *
              *
              */
 
 
-            // FIND VALID DMs
+            // FIND VALID DMs SENT
             echo "<h2>VALID DMs</h2>";
             echo "<h4>API requests left: $api_requests</h4>";
             $directMessagesAPI = "https://api.twitter.com/1.1/direct_messages/sent.json?count=200";
+            
+            /** 
+             *
+             *
+             * TODO: SET FLAG THAT DROPS COUNT DOWN TO 50
+             * 
+             *
+             *
+             */
+            
             $directMessagesAPI = $connection->get("$directMessagesAPI");
 
             if (isset($directMessagesAPI->errors)) {
@@ -431,27 +434,39 @@ class AutomationController extends Controller
 
                 if ((!$containsGeneric) && (!$containsGeneric2) && (!$containsGeneric3)) {
 
+					/** 
+		             *
+		             *
+		             * TODO: IMPROVE WITH ARRAY DIFF
+		             * 
+		             *
+		             *
+		             */
+
                     if (!in_array($screenName, $dmArray_ScreenNames)) {
                         echo "$screenName was messaged: $text<br>";
                         $dmArray_ScreenNames[$i] = $screenName;
                     }
                     if (!in_array($userID, $dmArray_IDs)) {
-                        $dmArray_IDs[$i] = $userID;
-
-                        $i++;
+                        $dmArray_IDs[] = $userID;
                     }
                 }
 
 
             }
 
-            // CONTINUE WITH TWO ARRAYS FOR SCREEN_NAME AND IDS
-/*
-            echo "<h2>GOOD DM ARRAYS:</h2>";
-            print_r($dmArray_ScreenNames);
-            echo "<br>";
-            print_r($dmArray_IDs);
-*/
+
+
+
+			/** 
+             *
+             *
+             * TODO: FIND VALID DMs RECEIVED
+             * 
+             *
+             *
+             */
+
 
 
             // FIND VALID MENTIONS
@@ -483,14 +498,21 @@ class AutomationController extends Controller
 
                     if (!$genericFollow) {
 
+						/** 
+			             *
+			             *
+			             * TODO: IMPROVE WITH ARRAY DIFF
+			             * 
+			             *
+			             *
+			             */
+
                         echo "<br>$screenName mentioned: $fullMention";
                         if (!in_array($screenName, $goodMentionsArray_ScreenNames)) {
                             $goodMentionsArray_ScreenNames[$i] = $screenName;
                         }
                         if (!in_array($userID, $goodMentionsArray_IDs)) {
-                            $goodMentionsArray_IDs[$i] = $userID;
-
-                            $i++;
+                            $goodMentionsArray_IDs[] = $userID;
                         }
 
 
@@ -500,13 +522,7 @@ class AutomationController extends Controller
                 }
 
             }
-
-/*
-            echo "<h2>GOOD MENTIONS ARRAYS:</h2>";
-            print_r($goodMentionsArray_ScreenNames);
-            echo "<br>";
-            print_r($goodMentionsArray_IDs);
-*/
+            
             
 			
 			// GET ALL TARGET USERS AND PROCESS INTO ARRAY
@@ -519,71 +535,13 @@ class AutomationController extends Controller
 			}
 			
 			
-			// WHITELIST ACTIVE MENTIONS
-			if((isset($goodMentionsArray_IDs)) && (isset($targetUsers_ids))){
+			// WHITELIST ACTIVE MENTIONS and DMs
+			if((isset($goodMentionsArray_IDs)) && (isset($dmArray_IDs)) && (isset($targetUsers_ids))){
 				
-				// FIND WHITELISTED TARGET USERS THAT ARE NOT IN THE DATABASE AND ADD THEM
+				// FIND MENTIONS TARGET USERS THAT ARE NOT IN THE DATABASE AND ADD THEM
 				$targetUsersToAdd_ids = array_diff($goodMentionsArray_IDs, $targetUsers_ids);
 				
-				// FILTER OUT FRIENDS
-				$targetUsersToAdd_ids = array_diff($targetUsersToAdd_ids, $oldFriends_ids);
-				
-				foreach($targetUsersToAdd_ids as $id) {
-					
-					$newFriend = Friend::create([
-                        'account_id' => $id,
-                        'social_media_account_id' => $socialMediaAccount->id,
-                        'to_follow' => 1,
-                        'whitelist' => 1
-                    ]);
-                    
-                    echo "<br>Mention id: $id - Whitelisted";
-                    
-                    
-                    
-                    $follow = $connection->post("https://api.twitter.com/1.1/friendships/create.json?user_id=$id&follow=true");
-
-                    if (isset($follow->errors)) {
-
-						$errorCount++;
-                        $errorObject = $follow->errors;
-                        $error = $errorObject[0]->code;
-                        
-                        $errorMessage .= "<h2>Error $errorCount</h2>";
-                        $errorMessage .= "Friendship creator to needs to refresh. " . $errorObject[0]->message;
-
-                        echo "<div class='errorMessage'>$errorMessage</div>";
-
-                        
-
-                        break;
-
-                    } else {
-	                	echo " and followed!";
-	                	
-	                	TargetUser::where('social_media_account_id', $socialMediaAccount->id)
-                            ->where('account_id', $id)
-                            ->get()
-                            ->first()
-                            ->delete();
-	                	
-	                }
-                    
-				}
-				
-			} 
-			
-			
-
-
-
-
-            // WHITELIST DMs
-
-
-			if((isset($dmArray_IDs)) && (isset($targetUsers_ids))){
-				
-				// FIND WHITELISTED TARGET USERS THAT ARE NOT IN THE DATABASE AND ADD THEM
+				// FIND DMs THAT ARE NOT IN THE DATABASE AND ADD THEM
 				$targetUsersToAdd_ids = array_diff($dmArray_IDs, $targetUsers_ids);
 				
 				// FILTER OUT FRIENDS
@@ -598,7 +556,7 @@ class AutomationController extends Controller
                         'whitelist' => 1
                     ]);
                     
-                    echo "<br>DM id: $id - Whitelisted";
+                    echo "<br>$id - Whitelisted";
                     
                     
                     
@@ -615,24 +573,26 @@ class AutomationController extends Controller
 
                         echo "<div class='errorMessage'>$errorMessage</div>";
 
-                        
-
                         break;
 
                     } else {
 	                	echo " and followed!";
 	                	
-	                	TargetUser::where('social_media_account_id', $socialMediaAccount->id)
+	                	$target = TargetUser::where('social_media_account_id', $socialMediaAccount->id)
                             ->where('account_id', $id)
                             ->get()
-                            ->first()
-                            ->delete();
+                            ->first();
+                        if (isset($target)) {
+	                        TargetUser::findOrFail($target['id'])->delete();
+                        }
+                            
 	                	
 	                }
                     
 				}
 				
 			} 
+			
 
 
 
@@ -642,7 +602,7 @@ class AutomationController extends Controller
 			/** 
              *
              *
-             * GET MODEL ACCOUNTS'S FOLLOWERS, FILTER IF ALREADY FOLLOWING OR FRIEND, ADD TO TEMP TARGET USERS TABLE
+             * GET MODEL ACCOUNTS'S FOLLOWERS, FILTER IF ALREADY FOLLOWING OR FRIEND, ADD TO TARGET USERS TABLE
              *
              *
              */

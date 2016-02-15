@@ -10,6 +10,7 @@ use Scavenger\SocialMediaAccount;
 use Auth;
 use Scavenger\Twitter\TwitterOAuth;
 use Scavenger\ModelAccount;
+use Scavenger\User;
 use Scavenger\Helpers\Helper;
 
 class ModelAccountController extends Controller
@@ -21,13 +22,15 @@ class ModelAccountController extends Controller
      */
     public function index($id)
     {
+	    
+	    $currentAccount = User::where('id', Auth::user()->id)->get()->first()->username;
 
         if ($id != 'select' && 'search') {
 
             $socialMediaAccount = SocialMediaAccount::findOrFail($id);
             $modelAccounts = ModelAccount::where('social_media_account_id', $id)->orderBy('sort_order', 'ASC')->get();
 
-            $bladeVariables = compact('socialMediaAccount', 'modelAccounts');
+            $bladeVariables = compact('socialMediaAccount', 'modelAccounts', 'currentAccount');
 
             return view('set-user.search')->with($bladeVariables);
 
@@ -39,7 +42,7 @@ class ModelAccountController extends Controller
 				$socialMediaAccounts = SocialMediaAccount::where('user_id', Auth::user()->id)->get();
 			}
 
-            $bladeVariables = compact('socialMediaAccounts');
+            $bladeVariables = compact('socialMediaAccounts', 'currentAccount');
 
             return view('set-user.index')->with($bladeVariables);
         }

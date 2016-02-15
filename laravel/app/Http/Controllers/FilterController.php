@@ -44,7 +44,7 @@ class FilterController extends Controller
 			/**
              *
              *
-             * FILTER THE TEMP ACCOUNTS BASED ON USER LOOKUP
+             * FILTER THE TARGET ACCOUNTS BASED ON USER LOOKUP
              *
              */
 
@@ -95,7 +95,11 @@ class FilterController extends Controller
 
 					if ($ErrorCode == 17) {
 						$errorMessage .= "<br>CONTINUE";
-						$target = TargetUser::where('account_id', $temp_account_id)->get()->first()->delete();
+						$target = TargetUser::where('account_id', $temp_account_id)->get()->first();
+						if (isset($target)) {
+							TargetUser::findOrFail($target['id'])->delete();
+						}
+						
 						
 						continue;
 						
@@ -189,8 +193,8 @@ class FilterController extends Controller
                             ->where('account_id', $temp_account_id)->get()->first();
                 }
                 
-                if (!$target->to_follow) {
-		            $target->delete();
+                if (isset($target)) {
+					TargetUser::findOrFail($target['id'])->delete();
 		            echo " - DELETED.";
                 }
 

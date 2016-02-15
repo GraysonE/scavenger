@@ -23,9 +23,10 @@ class UnfollowController extends Controller
     public function index()
     {
 	    
-	    $oneWeekOld = Carbon::today('America/Denver')->subweek();
-	    
-        $socialMediaAccounts = SocialMediaAccount::get()->all();
+        $socialMediaAccounts = SocialMediaAccount::where('account_type', 'twitter')
+	        ->where('auto-unfollow', 1)
+	        ->get()
+	        ->all();
 
         foreach($socialMediaAccounts as $socialMediaAccount) {
 
@@ -48,10 +49,15 @@ class UnfollowController extends Controller
 
             $friends = Friend::where('social_media_account_id', $socialMediaAccount->id)
             	->where('whitelisted', 0)
-            	->where('created_at', '<=', $oneWeekOld)
+            	->where('created_at', '<=', Carbon::today('America/Denver')->subweek())
             	->select('account_id')
+            	->take(141)
             	->get()
             	->toArray();
+
+			// ->where('created_at', '<=', Carbon::today('America/Denver')->subweek())
+
+			
 
 			$oldFriends_ids = array();
 			
@@ -110,6 +116,8 @@ class UnfollowController extends Controller
                     $i++;
                 }
             }
+            
+            $i--; // Accurate amount of friendships
             
             $message = "$i friendships destroyed for $socialMediaAccount->screen_name.";
             
