@@ -1,57 +1,61 @@
 <!-- start: MAIN NAVIGATION MENU -->            
 <ul class="main-navigation-menu global">
-  <li class="active">
-    <a href="<?php echo e(url('/set-user/select')); ?>">
-      <div class="item-content">
-        <div class="item-inner">
-          <span class="title"> Set User </span>
-        </div>
-      </div>
-    </a>
-  </li>
   
-  <?php if(Auth::user()->id == 1): ?>
   
-  <li class="active">
-    <a href="<?php echo e(url('/accounts')); ?>">
-      <div class="item-content">
-        <div class="item-inner">
-          <span class="title"> Accounts </span>
-        </div>
-      </div>
-    </a>
-  </li>
+  <?php if(Auth::user() != NULL): ?>
+  	  <li class="active">
+	    <a href="<?php echo e(url('/set-user/select')); ?>">
+	      <div class="item-content">
+	        <div class="item-inner">
+	          <span class="title"> Set User </span>
+	        </div>
+	      </div>
+	    </a>
+	  </li>
   
-  <li class="active">
-    <a href="<?php echo e(url('/automate')); ?>">
-      <div class="item-content">
-        <div class="item-inner">
-          <span class="title"> Automate </span>
-        </div>
-      </div>
-    </a>
-  </li>
-  
-  <li class="active">
-    <a href="<?php echo e(url('/follow')); ?>">
-      <div class="item-content">
-        <div class="item-inner">
-          <span class="title"> Follow </span>
-        </div>
-      </div>
-    </a>
-  </li>
-  
-  <li class="active">
-    <a href="<?php echo e(url('/unfollow')); ?>">
-      <div class="item-content">
-        <div class="item-inner">
-          <span class="title"> Unfollow </span>
-        </div>
-      </div>
-    </a>
-  </li>
-  
+	  <?php if(Auth::user()->id == 1): ?>
+	  
+	  <li class="active">
+	    <a href="<?php echo e(url('/accounts')); ?>">
+	      <div class="item-content">
+	        <div class="item-inner">
+	          <span class="title"> Accounts </span>
+	        </div>
+	      </div>
+	    </a>
+	  </li>
+	  
+	  <li class="active">
+	    <a href="<?php echo e(url('/automate')); ?>">
+	      <div class="item-content">
+	        <div class="item-inner">
+	          <span class="title"> Automate </span>
+	        </div>
+	      </div>
+	    </a>
+	  </li>
+	  
+	  <li class="active">
+	    <a href="<?php echo e(url('/follow')); ?>">
+	      <div class="item-content">
+	        <div class="item-inner">
+	          <span class="title"> Follow </span>
+	        </div>
+	      </div>
+	    </a>
+	  </li>
+	  
+	  <li class="active">
+	    <a href="<?php echo e(url('/unfollow')); ?>">
+	      <div class="item-content">
+	        <div class="item-inner">
+	          <span class="title"> Unfollow </span>
+	        </div>
+	      </div>
+	    </a>
+	  </li>
+	  
+	  <?php endif; ?>
   <?php endif; ?>
 <!--
   <li class="active">

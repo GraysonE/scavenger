@@ -426,13 +426,16 @@ class AutomationController extends Controller
                 $genericString = "Hey, thanks so much for following";
                 $genericString2 = "Hey thanks so much for following";
                 $genericString3 = "Hey thank you so much for following";
+                $genericString4 = "Thank you so much for following";
+                $genericString5 = "Thanks for following";
+                $genericString6 = "Thank you for following";
                 $containsGeneric = preg_match("/^$genericString/", $text);
                 $containsGeneric2 = preg_match("/^$genericString2/", $text);
                 $containsGeneric3 = preg_match("/^$genericString3/", $text);
                 //echo $containsGeneric;
 
 
-                if ((!$containsGeneric) && (!$containsGeneric2) && (!$containsGeneric3)) {
+                if ((!$containsGeneric) && (!$containsGeneric2) && (!$containsGeneric3) && (!$containsGeneric4) && (!$containsGeneric5) && (!$containsGeneric6)) {
 
 					/** 
 		             *

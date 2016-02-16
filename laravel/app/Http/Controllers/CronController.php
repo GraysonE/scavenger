@@ -58,12 +58,15 @@ class CronController extends Controller
 
 			if ($minute == 0) {
 				
+				echo '<br>Minute 0 Automation';
+				
 				$automate = new AutomationController();
 				$automate->index();
 				
 			} elseif (($minute == 15) || ($minute == 30) || ($minute == 45)) {
 				
 				sleep(120);
+				echo '<br>Minute 15/30/45 Filter';
 				$filter = new FilterController();
 				$filter->index();
 				
@@ -74,6 +77,7 @@ class CronController extends Controller
 	        if ($minute % 15 == 0) {
 	        
 	        	sleep(120);
+	        	echo '<br>Minute 0/15/30/45 Automation';
 		        $filter = new FilterController();
 				$filter->index();
 			
@@ -88,7 +92,7 @@ class CronController extends Controller
 			if ($hour == 12) {
 				
 				if ($minute % 15 == 0) {
-				
+					echo '<br>Minute 15/30/45 Follow';
 					$follow = new FollowController();
 					$follow->index();
 				
@@ -101,7 +105,7 @@ class CronController extends Controller
 			if ($hour == 12) {
 				
 				if ($minute % 15 == 0) {
-				
+					echo '<br>Minute 15/30/45 Unfollow';
 					$unfollow = new UnfollowController();
 					$unfollow->index();
 				
