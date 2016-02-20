@@ -21,7 +21,7 @@ class AccountController extends Controller
     {
 
 		if (Auth::user()->id == 1) {
-			$socialMediaAccounts = SocialMediaAccount::get();
+			$socialMediaAccounts = SocialMediaAccount::orderBy('account_type', "DESC")->get();
 		} else {
 			$socialMediaAccounts = SocialMediaAccount::where('user_id', Auth::user()->id)->get();
 		}

@@ -423,34 +423,20 @@ class AutomationController extends Controller
                 $userID = $dm->recipient->id;
                 $screenName = $dm->recipient->screen_name;
                 $text = $dm->text;
-                $genericString = "Hey, thanks so much for following";
-                $genericString2 = "Hey thanks so much for following";
-                $genericString3 = "Hey thank you so much for following";
-                $genericString4 = "Thank you so much for following";
-                $genericString5 = "Thanks for following";
-                $genericString6 = "Thank you for following";
-                $containsGeneric = preg_match("/^$genericString/", $text);
-                $containsGeneric2 = preg_match("/^$genericString2/", $text);
-                $containsGeneric3 = preg_match("/^$genericString3/", $text);
+                $containsGeneric = preg_match("/^Hey, thanks so much for following/", $text);
+                $containsGeneric2 = preg_match("/^Hey thanks so much for following/", $text);
+                $containsGeneric3 = preg_match("/^Hey thank you so much for following/", $text);
+                $containsGeneric4 = preg_match("/^Thank you so much for following/", $text);
+                $containsGeneric5 = preg_match("/^Thanks for following/", $text);
+                $containsGeneric6 = preg_match("/^Thank you for following/", $text);
+                
                 //echo $containsGeneric;
 
 
                 if ((!$containsGeneric) && (!$containsGeneric2) && (!$containsGeneric3) && (!$containsGeneric4) && (!$containsGeneric5) && (!$containsGeneric6)) {
 
-					/** 
-		             *
-		             *
-		             * TODO: IMPROVE WITH ARRAY DIFF
-		             * 
-		             *
-		             *
-		             */
-
-                    if (!in_array($screenName, $dmArray_ScreenNames)) {
-                        echo "$screenName was messaged: $text<br>";
-                        $dmArray_ScreenNames[$i] = $screenName;
-                    }
                     if (!in_array($userID, $dmArray_IDs)) {
+	                    echo "$screenName was messaged: $text<br>";
                         $dmArray_IDs[] = $userID;
                     }
                 }
@@ -500,21 +486,9 @@ class AutomationController extends Controller
                 if ($atSymbol == $lastAtSymbol) {
 
                     if (!$genericFollow) {
-
-						/** 
-			             *
-			             *
-			             * TODO: IMPROVE WITH ARRAY DIFF
-			             * 
-			             *
-			             *
-			             */
-
-                        echo "<br>$screenName mentioned: $fullMention";
-                        if (!in_array($screenName, $goodMentionsArray_ScreenNames)) {
-                            $goodMentionsArray_ScreenNames[$i] = $screenName;
-                        }
+	                    
                         if (!in_array($userID, $goodMentionsArray_IDs)) {
+	                        echo "<br>$screenName mentioned: $fullMention";
                             $goodMentionsArray_IDs[] = $userID;
                         }
 
@@ -541,7 +515,8 @@ class AutomationController extends Controller
 			// WHITELIST ACTIVE MENTIONS and DMs
 			if((isset($goodMentionsArray_IDs)) && (isset($dmArray_IDs)) && (isset($targetUsers_ids))){
 				
-				// FIND MENTIONS TARGET USERS THAT ARE NOT IN THE DATABASE AND ADD THEM
+				
+				// FIND MENTIONS TARGET USERS THAT ARE NOT IN THE DATABASE
 				$targetUsersToAdd_ids = array_diff($goodMentionsArray_IDs, $targetUsers_ids);
 				
 				// FIND DMs THAT ARE NOT IN THE DATABASE AND ADD THEM
