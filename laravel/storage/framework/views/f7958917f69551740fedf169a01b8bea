@@ -1,0 +1,202 @@
+<?php $__env->startSection('content'); ?>
+
+<?php echo $__env->make('movies.title', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+
+<!-- TICKETING SECTION -->
+<div class="container-fluid container-fullw block-ticketing">
+
+  <div class="row page-description">
+    <div class="col-sm-8 col-lg-9">
+      <p class="main-description">Choose either a POWSTER URL or simple widget below for the GET TICKETS buttons.</p>
+    </div>
+
+    <?php if(Auth::user() && $editMovie): ?>
+    <?php echo $__env->make('admin.publish', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+    <?php endif; ?>
+
+  </div>
+
+
+  <div class="row">
+    <div class="col-sm-12">
+
+
+
+
+      <!-- GET TICKETS PANEL -->
+      <div class="panel panel-white panel-gettickets">
+
+        <div class="panel-body">
+          <form id="main-form" method="post" action="<?php echo e(url('/admin/movies/'.$movie->id.'/edit/sections/'.$currentSection->id.'/tickets')); ?>">
+            <?php echo e(csrf_field()); ?>
+
+            <!-- POWSTER -->
+            <div class="row powster">
+
+              <?php if(!$tickets->isEmpty()): ?>
+              <?php foreach($tickets as $ticket): ?>
+              <?php if(($ticket->provider == 'powster') && ($ticket->on)): ?>
+              	<div class="col-xs-1 toggle toggle-on" id="powster"><div>ON</div></div>
+              <?php elseif(($ticket->provider == 'powster') && (!$ticket->on)): ?>
+              	<div class="col-xs-1 toggle toggle-off" id="powster"><div>OFF</div></div>
+              <?php endif; ?>
+              <?php endforeach; ?>
+              <?php else: ?>
+              	<div class="col-xs-1 toggle toggle-off" id="powster"><div>OFF</div></div>
+              <?php endif; ?>
+
+              <div class="col-xs-11 content">
+
+                <div class="row vertical-align-middle">
+                  <div class="col-xs-10 form-group form-inline">
+                    <label for="powster">Powster</label>
+
+
+
+                    <?php if(!$tickets->isEmpty()): ?>
+
+                    <?php foreach($tickets as $ticket): ?>
+                    <?php if($ticket->provider == 'powster'): ?>
+	                    <input type="text" name="powster_url" placeholder="Enter URL" class="form-control" value="<?php echo e($ticket->value); ?>">
+	                    <input type="hidden" name="powster_id" value="<?php echo e($ticket->id); ?>">
+	                    <input type="hidden" name="powster_display" value="<?php echo e($ticket->on); ?>">
+
+                    <?php endif; ?>
+                    <?php endforeach; ?>
+                    <?php else: ?> 
+	                    <input type="text" name="powster_url" placeholder="Enter URL" class="form-control">
+	                    <input type="hidden" name="powster_display" value="1">
+                    <?php endif; ?>
+
+                  </div>
+                  <div class="col-xs-2 form-group">
+                    <div class="powster">
+                      <!--a href="#"><i class="ti-pencil-alt icon-actions-clear pull-left"></i></a-->
+                      <!--a href="#"><i class="fa fa-minus icon-actions pull-left"></i></a-->
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+
+            <!-- SIMPLE TICKET WIDGETS -->
+            <div class="row simple">
+
+              <?php if(!$tickets->isEmpty()): ?>
+              <?php foreach($tickets as $ticket): ?>
+              <?php if(($ticket->provider == 'fandango') || ($ticket->provider == 'movietickets')): ?>
+              <?php if($ticket->on): ?>
+              <div class="col-xs-1 toggle toggle-on" id="simple"><div>ON</div></div>
+              <?php break; ?>
+              <?php else: ?>
+              <div class="col-xs-1 toggle toggle-off" id="simple"><div>OFF</div></div>
+              <?php break; ?>
+              <?php endif; ?>
+              <?php endif; ?>
+              <?php endforeach; ?>
+              <?php else: ?>
+              <div class="col-xs-1 toggle toggle-off" id="simple"><div>OFF</div></div>
+              <?php endif; ?>
+
+              <div class="col-xs-11 content">
+
+                <h4>Simple Ticket Widget</h4>
+
+                <div class="row">
+                  <div class="col-xs-0 col-sm-1 form-group"></div>
+                  <div class="col-xs-10 col-sm-9 form-group form-inline">
+                    <label for="fandango_id"><img src="<?php echo e(asset('/admin-files/assets/images/logo-fandango.png')); ?>"/></label>
+
+                    <?php if(!$tickets->isEmpty()): ?>
+                    <?php foreach($tickets as $ticket): ?>
+                    <?php if($ticket->provider == 'fandango'): ?>
+                    <input type="text" name="fandango" placeholder="Fandango Movie ID" class="form-control" value="<?php echo e($ticket->value); ?>">
+                    <input type="hidden" name="fandango_id" value="<?php echo e($ticket->id); ?>">
+                    <?php endif; ?>
+                    <?php endforeach; ?>
+                    <?php else: ?>
+                    <input type="text" name="fandango" placeholder="Fandango Movie ID" class="form-control">
+                    <?php endif; ?>
+                  </div>
+                  <div class="col-xs-2 form-group">
+                    <!--a href="#"><i class="ti-pencil-alt icon-actions-clear pull-left"></i></a>
+                    <a href="#"><i class="fa fa-minus icon-actions pull-left"></i></a-->
+                  </div>
+                </div>
+
+                <div class="row">
+                  <div class="col-xs-0 col-sm-1 form-group"></div>
+                  <div class="col-xs-10 col-sm-9 form-group form-inline">
+                    <label for="movietickets_id"><img src="<?php echo e(asset('/admin-files/assets/images/logo-movietickets.png')); ?>"/></label>
+
+                    <?php if(!$tickets->isEmpty()): ?>
+
+                    <?php foreach($tickets as $ticket): ?>
+                    <?php if($ticket->provider == 'movietickets'): ?>
+                    <input type="text" name="movietickets" placeholder="Movietickets Movie ID" class="form-control" value="<?php echo e($ticket->value); ?>">
+                    <input type="hidden" name="movietickets_id" value="<?php echo e($ticket->id); ?>">
+                    <input type="hidden" name="simple_display" value="<?php echo e($ticket->on); ?>">
+                    <?php elseif(($ticket->provider == 'fandango') && ($ticket->on)): ?>
+                    <input type="hidden" name="simple_display" value="1">
+
+                    <?php endif; ?>
+                    <?php endforeach; ?>
+                    <?php else: ?>
+                    <input type="text" name="movietickets" placeholder="Movietickets Movie ID" class="form-control">
+                    <input type="hidden" name="simple_display" value="0">
+                    <?php endif; ?>
+
+
+
+                  </div>
+                  <div class="col-xs-2 form-group">
+                    <!--a href="#"><i class="ti-pencil-alt icon-actions-clear pull-left"></i></a-->
+                    <!--a href="#"><i class="fa fa-minus icon-actions pull-left"></i></a-->
+                  </div>
+                </div>
+
+              </div>
+
+            </div>
+          </form>
+        </div>
+
+      </div>
+
+
+
+
+      <div class="panel panel-white panel-file-upload">
+        <div class="panel-heading">
+          <h5 class="panel-title">Ticketing Block Background Content</h5>
+        </div>
+
+        <div class="panel-body">
+
+          <!-- FILE UPLOADER WIDGET -->
+          <div class="file-uploader">
+            <div class="row">
+
+              <?php echo $__env->make('sections.images.edit', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+              <?php echo $__env->make('sections.images.create', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+
+            </div>
+          </div>
+          <!-- end: FILE UPLOADER WIDGET -->
+
+          <!-- COLOR PICKER -->
+          <div class="row padding-top-15">
+            <div class="col-sm-12">
+              <?php echo $__env->make('sections.colorpicker.edit', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+             </div>
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('master', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

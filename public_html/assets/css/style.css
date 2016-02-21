@@ -1,0 +1,3085 @@
+
+
+
+
+/*    GENERAL   ===============================================*/
+
+
+
+
+
+
+* {
+  margin:0;
+  padding:0;
+}
+
+a, img {
+    border:none;
+    outline:0 none;
+    text-decoration: none;
+}
+  
+html,
+body{
+  height: 100%;
+  width: 100%;
+  font-family: 'Maven Pro';
+}
+
+li {
+  list-style: none outside none;
+}
+
+p {
+  font-size: 1.25em;
+}
+
+i, em
+{
+  font-style:italic;
+}
+strong, b
+{
+  font-weight:bold;
+}
+.ital {
+    font-style: italic;
+}
+
+.underline {
+    text-decoration: underline;
+}
+
+.hidden {
+    opacity:0;
+}
+
+.invisible {
+    visibility: hidden;
+}
+
+.display-none {
+  display:none;
+}
+
+.white {
+  color: #fff !important;
+}
+
+.no-scroll {
+  overflow: hidden !important;
+  height: 100% !important;
+  width: 100% !important;
+}
+
+.v-align {
+    position: relative;
+    top: 50%;
+    -webkit-transform: translateY(-50%);
+    -ms-transform: translateY(-50%);
+    transform: translateY(-50%);
+}
+
+.anim {
+    -moz-transition:.5s;
+    -webkit-transition:.5s;
+    transition:.5s;
+    -moz-animation-timing-function: linear;
+    -webkit-animation-timing-function: linear;
+    animation-timing-function: linear;
+}
+
+.no-transition {
+    -webkit-transition: none !important;
+    -moz-transition: none !important;
+    -o-transition: none !important;
+    -ms-transition: none !important;
+    transition: none !important;
+}
+
+.margin-0 {
+  margin: 0em !important ;
+}
+
+.top-level {
+  z-index: 1101;
+}
+
+
+.wrapper {
+    width: 100%;
+    display:none;
+    position: relative;
+    overflow: hidden;
+}
+
+.box {
+  max-width: 1240px;
+  width: 95%;
+  margin: 0 auto;
+  position: relative;
+}
+
+.btn {
+  display: block;
+  padding: 1em 1em;
+}
+
+
+.wire-btn {
+  padding: 0.7em 0.7em 0.4em;
+  outline: 1px solid #fff;
+}
+
+.wire-btn.text {
+  padding: 1em;
+  outline: 1px solid #fff;
+}
+
+.gray-btn,
+.btn.view-less,
+.btn.view-more
+{
+  width: 25em;
+  text-align: center;
+  letter-spacing: 0.1em;
+  padding: 2em 0em;
+  margin: 0 auto;
+}
+
+
+
+.divider {
+  width: 90%;
+  height: 1px;
+  margin: 0 auto 2em;
+}
+
+.mobile-only {
+  display:none;
+}
+
+
+.swiper-button-next
+{
+  background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D\'http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg\'%20viewBox%3D\'0%200%2027%2044\'%3E%3Cpath%20d%3D\'M27%2C22L27%2C22L5%2C44l-2.1-2.1L22.8%2C22L2.9%2C2.1L5%2C0L27%2C22L27%2C22z\'%20fill%3D\'%23ffffff\'%20fill-opacity%3D\'0.35\'%2F%3E%3C%2Fsvg%3E");
+}
+.swiper-button-prev
+{
+    background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D\'http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg\'%20viewBox%3D\'0%200%2027%2044\'%3E%3Cpath%20d%3D\'M0%2C22L22%2C0l2.1%2C2.1L4.2%2C22l19.9%2C19.9L22%2C44L0%2C22L0%2C22L0%2C22z\'%20fill%3D\'%23ffffff\'%20fill-opacity%3D\'0.35\'%2F%3E%3C%2Fsvg%3E");
+}
+
+
+
+
+
+/*    HEADER    ===============================================*/
+
+
+
+
+
+
+
+header {
+  width: 100%;
+  overflow: hidden;
+  position: fixed;
+  z-index: 1001;
+}
+
+header > nav > .box,
+header > .title-menu > .box {
+  overflow: hidden;
+  padding-left: 20em;
+  width: 82%;
+}
+
+header > .title-line > .box > a {
+  background: url(../images/permanent/stx.png) no-repeat scroll 0 0 / contain;
+  display: block;
+  position: absolute;
+  width: 10em;
+  height: 7.4em;
+  left: 0em;
+  z-index:2;
+}
+
+header > .title-menu > .box > div {
+  display: table;
+  width: 100%;
+  position:relative;
+}
+
+header > .title-menu > .box > div > ul {
+  display: inline-block; /*table-cell;*/
+}
+
+header > .title-menu > .box > div > ul:last-child {
+  text-align: right;
+    position:absolute;
+    top:2em;
+    right:0;
+    width:30%;
+}
+
+
+
+header > .title-menu > .box > div > ul li {
+  display: inline-block;
+}
+
+
+header > .title-menu > .box > div > ul.site-menu a {
+  display: block;
+  padding: 3em 2em;
+
+}
+
+header > .title-menu > .box > div > ul:last-child li {
+  margin: 0 1em;
+}
+
+
+
+header > nav {
+  width: 100%;
+}
+
+
+header > nav  ul li {
+  display: inline-block;
+  
+}
+
+header > nav  ul li a {
+  display: block;
+  margin: 0em 1em;
+  padding: 1em 1em;
+}
+
+header > nav  ul li a span {
+  text-transform: uppercase;
+}
+
+
+header > nav .hover-menu {
+  padding: 4.5em 0 6em;
+  position: relative;
+  text-align: center;
+  display:none;
+  font-family: 'Maven Pro';
+}
+header > nav.has-submenu .hover-menu {
+  margin-top: -3.2em;
+}
+
+.secondary header > nav .hover-menu {
+  margin-top: 0em;
+}
+
+header > nav .hover-menu.open {
+  display:block;
+}
+
+header > nav .hover-menu ul {
+  margin-bottom: 5em;
+}
+
+
+header > nav .hover-menu.hovered ul li {
+  -webkit-transform: scale(0.8,0.8);
+    -ms-transform: scale(0.8,0.8);
+    transform: scale(0.8,0.8);
+    opacity: 0.6;
+}
+
+header > nav .hover-menu.hovered ul li:hover {
+  -webkit-transform: scale(1,1);
+    -ms-transform: scale(1,1);
+    transform: scale(1,1);
+    opacity: 1;
+}
+
+header > nav .hover-menu ul li {
+  display: inline-block;
+  width: 12em;
+  text-align: center;
+  cursor: pointer;
+  margin: 0 2.6em;
+  border-bottom: 5px solid rgba(0, 0, 0, 0.5);
+}
+
+header > nav .hover-menu ul li img {
+  width: 82%;
+}
+
+header > nav .hover-menu ul li h4 {
+    margin: 1em 0 0.5em;
+}
+
+header > nav .hover-menu ul li p {
+  color: #91c9cd;
+  font-size: 1.1em;
+    margin-bottom: 1.5em;
+}
+
+header > nav .hover-menu ul li a
+{
+  padding:0;
+  margin:0;
+}
+
+/*header > nav .pages-menu ul
+{
+  height:3.2em;
+}
+*/
+
+p.email-confirm
+{
+  color:white;
+  font-size:1.5em !important;
+  margin-top:2em;
+}
+
+
+/*    SECTION TT    ===============================================*/
+
+
+
+
+
+
+main {
+  margin-top:10.5em;
+}
+
+main.seek {
+  opacity:0;
+}
+
+.secondary main {
+  margin-top:7em;
+}
+
+section {
+  opacity: 0;
+}
+
+section.loaded.onscreen {
+  opacity:1;
+}
+
+section > h1,
+section > .box > div >h1 {
+  padding: 0.7em 0em;
+}
+
+section h1
+{
+  text-transform:uppercase;
+}
+
+section.mainmarquee > img,
+section.custom > img,
+section.tt > img {
+  width: 100%;
+
+}
+
+section.mainmarquee > img.desktop-only,
+section.custom > img.desktop-only,
+section.tt > img.desktop-only{ 
+  display:block;
+}
+
+section.mainmarquee
+{
+  position:relative;
+  overflow:hidden;
+}
+
+
+
+
+/*    SECTION SOCIAL    ===============================================*/
+
+
+
+
+
+
+section.social > ul {
+  padding: 3em 0em;
+  text-align: center;
+}
+
+section.social > ul li {
+  display: inline-block;
+  margin: 0em 0.3em;
+  vertical-align: middle;
+}
+
+section.social > ul li:not(.social) {
+  margin-right: 3em;
+}
+
+section.social > ul li a{
+  outline: 1px solid #fff;
+}
+
+section.social > ul li a.btn{
+  padding: 1.6em;
+}
+
+section.social > ul li.social a.btn{
+  padding:1em 0;
+  width:3.5em;
+}
+
+
+
+
+
+/*    SECTION TICKETS   ===============================================*/
+
+
+
+
+section.ticketing {
+  text-align: center;
+  padding: 6em 0em 14em;
+}
+
+section.ticketing > h2 {
+  padding: 0.5em 0em 0.5em;
+}
+
+section.ticketing > ul {
+
+  margin: 0 auto 3em;
+}
+
+section.ticketing > ul li {
+  display: inline-block;
+    height: 5em;
+    margin: 3em 1.5em;
+  position: relative;
+    width: 19em;
+}
+
+section.ticketing p {
+  text-align: left;
+  margin-bottom: 0.5em;
+}
+
+section.ticketing input {
+    height: inherit;
+    padding: 0em 0em 0em 0.5em;
+    margin-left: -0.3em;
+    text-align: left;
+    width: inherit; 
+}
+section.ticketing > div {
+  width: 43em;
+  margin: 0 auto;
+}
+
+
+section.ticketing > div.powster
+{
+  margin:6em auto;
+}
+section.ticketing > div.powster > a.wire-btn
+{
+  font-size:1.5em;
+  color:white;
+}
+
+section.ticketing > div.fandango-movietickets > a {
+  display: inline-block;
+  height: 5.2em;
+  outline: 1px solid #fff;
+  width: 20em;
+}
+
+section.ticketing > div.fandango-movietickets > a:nth-child(2) {
+  margin: 1em 2em 0 0;
+  background: url(../images/permanent/tickets-btn-logo.png) no-repeat scroll 50% 50% / 60%;
+}
+
+section.ticketing > div.fandango-movietickets > a:nth-child(3) {
+  margin: 1em 0 0 0;
+  background: url(../images/permanent/tickets-btn-logo2.png) no-repeat scroll 50% 50% / 50%;
+}
+
+section.ticketing > div > a > img {
+  vertical-align: middle;
+}
+
+
+section.ticketing .icon {
+  position: absolute;
+	right: 0em;
+  bottom: -0.55em;
+	font-size: 4em;
+}
+
+
+
+
+
+
+
+
+/*    SECTION VIDEOS    ===============================================*/
+
+
+
+
+
+section.videos {
+  padding: 6em 0em 14em;
+  text-align: center;
+}
+
+/*section.videos .swiper-container {
+  width: inherit;
+}
+
+section.videos .swiper-container .swiper-slide,
+section.videos .swiper-container .swiper-slide .content {
+  width: 28em !important;
+}*/
+
+section.videos .box > .controls {
+  margin-top: 24em;
+}
+
+section.videos .swiper-container {
+  width: 107em;
+}
+
+section.videos .swiper-container .swiper-slide .content {
+  width: 80% !important;
+}
+
+section.videos .swiper-container .swiper-slide {
+  width: 33% !important;
+}
+
+section.videos .swiper-container .swiper-slide .content {
+  height: 21.5em;
+  overflow: hidden;
+  cursor: pointer;
+  margin: 0 auto;
+}
+
+
+section.videos .swiper-container .swiper-slide .preview {
+  width: 100%;
+  height: 16em;
+  overflow: hidden;
+}
+
+section.videos .swiper-container .swiper-slide:hover .preview img{
+  width: 120%;
+  margin: -19%;
+}
+
+section.videos .swiper-container .swiper-slide .preview img {
+  width: 100%;
+  margin: -9%;
+}
+
+section.videos .swiper-container .swiper-slide p {
+  text-align: left;
+  padding: 1.1em;
+  line-height: 1.3;
+}
+
+
+section.videos #player {
+  width: 100em;
+  height: 48em;
+  margin: 0em auto 4em;
+}
+
+section.videos .manual-margin-1 {
+	padding-left: 51.5em;
+}
+
+section.videos .manual-margin {
+	padding-left: 0em;
+}
+
+section.videos .manual-margin .swiper-slide {
+	margin: 0em 2em;
+}
+
+
+
+/*		SECTION ABOUT		===============================================*/
+
+
+
+section.aboutthefilm h1
+{
+  text-align:center;
+  margin-top:1.5em;
+  font-size:4em;
+}
+section.aboutthefilm h2
+{
+  font-size: 5.5em;
+}
+
+section.aboutthefilm .box > ul {
+  display: table;
+  width: 100%;
+  margin-top: -7.6em;
+  background:white;
+}
+
+section.aboutthefilm .box > ul > li {
+  display: table-cell;
+  width: 50%;
+  text-align: center;
+  border: 1px solid #101010;
+  vertical-align: middle;
+  cursor: pointer;
+  padding:2em;
+}
+section.aboutthefilm .box > ul > li.selected
+{
+  opacity:.85;
+}
+section.aboutthefilm .box > ul > li:hover
+{
+  opacity:.9; 
+}
+section.aboutthefilm .box > ul > li h2,
+section.aboutthefilm h4,
+section.aboutthefilm .about .text strong,
+section.aboutthefilm a.btn.view-less:hover span,
+section.aboutthefilm a.btn.view-more:hover span
+{
+  color:rgba(255,255,255,.45);
+}
+
+section.aboutthefilm .box article .divider {
+  width: 100%;
+  margin: 3em 0em 1em;
+}
+
+section.aboutthefilm .box article {
+  display:none;
+  padding: 7em 0em 20em;
+  position: relative;
+}
+
+section.aboutthefilm .box article.visible {
+  display: block;
+}
+
+
+section.aboutthefilm .box article > p {
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+section.aboutthefilm .box article > img {
+  width: 9.9em;
+  height: 4.8em;
+  position: absolute;
+  right: 0;
+  top: 8em;
+}
+
+
+section.aboutthefilm .box article .content {
+  
+  display: table;
+  width: 100%;
+}
+
+
+section.aboutthefilm .box article .content > .left .text{
+  height: 37.5em;
+  overflow: auto;
+  padding-right: 1em;
+  margin-top:2.1em;
+}
+
+section.aboutthefilm .box article .content > .left p{
+  line-height: 1.3;
+}
+section.aboutthefilm .about .text strong
+{
+  margin-top:1.5em;
+}
+section.aboutthefilm .about .text p
+{
+  margin:0 0 1em 0;
+}
+section.aboutthefilm .box article .divider
+{
+  background-color:rgba(255,255,255,.25);
+}
+section.aboutthefilm .box article .content > .right ul li > div,
+section.aboutthefilm .box article .content > div {
+  display: table-cell;
+  width: 50%;
+  vertical-align: top;
+}
+
+section.aboutthefilm .box article .content > .right ul li{
+  display: table;
+  padding: 1.5em 0em;
+  width: 100%;
+
+}
+
+section.aboutthefilm .box article .content > .right ul li > div {
+  padding: 1em;
+  vertical-align: top;
+}
+
+section.aboutthefilm .box article .content > .right ul li > .left {
+  text-align: right;
+  width: 40%;
+}
+
+section.aboutthefilm .box article .content > .right ul li > .right {
+  width: 60%;
+}
+
+section.aboutthefilm .box article .content > .right ul li > .right p {
+  margin: 0.3em 0em; 
+  line-height: 1.3em;
+}
+
+section.aboutthefilm .box article .content .left h5 {
+  margin: 0.5em 0em;
+}
+
+section.aboutthefilm .box article.cast nav {
+  width: 24em;
+  margin: 2em 0em;
+}
+
+section.aboutthefilm .box article.cast nav h4 {
+  cursor: pointer;
+}
+
+
+section.aboutthefilm .box article.cast nav h4:hover {
+  color: #999;
+}
+
+section.aboutthefilm .box article.cast .op-cl {
+  cursor: pointer;
+    left: 14em;
+    margin-top: -0.5em;
+    position: absolute;
+}
+
+
+
+section.aboutthefilm .box article.cast .divider {
+    margin: 2em 0 2em;
+}
+
+section.aboutthefilm .box article.cast .left ul {
+  height: 0;
+  overflow: hidden;
+}
+
+
+section.aboutthefilm .box article.cast .left  ul li {
+  margin: 2em 0em;
+  padding: 0em 1em;
+  
+}
+
+section.aboutthefilm .box article.cast .left  ul li > span {
+  cursor: pointer;
+}
+
+section.aboutthefilm .box article.cast .content {
+  display: table;
+}
+
+
+section.aboutthefilm .box article.cast .content > div {
+  display: table-cell;
+  vertical-align: top;
+}
+
+section.aboutthefilm .box article.cast .content > .left {
+  width: 20%;
+  padding-top: 2em;
+}
+
+section.aboutthefilm .box article.cast .left ul li figure > .left,
+section.aboutthefilm .box article.cast .content > .right ul li > .left {
+  text-align: center;
+  width: 30%;
+}
+
+section.aboutthefilm .box article.cast .left ul li figure > .left > img,
+section.aboutthefilm .box article.cast .content > .right ul li > .left > img {
+  width: 25em;
+}
+
+section.aboutthefilm .box article.cast .left ul li figure .right p,
+section.aboutthefilm .box article.cast .content > .right ul li > .right p {
+  line-height: 1.3;
+}
+
+section.aboutthefilm .box article.cast .left ul li figure .right h3,
+section.aboutthefilm .box article.cast .content > .right ul li > .right h3 {
+  margin: 0em 0em 1.5em;
+}
+
+section.aboutthefilm .box article.cast .left ul li figure .right .text,
+section.aboutthefilm .box article.cast .content > .right ul li > .right .text {
+  height: 22em;
+  overflow: auto;
+  padding-right: 2em;
+    position: relative;
+    width: 90%;
+    display: block;
+}
+
+section.aboutthefilm .box article.cast .left ul li figure .right{
+  padding-left: 2em;
+}
+
+section.aboutthefilm .box article.cast .content > .right ul li {
+  display: none;
+}
+
+section.aboutthefilm .box article.cast .content > .right ul li.preview {
+  display: block;
+}
+
+section.aboutthefilm .box article.cast .left {
+  position: relative;
+}
+
+
+section.aboutthefilm .box article.cast .left ul li figure > a {
+  margin: 3em auto;
+}
+
+section.aboutthefilm .box article.cast .left ul li figure {
+  overflow: hidden;
+  position: absolute;
+  visibility: hidden;
+    width: 70%;
+    display: table;
+    top: 0;
+  left: 30%;
+  padding-top: 6em;
+}
+
+section.aboutthefilm .box article.cast .left ul li.selected  figure {
+  visibility: visible;
+}
+
+section.aboutthefilm .box article.cast .left ul li figure .left,
+section.aboutthefilm .box article.cast .left ul li figure .right {
+  display: table-cell;
+  vertical-align: top;
+
+}
+
+section.aboutthefilm .box article.cast .left ul li figure .left > img {
+  opacity: 0;
+  margin-top: -2em;
+}
+
+section.aboutthefilm .box article.cast .left ul li.selected figure .left > img {
+  opacity: 1;
+  margin-top: 0em;
+}
+
+section.aboutthefilm .box article.cast .left ul li figure .right {
+  opacity: 0;
+  padding-top: 2em;
+}
+
+section.aboutthefilm .box article.cast .left ul li.selected figure .right {
+  opacity: 1;
+  padding-top: 0em;
+}
+
+
+
+
+
+/*    SECTION GALLERY   ===============================================*/
+
+
+
+
+
+
+
+section.gallery {
+  height: 76em;
+  text-align: center;
+}
+
+
+
+section.gallery .swiper-container {
+  height: 66em;
+  width: 94%;
+  overflow: visible;
+}
+
+
+section.gallery .swiper-container .swiper-slide {
+  opacity:0.4;
+  overflow: hidden;
+  font-size: 1.1em;
+}
+
+section.gallery .swiper-container .swiper-slide-active {
+  opacity:1;
+}
+
+
+section.gallery .swiper-container .swiper-slide > img {
+  width: 100%;
+}
+
+section.gallery .swiper-container .swiper-slide > a {
+  position: absolute;
+  top:2em;
+  right:2em;
+}
+
+
+section.gallery .swiper-container .swiper-slide .share-popup {
+  position: absolute;
+  top: 1.1em;
+  right: 8em;
+  height: 6em;
+  padding-left: 1em;
+  visibility: hidden;
+  opacity: 0;
+  width:29em;
+}
+
+section.gallery .swiper-container .swiper-slide .share-popup.open {
+  visibility: visible;
+  opacity: 1;
+}
+
+section.gallery .swiper-container .swiper-slide .share-popup li {
+  display: inline-block;
+  width: 5em;
+}
+
+section.gallery .swiper-container .swiper-slide .share-popup li:last-child
+{
+  width: 15em;
+}
+
+
+
+section.gallery .swiper-container .swiper-slide .share-popup > .icon {
+    position: absolute;
+    right: -0.34em;
+    top: 0.25em;
+}
+
+section.gallery .swiper-container .swiper-slide .share-popup li a {
+  position: absolute;
+  top: 1em;
+  left: 1em;
+  width:2.5em;
+  display:block;
+  cursor:pointer;
+}
+section.gallery .swiper-container .swiper-slide .share-popup li:last-child a
+{
+  width:auto;
+}
+
+section.gallery .swiper-container .swiper-slide .share-popup li:nth-child(2) a {
+  left:6em;
+}
+
+section.gallery .swiper-container .swiper-slide .share-popup li:nth-child(3) a {
+  left:3.95em;
+  padding:.3em 0 .1em 0;
+  width:1.5em;
+  top:.35em;
+}
+section.gallery .swiper-container .swiper-slide .share-popup li:nth-child(3) a:hover {
+  color:#101010;
+}
+
+section.gallery .swiper-container .swiper-slide .share-popup li:nth-child(4) a {
+  left:17em;
+}
+section.gallery .swiper-container .swiper-slide .share-popup li a.wire-btn.text
+{
+  padding:1.2em;
+  font-family:'Maven Pro';
+}
+
+section.gallery .gradient {
+  width: 100%;
+  height: 238px;
+  background: url(../images/permanent/gallery-gradient.png) repeat-x 0 0 / contain;
+  position: absolute;
+  bottom: 0;
+}
+
+section.gallery .swiper-container-horizontal > .swiper-pagination {
+    bottom: 3em;
+}
+
+section.gallery .swiper-pagination {
+  -webkit-transition: none;
+    -moz-transition: none;
+    -o-transition: none;
+    -ms-transition: none;
+    transition: none;
+}
+
+section.gallery .swiper-pagination-bullet {
+    height: 1em;
+    width: 1em;
+}
+
+section.gallery .swiper-container .swiper-slide .share-popup li a:hover {
+  outline: 1px solid #101010 !important;
+}
+
+section.gallery .swiper-container .swiper-slide .share-popup li a:hover span,
+section.gallery .swiper-container .swiper-slide .share-popup li a:hover .icon{
+  color: #101010  !important;
+}
+
+
+
+
+
+/*    SECTION PARTNERS    ===============================================*/
+
+
+
+
+
+
+section.partners {
+  padding: 8em 0em;
+  text-align: center;
+}
+
+section.partners .swiper-container .swiper-slide {
+  width: 47em !important;
+}
+
+section.partners .swiper-container .swiper-slide > img {
+  width: 28em;
+  margin: 0 auto;
+}
+
+section.partners .manual-center {
+	padding-left: 28em;
+}
+section.partners a {
+  color:rgba(255,255,255,.45);
+}
+
+
+
+
+
+/*    SECTION CTA   ===============================================*/
+
+
+
+section.featured:after
+{
+  visibility: hidden;
+  display: block;
+  font-size: 0;
+  content: " ";
+  clear: both;
+  height: 0;
+}
+section.featured h1 {
+  font-size:4.5em;
+}
+
+section.featured p {
+  line-height: 1.3;
+  margin: 0.5em 0em 3.5em;
+}
+section.featured .box > div
+{
+  border:0px solid red;
+  vertical-align:middle;
+}
+section.featured .box div.image
+{
+  text-align:center;
+}
+section.featured .box div.image img
+{
+  max-width:100%;
+}
+section.featured .wire-btn
+{
+  font-size:1.5em;
+}
+
+
+/* custom layouts */
+section.featured .box > div,
+section.featured.large_image_content_left .box > div,
+section.featured.large_image_content_right .box > div
+{
+  display:inline-block;
+  width:50%;
+  box-sizing:border-box;
+}
+section.featured .box > div.content,
+section.featured.large_image_content_left .box > div.content,
+section.featured.large_image_content_right .box > div.content
+{
+  padding: 14em 10em 20em 10em;
+}
+
+
+section.featured.image_and_text .box .column
+{
+  display:inline-block;
+  width:33%;
+  padding:14em 4em 14em 4em;
+  box-sizing:border-box;
+  vertical-align:top;
+}
+section.featured.image_and_text .box .column > div.content
+{
+  padding:3em 0 0 0;
+}
+
+
+section.featured.complex_carousel .box
+{
+  position:relative;
+}
+section.featured.complex_carousel .box > div
+{
+  display:block;
+  width:auto;
+}
+section.featured.complex_carousel .box .controls
+{
+  width:27px;
+}
+section.featured.complex_carousel .box .controls.swiper-button-prev
+{
+  left:-10px;
+}
+section.featured.complex_carousel .box .controls.swiper-button-next
+{
+  right:-10px;
+}
+section.featured.complex_carousel .box .swiper-slide
+{
+  width:33%;
+  box-sizing:border-box;
+  padding:14em 4em 14em 4em;
+}
+section.featured.complex_carousel .box div.content
+{
+  padding:3em 0 0 0;
+}
+
+
+
+/*    SECTION RELATED   ===============================================*/
+
+
+
+
+
+
+section.related {
+  padding: 6em 3em;
+  text-align: center;
+}
+
+
+section.related ul li {
+  display:none;
+  /*display: inline-block;*/
+  margin: 2em 2em 5em;
+  vertical-align:top;
+}
+section.related ul li.on
+{
+  display:inline-block !important;
+}
+
+section.related ul li a {
+  display: block;
+  width: 28em;
+  height: 28em;
+  position: relative;
+}
+
+section.related ul li a .preview {
+  height: 19em;
+  width: 100%;
+  overflow: hidden;
+}
+
+section.related ul li a .preview img {
+  width: 100%;
+}
+
+section.related ul li a:hover .preview img {
+  -webkit-transform: scale(1.2,1.2);
+    -ms-transform: scale(1.2,1.2);
+    transform: scale(1.2,1.2);
+}
+
+
+section.related ul li a .info {
+  text-align: left;
+  padding: 2em;
+  position: relative;
+}
+
+
+section.related ul li a .info h6 {
+  margin-bottom: 0.3em;
+}
+
+section.related ul li a .icon {
+  position: absolute;
+  right: 0.3em;
+  bottom: 0.3em;
+}
+
+
+
+
+
+
+/*    SECTION CREDITS   ===============================================*/
+
+
+
+
+
+
+
+section.credits {
+  height: 36em;
+}
+
+
+section.credits .box {
+  display: table;
+  padding-left: 0em;
+}
+
+
+section.credits .box .left,
+section.credits .box .right {
+  display: table-cell;
+  vertical-align: bottom;
+}
+
+section.credits ul li {
+  display: inline-block;
+  margin: 2em 1em;
+  vertical-align: bottom;
+}
+
+
+
+section.credits .box .right {
+  text-align: right;
+}
+
+section.credits .box .right ul li {
+  margin: 1em 1em;
+}
+
+
+section.credits .box .right ul li a span,
+section.credits .box .right p {
+  color: rgba(255,255,255,.45);
+}
+
+
+
+section.credits .box .right p {
+  margin: 1em 0em;
+}
+
+
+section.credits .box .right ul li a {
+  outline: 1px solid rgba(255,255,255,.45);
+}
+
+
+
+section.credits .sign-up {
+  height: auto;
+  margin-top: -13em;
+}
+
+section.credits .sign-up ul {
+  display: table;
+}
+
+section.credits .sign-up ul,
+section.credits .sign-up > div {
+  width: 95%;
+  margin: 4em auto;
+}
+
+section.credits .sign-up > div >  p {
+  padding: 0em 2em;
+  text-align: center;
+}
+
+section.credits .sign-up > div > p a {
+  border-bottom: 1px solid #fff;
+}
+
+section.credits .sign-up ul li {
+  display: table-cell;
+  padding: 0em 2em;
+  vertical-align: top;
+  width: 35%;
+}
+
+section.credits .sign-up ul li:first-child {
+  width: 36%;
+}
+
+section.credits .sign-up ul li:nth-child(1)
+/*section.credits .sign-up ul li:nth-child(2)*/ {
+  border-right: 6px solid rgba(255,255,255, 0.3);
+}
+section.credits .sign-up ul li:nth-child(3)
+{
+  visibility:hidden;
+}
+section.credits .sign-up ul li h3 {
+  width: 60%;
+}
+
+
+section.credits .sign-up ul li input,
+section.credits .sign-up ul li a {
+  display: inline-block;
+}
+
+section.credits .sign-up ul li input {
+  border: none;
+  padding: 1em 1.5em;
+  font-size:1.2em;
+}
+
+section.credits .sign-up ul li .btn.submit {
+  border: 1px solid #fff;
+  box-sizing:border-box;
+  font-size:1.2em;
+  line-height:1em;
+  font-family:inherit;
+  -webkit-appearance: none;
+  -webkit-border-radius: 0;
+}
+
+section.credits .sign-up ul li a span{
+  /*font-size: 1.4em !important;*/
+}
+
+
+section.credits .sign-up ul li:last-child > div {
+  margin-top: 1.5em;  
+}
+
+section.credits .sign-up ul li:last-child a {
+  border: none; 
+  background: #004a80;
+  float: left;
+  margin: 0em 0.1em;
+  padding: 1.1em 1.5em;
+}
+
+section.credits .sign-up ul li:last-child a:last-child {
+  padding: 1.1em 6.8em;
+}
+
+
+section.credits .email-form {
+  white-space: nowrap;
+    width: 28em;
+    margin-top: 1.5em;
+    position:relative;
+    box-sizing:border-box;
+}
+section.credits .sign-up ul .email-form input {
+  display:block;
+  box-sizing:border-box;
+  width:17em;
+}
+section.credits .sign-up ul .email-form a,
+section.credits .sign-up ul .email-form .btn.submit {
+  position:absolute;
+  top:0;
+  right:0;
+  display:block;
+  width:auto;
+  cursor:pointer;
+  padding:1em;
+}
+section.credits .sign-up ul .email-form a:hover span,
+section.credits .sign-up ul .email-form .btn.submit:hover {
+  color:rgba(255,255,255,.75);
+}
+
+
+
+
+
+
+/*    SECTION QUOTES      ===============================================*/
+
+
+
+
+
+section.quotes {
+  width: 100%;
+  height: 40em;
+}
+
+
+section.quotes .swiper-container {
+  height: inherit;
+}
+
+section.quotes .swiper-container .swiper-slide {
+  text-align: center;
+}
+section.quotes .review-wrapper
+{
+  display:table;
+  width:100%;
+  height:100%;
+}
+section.quotes .review-innerwrapper
+{
+  display:table-cell;
+  vertical-align:middle;
+}
+
+section.quotes .swiper-container .swiper-slide > img {
+  width: 80%;
+  max-width: 1280px;
+}
+section.quotes svg.outlet-logo {
+  width:30%;
+  max-width:400px;
+  margin-bottom:5em;
+}
+section.quotes .swiper-container .swiper-slide h2 {
+  margin-bottom:2em;
+}
+section.quotes .swiper-container .swiper-slide p {
+  font-size:4.25em;
+}
+section.quotes .swiper-container .swiper-slide p.byline {
+  font-size:2em;
+  margin-top:1.25em;
+  text-transform:uppercase;
+}
+
+
+
+
+/*    SECTION QUOTES      ===============================================*/
+
+
+
+
+
+
+section.related {
+  text-align: left;
+  padding-top: 10em;
+}
+
+
+section.related h1{
+  color: #fff !important;
+  padding-left: 0.5em;
+}
+
+section.related .divider {
+  background: #555;
+  width: 97%;
+  margin: 2em auto;
+}
+
+section.related ul li {
+    margin: 2em 1.8em 5em;
+}
+
+
+
+
+/*    FOOTER      ===============================================*/
+
+
+
+
+
+
+
+footer {
+  padding: 2em 0em;
+  position: relative;
+}
+
+
+footer .box {
+  display:table;
+}
+
+footer > .box > a {
+  background: url(../images/permanent/stx-footer.png) no-repeat scroll 0 0 / contain;
+  display: table-cell;
+  width: 10.7em;
+  height: 7.7em;
+  left: 10em;
+  top: 0em;
+  vertical-align: middle;
+}
+
+footer .box .left,
+footer .box .right {
+  display: table-cell;
+}
+
+
+
+footer .box .right {
+  text-align: right
+}
+
+
+footer ul li {
+  display: inline-block;
+  margin: 0.7em;
+}
+
+footer ul li a {
+  letter-spacing: 0.08em;
+}
+
+footer p {
+  color: #707070;
+  margin: 1em 0em;
+}
+
+footer .box .left ul:first-child li{
+  margin: 0.7em 0.54em;
+
+}
+
+
+
+footer .left ul li a:after {
+    content: "";
+    display: block;
+    height: inherit;
+    margin: 0.1em auto;
+    max-width: 0;
+    width: auto;
+    border-bottom: 1px solid #fff;
+}
+
+
+footer .left ul li a:hover:after {
+  max-width: 200px;
+}
+
+
+
+footer .right ul li a:hover {
+  opacity: 0.5;
+}
+
+
+
+
+
+
+
+/*    CREDITS   ===============================================*/
+
+
+
+
+
+
+
+
+.credits-block {
+  width: 100%;
+  position: absolute;
+  bottom: -50em;
+  padding: 2.5em 0em;
+}
+
+.credits-block .box img {
+  width: 95%;
+}
+
+
+.credits-block .box .close img{
+  width: 2.3em;
+  height: 2.3em;
+  position: absolute;
+  right: 0em;
+  top: 0em;
+}
+
+.credits-block.open {
+  bottom: 0em;
+}
+
+
+
+
+
+
+/*    GET UPDATES   ===============================================*/
+
+
+
+
+
+
+.get-updates-popup {
+  position: fixed;
+  background: rgba(0,0,0,0.7);
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 1001;
+  width: 100%;
+  visibility: hidden;
+  opacity: 0;
+}
+
+
+.get-updates-popup.open {
+  visibility: visible;
+  opacity: 1;
+}
+
+
+.get-updates-popup .block {
+  width: 60em;
+  padding: 8em 5em;
+  position: relative;
+  text-align: center;
+  margin: 20% auto 0 auto;
+  top: 0;
+  z-index: 1001;
+}
+
+.get-updates-popup .close {
+  width: 2.3em;
+  height: 2.3em;
+  position: absolute;
+  top: 2em;
+  right: 2em;
+}
+
+.get-updates-popup .close img {
+  width: 100%;
+}
+
+.get-updates-popup .block h3 {
+  text-transform: uppercase;
+}
+
+.get-updates-popup .block p {
+  margin: 1em 0em;
+  color: #fff;
+}
+
+.get-updates-popup .block p a {
+  color: #fff;
+  border-bottom: 1px solid #fff;
+}
+
+.get-updates-popup .block-click {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  z-index: 900;
+}
+
+.get-updates-popup .email-form {
+  white-space: nowrap;
+    width: 46em;
+    margin-top: 1.5em;
+    margin: 3em auto 0em;
+    background: #fff;
+    position: relative;
+}
+.get-updates-popup .block p.email-confirm
+{
+  font-size:2em !important;
+  margin-top:2em !important;
+}
+
+.get-updates-popup .email-form a:hover span,
+.get-updates-popup .email-form .btn.submit:hover
+{
+  color:rgba(255,255,255,.75);
+}
+
+.get-updates-popup .email-form input:not(.submit) {
+  padding:.75em;
+  width: 100%;
+  border: none;
+  display: block;
+  font-size:1.6em;
+  line-height:1.6em;
+  vertical-align: top;
+  box-sizing:border-box;
+}
+
+.get-updates-popup .email-form a,
+.get-updates-popup .email-form .btn.submit {
+  position:absolute;
+  right:0;
+  top:0;
+  color: #fff;
+  border: 1px solid #fff;
+  padding: 1em 1.5em 1em;
+  height:auto;
+  box-sizing:border-box;
+  cursor:pointer;
+  font-family:inherit;
+  -webkit-appearance: none;
+  -webkit-border-radius: 0;
+}
+
+.get-updates-popup .email-form div.left-bar {
+  width: 0.8em;
+  position: absolute;
+  left: -2em;
+  top: 0em;
+  background: rgba(255,255,255, 0.4);
+  height: 5em;
+}
+
+
+/*    ANIMATIONs    ===============================================*/
+
+
+
+
+
+
+
+
+
+.animation-on .btn span {
+  -webkit-transition: background 0.2s ease 0.1s;
+    -ms-transition: background 0.2s ease 0.1s;
+    transition: background 0.2s ease 0.1s;
+}
+
+.animation-on .btn,
+.animation-on header > nav a,
+.animation-on header ul.site-menu a,
+section.aboutthefilm .box > ul > li {
+  -webkit-transition: background 0.2s ease;
+    -ms-transition: background 0.2s ease;
+    transition: background 0.2s ease;
+}
+
+.animation-on .wire-btn:hover span,
+.animation-on .wire-btn:hover .icon,
+.animation-on .btn span,
+.animation-on .wire-btn span,
+.animation-on header ul.site-menu a span,
+.animation-on section.social > ul li a:hover span,
+.animation-on section.credits .box .right ul li a:hover span{
+  -webkit-transition: color 0.2s ease;
+    -ms-transition: color 0.2s ease;
+    transition: color 0.2s ease;
+}
+
+.animation-on section.aboutthefilm .box article.cast ul li span{
+  -webkit-transition: border 0.2s ease, padding 0.2s ease;
+    -ms-transition: border 0.2s ease, padding 0.2s ease;
+    transition: border 0.2s ease, padding 0.2s ease;
+}
+
+.animation-on .wire-btn{
+  -webkit-transition: outline 0.2s ease, color 0.2s ease;
+    -ms-transition: outline 0.2s ease, color 0.2s ease;
+    transition: outline 0.2s ease, color 0.2s ease;
+}
+
+section.social > ul li a,
+.animation-on section.social > ul li a:hover span
+.animation-on section.credits .box .right ul li a:hover{
+  -webkit-transition: outline 0.2s ease;
+    -ms-transition: outline 0.2s ease;
+    transition: outline 0.2s ease;
+}
+
+
+.animation-on header > nav .hover-menu ul li{
+  -webkit-transition: opacity 0.3s ease 0.2s, transform 0.4s ease 0.2s;
+    -ms-transition: opacity 0.3s ease 0.2s, transform 0.4s ease 0.2s;
+    transition: opacity 0.3s ease 0.2s, transform 0.4s ease 0.2s;
+}
+
+.animation-on header > nav .hover-menu.hovered ul li{
+  -webkit-transition: opacity 0.3s ease 0.1s, transform 0.4s ease 0.1s;
+    -ms-transition: opacity 0.3s ease 0.1s, transform 0.4s ease 0.1s;
+    transition: opacity 0.3s ease 0.1s, transform 0.4s ease 0.1s;
+}
+
+
+.animation-on footer ul li a:after {
+  -webkit-transition: max-width 0.5s ease;
+    -ms-transition: max-width 0.5s ease;
+    transition: max-width 0.5s ease;
+}
+
+main,
+.get-updates-popup,
+.animation-on footer .right ul li a,
+.animation-on section.gallery .swiper-container .swiper-slide,
+.animation-on section.gallery .swiper-container .swiper-slide .share-popup{
+  -webkit-transition: opacity 0.3s ease;
+    -ms-transition: opacity 0.3s ease;
+    transition: opacity 0.3s ease;
+}
+
+
+
+.animation-on section{
+  -webkit-transition: opacity 1s ease;
+    -ms-transition: opacity 1s ease;
+    transition: opacity 1s ease;
+}
+
+.animation-on .credits-block {
+  -webkit-transition: bottom 0.5s ease;
+    -ms-transition: bottom 0.5s ease;
+    transition: bottom 0.5s ease;
+}
+
+
+.animation-on section.aboutthefilm .box article.cast .left ul li figure .left > img {
+  -webkit-transition: opacity 0.5s linear, margin 0.5s ease;
+    -ms-transition: opacity 0.5s linear, margin 0.5s ease;
+    transition: opacity 0.5s linear, margin 0.5s ease;
+}
+
+
+.animation-on section.aboutthefilm .box article.cast .left ul li figure .right{
+  -webkit-transition: opacity 0.5s ease 0s, padding 0.5s ease 0s;
+    -ms-transition: opacity 0.5s ease 0s, padding 0.5s ease 0s;
+    transition: opacity 0.5s ease 0s, padding 0.5s ease 0s;
+}
+
+
+
+.animation-on section.aboutthefilm .box article.cast .left ul li.selected figure,
+.animation-on section.aboutthefilm .box article.cast .left ul li figure figurecaption .content{
+  -webkit-transition: height 0.2s ease;
+    -ms-transition: height 0.2s ease;
+    transition: height 0.2s ease;
+}
+
+.animation-on section.aboutthefilm .box article.cast .left ul {
+  -webkit-transition: height 1.0s ease;
+    -ms-transition: height 1.0s ease;
+    transition: height 1.0s ease;
+}
+
+.animation-on section.videos .swiper-container .swiper-slide .preview img,
+.animation-on section.related ul li a .preview img {
+  -webkit-transition: margin 0.3s ease, width 0.3s ease;
+    -ms-transition: margin 0.3s ease, width 0.3s ease;
+    transition: margin 0.3s ease, width 0.3s ease;
+}
+
+.animation-on section.related ul li a .preview img {
+    -webkit-transition:  transform1.4s ease;
+    -ms-transition: transform 1.4s ease;
+    transition: transform 1.4s ease ;
+}
+
+
+
+
+
+
+
+
+/*    RESPONSIVE    ===============================================*/
+
+
+
+
+@media only screen and (min-width:1600px) {
+  section.quotes {
+      padding: 5em 0em;
+  }
+
+  section.gallery {
+      height: 86em;
+  }
+
+  section.gallery .swiper-container {
+      height: 76em;
+  }
+}
+
+
+
+@media only screen and (min-width:1850px) {
+  section.quotes {
+      padding: 10em 0em;
+  }
+
+  section.gallery {
+      height: 96em;
+  }
+
+  section.gallery .swiper-container {
+      height: 86em;
+  }
+}
+
+
+
+
+
+@media only screen and (min-width:1440px) {
+  html, body {
+    font-size: 10px !important;
+  }
+
+  main {
+    margin-top: 75px;
+  }
+  main.has-submenu {
+    margin-top: 110px;
+  }
+  
+  header > .title-menu > .box > div {
+    display:block;
+  }
+
+  header > .title-menu > .box > div > ul:last-child {
+    padding-right: 8%;
+  }
+
+
+
+}
+
+@media only screen and (min-width:1370px) {
+  section.related.related ul li {
+      margin: 2em 1.22em 5em;
+  }
+
+}
+
+
+@media only screen and (min-width:1320px) and (max-width: 1439px) {
+
+  header > .title-menu > .box > div > ul:last-child {
+    padding-right: 2%;
+  }
+}
+
+
+
+@media only screen and (max-width:768px) {
+
+
+  .mobile-only {
+    display: block !important;
+  }
+
+
+  .desktop-only {
+    display: none !important;
+  }
+
+
+  .box {
+    padding-left: 0;
+    width: 100%;
+  }
+
+  main {
+    margin-top: 0em;
+  }
+
+
+
+  /*  ========================================================================= HEADER  ======  */
+
+
+
+
+  header .btn {
+    padding: 2em 1.5em;
+  }
+
+
+  header {
+    display: table;
+    position: relative;
+  }
+
+
+  header > nav > .box,
+  header > .title-menu > .box {
+    overflow: hidden;
+    padding-left: 0em;
+    width: 100%;
+  }
+
+  header .title-line {
+    display: table-header-group;
+  }
+
+  header .title-menu {
+    display: none;
+  }
+
+  header > .title-line > .box > a {
+    position: relative;
+    left: 0;
+    margin: 2em;
+    padding: 2em;
+  }
+
+  header nav {
+    display: none;
+    background-color: #101010 !important;
+  }
+
+  header > nav ul {
+    padding-left: 0;
+    margin-bottom: 4em;
+  }
+
+  
+  header > nav .pages-menu a,
+  header > nav .pages-menu a:hover {
+    background: #101010 !important;
+    transition:none;
+  }
+
+
+  header > .title-menu > .box > div > ul .btn,
+  header > .title-menu > .box > div > ul .btn:hover {
+    background: #fff;
+  }
+  
+  header > nav ul li, 
+  header > .title-menu > .box > div > ul li {
+    display: block;
+    text-align: center;
+    
+  }
+
+  header > nav ul li {
+    margin: 2em 0em;
+  }
+
+  header > .title-line {
+    position: relative;
+    z-index: 1001;
+  }
+
+  
+
+  header > .title-line > .box > ul {
+    position: absolute;
+    top: 2.5em;
+    right: 10em;
+  }
+
+  header > .title-line > .box > ul li {
+    width: 7em;
+    height: 1.2em;
+    position: absolute;
+  }
+
+  header > .title-line > .box > ul li:nth-child(1) {
+    top: 0;
+  }
+
+  header > .title-line > .box > ul li:nth-child(2) {
+    top: 2.5em;
+  }
+
+  header > .title-line > .box > ul li:nth-child(3) {
+    top: 5em;
+  }
+
+  header.menu-open nav {
+    display: table-row-group;
+  }
+
+  
+
+  header.menu-open .title-menu {
+    display: table-footer-group;
+  }
+
+  header.menu-open > .title-line > .box > ul li:nth-child(1),
+  header.menu-open > .title-line > .box > ul li:nth-child(3) {
+    top: 2.5em;
+  }
+
+  header.menu-open > .title-line > .box > ul li:nth-child(2) {
+    opacity: 0;
+  }
+
+  header.menu-open > .title-line > .box > ul li:nth-child(1) {
+    -webkit-transform: rotate(45deg);
+      -ms-transform: rotate(45deg);
+      transform: rotate(45deg);
+  }
+
+  header.menu-open > .title-line > .box > ul li:nth-child(3) {
+    -webkit-transform: rotate(-45deg);
+      -ms-transform: rotate(-45deg);
+      transform: rotate(-45deg);
+  }
+
+  header > .title-menu > .box > div {
+      padding-left: 0em;
+      width: 100%;
+  }
+
+  header > .title-menu > .box > div > ul {
+      display: table-row-group;
+  }
+
+  header > .title-menu > .box > div > ul:last-child {
+    display: table-header-group;
+    text-align: center;
+    position:static;
+  }
+
+  header > .title-menu > .box > div > ul:last-child li {
+    display: inline-block;
+  }
+
+  header > .title-menu > .box > div > ul.site-menu li:first-child{
+    margin-top: 4em;
+  }
+
+  header > .title-menu > .box > div > ul.site-menu li:last-child{
+    margin-bottom: 4em;
+  }
+
+  header > .title-menu > .box > div > ul.site-menu a {
+    width: 80%;
+    margin: 0 auto;
+    border-top: 1px solid #252525;
+    border-bottom: 1px solid #252525;
+  }
+
+  
+  header > .title-menu > .social {
+    text-align: center;
+    margin-bottom: 2em;
+  } 
+
+  header > .title-menu > .social ul li {
+    display: inline-block;
+    margin: 0em 1em;
+  }
+
+  header > .title-menu > .social .icon {
+    color: #fff;
+  }
+
+
+
+
+
+  /*  ========================================================================= SECTION MAIN MARQUEE ======  */  
+  
+  section.mainmarquee
+  {
+    width:100%;
+    overflow:hidden;
+    position:relative;
+    height:52em;
+  }
+  section.mainmarquee img.mobile-only
+  {
+    height:52em;
+    width:auto;
+    position:absolute;
+    left:-999px;
+    right:-999px;
+    top:-999px;
+    bottom:-999px;
+    margin:auto;
+  }
+  
+  
+  
+  
+  /*  ========================================================================= SECTION SOCIAL  ======  */
+
+
+
+
+
+
+  section.social > ul {
+    padding: 4em 0em;
+  }
+
+
+  section.social > ul li {
+    margin: 0em 1em 1em;
+  }
+
+
+  section.social > ul li:not(.social) {
+      display: block;
+      margin: 0 auto 2em auto;
+      width: 80%;
+  }
+
+  
+
+
+  
+
+
+
+  /*  ========================================================================= SECTION TICKETS ======  */
+
+
+
+
+
+  
+
+  section.ticketing input {
+      height: 2.2em;
+      width: 10.4em;
+      text-align: left;
+      padding-left: 0.5em;
+      margin-bottom:.25em;
+  }
+
+  section.ticketing > div {
+      width: 39em;
+      
+  }
+
+  section.ticketing p {
+    text-align: center;
+  }
+
+  section.ticketing > div > a {
+    display: block;
+  }
+
+  section.ticketing > div.fandango-movietickets > a:nth-child(2) {
+      margin-right: 0em;
+      margin-top:3em;
+  }
+
+  section.ticketing > div.fandango-movietickets > a:nth-child(3) {
+      margin-top:2em;
+  }
+
+  section.ticketing > div.powster > a.wire-btn   {
+      padding:1em 0;
+      line-height:2;
+      margin: 2em auto;
+      width: 10em;
+      font-size:3em;
+      text-align:center;
+  }
+  section.ticketing > div.fandango-movietickets {
+    margin-top:6em;
+  }
+  section.ticketing > div.fandango-movietickets > a {
+      height: 7.2em;
+      width: 38em;
+      display:block;
+  }
+
+  section.ticketing > ul li {
+      display: block;
+      margin: 1em;
+	    width: auto;
+	    height: auto;
+  }
+
+  
+  section.ticketing .icon {
+     position: absolute;
+      right: 2.1em;
+      top: 0.16em;
+      font-size:6em;
+  }
+
+
+
+
+
+
+
+  /*  ========================================================================= SECTION VIDEOS  ======  */
+
+
+  section.videos .box > .controls {
+    margin-top: 0em;
+  }
+
+  section.videos .swiper-container {
+    width: 100%;
+  }
+
+  section.videos .swiper-container {
+    padding: 0 !important;
+  }
+
+
+  section.videos .swiper-container .swiper-slide {
+    width: 100% !important;
+    margin: 0 !important;
+  }
+  section.videos .swiper-container .swiper-slide .content {
+    width: 40em !important;
+  }
+
+  
+
+
+  section.videos .swiper-container .swiper-slide .content {
+    height: 36em;
+  }
+
+  section.videos .swiper-container .swiper-slide .content ul {
+    text-align: left;
+    padding-left: 2em;
+  }
+
+  section.videos .swiper-container .swiper-slide .content ul li{
+    display: inline-block;
+    
+  }
+
+  section.videos .swiper-container .swiper-slide .content ul li a {
+    display: block;
+    color: #fff;
+    padding: 0.7em 0.7em 0.6em;
+    margin: 0em 0.2em;
+  }
+
+
+  section.videos .swiper-container .swiper-slide .preview {
+    width: 100%;
+      height: 26em;
+    }
+
+    section.videos .swiper-container .swiper-slide .preview iframe{
+      width: inherit;
+      height: inherit;
+    }
+
+    section.videos .swiper-container .swiper-slide.video .preview img {
+      display:none;
+    }
+
+    section.videos .swiper-container .swiper-slide .preview img,
+    section.videos .swiper-container .swiper-slide:hover .preview img {
+      margin-top: -5%;
+      width: 100%;
+    }
+
+    section.videos .swiper-container .swiper-slide p {
+      text-transform: uppercase;
+    }
+
+
+    section.videos #player {
+    display: none;
+  }
+
+
+	section.videos .manual-margin {
+		padding-left: 0;
+	}
+
+	section.videos .manual-margin .swiper-slide {
+		margin: 0;
+	}
+  
+
+
+	/*	=========================================================================	SECTION ABOUT	======	*/
+
+
+
+  
+  section.aboutthefilm .box article {
+    padding: 4em 2em 4em;
+  }
+
+
+  
+
+  section.aboutthefilm .box article .view-less.no,
+  section.aboutthefilm .box article .view-more.no {
+    display: none !important;
+  }
+  
+  section.aboutthefilm .box article .content {
+    display: block;
+    margin-bottom: 3em;
+  }
+
+
+  section.aboutthefilm .box article .content.colapsed {
+      height: 19em;
+      overflow: hidden;
+  }
+
+
+  section.aboutthefilm .box article .content > .right ul {
+    margin-top: 2em;
+  }
+  
+  section.aboutthefilm .box article .content > .right ul li > .left {
+    text-align: left;
+  }
+
+  section.aboutthefilm .box article .content > .right ul li > div {
+      padding: 0em;
+  }
+
+  section.aboutthefilm .box article .content > .right ul li > div,
+  section.aboutthefilm .box article .content > div {
+    width: 100%;
+    display: block;
+  }
+
+  section.aboutthefilm .box article .content > .left .text {
+    height: auto;
+    overflow: auto;
+  }
+
+  
+
+
+
+  section.aboutthefilm .box article .divider {
+      margin: 3em 0 3em;
+  }
+
+
+  section.aboutthefilm .box article p {
+      line-height: 1.3;
+  }
+
+  section.aboutthefilm .box article {
+      padding: 4em 4em;
+  }
+
+
+  section.aboutthefilm .box article.cast .content > .left {
+      width: 100%;
+  }
+
+
+  section.aboutthefilm .box article.cast nav {
+      width: 100%;
+      position: relative;
+  }
+
+  section.aboutthefilm .box article.cast .op-cl {
+    position: absolute;
+    top: -0.5em;
+    right: 0;
+    left: auto;
+    cursor:pointer;
+  }
+
+
+  section.aboutthefilm .box article.cast .left ul li {
+      margin: 4.5em 0;
+  }
+
+  
+
+  section.aboutthefilm .box article.cast ul li {
+    position: relative;
+  }
+
+
+  section.aboutthefilm .box article.cast .left ul li figure {
+    padding-left: 2em;
+    position: static;
+  }
+
+  section.aboutthefilm .box article.cast .left ul li figure figurecaption {
+    margin: 3em 0em;
+  }
+
+  section.aboutthefilm .box article.cast .left ul li figure .left > img {
+    margin: 3em auto;
+    width: 100%;
+  }
+
+  section.aboutthefilm .box article.cast .left ul li figure figurecaption p {
+    line-height: 1.5;
+  }
+
+  
+
+  section.aboutthefilm .box article.cast .left ul li.selected figure {
+    height: auto;
+  }
+
+  section.aboutthefilm .box article.cast .left ul li.selected .opl .open {
+    display: block;
+  }
+
+  section.aboutthefilm .box article.cast .left ul li .opl {
+      margin-top: -0.25em;
+      position: absolute;
+      text-align: right;
+      top: 0;
+      right:0;
+      width: 100%;
+  }
+
+
+  section.aboutthefilm .box article.cast .left ul li .opl .open {
+    display: none;
+  }
+
+  section.aboutthefilm .box article.cast .left ul li .opl .closed {
+    display: block;
+  }
+
+  section.aboutthefilm .box article.cast .left ul li.selected .opl .closed {
+    display: none;
+  }
+
+
+  section.aboutthefilm .box article.cast .left ul li figure figurecaption .content.colapsed {
+      height: 31.5em;
+      display: block;
+      overflow: hidden
+  }
+
+  section.aboutthefilm .box article.cast .left ul li figure {
+    height:0;
+    visibility: visible;
+    display: block;
+      left: auto;
+      width: 100%;
+      padding-top: 0em;
+  }
+
+  section.aboutthefilm .box article.cast .left ul li figure .left {
+    text-align: left;
+  }
+
+  section.aboutthefilm .box article.cast .left ul li figure .left > img {
+    opacity: 1;
+    margin: 5em 2em 2em !important;
+    width: 84%;
+  }
+
+  section.aboutthefilm .box article.cast .left ul li figure > .left {
+      width: 100%;
+  }
+
+  section.aboutthefilm .box article.cast .left ul li figure .right {
+    opacity: 1;
+    padding-top: 0em;
+  }
+
+  
+  section.aboutthefilm .box article.cast .left ul li figure .left, 
+  section.aboutthefilm .box article.cast .left ul li figure .right {
+      display: block;
+  }
+
+  section.aboutthefilm .box article.cast .left ul li figure .right .text {
+    height: auto;
+    padding-right: 0;
+    display: table;
+  }
+
+  /*  ========================================================================= SECTION GALLERY  ====== */
+
+
+
+
+
+
+
+  section.gallery {
+    height: 46em;
+  }
+
+
+  section.gallery .swiper-container {
+      height: 36em;
+      width: 100%;
+  }
+
+
+  section.gallery .gradient {
+    height:20em;
+  }
+
+  section.gallery .swiper-container .swiper-slide {
+    opacity: 1;
+  }
+
+
+  /*  ========================================================================= SECTION PARTNERS  ======  */
+
+
+
+
+
+
+
+  section.partners .swiper-container .swiper-slide {
+    width: 100% !important;
+  }
+  
+
+	section.partners .manual-center {
+		padding-left: 0;
+	}
+  
+
+
+
+
+	/*	=========================================================================	SECTION CTA  ======	*/
+
+
+
+
+  section.featured {
+    text-align: center;
+  }
+
+  
+  section.featured .box,
+  section.featured .box .column,
+  section.featured .box .image,
+  section.featured .box .content
+  {
+    display:block !important;
+    width:100% !important;
+  }
+  section.featured.complex_carousel .box .controls.swiper-button-prev
+  {
+    left:10px;
+  }
+  section.featured.complex_carousel .box .controls.swiper-button-next
+  {
+    right:10px;
+  }
+  section.featured > .box > div > h1 {
+    width: auto;
+  }
+  
+
+
+
+
+
+  /*  ========================================================================= SECTION RELATED  ====== */
+
+
+
+
+
+  section.related {
+    padding: 5em 0em 10em;
+  }
+
+
+  section.related ul {
+    margin-bottom: 3em;
+  }
+
+
+
+  section.related ul li {
+    margin: 2em;
+  }
+
+
+
+
+  /*  ========================================================================= SECTION CREDITS  ====== */
+
+
+
+
+
+
+
+
+  section.credits {
+    text-align: center;
+    padding: 2em 0em;
+    height: auto;
+  }
+
+  section.credits .box {
+    display: block;
+  }
+
+  section.credits .box .left,
+  section.credits .box .right {
+    display: block;
+    text-align: center;
+  }
+
+  section.credits .box .left ul li {
+    margin: 2em 1em;
+  }
+
+
+  section.credits .box .right ul li {
+    margin: 1em 1em 3em;
+  }
+
+  section.credits .box .right p {
+    width: 60%;
+    margin: 0 auto;
+    line-height: 1.3;
+  }
+
+
+  section.credits .sign-up {
+    width: 96%;
+    margin: -10em auto 0;
+    padding: 3em 0em;
+  }
+
+
+  section.credits .sign-up ul,
+  section.credits .sign-up ul li {
+    display:block;
+    text-align: left;
+  }
+
+  section.credits .sign-up ul li {
+    margin: 2em 0em;
+    border-right: none !important;
+    width: auto !important;
+  }
+
+
+  section.credits .sign-up ul li:nth-child(2),
+  section.credits .sign-up ul li:nth-child(3) {
+    border-left: 6px solid rgba(255,255,255, 0.3);
+    margin-left: 2.3em
+  }
+  
+
+  section.credits .sign-up ul li h3 {
+      width: 100%;
+  }
+
+
+  section.credits .sign-up ul li input {
+      width:100%;
+  }
+
+  section.credits .sign-up > div > p {
+    text-align: justify;
+  }
+
+
+  section.credits .sign-up ul li:last-child > div {
+      overflow: hidden;
+  }
+
+
+
+
+
+
+
+  /*  ========================================================================= SECTION QUOTES  ======  */
+
+
+
+
+
+
+  section.quotes {
+    height: 32em;
+  }
+
+
+  section.quotes .swiper-container {
+    height: inherit;
+  }
+  section.quotes .swiper-container .swiper-slide svg.outlet-logo {
+    width:45%;
+  }
+  section.quotes .swiper-container .swiper-slide h2
+  {
+    margin-bottom:.8em;
+  }
+  section.quotes .swiper-container .swiper-slide p {
+    font-size:2.25em;
+    margin:0 2em;
+  }
+  section.quotes .swiper-container .swiper-slide p.byline {
+    font-size:1.25em;
+  }
+
+
+  section.quotes .swiper-container .swiper-slide img{
+    width: 80%;
+    margin: 0 auto;
+  }
+
+
+  .swiper-button-next, .swiper-button-prev {
+      background-size: 2.7em 4.4em;
+      height: 4.4em;
+      margin-top: -2.2em;
+      width: 2.7em;
+  }
+
+
+
+
+  /*  ========================================================================= COMINGSOON    ======  */
+
+
+
+
+
+  section.related {
+    text-align: center;
+  }
+  
+
+
+
+
+  /*  ========================================================================= FOOTER      ======  */
+
+
+
+
+
+
+
+  footer .box {
+    display:block;
+  }
+
+  footer > .box > a {
+    background: url(../images/permanent/stx-footer.png) no-repeat scroll 0 0 / contain;
+    display: block;
+    position: relative;
+    left: 0;
+    top: 0;
+    margin: 2em auto;
+    height: 11em;
+    width: 15.3em;
+
+  }
+
+  footer .box .left,
+  footer .box .right {
+    display: block;
+    padding-left: 3em;
+    text-align: left;
+    margin: 3em 0em;
+  }
+
+  footer ul li {
+      display: block;
+      margin: 0.9em 0em;
+  }
+
+  footer > .box > ul {
+    text-align: center;
+    margin: 2em 0em 3em;
+  }
+
+  footer > .box > ul > li {
+    display: inline-block;
+  }
+
+  footer > .box > ul > li {
+    display: inline-block;
+    margin: 0em 3em;
+  }
+
+
+  footer .left ul li a:hover:after {
+    max-width: 0px;
+  }
+
+
+  .credits-block {
+    position: relative;
+    bottom: 0;
+  }
+
+
+  .credits-block .close {
+    display: none;
+  }
+
+
+  .get-updates-popup .block {
+      padding: 8em 0;
+      top: 10%;
+      width: 100%;
+  }
+
+  .get-updates-popup .block p {
+      padding: 0em 1em;
+  }
+
+  .get-updates-popup .block .email-form {
+    width: 80%;
+    background: transparent;
+  }
+
+  .get-updates-popup .block .email-form div.left-bar {
+    display: none;
+  }
+
+  .get-updates-popup .block .email-form input, 
+  .get-updates-popup .block .email-form  a {
+    height: auto;
+    display:block;
+  }
+
+  .get-updates-popup .email-form input {
+    width: 100%;
+    font-size:1.6em;
+    padding: 1.6em .5em;
+    text-align: center;
+    margin-top:3em;
+  }
+
+  .get-updates-popup .email-form a,
+  .get-updates-popup .email-form .btn.submit {
+      position:static;
+      width: 100%;
+      margin: 2em auto;
+  }
+  .get-updates-popup .block p.email-confirm
+  {
+    font-size:3em !important;
+  }
+
+
+  .get-updates-popup .close {
+    width: 4.7em;
+    height: 4.7em;
+  }
+  
+  section.credits .sign-up ul .email-form .btn.submit {
+    padding:1.05em;
+  }
+}
+
+
+/*    RETINA    ===============================================*/
+
+
+
+@media
+only screen and (-webkit-min-device-pixel-ratio: 2),
+only screen and (   min--moz-device-pixel-ratio: 2),
+only screen and (     -o-min-device-pixel-ratio: 2/1),
+only screen and (        min-device-pixel-ratio: 2),
+only screen and (                min-resolution: 192dpi),
+only screen and (                min-resolution: 2dppx) { 
+  
+  header > .title-line > .box > a {
+    background: url(../images/permanent/stx@2x.png) no-repeat scroll 0 0 / contain;
+  }
+
+
+  section.ticketing {
+    background: url(../images/tickets-bg@2x.jpg) no-repeat scroll 50% 0 / cover;
+  }
+
+
+  footer > a {
+    background: url(../images/permanent/stx-footer@2x.png) no-repeat scroll 0 0 / contain;
+  }
+
+}
+
+
+
+
+
+
+
+/* default share icon if none exists, must be at root, do not move */
+.icon-custom:before
+{
+  content: "\f1e0";
+}

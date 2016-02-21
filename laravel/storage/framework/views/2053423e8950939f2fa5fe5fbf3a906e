@@ -1,0 +1,36 @@
+<?php $__env->startSection('content'); ?>
+<h1><?php echo e($movie->title); ?></h1> 
+
+<div class="editWrap">
+	
+	<div class="ticketWidget">
+		<a href="#" onclick=""></a>
+		<form action="" method="post">
+			<label>Powster</label>
+				<input type="text" name="url" placeholder="enter url"/>
+		</form>
+		<a href=""><i class="fa fa-pencil-square-o"></i></a>
+		<a href=""><i class="fa fa-minus-circle"></i></a>
+	</div>
+	
+	<div class="ticketWidget">
+		<a href="#" onclick=""></a>
+		<label>Simple Ticket Widget</label>
+		<br>
+		<form action="" method="post">
+			<label>Fandango</label>
+				<input type="text" name="fandango_id" placeholder="Fandango Movie ID"/>
+			<label>Movietickets.com</label>
+				<input type="text" name="movietickets_id" placeholder="Movietickets Movie ID"/>
+		</form>
+		<a href=""><i class="fa fa-pencil-square-o"></i></a>
+		<a href=""><i class="fa fa-minus-circle"></i></a>
+	</div>
+	
+	<div class="dropzone" dropzone="move"></div>
+</div>
+
+
+
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('master', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

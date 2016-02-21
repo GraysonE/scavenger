@@ -1,0 +1,20 @@
+[16-Aug-2015 18:32:20 America/Chicago] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home4/grayson/public_html/scavenger/clients/graysonerhard/index.php:4) in /home4/grayson/public_html/scavenger/clients/graysonerhard/index.php on line 8
+[17-Aug-2015 15:18:09 America/Chicago] PHP Warning:  chdir(): No such file or directory (errno 2) in /home4/grayson/public_html/scavenger/clients/graysonerhard/client-cron.php on line 33
+[17-Aug-2015 15:19:02 America/Chicago] PHP Warning:  chdir(): No such file or directory (errno 2) in /home4/grayson/public_html/scavenger/clients/graysonerhard/client-cron.php on line 33
+[19-Aug-2015 15:42:26 America/Chicago] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home4/grayson/public_html/scavenger/clients/graysonerhard/client-cron.php:12) in /home4/grayson/public_html/scavenger/clients/graysonerhard/client-cron.php on line 14
+[25-Aug-2015 18:40:18 America/Chicago] PHP Parse error:  syntax error, unexpected '1' (T_LNUMBER) in /home4/grayson/public_html/scavenger/clients/graysonerhard/cron.php on line 15
+[16-Jan-2016 04:18:15 America/Chicago] PHP Warning:  PHP Startup: imagick: Unable to initialize module
+Module compiled with module API=20121212
+PHP    compiled with module API=20100525
+These options need to match
+ in Unknown on line 0
+[16-Jan-2016 09:33:27 America/Chicago] PHP Warning:  PHP Startup: imagick: Unable to initialize module
+Module compiled with module API=20121212
+PHP    compiled with module API=20100525
+These options need to match
+ in Unknown on line 0
+[16-Jan-2016 15:24:19 America/Chicago] PHP Warning:  PHP Startup: imagick: Unable to initialize module
+Module compiled with module API=20121212
+PHP    compiled with module API=20100525
+These options need to match
+ in Unknown on line 0

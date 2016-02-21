@@ -1,0 +1,853 @@
+<?php
+$fb_id = '412850168920701'; //CHANGEME
+?>
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title><?php echo e($movie->title); ?> | STX Entertainment</title>
+    <meta charset="utf-8" />
+    <meta id="mvp" name="viewport" content="width=device-width" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0">
+    
+    <?php if(count($metatags) > 0): ?>
+    <meta name="canonical" content="<?php echo e($metatags->canonical); ?>"/>
+    <meta name="category" content="<?php echo e($metatags->category); ?>"/>
+    <meta name="copyright" content="<?php echo e($metatags->copyright); ?>"/>
+    <meta name="description" content="<?php echo e($metatags->description); ?>"/>
+    <meta name="keywords" content="<?php echo e($metatags->keywords); ?>"/>
+    <meta name="language" content="<?php echo e($metatags->language); ?>"/>
+    <meta name="owner" content="<?php echo e($metatags->owner); ?>"/>
+    <meta name="publisher" content="<?php echo e($metatags->publisher); ?>"/>
+    <meta name="rating" content="<?php echo e($metatags->rating); ?>"/>
+    <meta name="url" content="<?php echo e($metatags->url); ?>"/>
+    <?php endif; ?>
+    
+    <?php 
+      //insert movie's og tags if available, else use global og tags
+      $socials = array();
+    ?>
+    <?php foreach($seosocial as $social): ?>
+      <?php if(stripos($social->tag, 'og_') === 0): ?>      
+        <?php if($social->tag == 'og_image'): ?>
+          <?php if(!empty($seosocial->social_image)): ?>
+            <!--movie--><meta name="og:image" content="<?php echo e($basepath); ?><?php echo e($seosocial->social_image); ?>"/>
+            <?php $socials[$social->tag] = TRUE; ?>
+          <?php endif; ?>
+        <?php elseif(!empty($social->url)): ?>
+          <!--movie--><meta name="<?php echo e(str_replace('_', ':', $social->tag)); ?>" content="<?php echo e($social->url); ?>"/>
+          <?php $socials[$social->tag] = TRUE; ?>
+        <?php endif; ?>
+      <?php endif; ?>
+    <?php endforeach; ?>  
+    <?php foreach($global_social_media as $social): ?>
+      <?php if(empty($socials[$social->tag]) && stripos($social->tag, 'og_') === 0): ?>      
+        <?php if($social->tag == 'og_image'): ?>
+          <?php if(!empty($global_social_media->social_image)): ?>
+            <!--global--><meta name="og:image" content="<?php echo e($basepath); ?><?php echo e($global_social_media->social_image); ?>"/>
+          <?php endif; ?>
+        <?php elseif(!empty($social->url)): ?>
+          <!--global--><meta name="<?php echo e(str_replace('_', ':', $social->tag)); ?>" content="<?php echo e($social->url); ?>"/>
+        <?php endif; ?>
+      <?php endif; ?>
+    <?php endforeach; ?>
+    
+    <link href="<?php echo e($basepath); ?>/assets/css/jquery-ui.css" rel="stylesheet"/>
+    <link href="<?php echo e($basepath); ?>/assets/css/swiper.min.css" rel="stylesheet"/>
+    <link href="<?php echo e($basepath); ?>/assets/css/settings.css" rel="stylesheet"/>
+    <link href="<?php echo e($basepath); ?>/assets/css/style.css" rel="stylesheet"/>
+    <link href="<?php echo e($basepath); ?>/assets/fonts/font-awesome.min.css" rel="stylesheet"/>
+    <link href='https://fonts.googleapis.com/css?family=Maven+Pro:400,500,700,900|<?php echo e($design->global_navigation_font); ?>|<?php echo e($design->header_font); ?>|<?php echo e($design->paragraph_font); ?>|<?php echo e($design->footer_font); ?>' rel='stylesheet' type='text/css'>
+    <script>
+      <?php if(!empty($movie->mobile_google_analytics_id)): ?>
+      var m_ga_id = '<?php echo e($movie->mobile_google_analytics_id); ?>';
+      <?php elseif(!empty($movie->google_analytics_id)): ?>
+      var m_ga_id = '<?php echo e($movie->google_analytics_id); ?>';
+      <?php endif; ?>
+      <?php if(!empty($movie->google_analytics_id)): ?>
+        var d_ga_id = '<?php echo e($movie->google_analytics_id); ?>';
+        var ga_id = (window.innerWidth <= 768) ? m_ga_id : d_ga_id;      
+        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+        ga('create', ga_id, 'auto');
+        ga('send', 'pageview');
+      <?php endif; ?>
+    </script>
+    <style>
+      h1, h2        { font-family: '<?php echo e($design->header_font_name); ?>'; color: <?php echo e($design->desktop_header_color); ?>; }
+      main          { font-family: '<?php echo e($design->paragraph_font_name); ?>'; }
+      header > nav  { font-family: '<?php echo e($design->global_navigation_font_name); ?>'; }
+      .credits      { font-family: '<?php echo e($design->footer_font_name); ?>'; }
+
+      a:hover, a:hover span
+      { color: <?php echo e($design->desktop_buttons_color); ?>; }
+      section
+      { color: <?php echo e($design->desktop_paragraph_color); ?>; }
+      header > nav, .divider, section.social,
+      section.videos .swiper-container .swiper-slide .content, section.gallery, section.partners,
+      section.social, section.gallery
+      { background-color: <?php echo e($design->desktop_background_color); ?>; }
+      header > nav .pages-menu a
+      { background: <?php echo e($design->desktop_background_color); ?> linear-gradient(to bottom, <?php echo e($design->desktop_background_color); ?> 50%, #101010 50%) repeat scroll left top / 100% 200%; }
+      header > .title-menu > .box > div > ul .btn
+      { background: <?php echo e($design->desktop_buttons_color); ?> linear-gradient(to bottom, #101010 50%, <?php echo e($design->desktop_buttons_color); ?> 50%) repeat scroll left bottom / 100% 200%; }      
+      header > .title-menu > .box > div > ul .btn:hover
+      { background: <?php echo e($design->desktop_buttons_color); ?>  linear-gradient(to bottom, #101010 50%, <?php echo e($design->desktop_buttons_color); ?> 50%) repeat scroll left top / 100% 180%; }
+      header > nav .pages-menu a:hover
+      { background: #101010 linear-gradient(to bottom, <?php echo e($design->desktop_background_color); ?> 50%, #101010 50%) repeat scroll left bottom / 100% 200% !important; }
+      section.social > ul li a:hover, section.credits .box .right ul li a:hover, .wire-btn:hover
+      { outline: 1px solid <?php echo e($design->desktop_buttons_color); ?> !important; }
+      header > .title-menu > .box > div > ul.site-menu a:hover span, header > .title-menu > .box > div > ul.site-menu a.hover span,
+      header > .title-menu > .box > div > ul .btn:hover span, section.social > ul li a:hover span, section.credits .box .right ul li a:hover span,
+      section.ticketing .icon, section.featured .wire-btn:hover span, .wire-btn:hover span, .wire-btn:hover .icon,
+      section.gallery .swiper-container .swiper-slide .share-popup > .icon, header > nav .hover-menu ul li p
+      { color: <?php echo e($design->desktop_buttons_color); ?>; }
+      .btn.view-less, .btn.view-more, .get-updates-popup .block, section.credits .sign-up, section.credits .sign-up ul li a, section.credits .sign-up ul li .btn.submit,
+      .get-updates-popup .email-form a, .get-updates-popup .email-form .btn.submit, section.gallery .swiper-container .swiper-slide .share-popup, section.videos .swiper-container .swiper-slide.selected .content,
+      section.gallery .swiper-pagination .swiper-pagination-bullet-active, .ui-widget-header, .ui-state-active, .ui-widget-content .ui-state-active, .ui-widget-header .ui-state-active
+      { background-color: <?php echo e($design->desktop_buttons_color); ?>; }
+      section.aboutthefilm .box article.cast .left  ul li:hover > span,
+      section.aboutthefilm .box article.cast .left  ul li.selected > span
+      { border-left: 4px solid <?php echo e($design->desktop_buttons_color); ?>; }
+      svg.outlet-logo, svg.outlet-logo *:not(rect)
+      { fill: <?php echo e($design->desktop_paragraph_color); ?>; }
+      
+      
+      @media  only screen and (max-width:768px)
+      {
+        a:hover, a:hover span
+        { color: <?php echo e($design->mobile_buttons_color); ?>; }
+        section
+        { color: <?php echo e($design->mobile_paragraph_color); ?>; }
+        header > nav, .divider, section.social, header > .title-menu > .box > div > ul.site-menu a:hover,
+        header > .title-menu > .box > div > ul.site-menu a.hover,
+        section.videos .swiper-container .swiper-slide .content, section.videos .swiper-container .swiper-slide.selected .content,
+        section.gallery, section.partners,
+        section.social, section.gallery
+        { background-color: <?php echo e($design->mobile_background_color); ?>; }
+        header > nav .pages-menu a
+        { background: <?php echo e($design->mobile_background_color); ?> linear-gradient(to bottom, <?php echo e($design->mobile_background_color); ?> 50%, #101010 50%) repeat scroll left top / 100% 200%; }
+        header > .title-menu > .box > div > ul .btn
+        { background: <?php echo e($design->mobile_buttons_color); ?> linear-gradient(to bottom, #101010 50%, <?php echo e($design->mobile_buttons_color); ?> 50%) repeat scroll left bottom / 100% 200%; }      
+        header > .title-menu > .box > div > ul .btn:hover
+        { background: <?php echo e($design->mobile_buttons_color); ?>  linear-gradient(to bottom, #101010 50%, <?php echo e($design->mobile_buttons_color); ?> 50%) repeat scroll left top / 100% 180%; }
+        section.social > ul li a:hover, section.credits .box .right ul li a:hover, .wire-btn:hover
+        { outline: 1px solid <?php echo e($design->mobile_buttons_color); ?> !important; }
+        header > .title-menu > .box > div > ul.site-menu a:hover span, header > .title-menu > .box > div > ul.site-menu a.hover span,
+        header > .title-menu > .box > div > ul .btn:hover span, section.social > ul li a:hover span, section.credits .box .right ul li a:hover span,
+        section.ticketing .icon, section.featured .wire-btn:hover span, .wire-btn:hover span, .wire-btn:hover .icon,
+        section.gallery .swiper-container .swiper-slide .share-popup > .icon, header > nav .hover-menu ul li p
+        { color: <?php echo e($design->mobile_buttons_color); ?>; }
+        .btn.view-less, .btn.view-more, .get-updates-popup .block, section.credits .sign-up, section.credits .sign-up ul li a, section.credits .sign-up ul li .btn.submit,
+        .get-updates-popup .email-form a, .get-updates-popup .email-form .btn.submit, section.gallery .swiper-container .swiper-slide .share-popup,
+        section.gallery .swiper-pagination .swiper-pagination-bullet-active, .ui-widget-header, .ui-state-active, .ui-widget-content .ui-state-active, .ui-widget-header .ui-state-active
+        { background-color: <?php echo e($design->mobile_buttons_color); ?>; }
+        section.aboutthefilm .box article.cast .left  ul li:hover > span,
+        section.aboutthefilm .box article.cast .left  ul li.selected > span
+        { border-left: 4px solid <?php echo e($design->mobile_buttons_color); ?>; }
+        svg.outlet-logo, svg.outlet-logo *:not(rect)
+        { fill: <?php echo e($design->mobile_paragraph_color); ?>; }
+        section.videos .swiper-container .swiper-slide p 
+        { color: <?php echo e($design->desktop_header_color); ?>; }
+        section.videos .swiper-container .swiper-slide .preview
+        { border-bottom: 1em solid <?php echo e($design->desktop_header_color); ?>; }
+      }
+    </style>
+  </head>
+  
+  <body>
+    <div class="wrapper">
+      <header>
+        <div class="title-line">
+          <div class="box">
+            <a href="//stxentertainment.com" target="stxentertainment" alt="STX Entertainment" title="STX Entertainment"></a>
+            <ul class="mobile-only">
+              <li></li>
+              <li></li>
+              <li></li>
+            </ul>
+          </div>
+        </div>
+        <div class="title-menu">
+          <div class="box">
+            <div>
+              <ul class="site-menu">
+                <li><a href="<?php echo e($basepath); ?>/shared<?php echo e($server); ?>/in-theaters.html" data-menu="in-theaters"><span>IN THEATERS</span></a></li>
+                <li><a href="<?php echo e($basepath); ?>/shared<?php echo e($server); ?>/at-home.html" data-menu="at-home"><span>AT HOME</span></a></li>
+                <li><a href="<?php echo e($basepath); ?>/shared<?php echo e($server); ?>/coming-soon.html" data-menu="coming-soon"><span>COMING SOON</span></a></li>
+              </ul>
+              <ul>
+                <li><a class="btn get-updates" href="#" data-page="credits"><span>GET UPDATES</span></a></li>
+                <li><a class="btn" href="#" data-page="ticketing"><span>GET TICKETS</span></a></li>
+              </ul>
+            </div>
+          </div>
+          <div class="social mobile-only">
+            <ul>
+              <?php foreach($seosocial as $social): ?>
+                <?php if(!empty($social->url)): ?>
+                  <?php if($social->tag == 'custom'): ?>
+                  <?php $service = preg_replace('/^(\/\/|http:\/\/|https:\/\/)?(www\.)?([^\/]+)\..*/', '$3', $social->url); ?>
+                  <li class="social"><a href="<?php echo e($social->url); ?>" class="btn" target="_blank"><span><div class="icon icon-custom fa fa-<?php echo e($service); ?>"></div></span></a></li>
+                  <?php elseif(strpos($social->tag, 'og_') !== 0): ?>
+                  <li class="social"><a href="<?php echo e($social->url); ?>" class="btn" target="_blank"><span><div class="icon fa fa-<?php echo e($social->tag); ?>"></div></span></a></li>
+                  <?php endif; ?>
+                <?php endif; ?>
+              <?php endforeach; ?>
+            </ul>
+          </div>
+        </div>
+        <nav>
+          <div class="mobile-only divider"></div>
+          <div class="pages-menu box">
+            <ul>
+              <?php $hasSubmenu = ''; $i=0;?>
+              <?php foreach($sections as $section): ?>
+                
+                <?php /* skip marquee and footer */ ?>
+                <?php if(!$i): ?>
+                  <li class="desktop-only"><a href="#" data-page="<?php echo e($section->type); ?>_<?php echo e($section->id); ?>"><span><?php echo e($movie->title); ?></span></a></li>
+                  <?php $i++; ?>
+                <?php endif; ?>
+                <?php if( !in_array($section->type, array('mainmarquee', 'footer', 'releasedates')) ): ?>
+                  <li><a href="#" data-page="<?php echo e($section->type); ?>_<?php echo e($section->id); ?>"><span><?php echo e($section->title); ?></span></a></li>
+                  <?php $hasSubmenu = 'has-submenu'; ?>
+                <?php endif; ?>
+              <?php endforeach; ?>
+            </ul>
+          </div>
+
+          <div id="global-attach-menu" class="<?php echo e($hasSubmenu); ?>" data-path="<?php echo e($basepath); ?>/shared<?php echo e($server); ?>/menu.html"></div>
+
+        </nav>
+        
+      </header>
+
+      
+      <main class="<?php echo e($hasSubmenu); ?>">
+        <?php $social = FALSE; ?>
+        <?php foreach($sections as $section): ?>
+
+            <?php /* MARQUEE BLOCK */ ?>
+            <?php if($section->type == 'mainmarquee'): ?>
+            <section class="<?php echo e($section->type); ?> <?php echo e($section->type); ?>_<?php echo e($section->id); ?> section_<?php echo e($section->id); ?>">
+              <?php if($section->bgimage): ?>
+                <img class="r2x mobile-only" src="<?php echo e($basepath); ?><?php echo e($section->bgimage); ?>" alt="">
+                <img class="r2x desktop-only" src="<?php echo e($basepath); ?><?php echo e($section->bgimage); ?>"/>
+              <?php endif; ?>
+            </section>
+
+            <?php if(count($section->content) || !$social): ?>
+            <section class="social">
+            <ul>
+              <?php foreach($section->content as $cta): ?>
+                <?php if(!empty($cta->anchor)): ?>
+                  <li><a href="#" data-page="section_<?php echo e($cta->anchor); ?>" class="btn"><span><?php echo e($cta->text); ?></span></a></li>
+                <?php else: ?>
+                  <li><a href="<?php echo e($cta->url); ?>" class="btn" target=_blank><span><?php echo e($cta->text); ?></span></a></li>
+                <?php endif; ?>
+              <?php endforeach; ?>
+
+              <?php /* add social icons to first marque cta section */ ?>
+              <?php if(!$social): ?>
+                <?php foreach($seosocial as $social): ?>
+                  <?php if(!empty($social->url)): ?>
+                    <?php if($social->tag == 'custom'): ?>
+                    <?php $service = preg_replace('/^(\/\/|http:\/\/|https:\/\/)?(www\.)?([^\/]+)\..*/', '$3', $social->url); ?>
+                    <li class="social"><a href="<?php echo e($social->url); ?>" class="btn" target="_blank"><span><div class="icon icon-custom fa fa-<?php echo e($service); ?>"></div></span></a></li>
+                    <?php elseif(strpos($social->tag, 'og_') !== 0): ?>
+                    <li class="social"><a href="<?php echo e($social->url); ?>" class="btn" target="_blank"><span><div class="fa fa-<?php echo e($social->tag); ?>"></div></span></a></li>
+                    <?php endif; ?>
+                  <?php endif; ?>
+                <?php endforeach; ?>
+                <?php $social = TRUE; ?>
+              <?php endif; ?>
+            </ul>
+            </section>
+            <?php endif; ?>
+
+              
+              
+            <?php /* TICKETING BLOCK*/ ?>
+            <?php elseif($section->type == 'ticketing'): ?>
+              <section class="<?php echo e($section->type); ?> <?php echo e($section->type); ?>_<?php echo e($section->id); ?> section_<?php echo e($section->id); ?>"
+                       style="background: <?php echo e($section->bgcolor); ?> url(<?php echo e($basepath); ?>/<?php echo e($section->bgimage); ?>) no-repeat scroll 50% 0 / cover;">
+                
+                <?php if(count($section->content)>0 && $section->content[0]->provider == 'powster'): ?>
+
+                  <h2>TICKETS</h2>
+                  <div class="powster">
+                    <a class="wire-btn text" href="<?php echo e($section->content[0]->value); ?>" target="_blank"><span>GET TICKETS ON POWSTER.COM</span></a>
+                  </div>
+
+                <?php else: ?>
+
+                  <h2>GET TICKETS</h2>
+                  <ul>
+                    <li>
+                      <p class="desktop-only">ZIP</p>
+                      <input id="zip" type="text" placeholder="ENTER YOUR ZIP" >
+                    </li>
+                    <li>
+                      <p class="desktop-only">DATE</p>
+                      <input id="datepicker" type="text" placeholder="DATE">
+                      <div class="icon fa fa-calendar"></div>
+                    </li>
+                  </ul>
+
+                  <div class="fandango-movietickets">
+                    <p>SELECT A TICKET PROVIDER</p>
+                    <?php foreach($section->content as $ticketing): ?>
+                      <?php if($ticketing->provider == 'fandango'): ?>
+                        <a href="http://www.fandango.com/<?php echo e($ticketing->value); ?>/movietimes" target="blank" id="get-tickets-fandango"></a>
+                      <?php elseif($ticketing->provider == 'movietickets'): ?>
+                        <a href="http://www.movietickets.com/movie/mid/<?php echo e($ticketing->value); ?>" target="_blank" id="get-tickets-movietickets"></a>
+                      <?php endif; ?>
+                    <?php endforeach; ?>
+                  </div>
+                  
+                <?php endif; ?>
+
+              </section>
+            
+
+            
+            <?php /* VIDEOS BLOCK*/ ?>
+            <?php elseif($section->type == 'videos'): ?>
+              <section class="<?php echo e($section->type); ?> <?php echo e($section->type); ?>_<?php echo e($section->id); ?> section_<?php echo e($section->id); ?>"
+                       style="background: <?php echo e($section->bgcolor); ?> url(<?php echo e($basepath); ?>/<?php echo e($section->bgimage); ?>) no-repeat scroll 50% 0 / cover;">
+                <h1>VIDEOS</h1>
+                <div class="box">
+                  <?php foreach($section->content as $i=>$video): ?>
+                    <?php if($i == 0): ?>
+                      <iframe id="player" width="560" height="315" src="https://www.youtube.com/embed/<?php echo e($video->youtube_id); ?>?enablejsapi=1&amp;rel=0" frameborder="0" allowfullscreen></iframe>
+                      <div class="swiper-container" id="swiper-videos-<?php echo e($section->id); ?>">
+                        <div class="swiper-wrapper">
+                    <?php endif; ?>
+                          <div class="swiper-slide <?php echo e($i==0 ? 'selected':''); ?>" data-video="<?php echo e($video->youtube_id); ?>">
+                            <div class="content">
+                              <div class="preview">
+                                <img src="http://img.youtube.com/vi/<?php echo e($video->youtube_id); ?>/sddefault.jpg" alt="">
+                              </div>
+                              <p><?php echo e($video->title); ?></p>
+                              <!--ul class="mobile-only">
+                                <li><a href="#" class="wire-btn"><div class="icon fa fa-angle-left"></div></a></li>
+                                <li><a href="#" class="wire-btn"><div class="icon fa fa-angle-right"></div></a></li>
+                              </ul-->
+                            </div>
+                          </div>
+
+                    <?php if($i == count($section->content)-1): ?>
+                        </div>
+                      </div>
+                    <?php endif; ?>
+                  <?php endforeach; ?>
+                  <div class="vid-p swiper-button-prev controls"></div>
+                  <div class="vid-n swiper-button-next controls"></div>
+                </div>
+              </section>
+            
+            
+            <?php /* ABOUT THE FILM BLOCK*/ ?>
+            <?php elseif($section->type == 'aboutthefilm'): ?>
+              <section class="<?php echo e($section->type); ?> <?php echo e($section->type); ?>_<?php echo e($section->id); ?> section_<?php echo e($section->id); ?>"
+                         style="background: <?php echo e($section->bgcolor); ?> url(<?php echo e($basepath); ?>/<?php echo e($section->bgimage); ?>) no-repeat scroll 50% 0 / cover;">
+                <div style="visibility: hidden;">.</div>
+                <div class="box">
+                  <?php if($section->content['cast_bio_count'] || $section->content['crew_bio_count']): ?>
+                    <ul class="menu">
+                      <li class="selected" data-sub="about" style="background:<?php echo e($section->bgcolor); ?>"><h2>ABOUT THE FILM</h2></li>
+                      <li data-sub="cast" style="background:<?php echo e($section->bgcolor); ?>"><h2>CAST & CREW</h2></li>
+                    </ul>
+                  <?php else: ?>
+                    <h1><?php echo e($section->title); ?></h1>
+                  <?php endif; ?>
+                  
+                  
+                  <article class="about visible">
+                    <h2><?php echo e($movie->title); ?></h2>
+                    <?php if(!empty($movie->release_dates)): ?>
+                      <p id="announcement" data-rd="<?php echo e($movie->release_dates); ?>"></p>
+                    <?php endif; ?>
+                    <img src="<?php echo e($basepath); ?>/assets/images/permanent/stx-about.png" class="desktop-only" alt="">
+                    <div class="divider"></div>
+                    <div class="content">
+                      <div class="left">
+                        <div class="text">
+                          <?php echo $movie->about; ?>
+
+                        </div>
+                      </div>
+                      <div class="right">
+                        <ul>
+                          <?php $role = ''; $crew = '';?>
+                          <?php foreach($section->content['crew'] as $person): ?>
+                            <?php if($person->display): ?>
+                              <?php if($role != $person->role && $crew != ''): ?>
+                              <li>
+                                <div class="left"><h4><?php echo e(strtoupper($role)); ?></h4></div>
+                                <div class="right"><p><?php echo e($crew); ?></p></div>
+                              </li>
+                              <?php $role = ''; $crew = '';?>
+                              <?php endif; ?>                              
+                              <?php if($role != $person->role): ?>
+                                <?php
+                                  $role = $person->role;
+                                  $crew .= $person->first_name . ' ' . $person->last_name;
+                                ?>
+                              <?php else: ?>
+                                <?php $crew .= ', ' . $person->first_name . ' ' . $person->last_name; ?>                              
+                              <?php endif; ?>
+                            <?php endif; ?>                            
+                          <?php endforeach; ?>
+                          <?php if($crew != ''): ?>
+                            <li>
+                              <div class="left"><h4><?php echo e(strtoupper($role)); ?></h4></div>
+                              <div class="right"><p><?php echo e($crew); ?></p></div>
+                            </li>
+                          <?php endif; ?>
+                          <?php if(count($section->content['cast']) > 0): ?>
+                            <li>
+                              <div class="left">
+                                <h4>CAST</h4>
+                              </div>
+                              <div class="right">
+                                <p>
+                                  <?php foreach($section->content['cast'] as $i=>$person): ?>
+                                    <?php echo e($person->first_name); ?> <?php echo e($person->last_name); ?><?php echo e($i < count($section->content['cast'])-1 ? ', ' : ''); ?>
+
+                                    
+                                  <?php endforeach; ?>
+                                </p>
+                              </div>
+                            </li>
+                          <?php endif; ?>                        
+                        </ul>
+                      </div>
+                    </div>
+                    <a href="#" class="view-less btn mobile-only"><span>VIEW LESS</span></a>
+                    <a href="#" class="view-more btn mobile-only no"><span>VIEW MORE</span></a>
+                  </article>
+                  <article class="cast">
+                    <div class="content">
+                      <div class="left">
+                          <?php if($section->content['cast_bio_count']): ?>
+                          <nav>
+                            <div class="op-cl"><h4>+</h4></div>
+                            <h4>CAST</h4>
+                            <div class="divider"></div>
+                            
+                            <ul>
+                              <?php foreach($section->content['cast'] as $person): ?>
+                                <?php if(!empty($person->biography)): ?>
+                                  <li data-point="cast-<?php echo e($person->id); ?>">
+                                    <span><?php echo e($person->first_name); ?> <?php echo e($person->last_name); ?></span>
+                                    <div class="opl mobile-only">
+                                      <div class="open">-</div>
+                                      <div class="closed">+</div>
+                                    </div>
+                                    <figure class="preview">
+                                      <?php if(!empty($person->path)): ?>
+                                        <div class="left">
+                                          <img src="<?php echo e($basepath); ?><?php echo e($person->path); ?>" class="r2x"/>
+                                        </div>
+                                      <?php endif; ?>
+                                      <figurecaption class="right">
+                                        <h3 class="desktop-only"><?php echo e($person->first_name); ?> <?php echo e($person->last_name); ?></h3>
+                                        <div class="content text colapsed">
+                                          <?php echo $person->biography; ?>
+
+                                        </div>
+                                      </figurecaption>
+                                      <a href="#" class="view-less btn gray-btn mobile-only  no"><span>VIEW LESS</span></a>
+                                      <a href="#" class="view-more btn gray-btn mobile-only"><span>VIEW MORE</span></a>
+                                    </figure>
+                                  </li>
+                                <?php endif; ?>
+                              <?php endforeach; ?>
+                            </ul>
+                          </nav>
+                          <?php endif; ?>
+
+                          <?php if($section->content['crew_bio_count']): ?>
+                          <nav>
+                            <div class="op-cl"><h4>+</h4></div>
+                            <h4>CREW</h4>
+                            <div class="divider"></div>
+                            <ul>
+                              <?php foreach($section->content['crew'] as $person): ?>
+                                <?php if(!empty($person->biography)): ?>
+                                  <li data-point="cast-<?php echo e($person->id); ?>">
+                                    <span><?php echo e($person->first_name); ?> <?php echo e($person->last_name); ?></span>
+                                    <div class="opl mobile-only">
+                                      <div class="open">-</div>
+                                      <div class="closed">+</div>
+                                    </div>
+                                    <figure class="preview">
+                                      <?php if(!empty($person->path)): ?>
+                                        <div class="left">
+                                          <img src="<?php echo e($basepath); ?><?php echo e($person->path); ?>" class="r2x"/>
+                                        </div>
+                                      <?php endif; ?>
+                                      <figurecaption class="right">
+                                        <h3 class="desktop-only"><?php echo e($person->first_name); ?> <?php echo e($person->last_name); ?></h3>
+                                        <div class="content text colapsed">
+                                          <?php echo $person->biography; ?>
+
+                                        </div>
+                                      </figurecaption>
+                                      <a href="#" class="view-less btn gray-btn mobile-only  no"><span>VIEW LESS</span></a>
+                                      <a href="#" class="view-more btn gray-btn mobile-only"><span>VIEW MORE</span></a>
+                                    </figure>
+                                  </li>
+                                <?php endif; ?>
+                              <?php endforeach; ?>
+                            </ul>
+                          </nav>
+                          <?php endif; ?>
+                      </div>
+
+                    </div>
+                  </article>
+                </div>
+              </section>
+            
+            
+
+              <?php /* REVIEWS BLOCK*/ ?>
+              <?php elseif($section->type == 'reviewsandawards'): ?>
+              <section class="quotes <?php echo e($section->type); ?> <?php echo e($section->type); ?>_<?php echo e($section->id); ?> section_<?php echo e($section->id); ?>"
+                       style="background: <?php echo e($section->bgcolor); ?> url(<?php echo e($basepath); ?>/<?php echo e($section->bgimage); ?>) no-repeat scroll 50% 0 / cover;">
+
+                <div class="swiper-container" id="swiper-reviewsandawards-<?php echo e($section->id); ?>">
+                  <div class="swiper-wrapper">
+
+                    <?php foreach($section->content as $review): ?>
+                      <div class="swiper-slide">
+                        
+                        <div class="review-wrapper">
+                          <div class="review-innerwrapper">
+                        
+                            <?php if(!empty($review->path) && $review->type == 'award'): ?>
+                              <img src="<?php echo e($basepath); ?>/<?php echo e($review->path); ?>" class="r2x desktop-only" alt="">
+                              <img src="<?php echo e($basepath); ?>/<?php echo e($review->path); ?>" class="r2x mobile-only" alt="">
+
+                            <?php elseif($review->type == 'review' && !empty($review->name)): ?>
+
+                              <img class="svg outlet-logo" data-src="<?php echo e($basepath); ?>/assets/images/logos/<?php echo e($review->name); ?>.svg"/>
+
+                            <?php else: ?>
+                              <h2><?php echo e($review->name); ?></h2>
+                            <?php endif; ?>
+
+                            <?php if(!empty($review->body)): ?>
+                              <?php echo $review->body; ?>
+
+                            <?php endif; ?>
+                            <?php if(!empty($review->url)): ?>
+                              <p class="byline"><?php echo e($review->url); ?></p>
+                            <?php endif; ?>
+
+                          </div>
+                        </div>
+                      </div>
+                    <?php endforeach; ?>
+
+                  </div>
+                  <div class="aw-p swiper-button-prev"></div>
+                  <div class="aw-n swiper-button-next"></div>
+                </div>
+              </section>
+
+
+
+              <?php /* GALLERY BLOCK*/ ?>
+              <?php elseif($section->type == 'gallery'): ?>
+              <section class="<?php echo e($section->type); ?> <?php echo e($section->type); ?>_<?php echo e($section->id); ?> section_<?php echo e($section->id); ?>">
+
+                  <h1>GALLERY</h1>
+                  <div class="swiper-container" id="swiper-gallery-<?php echo e($section->id); ?>">
+                    <div class="swiper-wrapper">
+                      
+                      <?php foreach($section->content as $image): ?>
+                        <div class="swiper-slide">
+                          <div class="gradient"></div>
+                          <img src="<?php echo e($basepath); ?>/<?php echo e($image->path); ?>" class="r2x" alt=""/>
+                          <a href="#" class="wire-btn"><div class="icon fa fa-share-alt"></div></a>
+                          <div class="share-popup">
+                            <ul>
+                              <li><a target="_blank" href="https://www.facebook.com/dialog/share?app_id=<?php echo e($fb_id); ?>&display=popup&href=<?php echo e($basepath); ?>/<?php echo e($image->path); ?>&redirect_uri=<?php echo e(Request::url()); ?>" class="wire-btn"><div class="icon fa fa-facebook"></div></a></li>
+                              <li><a target="_blank" href='https://twitter.com/intent/tweet?text=Check out photos from the movie "<?php echo e($movie->title); ?>" at <?php echo e(Request::url()); ?>' class="wire-btn"><div class="icon fa fa-twitter"></div></a></li>
+                              <li><a href="https://www.pinterest.com/pin/create/button/?url=<?php echo e(Request::url()); ?>&media=<?php echo e($basepath); ?>/<?php echo e($image->path); ?>" data-pin-do="buttonPin" data-pin-custom="true" class="wire-btn icon fa fa-pinterest-p"></a></li>
+                              <li><a target="_blank" href="<?php echo e($basepath); ?>/<?php echo e($image->path); ?>" class="wire-btn text"><span>DOWNLOAD</span></a></li>
+                            </ul>
+                            <div class="icon fa fa-caret-right"></div>
+                            
+                          </div>
+                          
+                        </div>
+                      
+                      <?php endforeach; ?>
+                      
+                    </div>
+                    <div class="swiper-pagination"></div>
+                    <div class="gal-p swiper-button-prev"></div>
+                    <div class="gal-n swiper-button-next"></div>
+                  </div>
+                </section>
+              
+              
+              
+              <?php /* PARTNERS BLOCK*/ ?>
+              <?php elseif($section->type == 'partners'): ?>
+              <section class="<?php echo e($section->type); ?> <?php echo e($section->type); ?>_<?php echo e($section->id); ?> section_<?php echo e($section->id); ?>"
+                       style="background: <?php echo e($section->bgcolor); ?> url(<?php echo e($basepath); ?>/<?php echo e($section->bgimage); ?>) no-repeat scroll 50% 0 / cover;">
+                <div class="swiper-container" id="swiper-partners-<?php echo e($section->id); ?>">
+                  <div class="swiper-wrapper">
+                     
+                    <?php foreach($section->content as $partner): ?>
+                      <div class="swiper-slide">
+                        <?php if(!empty($partner->path)): ?>
+                          <a href="<?php echo e($partner->url); ?>" target="_blank"><img src="<?php echo e($basepath); ?>/<?php echo e($partner->path); ?>" class="r2x" alt=""></a>
+                        <?php else: ?>
+                          <h2><a href="<?php echo e($partner->url); ?>" target="_blank"><?php echo e($partner->name); ?></a></h2>
+                        <?php endif; ?>
+
+                        <?php if(!empty($partner->body)): ?>
+                          <?php echo $partner->body; ?>
+
+                        <?php endif; ?>
+                      </div>
+                    <?php endforeach; ?>
+
+                  </div>
+                  <div class="par-p swiper-button-prev "></div>
+                  <div class="par-n swiper-button-next"></div>
+                </div>
+              </section>
+              
+              
+
+              <?php /* FOOTER BLOCK*/ ?>
+              <?php elseif($section->type == 'footer'): ?>
+              <section class="credits <?php echo e($section->type); ?> <?php echo e($section->type); ?>_<?php echo e($section->id); ?> section_<?php echo e($section->id); ?>"
+                       style="background: <?php echo e($section->bgcolor); ?> url(<?php echo e($basepath); ?>/<?php echo e($section->bgimage); ?>) no-repeat scroll 50% 0 / cover;">
+                <div class="sign-up box">
+                  <ul>
+                    <li><h3>SIGN UP FOR EXCLUSIVE STX UPDATES</h3></li>
+                    <li>
+                      <p>SIGN UP VIA EMAIL</p>
+                      <div class="email-form">
+
+                        <!-- Begin MailChimp Signup Form -->
+                        <div id="mc_embed_signup">
+                        <form action="//STXEntertainment.us10.list-manage.com/subscribe/post?u=3c0b4702048b18d17b8ff497a&amp;id=66a7d8ed97" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate>
+                            <div id="mc_embed_signup_scroll">
+                            <div class="mc-field-group">
+                              <label for="mce-EMAIL"></label>
+                              <input type="email" value="" name="EMAIL" class="required email" id="mce-EMAIL" placeholder="Your email adress">
+                            </div>
+                            <div id="mce-responses" class="clear">
+                              <div class="response" id="mce-error-response" style="display:none"></div>
+                              <div class="response" id="mce-success-response" style="display:none"></div>
+                            </div>
+                            <!-- real people should not fill this in and expect good things - do not remove this or risk form bot signups-->
+                            <div style="position: absolute; left: -5000px;" aria-hidden="true"><input type="text" name="b_3c0b4702048b18d17b8ff497a_66a7d8ed97" tabindex="-1" value=""></div>
+                            <div class="clear"><input type="submit" value="SIGN UP" name="subscribe" id="mc-embedded-subscribe" class="button btn submit"></div>
+                            <!--<a href="#" class="btn submit"><span>SIGN UP</span></a>-->
+                            </div>
+                        </form>
+                        </div>
+                        <!--End mc_embed_signup-->
+                        
+                        
+                      </div>
+                    </li>
+                    <li>
+                      <p>SIGN UP WITH FACEBOOK</p>
+                      <div>
+                        <a href="#" class="btn"><span>f</span></a>
+                        <a href="#" class="btn"><span>FACEBOOK</span></a>
+                      </div>
+                    </li>
+                  </ul>
+                  <div><p>Yes! Send me email updates and offers from STX Entertainment! I can opt out at any time. By signing up, I agree to the STX Entertainment <a href="//stxentertainment.com/terms_of_use" target="_blank">Privacy Policy</a> and <a href="//stxentertainment.com/privacy_policy" target="_blank">Terms of Use.</a></p></div>
+                </div>
+                <div class="box">
+                  <div class="left">
+                    <ul>
+                      <?php foreach($section->content as $rating): ?>
+                        <?php if(!empty($rating->path)): ?>
+                          <li><img class="r2x" src="<?php echo e($basepath); ?>/<?php echo e($rating->path); ?>" alt=""></li>
+                        <?php endif; ?>
+                      <?php endforeach; ?>
+                    </ul>
+                  </div>
+                  <div class="right">
+                    <ul>
+                      <?php if(count($credit_image) > 0): ?>
+                        <li class="desktop-only"><a href="#" target="_blank" class="credits btn"><span>CREDITS</span></a></li>
+                      <?php endif; ?>
+                      <li><a href="//mpaa.org" target="_blank" class="btn"><span>MPAA</span></a></li>
+                      <li><a href="//filmratings.com" target="_blank" class="btn"><span>FILMRATINGS.COM</span></a></li>
+                    </ul>
+                    <p><?php echo e($movie->legal_line); ?></p>
+                  </div>
+                </div>
+              </section>
+              
+              
+              <?php /* FEATURED/CUSTOM CONTENT BLOCK*/ ?>
+              <?php elseif($section->type == 'featuredcontent'): ?>
+              <section class="featured <?php echo e($section->display); ?> <?php echo e($section->type); ?> <?php echo e($section->type); ?>_<?php echo e($section->id); ?> section_<?php echo e($section->id); ?>"
+                       style="background: <?php echo e($section->bgcolor); ?> url(<?php echo e($basepath); ?>/<?php echo e($section->bgimage); ?>) no-repeat scroll 50% 0 / cover;">
+
+                <?php if($section->display == 'image_and_text'): ?>
+                  <div class="box">
+                    <?php foreach($section->content as $item): ?>
+                        <div class="column">
+                          <div class="image">
+                            <?php if(!empty($item->path)): ?>
+                              <img src="<?php echo e($basepath); ?>/<?php echo e($item->path); ?>"/><
+                            <?php endif; ?>
+                          </div>
+                          <div class="content">
+                            <h1><?php echo e($item->name); ?></h1>
+                            <p><?php echo $item->body; ?></p>
+                            <?php if(!empty($item->url) && !empty($item->cta_text)): ?>
+                              <a href="<?php echo e($item->url); ?>" class="wire-btn text" target="_blank"><span><?php echo e($item->cta_text); ?></span></a>
+                            <?php endif; ?>
+                          </div>
+                        </div>
+
+                    <?php endforeach; ?>
+                  </div>
+                
+                <?php elseif($section->display == 'complex_carousel'): ?>
+                  <div class="box">
+                    <div class="swiper-container" id="swiper-featured-<?php echo e($section->id); ?>">
+                      <div class="swiper-wrapper">
+                        <?php foreach($section->content as $item): ?>
+                          <div class="swiper-slide">
+                            <div class="image">
+                              <?php if(!empty($item->path)): ?>
+                                <img src="<?php echo e($basepath); ?>/<?php echo e($item->path); ?>"/>
+                              <?php endif; ?>
+                            </div>
+                            <div class="content">
+                              <h1><?php echo e($item->name); ?></h1>
+                              <p><?php echo $item->body; ?></p>
+                              <?php if(!empty($item->url) && !empty($item->cta_text)): ?>
+                                <a href="<?php echo e($item->url); ?>" class="wire-btn text" target="_blank"><span><?php echo e($item->cta_text); ?></span></a>
+                              <?php endif; ?>
+                            </div>
+                          </div>
+                        <?php endforeach; ?>
+                      </div>
+                    </div>
+
+                    <div class="fea-p swiper-button-prev controls"></div>
+                    <div class="fea-n swiper-button-next controls"></div>
+
+                  </div>
+                
+                <?php elseif($section->display == 'large_image_content_left'): ?>
+                  <?php foreach($section->content as $item): ?>
+                    <div class="box">
+                      <div class="content">
+                        <h1><?php echo e($item->name); ?></h1>
+                        <p><?php echo $item->body; ?></p>
+                        <?php if(!empty($item->url) && !empty($item->cta_text)): ?>
+                          <a href="<?php echo e($item->url); ?>" class="wire-btn text" target="_blank"><span><?php echo e($item->cta_text); ?></span></a>
+                        <?php endif; ?>
+                      </div><div class="image">
+                        <?php if(!empty($item->path)): ?>
+                          <img src="<?php echo e($basepath); ?>/<?php echo e($item->path); ?>"/>
+                        <?php endif; ?>
+                      </div>
+                    </div>
+                  <?php endforeach; ?>
+                  
+                <?php else: ?>
+                  <?php /* default: large_image_content_right */ ?>
+                  <?php foreach($section->content as $item): ?>
+                    <div class="box">
+                      <div class="image">
+                        <?php if(!empty($item->path)): ?>
+                          <img src="<?php echo e($basepath); ?>/<?php echo e($item->path); ?>"/>
+                        <?php endif; ?>
+                      </div><div class="content">
+                        <h1><?php echo e($item->name); ?></h1>
+                        <p><?php echo $item->body; ?></p>
+                        <?php if(!empty($item->url) && !empty($item->cta_text)): ?>
+                          <a href="<?php echo e($item->url); ?>" class="wire-btn text" target="_blank"><span><?php echo e($item->cta_text); ?></span></a>
+                        <?php endif; ?>
+                      </div>
+                    </div>
+                  <?php endforeach; ?>
+                <?php endif; ?>
+
+              </section>
+              <?php endif; ?>
+         
+            
+              <!-- RELATED MOVIES TBD -->
+          
+          
+        <?php endforeach; ?>
+      </main>
+
+      <div id="global-attach-footer" data-path="<?php echo e($basepath); ?>/shared<?php echo e($server); ?>/footer.html"></div>
+
+      <?php if(count($credit_image) > 0): ?>
+        <div class="credits-block">
+          <div class="box">
+            <a href="#" class="close"><img src="<?php echo e($basepath); ?>/assets/images/permanent/close.png"></a>
+            <img src="<?php echo e($basepath); ?>/<?php echo e($credit_image->path); ?>" alt="movie credits">
+          </div>
+        </div>
+      <?php endif; ?>
+      <div class="get-updates-popup">
+        <div class="block-click"></div>
+        <div class="block">
+          <h3>Get exclusive STX updates, insider news and more.</h3>
+          <p>By signing up, I agree to the STX <a href="//stxentertainment.com/privacy_policy" target="_blank">Privacy Policy</a> and <a href="//stxentertainment.com/terms_of_use" target="_blank">Terms of Use.</a></p>
+          <div class="email-form">
+<!--            <input id="email" type="text" placeholder="Your email adress" >
+            <a href="#" class="btn submit"><span>SIGN UP</span></a>-->
+            <!-- Begin MailChimp Signup Form -->
+            <div id="mc_embed_signup_popup">
+            <form action="//STXEntertainment.us10.list-manage.com/subscribe/post?u=3c0b4702048b18d17b8ff497a&amp;id=66a7d8ed97" method="post" id="mc-embedded-subscribe-form-popup" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate>
+                <div id="mc_embed_signup_scroll">
+                <div class="mc-field-group">
+                  <label for="mce-EMAIL"></label>
+                  <input type="email" value="" name="EMAIL" class="required email" id="mce-EMAIL" placeholder="Your email adress">
+                </div>
+                <div id="mce-responses" class="clear">
+                  <div class="response" id="mce-error-response" style="display:none"></div>
+                  <div class="response" id="mce-success-response" style="display:none"></div>
+                </div>
+                 <!--real people should not fill this in and expect good things - do not remove this or risk form bot signups-->
+                <div style="position: absolute; left: -5000px;" aria-hidden="true"><input type="text" name="b_3c0b4702048b18d17b8ff497a_66a7d8ed97" tabindex="-1" value=""></div>
+                <div class="clear"><input type="submit" value="SIGN UP" name="subscribe" id="mc-embedded-subscribe-popup" class="button btn submit"/></div>
+                <!--a href="#" class="btn submit"><span>SIGN UP</span></a-->
+                </div>
+            </form>
+            </div>
+            <!--End mc_embed_signup-->
+            <div class="left-bar"></div>
+          </div>
+          <a href="#" class="close"><img src="<?php echo e($basepath); ?>/assets/images/permanent/close.png"></a>
+        </div>
+      </div>
+
+    </div>
+
+    <script src="<?php echo e($basepath); ?>/assets/js/plugins.js"></script>
+    <script src="<?php echo e($basepath); ?>/assets/js/main.js"></script>
+    <script type="text/javascript" async defer src="//assets.pinterest.com/js/pinit.js"></script>
+
+  </body>
+</html>

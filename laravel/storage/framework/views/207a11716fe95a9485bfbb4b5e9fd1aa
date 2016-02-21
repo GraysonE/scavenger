@@ -1,0 +1,30 @@
+<form method="post" action="" id="socialMediaForm">
+	
+	<?php echo e(csrf_field()); ?>
+
+		
+	<label>Facebook</label>
+	<input type="text" placeholder="<?php echo e(isset($social->facebook)); ?>" name="owner"/>
+	
+	<br>
+	
+	<label>Twitter</label>
+	<input type="text" placeholder="<?php echo e(isset($social->twitter)); ?>" name="publisher"/>
+	
+	<br>
+	
+	<label>Tumblr</label>
+	<input type="text" placeholder="<?php echo e(isset($social->tumbler)); ?>" name="rating"/>
+	
+	<br>
+	
+	<label>Instagram</label>
+	<input type="text" placeholder="<?php echo e(isset($social->instagram)); ?>" name="url"/>
+	
+	<br>
+	
+	<br>
+	
+	<button type="submit">Update Social Media</button>
+	
+</form> 

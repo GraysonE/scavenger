@@ -1,0 +1,175 @@
+.opacity_wrap {
+    background: rgba(255,255,255,.85);
+}
+
+.navbar img {
+    height: 70px;
+    margin-top: -7px;
+    margin-right: -10px;
+    margin-left: -15px;
+}
+
+.fa-minus-circle {
+	color: red;
+}
+
+.main-content ul.ui-sortable > li {
+	margin-bottom: 30px;
+    height: 40px;
+}
+
+.navbar .navbar-header .navbar-brand {
+	padding: 0px;
+}
+
+.ui-sortable .subpanel .screen_name {
+	padding; 0px !important;
+}
+
+.main-content .page-login .panel-heading {
+	padding: 20px;
+}
+
+.navbar .navbar-header .menu-toggler {
+	margin-right: 0px;
+}
+
+.user_info {
+    margin-bottom: 40px;
+}
+
+.account_photo {
+    float: left;
+    margin-right: 10px;
+}
+
+h3.screen_name {
+/*     margin-top: 12px; */
+    width: 70%;
+}
+
+#publishSideBar {
+	bottom: 0;
+	position: fixed;
+	width: 100%;
+}
+
+#publishSideBar button {
+	width: 100%;
+	float: right;
+	max-width: 150px;
+}
+
+#main-form {
+	overflow: hidden;
+}
+
+.floating_box {
+    float:left;
+    width: 10%;
+    height: auto;
+}
+
+.ui-state-active.twitter_account {
+	background: #0084b4 !important;
+}
+
+.ui-state-active.crunch_account {
+	background: green !important;
+}
+
+.main-content .page-login .user_accounts {
+	width: 200px;
+	margin: 40px auto;
+	padding: 20px;
+	box-shadow: 0px 1px 20px 2px #999;
+	transition: background 1s;
+}
+
+.user_accounts:hover {
+	background: #222;
+}
+
+.user_accounts a {
+	margin-top: 30px;
+	text-align: center;
+	width: 100%;
+}
+
+.user_accounts input {
+	color: white;
+	width: 100%;
+	text-align: center;
+}
+
+.user_accounts input[type="text"]:hover {
+	border: 1px solid #222;
+}
+
+label {
+	margin: 10px;
+}
+
+.ui-widget-content a {
+	float: right;
+}
+
+#account_accordion .twitter_account input[type="text"] {
+	color: #0084b4 !important;
+	border: none !important;
+}
+
+#account_accordion .crunch_account input[type="text"] {
+	color: green !important;
+	border: none !important;
+}
+
+.user_accounts input[type="checkbox"] {
+	float: right;
+	width: auto;
+}
+
+#main-form {
+	margin-bottom: 40px;
+}
+
+.user_accounts h4 {
+	width: 100%;
+    text-align: center;
+    font-weight: bold;
+    color: white;
+}
+
+input[name="model_user"] {
+	width: 100%;
+    text-align: center;
+}
+
+input[value="Search Users"] {
+	text-align: center;
+	margin: 0 auto;
+    display: block;
+}
+
+@media screen and (min-width: 768px ) {
+	
+	.main-content .page-form-actions button {
+		position: relative;
+	}
+	
+	.main-content .page-login .user_accounts {
+		float: left;
+		margin: 40px;
+	}
+	
+	#publishSideBar {
+		position: relative;
+	}
+	
+	#publishSideBar button {
+		width: 100%;
+		float: right;
+		max-width: 200px;
+	}
+	
+}

@@ -1,0 +1,46 @@
+<?php $__env->startSection('content'); ?>
+
+
+
+<!-- start: DASHBOARD TITLE -->
+<section id="page-title" class="">
+  <div class="row">
+    <div class="col-sm-12">
+      <h1>Global Settings</h1>
+    </div>
+  </div>
+</section>
+<!-- end: DASHBOARD TITLE -->
+
+
+
+<!-- SETTINGS SECTION -->
+<div class="container-fluid container-fullw page-settings">
+
+  <div class="row page-description">    
+    <?php echo $__env->make('admin.publish', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+  </div>
+
+
+  <div class="row">
+    <div class="col-sm-12">
+
+      <form method="post" action="<?php echo e(url('/settings')); ?>" id="main-form" enctype="multipart/form-data">
+        <?php echo e(csrf_field()); ?>
+
+
+        
+      </form>
+
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+<?php $__env->stopSection(); ?>
+
+<?php echo $__env->make('master', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

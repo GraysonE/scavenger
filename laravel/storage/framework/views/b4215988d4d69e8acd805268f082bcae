@@ -1,0 +1,36 @@
+<form method="post" action="" id="peopleIndex">
+	
+	<?php echo e(csrf_field()); ?>
+
+	
+	<label>Canonical</label>
+	<input type="text" placeholder="<?php echo e($meta->canonical); ?>" name="canonical"/>
+	
+	<label>Category</label>
+	<input type="text" placeholder="<?php echo e($meta->category); ?>" name="category"/>
+	
+	<label>Copyright</label>
+	<input type="text" placeholder="<?php echo e($meta->copyright); ?>" name="copyright"/>
+	
+	<label>Description</label>
+	<input type="text" placeholder="<?php echo e($meta->description); ?>" name="description"/>
+	
+	<label>Keywords</label>
+	<input type="text" placeholder="<?php echo e($meta->keywords); ?>" name="keywords"/>
+	
+	<label>Language</label>
+	<input type="text" placeholder="<?php echo e($meta->language); ?>" name="language"/>
+	
+	<label>Owner</label>
+	<input type="text" placeholder="<?php echo e($meta->owner); ?>" name="owner"/>
+	
+	<label>Publisher</label>
+	<input type="text" placeholder="<?php echo e($meta->publisher); ?>" name="publisher"/>
+	
+	<label>Rating</label>
+	<input type="text" placeholder="<?php echo e($meta->rating); ?>" name="rating"/>
+	
+	<label>URL</label>
+	<input type="text" placeholder="<?php echo e($meta->url); ?>" name="url"/>
+	
+</form> 

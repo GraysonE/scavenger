@@ -1,0 +1,23 @@
+<?php $__env->startSection('content'); ?>
+
+    <div class="container-fluid container-fullw page-login">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="panel-heading">
+                    <h5 class="panel-title">SELECT WHICH ACCOUNT TO CONTROL:</h5>
+                </div>
+
+                <?php foreach($socialMediaAccounts as $sma): ?>
+                    <a href="<?php echo e(url('set-user/'.$sma->id)); ?>">
+                        <div><?php echo e($sma->account_type); ?></div>
+                        <br>
+                        <div><?php echo e($sma->screen_name); ?></div>
+                        <br>
+                    </a>
+                <?php endforeach; ?>
+
+            </div>
+        </div>
+    </div>
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('master', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

@@ -1,0 +1,662 @@
+[12-Jul-2015 19:59:43 America/Chicago] PHP Parse error:  syntax error, unexpected '';?>'' (T_CONSTANT_ENCAPSED_STRING) in /home4/grayson/public_html/scavenger/copy-followers.php on line 110
+[12-Jul-2015 20:00:48 America/Chicago] PHP Parse error:  syntax error, unexpected ';' in /home4/grayson/public_html/scavenger/config.php on line 65
+[12-Jul-2015 20:14:11 America/Chicago] PHP Parse error:  syntax error, unexpected ';' in /home4/grayson/public_html/scavenger/config.php on line 65
+[12-Jul-2015 20:17:01 America/Chicago] PHP Parse error:  syntax error, unexpected '';?>'' (T_CONSTANT_ENCAPSED_STRING) in /home4/grayson/public_html/scavenger/copy-followers.php on line 99
+[12-Jul-2015 20:17:10 America/Chicago] PHP Parse error:  syntax error, unexpected '';?>'' (T_CONSTANT_ENCAPSED_STRING) in /home4/grayson/public_html/scavenger/copy-followers.php on line 99
+[12-Jul-2015 20:17:27 America/Chicago] PHP Parse error:  syntax error, unexpected '';?>'' (T_CONSTANT_ENCAPSED_STRING) in /home4/grayson/public_html/scavenger/copy-followers.php on line 99
+[12-Jul-2015 20:18:17 America/Chicago] PHP Parse error:  syntax error, unexpected '';?>'' (T_CONSTANT_ENCAPSED_STRING) in /home4/grayson/public_html/scavenger/copy-followers.php on line 99
+[12-Jul-2015 22:53:58 America/Chicago] PHP Parse error:  syntax error, unexpected '$debug' (T_VARIABLE) in /home4/grayson/public_html/scavenger/heady-cron.php on line 9
+[12-Jul-2015 23:00:03 America/Chicago] PHP Parse error:  syntax error, unexpected '$debug' (T_VARIABLE) in /home4/grayson/public_html/scavenger/heady-cron.php on line 11
+[12-Jul-2015 23:00:06 America/Chicago] PHP Parse error:  syntax error, unexpected '$debug' (T_VARIABLE) in /home4/grayson/public_html/scavenger/heady-cron.php on line 11
+[12-Jul-2015 23:00:15 America/Chicago] PHP Parse error:  syntax error, unexpected '$debug' (T_VARIABLE) in /home4/grayson/public_html/scavenger/heady-cron.php on line 11
+[13-Jul-2015 00:11:22 America/Chicago] PHP Fatal error:  Only variables can be passed by reference in /home4/grayson/public_html/scavenger/heady-cron.php on line 20
+[13-Jul-2015 00:12:00 America/Chicago] PHP Fatal error:  Only variables can be passed by reference in /home4/grayson/public_html/scavenger/heady-cron.php on line 21
+[13-Jul-2015 00:12:13 America/Chicago] PHP Fatal error:  Only variables can be passed by reference in /home4/grayson/public_html/scavenger/heady-cron.php on line 21
+[13-Jul-2015 00:12:14 America/Chicago] PHP Fatal error:  Only variables can be passed by reference in /home4/grayson/public_html/scavenger/heady-cron.php on line 21
+[13-Jul-2015 00:12:14 America/Chicago] PHP Fatal error:  Only variables can be passed by reference in /home4/grayson/public_html/scavenger/heady-cron.php on line 21
+[13-Jul-2015 00:56:32 America/Chicago] PHP Parse error:  syntax error, unexpected 'echo' (T_ECHO) in /home4/grayson/public_html/scavenger/heady-cron.php on line 20
+[13-Jul-2015 03:52:05 America/Chicago] PHP Parse error:  syntax error, unexpected ' = ""; $curs' in /home4/grayson/public_html/scavenger/config.php on line 63
+[13-Jul-2015 03:58:02 America/Chicago] PHP Parse error:  syntax error, unexpected ' = ""; $curs' in /home4/grayson/public_html/scavenger/config.php on line 63
+[13-Jul-2015 03:58:56 America/Chicago] PHP Parse error:  syntax error, unexpected ' = "thestave' in /home4/grayson/public_html/scavenger/config.php on line 63
+[14-Jul-2015 19:36:23 America/Denver] PHP Warning:  mail() expects at least 3 parameters, 2 given in /home4/grayson/public_html/scavenger/functions.php on line 237
+[14-Jul-2015 20:00:08 America/Denver] PHP Warning:  mail() expects at least 3 parameters, 2 given in /home4/grayson/public_html/scavenger/functions.php on line 237
+[14-Jul-2015 20:16:07 America/Denver] PHP Warning:  mail() expects at least 3 parameters, 2 given in /home4/grayson/public_html/scavenger/functions.php on line 237
+[14-Jul-2015 20:32:06 America/Denver] PHP Warning:  mail() expects at least 3 parameters, 2 given in /home4/grayson/public_html/scavenger/functions.php on line 237
+[14-Jul-2015 23:19:02 America/Denver] PHP Parse error:  syntax error, unexpected 'else' (T_ELSE) in /home4/grayson/public_html/scavenger/functions.php on line 361
+[14-Jul-2015 23:33:02 America/Denver] PHP Parse error:  syntax error, unexpected 'else' (T_ELSE) in /home4/grayson/public_html/scavenger/functions.php on line 361
+[14-Jul-2015 23:51:02 America/Denver] PHP Parse error:  syntax error, unexpected 'else' (T_ELSE) in /home4/grayson/public_html/scavenger/functions.php on line 361
+[15-Jul-2015 00:02:01 America/Denver] PHP Parse error:  syntax error, unexpected 'else' (T_ELSE) in /home4/grayson/public_html/scavenger/functions.php on line 361
+[15-Jul-2015 00:17:02 America/Denver] PHP Parse error:  syntax error, unexpected 'else' (T_ELSE) in /home4/grayson/public_html/scavenger/functions.php on line 361
+[15-Jul-2015 00:34:02 America/Denver] PHP Parse error:  syntax error, unexpected 'else' (T_ELSE) in /home4/grayson/public_html/scavenger/functions.php on line 361
+[15-Jul-2015 00:51:01 America/Denver] PHP Parse error:  syntax error, unexpected 'else' (T_ELSE) in /home4/grayson/public_html/scavenger/functions.php on line 361
+[15-Jul-2015 01:01:02 America/Denver] PHP Parse error:  syntax error, unexpected 'else' (T_ELSE) in /home4/grayson/public_html/scavenger/functions.php on line 361
+[15-Jul-2015 01:17:01 America/Denver] PHP Parse error:  syntax error, unexpected 'else' (T_ELSE) in /home4/grayson/public_html/scavenger/functions.php on line 361
+[15-Jul-2015 01:33:02 America/Denver] PHP Parse error:  syntax error, unexpected 'else' (T_ELSE) in /home4/grayson/public_html/scavenger/functions.php on line 361
+[15-Jul-2015 01:49:02 America/Denver] PHP Parse error:  syntax error, unexpected 'else' (T_ELSE) in /home4/grayson/public_html/scavenger/functions.php on line 361
+[15-Jul-2015 02:03:02 America/Denver] PHP Parse error:  syntax error, unexpected 'else' (T_ELSE) in /home4/grayson/public_html/scavenger/functions.php on line 361
+[15-Jul-2015 02:18:01 America/Denver] PHP Parse error:  syntax error, unexpected 'else' (T_ELSE) in /home4/grayson/public_html/scavenger/functions.php on line 361
+[15-Jul-2015 02:33:02 America/Denver] PHP Parse error:  syntax error, unexpected 'else' (T_ELSE) in /home4/grayson/public_html/scavenger/functions.php on line 361
+[15-Jul-2015 02:50:01 America/Denver] PHP Parse error:  syntax error, unexpected 'else' (T_ELSE) in /home4/grayson/public_html/scavenger/functions.php on line 361
+[15-Jul-2015 03:03:01 America/Denver] PHP Parse error:  syntax error, unexpected 'else' (T_ELSE) in /home4/grayson/public_html/scavenger/functions.php on line 361
+[15-Jul-2015 03:17:01 America/Denver] PHP Parse error:  syntax error, unexpected 'else' (T_ELSE) in /home4/grayson/public_html/scavenger/functions.php on line 361
+[15-Jul-2015 03:34:01 America/Denver] PHP Parse error:  syntax error, unexpected 'else' (T_ELSE) in /home4/grayson/public_html/scavenger/functions.php on line 361
+[15-Jul-2015 03:50:02 America/Denver] PHP Parse error:  syntax error, unexpected 'else' (T_ELSE) in /home4/grayson/public_html/scavenger/functions.php on line 361
+[15-Jul-2015 04:02:02 America/Denver] PHP Parse error:  syntax error, unexpected 'else' (T_ELSE) in /home4/grayson/public_html/scavenger/functions.php on line 361
+[15-Jul-2015 04:17:02 America/Denver] PHP Parse error:  syntax error, unexpected 'else' (T_ELSE) in /home4/grayson/public_html/scavenger/functions.php on line 361
+[15-Jul-2015 04:35:01 America/Denver] PHP Parse error:  syntax error, unexpected 'else' (T_ELSE) in /home4/grayson/public_html/scavenger/functions.php on line 361
+[15-Jul-2015 04:49:01 America/Denver] PHP Parse error:  syntax error, unexpected 'else' (T_ELSE) in /home4/grayson/public_html/scavenger/functions.php on line 361
+[15-Jul-2015 05:01:02 America/Denver] PHP Parse error:  syntax error, unexpected 'else' (T_ELSE) in /home4/grayson/public_html/scavenger/functions.php on line 361
+[15-Jul-2015 05:19:02 America/Denver] PHP Parse error:  syntax error, unexpected 'else' (T_ELSE) in /home4/grayson/public_html/scavenger/functions.php on line 361
+[15-Jul-2015 05:35:02 America/Denver] PHP Parse error:  syntax error, unexpected 'else' (T_ELSE) in /home4/grayson/public_html/scavenger/functions.php on line 361
+[15-Jul-2015 05:49:02 America/Denver] PHP Parse error:  syntax error, unexpected 'else' (T_ELSE) in /home4/grayson/public_html/scavenger/functions.php on line 361
+[15-Jul-2015 06:01:01 America/Denver] PHP Parse error:  syntax error, unexpected 'else' (T_ELSE) in /home4/grayson/public_html/scavenger/functions.php on line 361
+[15-Jul-2015 06:17:01 America/Denver] PHP Parse error:  syntax error, unexpected 'else' (T_ELSE) in /home4/grayson/public_html/scavenger/functions.php on line 361
+[15-Jul-2015 06:33:02 America/Denver] PHP Parse error:  syntax error, unexpected 'else' (T_ELSE) in /home4/grayson/public_html/scavenger/functions.php on line 361
+[15-Jul-2015 06:51:02 America/Denver] PHP Parse error:  syntax error, unexpected 'else' (T_ELSE) in /home4/grayson/public_html/scavenger/functions.php on line 361
+[15-Jul-2015 07:03:01 America/Denver] PHP Parse error:  syntax error, unexpected 'else' (T_ELSE) in /home4/grayson/public_html/scavenger/functions.php on line 361
+[15-Jul-2015 07:18:02 America/Denver] PHP Parse error:  syntax error, unexpected 'else' (T_ELSE) in /home4/grayson/public_html/scavenger/functions.php on line 361
+[15-Jul-2015 07:33:02 America/Denver] PHP Parse error:  syntax error, unexpected 'else' (T_ELSE) in /home4/grayson/public_html/scavenger/functions.php on line 361
+[15-Jul-2015 07:51:02 America/Denver] PHP Parse error:  syntax error, unexpected 'else' (T_ELSE) in /home4/grayson/public_html/scavenger/functions.php on line 361
+[15-Jul-2015 08:03:02 America/Denver] PHP Parse error:  syntax error, unexpected 'else' (T_ELSE) in /home4/grayson/public_html/scavenger/functions.php on line 361
+[15-Jul-2015 08:18:02 America/Denver] PHP Parse error:  syntax error, unexpected 'else' (T_ELSE) in /home4/grayson/public_html/scavenger/functions.php on line 361
+[15-Jul-2015 08:35:02 America/Denver] PHP Parse error:  syntax error, unexpected 'else' (T_ELSE) in /home4/grayson/public_html/scavenger/functions.php on line 361
+[15-Jul-2015 08:49:02 America/Denver] PHP Parse error:  syntax error, unexpected 'else' (T_ELSE) in /home4/grayson/public_html/scavenger/functions.php on line 361
+[15-Jul-2015 09:03:02 America/Denver] PHP Parse error:  syntax error, unexpected 'else' (T_ELSE) in /home4/grayson/public_html/scavenger/functions.php on line 361
+[15-Jul-2015 09:17:02 America/Denver] PHP Parse error:  syntax error, unexpected 'else' (T_ELSE) in /home4/grayson/public_html/scavenger/functions.php on line 361
+[15-Jul-2015 09:33:01 America/Denver] PHP Parse error:  syntax error, unexpected 'else' (T_ELSE) in /home4/grayson/public_html/scavenger/functions.php on line 361
+[15-Jul-2015 09:50:02 America/Denver] PHP Parse error:  syntax error, unexpected 'else' (T_ELSE) in /home4/grayson/public_html/scavenger/functions.php on line 361
+[15-Jul-2015 10:01:01 America/Denver] PHP Parse error:  syntax error, unexpected 'else' (T_ELSE) in /home4/grayson/public_html/scavenger/functions.php on line 361
+[15-Jul-2015 10:19:01 America/Denver] PHP Parse error:  syntax error, unexpected 'else' (T_ELSE) in /home4/grayson/public_html/scavenger/functions.php on line 361
+[15-Jul-2015 10:34:02 America/Denver] PHP Parse error:  syntax error, unexpected 'else' (T_ELSE) in /home4/grayson/public_html/scavenger/functions.php on line 361
+[15-Jul-2015 10:49:01 America/Denver] PHP Parse error:  syntax error, unexpected 'else' (T_ELSE) in /home4/grayson/public_html/scavenger/functions.php on line 361
+[15-Jul-2015 11:02:02 America/Denver] PHP Parse error:  syntax error, unexpected 'else' (T_ELSE) in /home4/grayson/public_html/scavenger/functions.php on line 361
+[15-Jul-2015 11:18:02 America/Denver] PHP Parse error:  syntax error, unexpected 'else' (T_ELSE) in /home4/grayson/public_html/scavenger/functions.php on line 361
+[15-Jul-2015 11:33:02 America/Denver] PHP Parse error:  syntax error, unexpected 'else' (T_ELSE) in /home4/grayson/public_html/scavenger/functions.php on line 361
+[15-Jul-2015 11:50:02 America/Denver] PHP Parse error:  syntax error, unexpected 'else' (T_ELSE) in /home4/grayson/public_html/scavenger/functions.php on line 361
+[15-Jul-2015 12:02:02 America/Denver] PHP Parse error:  syntax error, unexpected 'else' (T_ELSE) in /home4/grayson/public_html/scavenger/functions.php on line 361
+[15-Jul-2015 12:18:02 America/Denver] PHP Parse error:  syntax error, unexpected 'else' (T_ELSE) in /home4/grayson/public_html/scavenger/functions.php on line 361
+[15-Jul-2015 12:35:02 America/Denver] PHP Parse error:  syntax error, unexpected 'else' (T_ELSE) in /home4/grayson/public_html/scavenger/functions.php on line 361
+[15-Jul-2015 12:51:02 America/Denver] PHP Parse error:  syntax error, unexpected 'else' (T_ELSE) in /home4/grayson/public_html/scavenger/functions.php on line 361
+[15-Jul-2015 13:03:02 America/Denver] PHP Parse error:  syntax error, unexpected 'else' (T_ELSE) in /home4/grayson/public_html/scavenger/functions.php on line 361
+[16-Jul-2015 02:19:05 America/Denver] PHP Warning:  array_merge(): Argument #1 is not an array in /home4/grayson/public_html/scavenger/functions.php on line 224
+[16-Jul-2015 02:19:06 America/Denver] PHP Warning:  array_diff(): Argument #3 is not an array in /home4/grayson/public_html/scavenger/functions.php on line 271
+[16-Jul-2015 02:19:06 America/Denver] PHP Warning:  Invalid argument supplied for foreach() in /home4/grayson/public_html/scavenger/functions.php on line 274
+[16-Jul-2015 02:37:04 America/Denver] PHP Warning:  array_merge(): Argument #1 is not an array in /home4/grayson/public_html/scavenger/functions.php on line 224
+[16-Jul-2015 02:37:05 America/Denver] PHP Warning:  array_diff(): Argument #3 is not an array in /home4/grayson/public_html/scavenger/functions.php on line 271
+[16-Jul-2015 02:37:05 America/Denver] PHP Warning:  Invalid argument supplied for foreach() in /home4/grayson/public_html/scavenger/functions.php on line 274
+[16-Jul-2015 02:53:05 America/Denver] PHP Warning:  array_merge(): Argument #1 is not an array in /home4/grayson/public_html/scavenger/functions.php on line 224
+[16-Jul-2015 02:53:06 America/Denver] PHP Warning:  array_diff(): Argument #3 is not an array in /home4/grayson/public_html/scavenger/functions.php on line 271
+[16-Jul-2015 02:53:06 America/Denver] PHP Warning:  Invalid argument supplied for foreach() in /home4/grayson/public_html/scavenger/functions.php on line 274
+[16-Jul-2015 03:02:04 America/Denver] PHP Warning:  array_merge(): Argument #1 is not an array in /home4/grayson/public_html/scavenger/functions.php on line 224
+[16-Jul-2015 03:18:04 America/Denver] PHP Warning:  array_merge(): Argument #1 is not an array in /home4/grayson/public_html/scavenger/functions.php on line 224
+[16-Jul-2015 03:18:06 America/Denver] PHP Warning:  array_diff(): Argument #3 is not an array in /home4/grayson/public_html/scavenger/functions.php on line 271
+[16-Jul-2015 03:18:06 America/Denver] PHP Warning:  Invalid argument supplied for foreach() in /home4/grayson/public_html/scavenger/functions.php on line 274
+[16-Jul-2015 03:36:04 America/Denver] PHP Warning:  array_merge(): Argument #1 is not an array in /home4/grayson/public_html/scavenger/functions.php on line 224
+[16-Jul-2015 03:36:05 America/Denver] PHP Warning:  array_diff(): Argument #3 is not an array in /home4/grayson/public_html/scavenger/functions.php on line 271
+[16-Jul-2015 03:36:05 America/Denver] PHP Warning:  Invalid argument supplied for foreach() in /home4/grayson/public_html/scavenger/functions.php on line 274
+[16-Jul-2015 03:52:04 America/Denver] PHP Warning:  array_merge(): Argument #1 is not an array in /home4/grayson/public_html/scavenger/functions.php on line 224
+[16-Jul-2015 03:52:05 America/Denver] PHP Warning:  array_diff(): Argument #3 is not an array in /home4/grayson/public_html/scavenger/functions.php on line 271
+[16-Jul-2015 03:52:05 America/Denver] PHP Warning:  Invalid argument supplied for foreach() in /home4/grayson/public_html/scavenger/functions.php on line 274
+[16-Jul-2015 04:03:04 America/Denver] PHP Warning:  array_merge(): Argument #1 is not an array in /home4/grayson/public_html/scavenger/functions.php on line 224
+[16-Jul-2015 04:19:05 America/Denver] PHP Warning:  array_merge(): Argument #1 is not an array in /home4/grayson/public_html/scavenger/functions.php on line 224
+[16-Jul-2015 04:19:06 America/Denver] PHP Warning:  array_diff(): Argument #3 is not an array in /home4/grayson/public_html/scavenger/functions.php on line 271
+[16-Jul-2015 04:19:06 America/Denver] PHP Warning:  Invalid argument supplied for foreach() in /home4/grayson/public_html/scavenger/functions.php on line 274
+[16-Jul-2015 04:36:04 America/Denver] PHP Warning:  array_merge(): Argument #1 is not an array in /home4/grayson/public_html/scavenger/functions.php on line 224
+[16-Jul-2015 04:36:05 America/Denver] PHP Warning:  array_diff(): Argument #3 is not an array in /home4/grayson/public_html/scavenger/functions.php on line 271
+[16-Jul-2015 04:36:05 America/Denver] PHP Warning:  Invalid argument supplied for foreach() in /home4/grayson/public_html/scavenger/functions.php on line 274
+[16-Jul-2015 04:54:04 America/Denver] PHP Warning:  array_merge(): Argument #1 is not an array in /home4/grayson/public_html/scavenger/functions.php on line 224
+[16-Jul-2015 04:54:05 America/Denver] PHP Warning:  array_diff(): Argument #3 is not an array in /home4/grayson/public_html/scavenger/functions.php on line 271
+[16-Jul-2015 04:54:05 America/Denver] PHP Warning:  Invalid argument supplied for foreach() in /home4/grayson/public_html/scavenger/functions.php on line 274
+[16-Jul-2015 05:01:04 America/Denver] PHP Warning:  array_merge(): Argument #1 is not an array in /home4/grayson/public_html/scavenger/functions.php on line 224
+[16-Jul-2015 05:18:05 America/Denver] PHP Warning:  array_merge(): Argument #1 is not an array in /home4/grayson/public_html/scavenger/functions.php on line 224
+[16-Jul-2015 05:18:06 America/Denver] PHP Warning:  array_diff(): Argument #3 is not an array in /home4/grayson/public_html/scavenger/functions.php on line 271
+[16-Jul-2015 05:18:06 America/Denver] PHP Warning:  Invalid argument supplied for foreach() in /home4/grayson/public_html/scavenger/functions.php on line 274
+[16-Jul-2015 05:35:04 America/Denver] PHP Warning:  array_merge(): Argument #1 is not an array in /home4/grayson/public_html/scavenger/functions.php on line 224
+[16-Jul-2015 05:35:06 America/Denver] PHP Warning:  array_diff(): Argument #3 is not an array in /home4/grayson/public_html/scavenger/functions.php on line 271
+[16-Jul-2015 05:35:06 America/Denver] PHP Warning:  Invalid argument supplied for foreach() in /home4/grayson/public_html/scavenger/functions.php on line 274
+[16-Jul-2015 05:53:04 America/Denver] PHP Warning:  array_merge(): Argument #1 is not an array in /home4/grayson/public_html/scavenger/functions.php on line 224
+[16-Jul-2015 05:53:06 America/Denver] PHP Warning:  array_diff(): Argument #3 is not an array in /home4/grayson/public_html/scavenger/functions.php on line 271
+[16-Jul-2015 05:53:06 America/Denver] PHP Warning:  Invalid argument supplied for foreach() in /home4/grayson/public_html/scavenger/functions.php on line 274
+[16-Jul-2015 06:02:05 America/Denver] PHP Warning:  array_merge(): Argument #1 is not an array in /home4/grayson/public_html/scavenger/functions.php on line 224
+[16-Jul-2015 06:20:04 America/Denver] PHP Warning:  array_merge(): Argument #1 is not an array in /home4/grayson/public_html/scavenger/functions.php on line 224
+[16-Jul-2015 06:20:06 America/Denver] PHP Warning:  array_diff(): Argument #3 is not an array in /home4/grayson/public_html/scavenger/functions.php on line 271
+[16-Jul-2015 06:20:06 America/Denver] PHP Warning:  Invalid argument supplied for foreach() in /home4/grayson/public_html/scavenger/functions.php on line 274
+[16-Jul-2015 06:35:05 America/Denver] PHP Warning:  array_merge(): Argument #1 is not an array in /home4/grayson/public_html/scavenger/functions.php on line 224
+[16-Jul-2015 06:35:06 America/Denver] PHP Warning:  array_diff(): Argument #3 is not an array in /home4/grayson/public_html/scavenger/functions.php on line 271
+[16-Jul-2015 06:35:06 America/Denver] PHP Warning:  Invalid argument supplied for foreach() in /home4/grayson/public_html/scavenger/functions.php on line 274
+[16-Jul-2015 06:52:04 America/Denver] PHP Warning:  array_merge(): Argument #1 is not an array in /home4/grayson/public_html/scavenger/functions.php on line 224
+[16-Jul-2015 06:52:06 America/Denver] PHP Warning:  array_diff(): Argument #3 is not an array in /home4/grayson/public_html/scavenger/functions.php on line 271
+[16-Jul-2015 06:52:06 America/Denver] PHP Warning:  Invalid argument supplied for foreach() in /home4/grayson/public_html/scavenger/functions.php on line 274
+[16-Jul-2015 07:02:04 America/Denver] PHP Warning:  array_merge(): Argument #1 is not an array in /home4/grayson/public_html/scavenger/functions.php on line 224
+[16-Jul-2015 07:19:05 America/Denver] PHP Warning:  array_merge(): Argument #1 is not an array in /home4/grayson/public_html/scavenger/functions.php on line 224
+[16-Jul-2015 07:19:06 America/Denver] PHP Warning:  array_diff(): Argument #3 is not an array in /home4/grayson/public_html/scavenger/functions.php on line 271
+[16-Jul-2015 07:19:06 America/Denver] PHP Warning:  Invalid argument supplied for foreach() in /home4/grayson/public_html/scavenger/functions.php on line 274
+[16-Jul-2015 07:35:04 America/Denver] PHP Warning:  array_merge(): Argument #1 is not an array in /home4/grayson/public_html/scavenger/functions.php on line 224
+[16-Jul-2015 07:35:06 America/Denver] PHP Warning:  array_diff(): Argument #3 is not an array in /home4/grayson/public_html/scavenger/functions.php on line 271
+[16-Jul-2015 07:35:06 America/Denver] PHP Warning:  Invalid argument supplied for foreach() in /home4/grayson/public_html/scavenger/functions.php on line 274
+[16-Jul-2015 07:53:04 America/Denver] PHP Warning:  array_merge(): Argument #1 is not an array in /home4/grayson/public_html/scavenger/functions.php on line 224
+[16-Jul-2015 07:53:06 America/Denver] PHP Warning:  array_diff(): Argument #3 is not an array in /home4/grayson/public_html/scavenger/functions.php on line 271
+[16-Jul-2015 07:53:06 America/Denver] PHP Warning:  Invalid argument supplied for foreach() in /home4/grayson/public_html/scavenger/functions.php on line 274
+[16-Jul-2015 08:03:04 America/Denver] PHP Warning:  array_merge(): Argument #1 is not an array in /home4/grayson/public_html/scavenger/functions.php on line 224
+[16-Jul-2015 08:18:04 America/Denver] PHP Warning:  array_merge(): Argument #1 is not an array in /home4/grayson/public_html/scavenger/functions.php on line 224
+[16-Jul-2015 08:18:06 America/Denver] PHP Warning:  array_diff(): Argument #3 is not an array in /home4/grayson/public_html/scavenger/functions.php on line 271
+[16-Jul-2015 08:18:06 America/Denver] PHP Warning:  Invalid argument supplied for foreach() in /home4/grayson/public_html/scavenger/functions.php on line 274
+[16-Jul-2015 08:37:04 America/Denver] PHP Warning:  array_merge(): Argument #1 is not an array in /home4/grayson/public_html/scavenger/functions.php on line 224
+[16-Jul-2015 08:37:06 America/Denver] PHP Warning:  array_diff(): Argument #3 is not an array in /home4/grayson/public_html/scavenger/functions.php on line 271
+[16-Jul-2015 08:37:06 America/Denver] PHP Warning:  Invalid argument supplied for foreach() in /home4/grayson/public_html/scavenger/functions.php on line 274
+[16-Jul-2015 08:53:04 America/Denver] PHP Warning:  array_merge(): Argument #1 is not an array in /home4/grayson/public_html/scavenger/functions.php on line 224
+[16-Jul-2015 08:53:06 America/Denver] PHP Warning:  array_diff(): Argument #3 is not an array in /home4/grayson/public_html/scavenger/functions.php on line 271
+[16-Jul-2015 08:53:06 America/Denver] PHP Warning:  Invalid argument supplied for foreach() in /home4/grayson/public_html/scavenger/functions.php on line 274
+[16-Jul-2015 09:01:04 America/Denver] PHP Warning:  array_merge(): Argument #1 is not an array in /home4/grayson/public_html/scavenger/functions.php on line 224
+[16-Jul-2015 09:20:05 America/Denver] PHP Warning:  array_merge(): Argument #1 is not an array in /home4/grayson/public_html/scavenger/functions.php on line 224
+[16-Jul-2015 09:20:06 America/Denver] PHP Warning:  array_diff(): Argument #3 is not an array in /home4/grayson/public_html/scavenger/functions.php on line 271
+[16-Jul-2015 09:20:06 America/Denver] PHP Warning:  Invalid argument supplied for foreach() in /home4/grayson/public_html/scavenger/functions.php on line 274
+[16-Jul-2015 09:37:04 America/Denver] PHP Warning:  array_merge(): Argument #1 is not an array in /home4/grayson/public_html/scavenger/functions.php on line 224
+[16-Jul-2015 09:37:06 America/Denver] PHP Warning:  array_diff(): Argument #3 is not an array in /home4/grayson/public_html/scavenger/functions.php on line 271
+[16-Jul-2015 09:37:06 America/Denver] PHP Warning:  Invalid argument supplied for foreach() in /home4/grayson/public_html/scavenger/functions.php on line 274
+[16-Jul-2015 09:54:04 America/Denver] PHP Warning:  array_merge(): Argument #1 is not an array in /home4/grayson/public_html/scavenger/functions.php on line 224
+[16-Jul-2015 09:54:06 America/Denver] PHP Warning:  array_diff(): Argument #3 is not an array in /home4/grayson/public_html/scavenger/functions.php on line 271
+[16-Jul-2015 09:54:06 America/Denver] PHP Warning:  Invalid argument supplied for foreach() in /home4/grayson/public_html/scavenger/functions.php on line 274
+[16-Jul-2015 10:01:04 America/Denver] PHP Warning:  array_merge(): Argument #1 is not an array in /home4/grayson/public_html/scavenger/functions.php on line 224
+[16-Jul-2015 10:19:04 America/Denver] PHP Warning:  array_merge(): Argument #1 is not an array in /home4/grayson/public_html/scavenger/functions.php on line 224
+[16-Jul-2015 10:19:06 America/Denver] PHP Warning:  array_diff(): Argument #3 is not an array in /home4/grayson/public_html/scavenger/functions.php on line 271
+[16-Jul-2015 10:19:06 America/Denver] PHP Warning:  Invalid argument supplied for foreach() in /home4/grayson/public_html/scavenger/functions.php on line 274
+[16-Jul-2015 10:37:04 America/Denver] PHP Warning:  array_merge(): Argument #1 is not an array in /home4/grayson/public_html/scavenger/functions.php on line 227
+[16-Jul-2015 10:37:05 America/Denver] PHP Warning:  array_merge(): Argument #1 is not an array in /home4/grayson/public_html/scavenger/functions.php on line 227
+[16-Jul-2015 10:37:05 America/Denver] PHP Warning:  array_merge(): Argument #1 is not an array in /home4/grayson/public_html/scavenger/functions.php on line 227
+[16-Jul-2015 10:37:05 America/Denver] PHP Warning:  array_merge(): Argument #1 is not an array in /home4/grayson/public_html/scavenger/functions.php on line 227
+[16-Jul-2015 10:37:06 America/Denver] PHP Warning:  array_merge(): Argument #1 is not an array in /home4/grayson/public_html/scavenger/functions.php on line 227
+[16-Jul-2015 10:37:06 America/Denver] PHP Warning:  array_merge(): Argument #1 is not an array in /home4/grayson/public_html/scavenger/functions.php on line 227
+[16-Jul-2015 10:37:07 America/Denver] PHP Warning:  array_merge(): Argument #1 is not an array in /home4/grayson/public_html/scavenger/functions.php on line 227
+[16-Jul-2015 10:37:07 America/Denver] PHP Warning:  array_merge(): Argument #1 is not an array in /home4/grayson/public_html/scavenger/functions.php on line 227
+[16-Jul-2015 10:37:08 America/Denver] PHP Warning:  array_merge(): Argument #1 is not an array in /home4/grayson/public_html/scavenger/functions.php on line 227
+[16-Jul-2015 10:37:08 America/Denver] PHP Warning:  array_merge(): Argument #1 is not an array in /home4/grayson/public_html/scavenger/functions.php on line 227
+[16-Jul-2015 10:37:08 America/Denver] PHP Warning:  array_merge(): Argument #1 is not an array in /home4/grayson/public_html/scavenger/functions.php on line 227
+[16-Jul-2015 10:37:09 America/Denver] PHP Warning:  array_merge(): Argument #1 is not an array in /home4/grayson/public_html/scavenger/functions.php on line 227
+[16-Jul-2015 10:37:09 America/Denver] PHP Warning:  array_merge(): Argument #1 is not an array in /home4/grayson/public_html/scavenger/functions.php on line 227
+[16-Jul-2015 10:37:10 America/Denver] PHP Warning:  array_merge(): Argument #1 is not an array in /home4/grayson/public_html/scavenger/functions.php on line 227
+[16-Jul-2015 10:37:10 America/Denver] PHP Warning:  array_merge(): Argument #1 is not an array in /home4/grayson/public_html/scavenger/functions.php on line 227
+[16-Jul-2015 10:52:04 America/Denver] PHP Warning:  array_merge(): Argument #1 is not an array in /home4/grayson/public_html/scavenger/functions.php on line 227
+[16-Jul-2015 10:52:05 America/Denver] PHP Warning:  array_merge(): Argument #1 is not an array in /home4/grayson/public_html/scavenger/functions.php on line 227
+[16-Jul-2015 10:52:05 America/Denver] PHP Warning:  array_merge(): Argument #1 is not an array in /home4/grayson/public_html/scavenger/functions.php on line 227
+[16-Jul-2015 10:52:06 America/Denver] PHP Warning:  array_merge(): Argument #1 is not an array in /home4/grayson/public_html/scavenger/functions.php on line 227
+[16-Jul-2015 10:52:06 America/Denver] PHP Warning:  array_merge(): Argument #1 is not an array in /home4/grayson/public_html/scavenger/functions.php on line 227
+[16-Jul-2015 10:52:06 America/Denver] PHP Warning:  array_merge(): Argument #1 is not an array in /home4/grayson/public_html/scavenger/functions.php on line 227
+[16-Jul-2015 10:52:07 America/Denver] PHP Warning:  array_merge(): Argument #1 is not an array in /home4/grayson/public_html/scavenger/functions.php on line 227
+[16-Jul-2015 10:52:07 America/Denver] PHP Warning:  array_merge(): Argument #1 is not an array in /home4/grayson/public_html/scavenger/functions.php on line 227
+[16-Jul-2015 10:52:08 America/Denver] PHP Warning:  array_merge(): Argument #1 is not an array in /home4/grayson/public_html/scavenger/functions.php on line 227
+[16-Jul-2015 10:52:08 America/Denver] PHP Warning:  array_merge(): Argument #1 is not an array in /home4/grayson/public_html/scavenger/functions.php on line 227
+[16-Jul-2015 10:52:09 America/Denver] PHP Warning:  array_merge(): Argument #1 is not an array in /home4/grayson/public_html/scavenger/functions.php on line 227
+[16-Jul-2015 10:52:09 America/Denver] PHP Warning:  array_merge(): Argument #1 is not an array in /home4/grayson/public_html/scavenger/functions.php on line 227
+[16-Jul-2015 10:52:10 America/Denver] PHP Warning:  array_merge(): Argument #1 is not an array in /home4/grayson/public_html/scavenger/functions.php on line 227
+[16-Jul-2015 10:52:10 America/Denver] PHP Warning:  array_merge(): Argument #1 is not an array in /home4/grayson/public_html/scavenger/functions.php on line 227
+[16-Jul-2015 10:52:10 America/Denver] PHP Warning:  array_merge(): Argument #1 is not an array in /home4/grayson/public_html/scavenger/functions.php on line 227
+[16-Jul-2015 11:55:46 America/Chicago] PHP Parse error:  syntax error, unexpected ''config.php'' (T_CONSTANT_ENCAPSED_STRING) in /home4/grayson/public_html/scavenger/test.php on line 19
+[16-Jul-2015 11:03:06 America/Denver] PHP Warning:  array_diff(): Argument #3 is not an array in /home4/grayson/public_html/scavenger/functions.php on line 276
+[16-Jul-2015 11:03:06 America/Denver] PHP Warning:  Invalid argument supplied for foreach() in /home4/grayson/public_html/scavenger/functions.php on line 279
+[16-Jul-2015 11:07:17 America/Denver] PHP Warning:  array_merge(): Argument #1 is not an array in /home4/grayson/public_html/scavenger/test.php on line 36
+[16-Jul-2015 11:07:17 America/Denver] PHP Warning:  array_merge(): Argument #1 is not an array in /home4/grayson/public_html/scavenger/test.php on line 36
+[16-Jul-2015 11:07:17 America/Denver] PHP Warning:  array_merge(): Argument #1 is not an array in /home4/grayson/public_html/scavenger/test.php on line 36
+[16-Jul-2015 11:07:18 America/Denver] PHP Warning:  array_merge(): Argument #1 is not an array in /home4/grayson/public_html/scavenger/test.php on line 36
+[16-Jul-2015 11:07:18 America/Denver] PHP Warning:  array_merge(): Argument #1 is not an array in /home4/grayson/public_html/scavenger/test.php on line 36
+[16-Jul-2015 11:07:19 America/Denver] PHP Warning:  array_merge(): Argument #1 is not an array in /home4/grayson/public_html/scavenger/test.php on line 36
+[16-Jul-2015 11:07:19 America/Denver] PHP Warning:  array_merge(): Argument #1 is not an array in /home4/grayson/public_html/scavenger/test.php on line 36
+[16-Jul-2015 11:07:19 America/Denver] PHP Warning:  array_merge(): Argument #1 is not an array in /home4/grayson/public_html/scavenger/test.php on line 36
+[16-Jul-2015 11:07:20 America/Denver] PHP Warning:  array_merge(): Argument #1 is not an array in /home4/grayson/public_html/scavenger/test.php on line 36
+[16-Jul-2015 11:07:20 America/Denver] PHP Warning:  array_merge(): Argument #1 is not an array in /home4/grayson/public_html/scavenger/test.php on line 36
+[16-Jul-2015 11:07:21 America/Denver] PHP Warning:  array_merge(): Argument #1 is not an array in /home4/grayson/public_html/scavenger/test.php on line 36
+[16-Jul-2015 11:07:21 America/Denver] PHP Warning:  array_merge(): Argument #1 is not an array in /home4/grayson/public_html/scavenger/test.php on line 36
+[16-Jul-2015 11:07:21 America/Denver] PHP Warning:  array_merge(): Argument #1 is not an array in /home4/grayson/public_html/scavenger/test.php on line 36
+[16-Jul-2015 11:07:22 America/Denver] PHP Warning:  array_merge(): Argument #1 is not an array in /home4/grayson/public_html/scavenger/test.php on line 36
+[16-Jul-2015 11:07:22 America/Denver] PHP Warning:  array_merge(): Argument #1 is not an array in /home4/grayson/public_html/scavenger/test.php on line 36
+[16-Jul-2015 11:18:06 America/Denver] PHP Warning:  array_diff(): Argument #3 is not an array in /home4/grayson/public_html/scavenger/functions.php on line 276
+[16-Jul-2015 11:18:06 America/Denver] PHP Warning:  Invalid argument supplied for foreach() in /home4/grayson/public_html/scavenger/functions.php on line 279
+[16-Jul-2015 11:25:40 America/Denver] PHP Warning:  array_merge(): Argument #1 is not an array in /home4/grayson/public_html/scavenger/test.php on line 38
+[16-Jul-2015 11:25:40 America/Denver] PHP Warning:  array_merge(): Argument #1 is not an array in /home4/grayson/public_html/scavenger/test.php on line 38
+[16-Jul-2015 11:25:41 America/Denver] PHP Warning:  array_merge(): Argument #1 is not an array in /home4/grayson/public_html/scavenger/test.php on line 38
+[16-Jul-2015 11:25:41 America/Denver] PHP Warning:  array_merge(): Argument #1 is not an array in /home4/grayson/public_html/scavenger/test.php on line 38
+[16-Jul-2015 11:25:42 America/Denver] PHP Warning:  array_merge(): Argument #1 is not an array in /home4/grayson/public_html/scavenger/test.php on line 38
+[16-Jul-2015 11:25:42 America/Denver] PHP Warning:  array_merge(): Argument #1 is not an array in /home4/grayson/public_html/scavenger/test.php on line 38
+[16-Jul-2015 11:25:43 America/Denver] PHP Warning:  array_merge(): Argument #1 is not an array in /home4/grayson/public_html/scavenger/test.php on line 38
+[16-Jul-2015 11:25:43 America/Denver] PHP Warning:  array_merge(): Argument #1 is not an array in /home4/grayson/public_html/scavenger/test.php on line 38
+[16-Jul-2015 11:25:44 America/Denver] PHP Warning:  array_merge(): Argument #1 is not an array in /home4/grayson/public_html/scavenger/test.php on line 38
+[16-Jul-2015 11:25:44 America/Denver] PHP Warning:  array_merge(): Argument #1 is not an array in /home4/grayson/public_html/scavenger/test.php on line 38
+[16-Jul-2015 11:25:45 America/Denver] PHP Warning:  array_merge(): Argument #1 is not an array in /home4/grayson/public_html/scavenger/test.php on line 38
+[16-Jul-2015 11:25:45 America/Denver] PHP Warning:  array_merge(): Argument #1 is not an array in /home4/grayson/public_html/scavenger/test.php on line 38
+[16-Jul-2015 11:25:45 America/Denver] PHP Warning:  array_merge(): Argument #1 is not an array in /home4/grayson/public_html/scavenger/test.php on line 38
+[16-Jul-2015 11:25:46 America/Denver] PHP Warning:  array_merge(): Argument #1 is not an array in /home4/grayson/public_html/scavenger/test.php on line 38
+[16-Jul-2015 11:25:46 America/Denver] PHP Warning:  array_merge(): Argument #1 is not an array in /home4/grayson/public_html/scavenger/test.php on line 38
+[16-Jul-2015 11:36:05 America/Denver] PHP Warning:  array_diff(): Argument #3 is not an array in /home4/grayson/public_html/scavenger/functions.php on line 276
+[16-Jul-2015 11:36:05 America/Denver] PHP Warning:  Invalid argument supplied for foreach() in /home4/grayson/public_html/scavenger/functions.php on line 279
+[16-Jul-2015 12:37:01 America/Chicago] PHP Parse error:  syntax error, unexpected '}' in /home4/grayson/public_html/scavenger/test.php on line 43
+[16-Jul-2015 11:52:06 America/Denver] PHP Warning:  array_diff(): Argument #3 is not an array in /home4/grayson/public_html/scavenger/functions.php on line 276
+[16-Jul-2015 11:52:06 America/Denver] PHP Warning:  Invalid argument supplied for foreach() in /home4/grayson/public_html/scavenger/functions.php on line 279
+[17-Jul-2015 13:51:19 America/Denver] PHP Warning:  Invalid argument supplied for foreach() in /home4/grayson/public_html/scavenger/functions.php on line 107
+[17-Jul-2015 13:51:47 America/Denver] PHP Warning:  Invalid argument supplied for foreach() in /home4/grayson/public_html/scavenger/functions.php on line 107
+[17-Jul-2015 13:51:48 America/Denver] PHP Warning:  array_merge(): Argument #1 is not an array in /home4/grayson/public_html/scavenger/functions.php on line 32
+[17-Jul-2015 14:22:11 America/Denver] PHP Warning:  Invalid argument supplied for foreach() in /home4/grayson/public_html/scavenger/functions.php on line 107
+[17-Jul-2015 15:27:35 America/Chicago] PHP Parse error:  syntax error, unexpected '{' in /home4/grayson/public_html/scavenger/unfollow.php on line 7
+[17-Jul-2015 14:33:10 America/Denver] PHP Warning:  array_merge(): Argument #1 is not an array in /home4/grayson/public_html/scavenger/functions.php on line 32
+[17-Jul-2015 14:35:40 America/Denver] PHP Warning:  array_merge(): Argument #1 is not an array in /home4/grayson/public_html/scavenger/functions.php on line 32
+[17-Jul-2015 14:39:52 America/Denver] PHP Warning:  Invalid argument supplied for foreach() in /home4/grayson/public_html/scavenger/functions.php on line 107
+[17-Jul-2015 14:48:13 America/Denver] PHP Warning:  Invalid argument supplied for foreach() in /home4/grayson/public_html/scavenger/functions.php on line 107
+[02-Oct-2015 14:37:00 America/Chicago] PHP Parse error:  syntax error, unexpected '"' in /home4/grayson/public_html/scavenger/platforms/twitter/unfollow-all.php on line 56
+[02-Oct-2015 14:37:03 America/Chicago] PHP Parse error:  syntax error, unexpected '"' in /home4/grayson/public_html/scavenger/platforms/twitter/unfollow-all.php on line 56
+[02-Oct-2015 15:04:30 America/Chicago] PHP Warning:  mysqli::mysqli(): (HY000/1040): Too many connections in /home4/grayson/public_html/scavenger/assets/db.php on line 5
+[02-Oct-2015 17:47:09 America/Denver] PHP Parse error:  syntax error, unexpected '{' in /home4/grayson/public_html/scavenger/platforms/twitter/functions.php on line 674
+[02-Oct-2015 17:47:21 America/Denver] PHP Parse error:  syntax error, unexpected '{' in /home4/grayson/public_html/scavenger/platforms/twitter/functions.php on line 674
+[02-Oct-2015 19:02:32 America/Denver] PHP Fatal error:  Call to a member function query() on a non-object in /home4/grayson/public_html/scavenger/platforms/twitter/functions.php on line 546
+[02-Oct-2015 19:05:03 America/Denver] PHP Fatal error:  Call to a member function query() on a non-object in /home4/grayson/public_html/scavenger/platforms/twitter/functions.php on line 546
+[03-Oct-2015 01:33:04 America/Denver] PHP Fatal error:  Call to a member function query() on a non-object in /home4/grayson/public_html/scavenger/platforms/twitter/functions.php on line 546
+[03-Oct-2015 19:48:16 America/Denver] PHP Fatal error:  Call to a member function query() on a non-object in /home4/grayson/public_html/scavenger/platforms/twitter/functions.php on line 546
+[13-Oct-2015 13:35:55 America/Denver] PHP Warning:  array_reverse() expects parameter 1 to be array, boolean given in /home4/grayson/public_html/scavenger/platforms/twitter/functions.php on line 861
+[13-Oct-2015 13:46:18 America/Denver] PHP Warning:  in_array() expects parameter 2 to be array, boolean given in /home4/grayson/public_html/scavenger/platforms/twitter/functions.php on line 676
+[13-Oct-2015 13:46:18 America/Denver] PHP Warning:  in_array() expects parameter 2 to be array, boolean given in /home4/grayson/public_html/scavenger/platforms/twitter/functions.php on line 676
+[13-Oct-2015 13:46:18 America/Denver] PHP Warning:  in_array() expects parameter 2 to be array, boolean given in /home4/grayson/public_html/scavenger/platforms/twitter/functions.php on line 676
+[13-Oct-2015 13:46:18 America/Denver] PHP Warning:  in_array() expects parameter 2 to be array, boolean given in /home4/grayson/public_html/scavenger/platforms/twitter/functions.php on line 676
+[13-Oct-2015 13:46:18 America/Denver] PHP Warning:  in_array() expects parameter 2 to be array, boolean given in /home4/grayson/public_html/scavenger/platforms/twitter/functions.php on line 676
+[13-Oct-2015 13:46:18 America/Denver] PHP Warning:  array_reverse() expects parameter 1 to be array, boolean given in /home4/grayson/public_html/scavenger/platforms/twitter/functions.php on line 861
+[20-Oct-2015 21:11:49 America/Chicago] PHP Parse error:  syntax error, unexpected '$rateLimit' (T_VARIABLE) in /home4/grayson/public_html/scavenger/platforms/twitter/test.php on line 35
+[20-Oct-2015 21:37:45 America/Denver] PHP Warning:  Missing argument 5 for get_followers(), called in /home4/grayson/public_html/scavenger/platforms/twitter/functions.php on line 457 and defined in /home4/grayson/public_html/scavenger/platforms/twitter/functions.php on line 355
+[20-Oct-2015 21:53:13 America/Denver] PHP Fatal error:  Call to undefined function im_following() in /home4/grayson/public_html/scavenger/platforms/twitter/test.php on line 23
+[20-Oct-2015 21:53:44 America/Denver] PHP Fatal error:  Call to undefined function im_following() in /home4/grayson/public_html/scavenger/platforms/twitter/test.php on line 23
+[20-Oct-2015 22:14:10 America/Denver] PHP Parse error:  syntax error, unexpected '*' in /home4/grayson/public_html/scavenger/platforms/twitter/functions.php on line 373
+[20-Oct-2015 22:26:04 America/Denver] PHP Warning:  array_merge(): Argument #1 is not an array in /home4/grayson/public_html/scavenger/platforms/twitter/functions.php on line 386
+[20-Oct-2015 22:26:05 America/Denver] PHP Warning:  Invalid argument supplied for foreach() in /home4/grayson/public_html/scavenger/platforms/twitter/functions.php on line 430
+[20-Oct-2015 22:26:49 America/Denver] PHP Warning:  array_merge(): Argument #1 is not an array in /home4/grayson/public_html/scavenger/platforms/twitter/functions.php on line 386
+[20-Oct-2015 22:26:49 America/Denver] PHP Warning:  Invalid argument supplied for foreach() in /home4/grayson/public_html/scavenger/platforms/twitter/functions.php on line 430
+[20-Oct-2015 22:27:08 America/Denver] PHP Warning:  array_merge(): Argument #1 is not an array in /home4/grayson/public_html/scavenger/platforms/twitter/functions.php on line 386
+[20-Oct-2015 22:27:08 America/Denver] PHP Warning:  Invalid argument supplied for foreach() in /home4/grayson/public_html/scavenger/platforms/twitter/functions.php on line 430
+[20-Oct-2015 22:27:09 America/Denver] PHP Warning:  array_merge(): Argument #1 is not an array in /home4/grayson/public_html/scavenger/platforms/twitter/functions.php on line 386
+[20-Oct-2015 22:27:09 America/Denver] PHP Warning:  array_diff(): Argument #1 is not an array in /home4/grayson/public_html/scavenger/platforms/twitter/functions.php on line 491
+[20-Oct-2015 22:27:09 America/Denver] PHP Warning:  Invalid argument supplied for foreach() in /home4/grayson/public_html/scavenger/platforms/twitter/functions.php on line 498
+[20-Oct-2015 22:29:48 America/Denver] PHP Warning:  array_merge(): Argument #1 is not an array in /home4/grayson/public_html/scavenger/platforms/twitter/functions.php on line 383
+[20-Oct-2015 22:29:48 America/Denver] PHP Warning:  Invalid argument supplied for foreach() in /home4/grayson/public_html/scavenger/platforms/twitter/functions.php on line 427
+[20-Oct-2015 22:29:48 America/Denver] PHP Warning:  array_merge(): Argument #1 is not an array in /home4/grayson/public_html/scavenger/platforms/twitter/functions.php on line 383
+[20-Oct-2015 22:29:48 America/Denver] PHP Warning:  array_diff(): Argument #1 is not an array in /home4/grayson/public_html/scavenger/platforms/twitter/functions.php on line 488
+[20-Oct-2015 22:29:48 America/Denver] PHP Warning:  Invalid argument supplied for foreach() in /home4/grayson/public_html/scavenger/platforms/twitter/functions.php on line 495
+[20-Oct-2015 22:58:18 America/Denver] PHP Warning:  Invalid argument supplied for foreach() in /home4/grayson/public_html/scavenger/platforms/twitter/functions.php on line 432
+[23-Oct-2015 08:06:14 America/Denver] PHP Warning:  Missing argument 3 for number_of_followers(), called in /home4/grayson/public_html/scavenger/platforms/twitter/functions.php on line 16 and defined in /home4/grayson/public_html/scavenger/platforms/twitter/functions.php on line 316
+[09-Nov-2015 16:09:43 America/Denver] PHP Warning:  Missing argument 3 for number_of_followers(), called in /home4/grayson/public_html/scavenger/platforms/twitter/functions.php on line 16 and defined in /home4/grayson/public_html/scavenger/platforms/twitter/functions.php on line 316
+[18-Nov-2015 18:12:08 America/Denver] PHP Warning:  Missing argument 3 for number_of_followers(), called in /home4/grayson/public_html/scavenger/platforms/twitter/functions.php on line 147 and defined in /home4/grayson/public_html/scavenger/platforms/twitter/functions.php on line 316
+[19-Nov-2015 11:52:19 America/Denver] PHP Warning:  Invalid argument supplied for foreach() in /home4/grayson/public_html/scavenger/platforms/twitter/functions.php on line 437
+[19-Nov-2015 11:52:20 America/Denver] PHP Warning:  array_merge(): Argument #1 is not an array in /home4/grayson/public_html/scavenger/platforms/twitter/functions.php on line 393
+[19-Nov-2015 11:52:20 America/Denver] PHP Warning:  array_diff(): Argument #1 is not an array in /home4/grayson/public_html/scavenger/platforms/twitter/functions.php on line 496
+[19-Nov-2015 11:52:20 America/Denver] PHP Warning:  Invalid argument supplied for foreach() in /home4/grayson/public_html/scavenger/platforms/twitter/functions.php on line 503
+[19-Nov-2015 11:52:43 America/Denver] PHP Warning:  array_merge(): Argument #1 is not an array in /home4/grayson/public_html/scavenger/platforms/twitter/functions.php on line 393
+[19-Nov-2015 11:52:43 America/Denver] PHP Warning:  Invalid argument supplied for foreach() in /home4/grayson/public_html/scavenger/platforms/twitter/functions.php on line 437
+[19-Nov-2015 11:52:44 America/Denver] PHP Warning:  array_merge(): Argument #1 is not an array in /home4/grayson/public_html/scavenger/platforms/twitter/functions.php on line 393
+[19-Nov-2015 11:52:44 America/Denver] PHP Warning:  array_diff(): Argument #1 is not an array in /home4/grayson/public_html/scavenger/platforms/twitter/functions.php on line 496
+[19-Nov-2015 11:52:44 America/Denver] PHP Warning:  Invalid argument supplied for foreach() in /home4/grayson/public_html/scavenger/platforms/twitter/functions.php on line 503
+[19-Nov-2015 11:54:05 America/Denver] PHP Warning:  Missing argument 3 for number_of_followers(), called in /home4/grayson/public_html/scavenger/platforms/twitter/functions.php on line 16 and defined in /home4/grayson/public_html/scavenger/platforms/twitter/functions.php on line 316
+[19-Nov-2015 11:54:26 America/Denver] PHP Warning:  Missing argument 3 for number_of_followers(), called in /home4/grayson/public_html/scavenger/platforms/twitter/functions.php on line 16 and defined in /home4/grayson/public_html/scavenger/platforms/twitter/functions.php on line 316
+[19-Nov-2015 11:54:26 America/Denver] PHP Warning:  array_merge(): Argument #1 is not an array in /home4/grayson/public_html/scavenger/platforms/twitter/functions.php on line 43
+[20-Nov-2015 17:49:16 America/Denver] PHP Warning:  Missing argument 3 for number_of_followers(), called in /home4/grayson/public_html/scavenger/platforms/twitter/functions.php on line 16 and defined in /home4/grayson/public_html/scavenger/platforms/twitter/functions.php on line 316
+[28-Nov-2015 11:01:42 America/Denver] PHP Warning:  Missing argument 3 for number_of_followers(), called in /home4/grayson/public_html/scavenger/platforms/twitter/functions.php on line 16 and defined in /home4/grayson/public_html/scavenger/platforms/twitter/functions.php on line 316
+[28-Nov-2015 12:50:02 America/Denver] PHP Warning:  Missing argument 3 for number_of_followers(), called in /home4/grayson/public_html/scavenger/platforms/twitter/functions.php on line 16 and defined in /home4/grayson/public_html/scavenger/platforms/twitter/functions.php on line 316
+[28-Nov-2015 17:00:41 America/Denver] PHP Warning:  Missing argument 3 for number_of_followers(), called in /home4/grayson/public_html/scavenger/platforms/twitter/functions.php on line 16 and defined in /home4/grayson/public_html/scavenger/platforms/twitter/functions.php on line 316
+[29-Nov-2015 11:34:11 America/Denver] PHP Warning:  Missing argument 3 for number_of_followers(), called in /home4/grayson/public_html/scavenger/platforms/twitter/functions.php on line 16 and defined in /home4/grayson/public_html/scavenger/platforms/twitter/functions.php on line 316
+[30-Nov-2015 12:07:28 America/Denver] PHP Warning:  Missing argument 3 for number_of_followers(), called in /home4/grayson/public_html/scavenger/platforms/twitter/functions.php on line 16 and defined in /home4/grayson/public_html/scavenger/platforms/twitter/functions.php on line 316
+[01-Dec-2015 11:08:53 America/Denver] PHP Warning:  array_merge(): Argument #1 is not an array in /home4/grayson/public_html/scavenger/platforms/twitter/functions.php on line 393
+[01-Dec-2015 11:08:53 America/Denver] PHP Warning:  Invalid argument supplied for foreach() in /home4/grayson/public_html/scavenger/platforms/twitter/functions.php on line 437
+[01-Dec-2015 11:12:44 America/Denver] PHP Warning:  array_merge(): Argument #1 is not an array in /home4/grayson/public_html/scavenger/platforms/twitter/functions.php on line 393
+[01-Dec-2015 11:12:44 America/Denver] PHP Warning:  Invalid argument supplied for foreach() in /home4/grayson/public_html/scavenger/platforms/twitter/functions.php on line 437
+[01-Dec-2015 11:41:32 America/Denver] PHP Warning:  Missing argument 3 for number_of_followers(), called in /home4/grayson/public_html/scavenger/platforms/twitter/functions.php on line 16 and defined in /home4/grayson/public_html/scavenger/platforms/twitter/functions.php on line 316
+[01-Dec-2015 11:47:31 America/Denver] PHP Warning:  Missing argument 3 for number_of_followers(), called in /home4/grayson/public_html/scavenger/platforms/twitter/functions.php on line 16 and defined in /home4/grayson/public_html/scavenger/platforms/twitter/functions.php on line 316
+[23-Dec-2015 06:10:04 America/Denver] PHP Warning:  array_merge(): Argument #1 is not an array in /home4/grayson/public_html/scavenger/platforms/twitter/functions.php on line 393
+[23-Dec-2015 06:10:04 America/Denver] PHP Warning:  Invalid argument supplied for foreach() in /home4/grayson/public_html/scavenger/platforms/twitter/functions.php on line 437
+[23-Dec-2015 06:10:04 America/Denver] PHP Warning:  array_merge(): Argument #1 is not an array in /home4/grayson/public_html/scavenger/platforms/twitter/functions.php on line 393
+[23-Dec-2015 06:10:04 America/Denver] PHP Warning:  array_diff(): Argument #1 is not an array in /home4/grayson/public_html/scavenger/platforms/twitter/functions.php on line 496
+[23-Dec-2015 06:10:04 America/Denver] PHP Warning:  Invalid argument supplied for foreach() in /home4/grayson/public_html/scavenger/platforms/twitter/functions.php on line 503
+[23-Dec-2015 07:04:03 America/Denver] PHP Warning:  array_merge(): Argument #1 is not an array in /home4/grayson/public_html/scavenger/platforms/twitter/functions.php on line 393
+[23-Dec-2015 07:04:03 America/Denver] PHP Warning:  Invalid argument supplied for foreach() in /home4/grayson/public_html/scavenger/platforms/twitter/functions.php on line 437
+[23-Dec-2015 08:06:03 America/Denver] PHP Warning:  array_merge(): Argument #1 is not an array in /home4/grayson/public_html/scavenger/platforms/twitter/functions.php on line 393
+[23-Dec-2015 08:06:03 America/Denver] PHP Warning:  Invalid argument supplied for foreach() in /home4/grayson/public_html/scavenger/platforms/twitter/functions.php on line 437
+[23-Dec-2015 11:05:03 America/Denver] PHP Warning:  array_merge(): Argument #1 is not an array in /home4/grayson/public_html/scavenger/platforms/twitter/functions.php on line 393
+[23-Dec-2015 11:05:03 America/Denver] PHP Warning:  Invalid argument supplied for foreach() in /home4/grayson/public_html/scavenger/platforms/twitter/functions.php on line 437
+[23-Dec-2015 12:04:03 America/Denver] PHP Warning:  array_merge(): Argument #1 is not an array in /home4/grayson/public_html/scavenger/platforms/twitter/functions.php on line 393
+[23-Dec-2015 12:04:03 America/Denver] PHP Warning:  Invalid argument supplied for foreach() in /home4/grayson/public_html/scavenger/platforms/twitter/functions.php on line 437
+[23-Dec-2015 16:02:03 America/Denver] PHP Warning:  array_merge(): Argument #1 is not an array in /home4/grayson/public_html/scavenger/platforms/twitter/functions.php on line 393
+[23-Dec-2015 16:02:03 America/Denver] PHP Warning:  Invalid argument supplied for foreach() in /home4/grayson/public_html/scavenger/platforms/twitter/functions.php on line 437
+[23-Dec-2015 17:07:02 America/Denver] PHP Warning:  array_merge(): Argument #1 is not an array in /home4/grayson/public_html/scavenger/platforms/twitter/functions.php on line 393
+[23-Dec-2015 17:07:02 America/Denver] PHP Warning:  Invalid argument supplied for foreach() in /home4/grayson/public_html/scavenger/platforms/twitter/functions.php on line 437
+[23-Dec-2015 18:10:03 America/Denver] PHP Warning:  array_merge(): Argument #1 is not an array in /home4/grayson/public_html/scavenger/platforms/twitter/functions.php on line 393
+[23-Dec-2015 18:10:04 America/Denver] PHP Warning:  Invalid argument supplied for foreach() in /home4/grayson/public_html/scavenger/platforms/twitter/functions.php on line 437
+[25-Dec-2015 06:04:02 America/Denver] PHP Warning:  array_merge(): Argument #1 is not an array in /home4/grayson/public_html/scavenger/platforms/twitter/functions.php on line 393
+[25-Dec-2015 06:04:03 America/Denver] PHP Warning:  Invalid argument supplied for foreach() in /home4/grayson/public_html/scavenger/platforms/twitter/functions.php on line 437
+[25-Dec-2015 07:10:02 America/Denver] PHP Warning:  array_merge(): Argument #1 is not an array in /home4/grayson/public_html/scavenger/platforms/twitter/functions.php on line 393
+[25-Dec-2015 07:10:02 America/Denver] PHP Warning:  Invalid argument supplied for foreach() in /home4/grayson/public_html/scavenger/platforms/twitter/functions.php on line 437
+[25-Dec-2015 08:11:02 America/Denver] PHP Warning:  array_merge(): Argument #1 is not an array in /home4/grayson/public_html/scavenger/platforms/twitter/functions.php on line 393
+[25-Dec-2015 08:11:02 America/Denver] PHP Warning:  Invalid argument supplied for foreach() in /home4/grayson/public_html/scavenger/platforms/twitter/functions.php on line 437
+[25-Dec-2015 11:09:03 America/Denver] PHP Warning:  array_merge(): Argument #1 is not an array in /home4/grayson/public_html/scavenger/platforms/twitter/functions.php on line 393
+[25-Dec-2015 11:09:03 America/Denver] PHP Warning:  Invalid argument supplied for foreach() in /home4/grayson/public_html/scavenger/platforms/twitter/functions.php on line 437
+[25-Dec-2015 12:06:03 America/Denver] PHP Warning:  array_merge(): Argument #1 is not an array in /home4/grayson/public_html/scavenger/platforms/twitter/functions.php on line 393
+[25-Dec-2015 12:06:03 America/Denver] PHP Warning:  Invalid argument supplied for foreach() in /home4/grayson/public_html/scavenger/platforms/twitter/functions.php on line 437
+[25-Dec-2015 16:10:02 America/Denver] PHP Warning:  array_merge(): Argument #1 is not an array in /home4/grayson/public_html/scavenger/platforms/twitter/functions.php on line 393
+[25-Dec-2015 16:10:02 America/Denver] PHP Warning:  Invalid argument supplied for foreach() in /home4/grayson/public_html/scavenger/platforms/twitter/functions.php on line 437
+[25-Dec-2015 17:02:02 America/Denver] PHP Warning:  array_merge(): Argument #1 is not an array in /home4/grayson/public_html/scavenger/platforms/twitter/functions.php on line 393
+[25-Dec-2015 17:02:02 America/Denver] PHP Warning:  Invalid argument supplied for foreach() in /home4/grayson/public_html/scavenger/platforms/twitter/functions.php on line 437
+[25-Dec-2015 18:06:02 America/Denver] PHP Warning:  array_merge(): Argument #1 is not an array in /home4/grayson/public_html/scavenger/platforms/twitter/functions.php on line 393
+[25-Dec-2015 18:06:03 America/Denver] PHP Warning:  Invalid argument supplied for foreach() in /home4/grayson/public_html/scavenger/platforms/twitter/functions.php on line 437
+[26-Dec-2015 01:06:40 America/Denver] PHP Warning:  array_merge(): Argument #1 is not an array in /home4/grayson/public_html/scavenger/platforms/twitter/functions.php on line 393
+[26-Dec-2015 01:06:40 America/Denver] PHP Warning:  Invalid argument supplied for foreach() in /home4/grayson/public_html/scavenger/platforms/twitter/functions.php on line 437
+[27-Dec-2015 06:02:03 America/Denver] PHP Warning:  array_merge(): Argument #1 is not an array in /home4/grayson/public_html/scavenger/platforms/twitter/functions.php on line 393
+[27-Dec-2015 06:02:03 America/Denver] PHP Warning:  Invalid argument supplied for foreach() in /home4/grayson/public_html/scavenger/platforms/twitter/functions.php on line 437
+[27-Dec-2015 07:06:03 America/Denver] PHP Warning:  array_merge(): Argument #1 is not an array in /home4/grayson/public_html/scavenger/platforms/twitter/functions.php on line 393
+[27-Dec-2015 07:06:03 America/Denver] PHP Warning:  Invalid argument supplied for foreach() in /home4/grayson/public_html/scavenger/platforms/twitter/functions.php on line 437
+[27-Dec-2015 08:03:02 America/Denver] PHP Warning:  array_merge(): Argument #1 is not an array in /home4/grayson/public_html/scavenger/platforms/twitter/functions.php on line 393
+[27-Dec-2015 08:03:03 America/Denver] PHP Warning:  Invalid argument supplied for foreach() in /home4/grayson/public_html/scavenger/platforms/twitter/functions.php on line 437
+[27-Dec-2015 11:11:03 America/Denver] PHP Warning:  array_merge(): Argument #1 is not an array in /home4/grayson/public_html/scavenger/platforms/twitter/functions.php on line 393
+[27-Dec-2015 11:11:03 America/Denver] PHP Warning:  Invalid argument supplied for foreach() in /home4/grayson/public_html/scavenger/platforms/twitter/functions.php on line 437
+[27-Dec-2015 12:03:02 America/Denver] PHP Warning:  array_merge(): Argument #1 is not an array in /home4/grayson/public_html/scavenger/platforms/twitter/functions.php on line 393
+[27-Dec-2015 12:03:03 America/Denver] PHP Warning:  Invalid argument supplied for foreach() in /home4/grayson/public_html/scavenger/platforms/twitter/functions.php on line 437
+[27-Dec-2015 16:06:02 America/Denver] PHP Warning:  array_merge(): Argument #1 is not an array in /home4/grayson/public_html/scavenger/platforms/twitter/functions.php on line 393
+[27-Dec-2015 16:06:02 America/Denver] PHP Warning:  Invalid argument supplied for foreach() in /home4/grayson/public_html/scavenger/platforms/twitter/functions.php on line 437
+[27-Dec-2015 17:10:02 America/Denver] PHP Warning:  array_merge(): Argument #1 is not an array in /home4/grayson/public_html/scavenger/platforms/twitter/functions.php on line 393
+[27-Dec-2015 17:10:02 America/Denver] PHP Warning:  Invalid argument supplied for foreach() in /home4/grayson/public_html/scavenger/platforms/twitter/functions.php on line 437
+[27-Dec-2015 18:10:06 America/Denver] PHP Warning:  array_merge(): Argument #1 is not an array in /home4/grayson/public_html/scavenger/platforms/twitter/functions.php on line 393
+[27-Dec-2015 18:10:06 America/Denver] PHP Warning:  Invalid argument supplied for foreach() in /home4/grayson/public_html/scavenger/platforms/twitter/functions.php on line 437
+[29-Dec-2015 06:07:02 America/Denver] PHP Warning:  array_merge(): Argument #1 is not an array in /home4/grayson/public_html/scavenger/platforms/twitter/functions.php on line 393
+[29-Dec-2015 06:07:02 America/Denver] PHP Warning:  Invalid argument supplied for foreach() in /home4/grayson/public_html/scavenger/platforms/twitter/functions.php on line 437
+[29-Dec-2015 07:11:02 America/Denver] PHP Warning:  array_merge(): Argument #1 is not an array in /home4/grayson/public_html/scavenger/platforms/twitter/functions.php on line 393
+[29-Dec-2015 07:11:03 America/Denver] PHP Warning:  Invalid argument supplied for foreach() in /home4/grayson/public_html/scavenger/platforms/twitter/functions.php on line 437
+[29-Dec-2015 08:05:02 America/Denver] PHP Warning:  array_merge(): Argument #1 is not an array in /home4/grayson/public_html/scavenger/platforms/twitter/functions.php on line 393
+[29-Dec-2015 08:05:02 America/Denver] PHP Warning:  Invalid argument supplied for foreach() in /home4/grayson/public_html/scavenger/platforms/twitter/functions.php on line 437
+[29-Dec-2015 11:11:03 America/Denver] PHP Warning:  array_merge(): Argument #1 is not an array in /home4/grayson/public_html/scavenger/platforms/twitter/functions.php on line 393
+[29-Dec-2015 11:11:03 America/Denver] PHP Warning:  Invalid argument supplied for foreach() in /home4/grayson/public_html/scavenger/platforms/twitter/functions.php on line 437
+[29-Dec-2015 12:09:02 America/Denver] PHP Warning:  array_merge(): Argument #1 is not an array in /home4/grayson/public_html/scavenger/platforms/twitter/functions.php on line 393
+[29-Dec-2015 12:09:03 America/Denver] PHP Warning:  Invalid argument supplied for foreach() in /home4/grayson/public_html/scavenger/platforms/twitter/functions.php on line 437
+[29-Dec-2015 16:08:02 America/Denver] PHP Warning:  array_merge(): Argument #1 is not an array in /home4/grayson/public_html/scavenger/platforms/twitter/functions.php on line 393
+[29-Dec-2015 16:08:03 America/Denver] PHP Warning:  Invalid argument supplied for foreach() in /home4/grayson/public_html/scavenger/platforms/twitter/functions.php on line 437
+[29-Dec-2015 17:06:02 America/Denver] PHP Warning:  array_merge(): Argument #1 is not an array in /home4/grayson/public_html/scavenger/platforms/twitter/functions.php on line 393
+[29-Dec-2015 17:06:03 America/Denver] PHP Warning:  Invalid argument supplied for foreach() in /home4/grayson/public_html/scavenger/platforms/twitter/functions.php on line 437
+[29-Dec-2015 18:07:02 America/Denver] PHP Warning:  array_merge(): Argument #1 is not an array in /home4/grayson/public_html/scavenger/platforms/twitter/functions.php on line 393
+[29-Dec-2015 18:07:02 America/Denver] PHP Warning:  Invalid argument supplied for foreach() in /home4/grayson/public_html/scavenger/platforms/twitter/functions.php on line 437
+[31-Dec-2015 06:06:03 America/Denver] PHP Warning:  array_merge(): Argument #1 is not an array in /home4/grayson/public_html/scavenger/platforms/twitter/functions.php on line 393
+[31-Dec-2015 06:06:03 America/Denver] PHP Warning:  Invalid argument supplied for foreach() in /home4/grayson/public_html/scavenger/platforms/twitter/functions.php on line 437
+[31-Dec-2015 07:07:02 America/Denver] PHP Warning:  array_merge(): Argument #1 is not an array in /home4/grayson/public_html/scavenger/platforms/twitter/functions.php on line 393
+[31-Dec-2015 07:07:03 America/Denver] PHP Warning:  Invalid argument supplied for foreach() in /home4/grayson/public_html/scavenger/platforms/twitter/functions.php on line 437
+[31-Dec-2015 08:04:04 America/Denver] PHP Warning:  array_merge(): Argument #1 is not an array in /home4/grayson/public_html/scavenger/platforms/twitter/functions.php on line 393
+[31-Dec-2015 08:04:04 America/Denver] PHP Warning:  Invalid argument supplied for foreach() in /home4/grayson/public_html/scavenger/platforms/twitter/functions.php on line 437
+[31-Dec-2015 11:02:03 America/Denver] PHP Warning:  array_merge(): Argument #1 is not an array in /home4/grayson/public_html/scavenger/platforms/twitter/functions.php on line 393
+[31-Dec-2015 11:02:03 America/Denver] PHP Warning:  Invalid argument supplied for foreach() in /home4/grayson/public_html/scavenger/platforms/twitter/functions.php on line 437
+[31-Dec-2015 12:10:02 America/Denver] PHP Warning:  array_merge(): Argument #1 is not an array in /home4/grayson/public_html/scavenger/platforms/twitter/functions.php on line 393
+[31-Dec-2015 12:10:02 America/Denver] PHP Warning:  Invalid argument supplied for foreach() in /home4/grayson/public_html/scavenger/platforms/twitter/functions.php on line 437
+[31-Dec-2015 16:05:04 America/Denver] PHP Warning:  array_merge(): Argument #1 is not an array in /home4/grayson/public_html/scavenger/platforms/twitter/functions.php on line 393
+[31-Dec-2015 16:05:04 America/Denver] PHP Warning:  Invalid argument supplied for foreach() in /home4/grayson/public_html/scavenger/platforms/twitter/functions.php on line 437
+[31-Dec-2015 17:10:02 America/Denver] PHP Warning:  array_merge(): Argument #1 is not an array in /home4/grayson/public_html/scavenger/platforms/twitter/functions.php on line 393
+[31-Dec-2015 17:10:03 America/Denver] PHP Warning:  Invalid argument supplied for foreach() in /home4/grayson/public_html/scavenger/platforms/twitter/functions.php on line 437
+[31-Dec-2015 18:10:02 America/Denver] PHP Warning:  array_merge(): Argument #1 is not an array in /home4/grayson/public_html/scavenger/platforms/twitter/functions.php on line 393
+[31-Dec-2015 18:10:02 America/Denver] PHP Warning:  Invalid argument supplied for foreach() in /home4/grayson/public_html/scavenger/platforms/twitter/functions.php on line 437
+[01-Jan-2016 06:11:02 America/Denver] PHP Warning:  array_merge(): Argument #1 is not an array in /home4/grayson/public_html/scavenger/platforms/twitter/functions.php on line 393
+[01-Jan-2016 06:11:02 America/Denver] PHP Warning:  Invalid argument supplied for foreach() in /home4/grayson/public_html/scavenger/platforms/twitter/functions.php on line 437
+[01-Jan-2016 07:02:02 America/Denver] PHP Warning:  array_merge(): Argument #1 is not an array in /home4/grayson/public_html/scavenger/platforms/twitter/functions.php on line 393
+[01-Jan-2016 07:02:03 America/Denver] PHP Warning:  Invalid argument supplied for foreach() in /home4/grayson/public_html/scavenger/platforms/twitter/functions.php on line 437
+[01-Jan-2016 08:03:02 America/Denver] PHP Warning:  array_merge(): Argument #1 is not an array in /home4/grayson/public_html/scavenger/platforms/twitter/functions.php on line 393
+[01-Jan-2016 08:03:02 America/Denver] PHP Warning:  Invalid argument supplied for foreach() in /home4/grayson/public_html/scavenger/platforms/twitter/functions.php on line 437
+[01-Jan-2016 11:02:03 America/Denver] PHP Warning:  array_merge(): Argument #1 is not an array in /home4/grayson/public_html/scavenger/platforms/twitter/functions.php on line 393
+[01-Jan-2016 11:02:03 America/Denver] PHP Warning:  Invalid argument supplied for foreach() in /home4/grayson/public_html/scavenger/platforms/twitter/functions.php on line 437
+[01-Jan-2016 12:06:03 America/Denver] PHP Warning:  array_merge(): Argument #1 is not an array in /home4/grayson/public_html/scavenger/platforms/twitter/functions.php on line 393
+[01-Jan-2016 12:06:04 America/Denver] PHP Warning:  Invalid argument supplied for foreach() in /home4/grayson/public_html/scavenger/platforms/twitter/functions.php on line 437
+[01-Jan-2016 16:06:02 America/Denver] PHP Warning:  array_merge(): Argument #1 is not an array in /home4/grayson/public_html/scavenger/platforms/twitter/functions.php on line 393
+[01-Jan-2016 16:06:02 America/Denver] PHP Warning:  Invalid argument supplied for foreach() in /home4/grayson/public_html/scavenger/platforms/twitter/functions.php on line 437
+[01-Jan-2016 17:11:02 America/Denver] PHP Warning:  array_merge(): Argument #1 is not an array in /home4/grayson/public_html/scavenger/platforms/twitter/functions.php on line 393
+[01-Jan-2016 17:11:02 America/Denver] PHP Warning:  Invalid argument supplied for foreach() in /home4/grayson/public_html/scavenger/platforms/twitter/functions.php on line 437
+[01-Jan-2016 18:08:02 America/Denver] PHP Warning:  array_merge(): Argument #1 is not an array in /home4/grayson/public_html/scavenger/platforms/twitter/functions.php on line 393
+[01-Jan-2016 18:08:02 America/Denver] PHP Warning:  Invalid argument supplied for foreach() in /home4/grayson/public_html/scavenger/platforms/twitter/functions.php on line 437
+[03-Jan-2016 06:09:03 America/Denver] PHP Warning:  array_merge(): Argument #1 is not an array in /home4/grayson/public_html/scavenger/platforms/twitter/functions.php on line 393
+[03-Jan-2016 06:09:03 America/Denver] PHP Warning:  Invalid argument supplied for foreach() in /home4/grayson/public_html/scavenger/platforms/twitter/functions.php on line 437
+[03-Jan-2016 07:05:02 America/Denver] PHP Warning:  array_merge(): Argument #1 is not an array in /home4/grayson/public_html/scavenger/platforms/twitter/functions.php on line 393
+[03-Jan-2016 07:05:02 America/Denver] PHP Warning:  Invalid argument supplied for foreach() in /home4/grayson/public_html/scavenger/platforms/twitter/functions.php on line 437
+[03-Jan-2016 08:04:03 America/Denver] PHP Warning:  array_merge(): Argument #1 is not an array in /home4/grayson/public_html/scavenger/platforms/twitter/functions.php on line 393
+[03-Jan-2016 08:04:03 America/Denver] PHP Warning:  Invalid argument supplied for foreach() in /home4/grayson/public_html/scavenger/platforms/twitter/functions.php on line 437
+[03-Jan-2016 11:05:03 America/Denver] PHP Warning:  array_merge(): Argument #1 is not an array in /home4/grayson/public_html/scavenger/platforms/twitter/functions.php on line 393
+[03-Jan-2016 11:05:04 America/Denver] PHP Warning:  Invalid argument supplied for foreach() in /home4/grayson/public_html/scavenger/platforms/twitter/functions.php on line 437
+[03-Jan-2016 12:04:04 America/Denver] PHP Warning:  array_merge(): Argument #1 is not an array in /home4/grayson/public_html/scavenger/platforms/twitter/functions.php on line 393
+[03-Jan-2016 12:04:04 America/Denver] PHP Warning:  Invalid argument supplied for foreach() in /home4/grayson/public_html/scavenger/platforms/twitter/functions.php on line 437
+[03-Jan-2016 16:09:03 America/Denver] PHP Warning:  array_merge(): Argument #1 is not an array in /home4/grayson/public_html/scavenger/platforms/twitter/functions.php on line 393
+[03-Jan-2016 16:09:03 America/Denver] PHP Warning:  Invalid argument supplied for foreach() in /home4/grayson/public_html/scavenger/platforms/twitter/functions.php on line 437
+[03-Jan-2016 17:07:02 America/Denver] PHP Warning:  array_merge(): Argument #1 is not an array in /home4/grayson/public_html/scavenger/platforms/twitter/functions.php on line 393
+[03-Jan-2016 17:07:02 America/Denver] PHP Warning:  Invalid argument supplied for foreach() in /home4/grayson/public_html/scavenger/platforms/twitter/functions.php on line 437
+[03-Jan-2016 18:10:04 America/Denver] PHP Warning:  array_merge(): Argument #1 is not an array in /home4/grayson/public_html/scavenger/platforms/twitter/functions.php on line 393
+[03-Jan-2016 18:10:04 America/Denver] PHP Warning:  Invalid argument supplied for foreach() in /home4/grayson/public_html/scavenger/platforms/twitter/functions.php on line 437
+[05-Jan-2016 00:57:37 America/Denver] PHP Warning:  array_merge(): Argument #1 is not an array in /home4/grayson/public_html/scavenger/platforms/twitter/functions.php on line 393
+[05-Jan-2016 00:57:37 America/Denver] PHP Warning:  Invalid argument supplied for foreach() in /home4/grayson/public_html/scavenger/platforms/twitter/functions.php on line 437
+[05-Jan-2016 06:06:02 America/Denver] PHP Warning:  array_merge(): Argument #1 is not an array in /home4/grayson/public_html/scavenger/platforms/twitter/functions.php on line 393
+[05-Jan-2016 06:06:03 America/Denver] PHP Warning:  Invalid argument supplied for foreach() in /home4/grayson/public_html/scavenger/platforms/twitter/functions.php on line 437
+[05-Jan-2016 07:04:02 America/Denver] PHP Warning:  array_merge(): Argument #1 is not an array in /home4/grayson/public_html/scavenger/platforms/twitter/functions.php on line 393
+[05-Jan-2016 07:04:02 America/Denver] PHP Warning:  Invalid argument supplied for foreach() in /home4/grayson/public_html/scavenger/platforms/twitter/functions.php on line 437
+[05-Jan-2016 08:05:03 America/Denver] PHP Warning:  array_merge(): Argument #1 is not an array in /home4/grayson/public_html/scavenger/platforms/twitter/functions.php on line 393
+[05-Jan-2016 08:05:03 America/Denver] PHP Warning:  Invalid argument supplied for foreach() in /home4/grayson/public_html/scavenger/platforms/twitter/functions.php on line 437
+[05-Jan-2016 11:03:02 America/Denver] PHP Warning:  array_merge(): Argument #1 is not an array in /home4/grayson/public_html/scavenger/platforms/twitter/functions.php on line 393
+[05-Jan-2016 11:03:02 America/Denver] PHP Warning:  Invalid argument supplied for foreach() in /home4/grayson/public_html/scavenger/platforms/twitter/functions.php on line 437
+[09-Jan-2016 06:02:10 America/Denver] PHP Warning:  array_merge(): Argument #1 is not an array in /home4/grayson/public_html/scavenger/platforms/twitter/functions.php on line 393
+[09-Jan-2016 06:02:11 America/Denver] PHP Warning:  Invalid argument supplied for foreach() in /home4/grayson/public_html/scavenger/platforms/twitter/functions.php on line 437
+[09-Jan-2016 07:03:02 America/Denver] PHP Warning:  array_merge(): Argument #1 is not an array in /home4/grayson/public_html/scavenger/platforms/twitter/functions.php on line 393
+[09-Jan-2016 07:03:02 America/Denver] PHP Warning:  Invalid argument supplied for foreach() in /home4/grayson/public_html/scavenger/platforms/twitter/functions.php on line 437
+[09-Jan-2016 08:02:02 America/Denver] PHP Warning:  array_merge(): Argument #1 is not an array in /home4/grayson/public_html/scavenger/platforms/twitter/functions.php on line 393
+[09-Jan-2016 08:02:03 America/Denver] PHP Warning:  Invalid argument supplied for foreach() in /home4/grayson/public_html/scavenger/platforms/twitter/functions.php on line 437
+[09-Jan-2016 11:06:08 America/Denver] PHP Warning:  array_merge(): Argument #1 is not an array in /home4/grayson/public_html/scavenger/platforms/twitter/functions.php on line 393
+[09-Jan-2016 11:06:08 America/Denver] PHP Warning:  Invalid argument supplied for foreach() in /home4/grayson/public_html/scavenger/platforms/twitter/functions.php on line 437
+[09-Jan-2016 12:02:03 America/Denver] PHP Warning:  array_merge(): Argument #1 is not an array in /home4/grayson/public_html/scavenger/platforms/twitter/functions.php on line 393
+[09-Jan-2016 12:02:03 America/Denver] PHP Warning:  Invalid argument supplied for foreach() in /home4/grayson/public_html/scavenger/platforms/twitter/functions.php on line 437
+[09-Jan-2016 16:05:02 America/Denver] PHP Warning:  array_merge(): Argument #1 is not an array in /home4/grayson/public_html/scavenger/platforms/twitter/functions.php on line 393
+[09-Jan-2016 16:05:03 America/Denver] PHP Warning:  Invalid argument supplied for foreach() in /home4/grayson/public_html/scavenger/platforms/twitter/functions.php on line 437
+[09-Jan-2016 17:05:03 America/Denver] PHP Warning:  array_merge(): Argument #1 is not an array in /home4/grayson/public_html/scavenger/platforms/twitter/functions.php on line 393
+[09-Jan-2016 17:05:04 America/Denver] PHP Warning:  Invalid argument supplied for foreach() in /home4/grayson/public_html/scavenger/platforms/twitter/functions.php on line 437
+[09-Jan-2016 18:11:02 America/Denver] PHP Warning:  array_merge(): Argument #1 is not an array in /home4/grayson/public_html/scavenger/platforms/twitter/functions.php on line 393
+[09-Jan-2016 18:11:02 America/Denver] PHP Warning:  Invalid argument supplied for foreach() in /home4/grayson/public_html/scavenger/platforms/twitter/functions.php on line 437
+[11-Jan-2016 06:04:02 America/Denver] PHP Warning:  array_merge(): Argument #1 is not an array in /home4/grayson/public_html/scavenger/platforms/twitter/functions.php on line 393
+[11-Jan-2016 06:04:02 America/Denver] PHP Warning:  Invalid argument supplied for foreach() in /home4/grayson/public_html/scavenger/platforms/twitter/functions.php on line 437
+[11-Jan-2016 07:03:03 America/Denver] PHP Warning:  array_merge(): Argument #1 is not an array in /home4/grayson/public_html/scavenger/platforms/twitter/functions.php on line 393
+[11-Jan-2016 07:03:03 America/Denver] PHP Warning:  Invalid argument supplied for foreach() in /home4/grayson/public_html/scavenger/platforms/twitter/functions.php on line 437
+[11-Jan-2016 08:04:03 America/Denver] PHP Warning:  array_merge(): Argument #1 is not an array in /home4/grayson/public_html/scavenger/platforms/twitter/functions.php on line 393
+[11-Jan-2016 08:04:03 America/Denver] PHP Warning:  Invalid argument supplied for foreach() in /home4/grayson/public_html/scavenger/platforms/twitter/functions.php on line 437
+[11-Jan-2016 11:05:02 America/Denver] PHP Warning:  array_merge(): Argument #1 is not an array in /home4/grayson/public_html/scavenger/platforms/twitter/functions.php on line 393
+[11-Jan-2016 11:05:02 America/Denver] PHP Warning:  Invalid argument supplied for foreach() in /home4/grayson/public_html/scavenger/platforms/twitter/functions.php on line 437
+[11-Jan-2016 12:04:02 America/Denver] PHP Warning:  array_merge(): Argument #1 is not an array in /home4/grayson/public_html/scavenger/platforms/twitter/functions.php on line 393
+[11-Jan-2016 12:04:03 America/Denver] PHP Warning:  Invalid argument supplied for foreach() in /home4/grayson/public_html/scavenger/platforms/twitter/functions.php on line 437
+[11-Jan-2016 16:03:02 America/Denver] PHP Warning:  array_merge(): Argument #1 is not an array in /home4/grayson/public_html/scavenger/platforms/twitter/functions.php on line 393
+[11-Jan-2016 16:03:03 America/Denver] PHP Warning:  Invalid argument supplied for foreach() in /home4/grayson/public_html/scavenger/platforms/twitter/functions.php on line 437
+[11-Jan-2016 17:02:04 America/Denver] PHP Warning:  array_merge(): Argument #1 is not an array in /home4/grayson/public_html/scavenger/platforms/twitter/functions.php on line 393
+[11-Jan-2016 17:02:04 America/Denver] PHP Warning:  Invalid argument supplied for foreach() in /home4/grayson/public_html/scavenger/platforms/twitter/functions.php on line 437
+[11-Jan-2016 18:05:02 America/Denver] PHP Warning:  array_merge(): Argument #1 is not an array in /home4/grayson/public_html/scavenger/platforms/twitter/functions.php on line 393
+[11-Jan-2016 18:05:02 America/Denver] PHP Warning:  Invalid argument supplied for foreach() in /home4/grayson/public_html/scavenger/platforms/twitter/functions.php on line 437
+[13-Jan-2016 06:09:02 America/Denver] PHP Warning:  array_merge(): Argument #1 is not an array in /home4/grayson/public_html/scavenger/platforms/twitter/functions.php on line 393
+[13-Jan-2016 06:09:03 America/Denver] PHP Warning:  Invalid argument supplied for foreach() in /home4/grayson/public_html/scavenger/platforms/twitter/functions.php on line 437
+[13-Jan-2016 07:11:03 America/Denver] PHP Warning:  array_merge(): Argument #1 is not an array in /home4/grayson/public_html/scavenger/platforms/twitter/functions.php on line 393
+[13-Jan-2016 07:11:03 America/Denver] PHP Warning:  Invalid argument supplied for foreach() in /home4/grayson/public_html/scavenger/platforms/twitter/functions.php on line 437
+[13-Jan-2016 08:06:03 America/Denver] PHP Warning:  array_merge(): Argument #1 is not an array in /home4/grayson/public_html/scavenger/platforms/twitter/functions.php on line 393
+[13-Jan-2016 08:06:03 America/Denver] PHP Warning:  Invalid argument supplied for foreach() in /home4/grayson/public_html/scavenger/platforms/twitter/functions.php on line 437
+[13-Jan-2016 11:09:03 America/Denver] PHP Warning:  array_merge(): Argument #1 is not an array in /home4/grayson/public_html/scavenger/platforms/twitter/functions.php on line 393
+[13-Jan-2016 11:09:03 America/Denver] PHP Warning:  Invalid argument supplied for foreach() in /home4/grayson/public_html/scavenger/platforms/twitter/functions.php on line 437
+[13-Jan-2016 12:08:03 America/Denver] PHP Warning:  array_merge(): Argument #1 is not an array in /home4/grayson/public_html/scavenger/platforms/twitter/functions.php on line 393
+[13-Jan-2016 12:08:03 America/Denver] PHP Warning:  Invalid argument supplied for foreach() in /home4/grayson/public_html/scavenger/platforms/twitter/functions.php on line 437
+[13-Jan-2016 16:07:03 America/Denver] PHP Warning:  array_merge(): Argument #1 is not an array in /home4/grayson/public_html/scavenger/platforms/twitter/functions.php on line 393
+[13-Jan-2016 16:07:03 America/Denver] PHP Warning:  Invalid argument supplied for foreach() in /home4/grayson/public_html/scavenger/platforms/twitter/functions.php on line 437
+[13-Jan-2016 17:03:03 America/Denver] PHP Warning:  array_merge(): Argument #1 is not an array in /home4/grayson/public_html/scavenger/platforms/twitter/functions.php on line 393
+[13-Jan-2016 17:03:03 America/Denver] PHP Warning:  Invalid argument supplied for foreach() in /home4/grayson/public_html/scavenger/platforms/twitter/functions.php on line 437
+[13-Jan-2016 18:08:03 America/Denver] PHP Warning:  array_merge(): Argument #1 is not an array in /home4/grayson/public_html/scavenger/platforms/twitter/functions.php on line 393
+[13-Jan-2016 18:08:03 America/Denver] PHP Warning:  Invalid argument supplied for foreach() in /home4/grayson/public_html/scavenger/platforms/twitter/functions.php on line 437
+[14-Jan-2016 15:20:59 America/Chicago] PHP Warning:  PHP Startup: imagick: Unable to initialize module
+Module compiled with module API=20121212
+PHP    compiled with module API=20100525
+These options need to match
+ in Unknown on line 0
+[14-Jan-2016 20:48:56 America/Chicago] PHP Warning:  PHP Startup: imagick: Unable to initialize module
+Module compiled with module API=20121212
+PHP    compiled with module API=20100525
+These options need to match
+ in Unknown on line 0
+[15-Jan-2016 06:06:03 America/Denver] PHP Warning:  array_merge(): Argument #1 is not an array in /home4/grayson/public_html/scavenger/platforms/twitter/functions.php on line 393
+[15-Jan-2016 06:06:03 America/Denver] PHP Warning:  Invalid argument supplied for foreach() in /home4/grayson/public_html/scavenger/platforms/twitter/functions.php on line 437
+[15-Jan-2016 07:07:03 America/Denver] PHP Warning:  array_merge(): Argument #1 is not an array in /home4/grayson/public_html/scavenger/platforms/twitter/functions.php on line 393
+[15-Jan-2016 07:07:03 America/Denver] PHP Warning:  Invalid argument supplied for foreach() in /home4/grayson/public_html/scavenger/platforms/twitter/functions.php on line 437
+[15-Jan-2016 08:02:02 America/Denver] PHP Warning:  array_merge(): Argument #1 is not an array in /home4/grayson/public_html/scavenger/platforms/twitter/functions.php on line 393
+[15-Jan-2016 08:02:03 America/Denver] PHP Warning:  Invalid argument supplied for foreach() in /home4/grayson/public_html/scavenger/platforms/twitter/functions.php on line 437
+[15-Jan-2016 11:02:03 America/Denver] PHP Warning:  array_merge(): Argument #1 is not an array in /home4/grayson/public_html/scavenger/platforms/twitter/functions.php on line 393
+[15-Jan-2016 11:02:03 America/Denver] PHP Warning:  Invalid argument supplied for foreach() in /home4/grayson/public_html/scavenger/platforms/twitter/functions.php on line 437
+[15-Jan-2016 12:05:02 America/Denver] PHP Warning:  array_merge(): Argument #1 is not an array in /home4/grayson/public_html/scavenger/platforms/twitter/functions.php on line 393
+[15-Jan-2016 12:05:03 America/Denver] PHP Warning:  Invalid argument supplied for foreach() in /home4/grayson/public_html/scavenger/platforms/twitter/functions.php on line 437
+[15-Jan-2016 15:22:05 America/Chicago] PHP Warning:  PHP Startup: imagick: Unable to initialize module
+Module compiled with module API=20121212
+PHP    compiled with module API=20100525
+These options need to match
+ in Unknown on line 0
+[15-Jan-2016 16:08:02 America/Denver] PHP Warning:  array_merge(): Argument #1 is not an array in /home4/grayson/public_html/scavenger/platforms/twitter/functions.php on line 393
+[15-Jan-2016 16:08:03 America/Denver] PHP Warning:  Invalid argument supplied for foreach() in /home4/grayson/public_html/scavenger/platforms/twitter/functions.php on line 437
+[15-Jan-2016 17:02:03 America/Denver] PHP Warning:  array_merge(): Argument #1 is not an array in /home4/grayson/public_html/scavenger/platforms/twitter/functions.php on line 393
+[15-Jan-2016 17:02:03 America/Denver] PHP Warning:  Invalid argument supplied for foreach() in /home4/grayson/public_html/scavenger/platforms/twitter/functions.php on line 437
+[15-Jan-2016 18:11:03 America/Denver] PHP Warning:  array_merge(): Argument #1 is not an array in /home4/grayson/public_html/scavenger/platforms/twitter/functions.php on line 393
+[15-Jan-2016 18:11:03 America/Denver] PHP Warning:  Invalid argument supplied for foreach() in /home4/grayson/public_html/scavenger/platforms/twitter/functions.php on line 437
+[16-Jan-2016 04:18:15 America/Chicago] PHP Warning:  PHP Startup: imagick: Unable to initialize module
+Module compiled with module API=20121212
+PHP    compiled with module API=20100525
+These options need to match
+ in Unknown on line 0
+[16-Jan-2016 09:33:28 America/Chicago] PHP Warning:  PHP Startup: imagick: Unable to initialize module
+Module compiled with module API=20121212
+PHP    compiled with module API=20100525
+These options need to match
+ in Unknown on line 0
+[16-Jan-2016 15:24:09 America/Chicago] PHP Warning:  PHP Startup: imagick: Unable to initialize module
+Module compiled with module API=20121212
+PHP    compiled with module API=20100525
+These options need to match
+ in Unknown on line 0
+[17-Jan-2016 06:02:02 America/Denver] PHP Warning:  array_merge(): Argument #1 is not an array in /home4/grayson/public_html/scavenger/platforms/twitter/functions.php on line 393
+[17-Jan-2016 06:02:03 America/Denver] PHP Warning:  Invalid argument supplied for foreach() in /home4/grayson/public_html/scavenger/platforms/twitter/functions.php on line 437
+[17-Jan-2016 07:08:02 America/Denver] PHP Warning:  array_merge(): Argument #1 is not an array in /home4/grayson/public_html/scavenger/platforms/twitter/functions.php on line 393
+[17-Jan-2016 07:08:03 America/Denver] PHP Warning:  Invalid argument supplied for foreach() in /home4/grayson/public_html/scavenger/platforms/twitter/functions.php on line 437
+[17-Jan-2016 08:03:02 America/Denver] PHP Warning:  array_merge(): Argument #1 is not an array in /home4/grayson/public_html/scavenger/platforms/twitter/functions.php on line 393
+[17-Jan-2016 08:03:02 America/Denver] PHP Warning:  Invalid argument supplied for foreach() in /home4/grayson/public_html/scavenger/platforms/twitter/functions.php on line 437
+[17-Jan-2016 11:03:03 America/Denver] PHP Warning:  array_merge(): Argument #1 is not an array in /home4/grayson/public_html/scavenger/platforms/twitter/functions.php on line 393
+[17-Jan-2016 11:03:03 America/Denver] PHP Warning:  Invalid argument supplied for foreach() in /home4/grayson/public_html/scavenger/platforms/twitter/functions.php on line 437
+[17-Jan-2016 12:04:02 America/Denver] PHP Warning:  array_merge(): Argument #1 is not an array in /home4/grayson/public_html/scavenger/platforms/twitter/functions.php on line 393
+[17-Jan-2016 12:04:03 America/Denver] PHP Warning:  Invalid argument supplied for foreach() in /home4/grayson/public_html/scavenger/platforms/twitter/functions.php on line 437
+[17-Jan-2016 16:06:02 America/Denver] PHP Warning:  array_merge(): Argument #1 is not an array in /home4/grayson/public_html/scavenger/platforms/twitter/functions.php on line 393
+[17-Jan-2016 16:06:03 America/Denver] PHP Warning:  Invalid argument supplied for foreach() in /home4/grayson/public_html/scavenger/platforms/twitter/functions.php on line 437
+[17-Jan-2016 17:05:02 America/Denver] PHP Warning:  array_merge(): Argument #1 is not an array in /home4/grayson/public_html/scavenger/platforms/twitter/functions.php on line 393
+[17-Jan-2016 17:05:02 America/Denver] PHP Warning:  Invalid argument supplied for foreach() in /home4/grayson/public_html/scavenger/platforms/twitter/functions.php on line 437
+[17-Jan-2016 18:03:05 America/Denver] PHP Warning:  array_merge(): Argument #1 is not an array in /home4/grayson/public_html/scavenger/platforms/twitter/functions.php on line 393
+[17-Jan-2016 18:03:05 America/Denver] PHP Warning:  Invalid argument supplied for foreach() in /home4/grayson/public_html/scavenger/platforms/twitter/functions.php on line 437
+[19-Jan-2016 06:10:02 America/Denver] PHP Warning:  array_merge(): Argument #1 is not an array in /home4/grayson/public_html/scavenger/platforms/twitter/functions.php on line 393
+[19-Jan-2016 06:10:02 America/Denver] PHP Warning:  Invalid argument supplied for foreach() in /home4/grayson/public_html/scavenger/platforms/twitter/functions.php on line 437
+[19-Jan-2016 07:02:03 America/Denver] PHP Warning:  array_merge(): Argument #1 is not an array in /home4/grayson/public_html/scavenger/platforms/twitter/functions.php on line 393
+[19-Jan-2016 07:02:04 America/Denver] PHP Warning:  Invalid argument supplied for foreach() in /home4/grayson/public_html/scavenger/platforms/twitter/functions.php on line 437
+[19-Jan-2016 08:06:03 America/Denver] PHP Warning:  array_merge(): Argument #1 is not an array in /home4/grayson/public_html/scavenger/platforms/twitter/functions.php on line 393
+[19-Jan-2016 08:06:03 America/Denver] PHP Warning:  Invalid argument supplied for foreach() in /home4/grayson/public_html/scavenger/platforms/twitter/functions.php on line 437
+[19-Jan-2016 11:09:03 America/Denver] PHP Warning:  array_merge(): Argument #1 is not an array in /home4/grayson/public_html/scavenger/platforms/twitter/functions.php on line 393
+[19-Jan-2016 11:09:03 America/Denver] PHP Warning:  Invalid argument supplied for foreach() in /home4/grayson/public_html/scavenger/platforms/twitter/functions.php on line 437
+[19-Jan-2016 12:02:03 America/Denver] PHP Warning:  array_merge(): Argument #1 is not an array in /home4/grayson/public_html/scavenger/platforms/twitter/functions.php on line 393
+[19-Jan-2016 12:02:03 America/Denver] PHP Warning:  Invalid argument supplied for foreach() in /home4/grayson/public_html/scavenger/platforms/twitter/functions.php on line 437
+[19-Jan-2016 16:09:03 America/Denver] PHP Warning:  array_merge(): Argument #1 is not an array in /home4/grayson/public_html/scavenger/platforms/twitter/functions.php on line 393
+[19-Jan-2016 16:09:03 America/Denver] PHP Warning:  Invalid argument supplied for foreach() in /home4/grayson/public_html/scavenger/platforms/twitter/functions.php on line 437
+[19-Jan-2016 17:07:02 America/Denver] PHP Warning:  array_merge(): Argument #1 is not an array in /home4/grayson/public_html/scavenger/platforms/twitter/functions.php on line 393
+[19-Jan-2016 17:07:02 America/Denver] PHP Warning:  Invalid argument supplied for foreach() in /home4/grayson/public_html/scavenger/platforms/twitter/functions.php on line 437
+[19-Jan-2016 18:11:03 America/Denver] PHP Warning:  array_merge(): Argument #1 is not an array in /home4/grayson/public_html/scavenger/platforms/twitter/functions.php on line 393
+[19-Jan-2016 18:11:04 America/Denver] PHP Warning:  Invalid argument supplied for foreach() in /home4/grayson/public_html/scavenger/platforms/twitter/functions.php on line 437
+[21-Jan-2016 06:08:02 America/Denver] PHP Warning:  array_merge(): Argument #1 is not an array in /home4/grayson/public_html/scavenger/platforms/twitter/functions.php on line 393
+[21-Jan-2016 06:08:03 America/Denver] PHP Warning:  Invalid argument supplied for foreach() in /home4/grayson/public_html/scavenger/platforms/twitter/functions.php on line 437
+[21-Jan-2016 07:08:02 America/Denver] PHP Warning:  array_merge(): Argument #1 is not an array in /home4/grayson/public_html/scavenger/platforms/twitter/functions.php on line 393
+[21-Jan-2016 07:08:02 America/Denver] PHP Warning:  Invalid argument supplied for foreach() in /home4/grayson/public_html/scavenger/platforms/twitter/functions.php on line 437
+[21-Jan-2016 08:06:03 America/Denver] PHP Warning:  array_merge(): Argument #1 is not an array in /home4/grayson/public_html/scavenger/platforms/twitter/functions.php on line 393
+[21-Jan-2016 08:06:03 America/Denver] PHP Warning:  Invalid argument supplied for foreach() in /home4/grayson/public_html/scavenger/platforms/twitter/functions.php on line 437
+[21-Jan-2016 11:02:02 America/Denver] PHP Warning:  array_merge(): Argument #1 is not an array in /home4/grayson/public_html/scavenger/platforms/twitter/functions.php on line 393
+[21-Jan-2016 11:02:02 America/Denver] PHP Warning:  Invalid argument supplied for foreach() in /home4/grayson/public_html/scavenger/platforms/twitter/functions.php on line 437
+[21-Jan-2016 12:04:02 America/Denver] PHP Warning:  array_merge(): Argument #1 is not an array in /home4/grayson/public_html/scavenger/platforms/twitter/functions.php on line 393
+[21-Jan-2016 12:04:02 America/Denver] PHP Warning:  Invalid argument supplied for foreach() in /home4/grayson/public_html/scavenger/platforms/twitter/functions.php on line 437
+[21-Jan-2016 16:03:03 America/Denver] PHP Warning:  array_merge(): Argument #1 is not an array in /home4/grayson/public_html/scavenger/platforms/twitter/functions.php on line 393
+[21-Jan-2016 16:03:03 America/Denver] PHP Warning:  Invalid argument supplied for foreach() in /home4/grayson/public_html/scavenger/platforms/twitter/functions.php on line 437
+[21-Jan-2016 17:08:02 America/Denver] PHP Warning:  array_merge(): Argument #1 is not an array in /home4/grayson/public_html/scavenger/platforms/twitter/functions.php on line 393
+[21-Jan-2016 17:08:03 America/Denver] PHP Warning:  Invalid argument supplied for foreach() in /home4/grayson/public_html/scavenger/platforms/twitter/functions.php on line 437
+[21-Jan-2016 18:08:02 America/Denver] PHP Warning:  array_merge(): Argument #1 is not an array in /home4/grayson/public_html/scavenger/platforms/twitter/functions.php on line 393
+[21-Jan-2016 18:08:03 America/Denver] PHP Warning:  Invalid argument supplied for foreach() in /home4/grayson/public_html/scavenger/platforms/twitter/functions.php on line 437
+[23-Jan-2016 06:07:04 America/Denver] PHP Warning:  array_merge(): Argument #1 is not an array in /home4/grayson/public_html/scavenger/platforms/twitter/functions.php on line 393
+[23-Jan-2016 06:07:04 America/Denver] PHP Warning:  Invalid argument supplied for foreach() in /home4/grayson/public_html/scavenger/platforms/twitter/functions.php on line 437
+[23-Jan-2016 07:05:02 America/Denver] PHP Warning:  array_merge(): Argument #1 is not an array in /home4/grayson/public_html/scavenger/platforms/twitter/functions.php on line 393
+[23-Jan-2016 07:05:02 America/Denver] PHP Warning:  Invalid argument supplied for foreach() in /home4/grayson/public_html/scavenger/platforms/twitter/functions.php on line 437
+[23-Jan-2016 08:11:03 America/Denver] PHP Warning:  array_merge(): Argument #1 is not an array in /home4/grayson/public_html/scavenger/platforms/twitter/functions.php on line 393
+[23-Jan-2016 08:11:04 America/Denver] PHP Warning:  Invalid argument supplied for foreach() in /home4/grayson/public_html/scavenger/platforms/twitter/functions.php on line 437
+[23-Jan-2016 11:11:04 America/Denver] PHP Warning:  array_merge(): Argument #1 is not an array in /home4/grayson/public_html/scavenger/platforms/twitter/functions.php on line 393
+[23-Jan-2016 11:11:04 America/Denver] PHP Warning:  Invalid argument supplied for foreach() in /home4/grayson/public_html/scavenger/platforms/twitter/functions.php on line 437
+[23-Jan-2016 12:09:03 America/Denver] PHP Warning:  array_merge(): Argument #1 is not an array in /home4/grayson/public_html/scavenger/platforms/twitter/functions.php on line 393
+[23-Jan-2016 12:09:03 America/Denver] PHP Warning:  Invalid argument supplied for foreach() in /home4/grayson/public_html/scavenger/platforms/twitter/functions.php on line 437
+[23-Jan-2016 16:08:03 America/Denver] PHP Warning:  array_merge(): Argument #1 is not an array in /home4/grayson/public_html/scavenger/platforms/twitter/functions.php on line 393
+[23-Jan-2016 16:08:03 America/Denver] PHP Warning:  Invalid argument supplied for foreach() in /home4/grayson/public_html/scavenger/platforms/twitter/functions.php on line 437
+[23-Jan-2016 17:04:19 America/Denver] PHP Warning:  array_merge(): Argument #1 is not an array in /home4/grayson/public_html/scavenger/platforms/twitter/functions.php on line 393
+[23-Jan-2016 17:04:20 America/Denver] PHP Warning:  Invalid argument supplied for foreach() in /home4/grayson/public_html/scavenger/platforms/twitter/functions.php on line 437
+[23-Jan-2016 18:02:02 America/Denver] PHP Warning:  array_merge(): Argument #1 is not an array in /home4/grayson/public_html/scavenger/platforms/twitter/functions.php on line 393
+[23-Jan-2016 18:02:03 America/Denver] PHP Warning:  Invalid argument supplied for foreach() in /home4/grayson/public_html/scavenger/platforms/twitter/functions.php on line 437
+[25-Jan-2016 06:11:03 America/Denver] PHP Warning:  array_merge(): Argument #1 is not an array in /home4/grayson/public_html/scavenger/platforms/twitter/functions.php on line 393
+[25-Jan-2016 06:11:03 America/Denver] PHP Warning:  Invalid argument supplied for foreach() in /home4/grayson/public_html/scavenger/platforms/twitter/functions.php on line 437
+[25-Jan-2016 07:02:02 America/Denver] PHP Warning:  array_merge(): Argument #1 is not an array in /home4/grayson/public_html/scavenger/platforms/twitter/functions.php on line 393
+[25-Jan-2016 07:02:02 America/Denver] PHP Warning:  Invalid argument supplied for foreach() in /home4/grayson/public_html/scavenger/platforms/twitter/functions.php on line 437
+[25-Jan-2016 08:10:03 America/Denver] PHP Warning:  array_merge(): Argument #1 is not an array in /home4/grayson/public_html/scavenger/platforms/twitter/functions.php on line 393
+[25-Jan-2016 08:10:03 America/Denver] PHP Warning:  Invalid argument supplied for foreach() in /home4/grayson/public_html/scavenger/platforms/twitter/functions.php on line 437
+[25-Jan-2016 11:05:03 America/Denver] PHP Warning:  array_merge(): Argument #1 is not an array in /home4/grayson/public_html/scavenger/platforms/twitter/functions.php on line 393
+[25-Jan-2016 11:05:03 America/Denver] PHP Warning:  Invalid argument supplied for foreach() in /home4/grayson/public_html/scavenger/platforms/twitter/functions.php on line 437
+[25-Jan-2016 12:08:03 America/Denver] PHP Warning:  array_merge(): Argument #1 is not an array in /home4/grayson/public_html/scavenger/platforms/twitter/functions.php on line 393
+[25-Jan-2016 12:08:04 America/Denver] PHP Warning:  Invalid argument supplied for foreach() in /home4/grayson/public_html/scavenger/platforms/twitter/functions.php on line 437
+[25-Jan-2016 16:05:02 America/Denver] PHP Warning:  array_merge(): Argument #1 is not an array in /home4/grayson/public_html/scavenger/platforms/twitter/functions.php on line 393
+[25-Jan-2016 16:05:03 America/Denver] PHP Warning:  Invalid argument supplied for foreach() in /home4/grayson/public_html/scavenger/platforms/twitter/functions.php on line 437
+[25-Jan-2016 17:02:03 America/Denver] PHP Warning:  array_merge(): Argument #1 is not an array in /home4/grayson/public_html/scavenger/platforms/twitter/functions.php on line 393
+[25-Jan-2016 17:02:03 America/Denver] PHP Warning:  Invalid argument supplied for foreach() in /home4/grayson/public_html/scavenger/platforms/twitter/functions.php on line 437
+[25-Jan-2016 18:10:06 America/Denver] PHP Warning:  array_merge(): Argument #1 is not an array in /home4/grayson/public_html/scavenger/platforms/twitter/functions.php on line 393
+[25-Jan-2016 18:10:06 America/Denver] PHP Warning:  Invalid argument supplied for foreach() in /home4/grayson/public_html/scavenger/platforms/twitter/functions.php on line 437
+[27-Jan-2016 06:05:04 America/Denver] PHP Warning:  array_merge(): Argument #1 is not an array in /home4/grayson/public_html/scavenger/platforms/twitter/functions.php on line 393
+[27-Jan-2016 06:05:04 America/Denver] PHP Warning:  Invalid argument supplied for foreach() in /home4/grayson/public_html/scavenger/platforms/twitter/functions.php on line 437
+[27-Jan-2016 07:04:03 America/Denver] PHP Warning:  array_merge(): Argument #1 is not an array in /home4/grayson/public_html/scavenger/platforms/twitter/functions.php on line 393
+[27-Jan-2016 07:04:04 America/Denver] PHP Warning:  Invalid argument supplied for foreach() in /home4/grayson/public_html/scavenger/platforms/twitter/functions.php on line 437
+[27-Jan-2016 11:08:03 America/Denver] PHP Warning:  array_merge(): Argument #1 is not an array in /home4/grayson/public_html/scavenger/platforms/twitter/functions.php on line 393
+[27-Jan-2016 11:08:03 America/Denver] PHP Warning:  Invalid argument supplied for foreach() in /home4/grayson/public_html/scavenger/platforms/twitter/functions.php on line 437
+[27-Jan-2016 12:10:02 America/Denver] PHP Warning:  array_merge(): Argument #1 is not an array in /home4/grayson/public_html/scavenger/platforms/twitter/functions.php on line 393
+[27-Jan-2016 12:10:03 America/Denver] PHP Warning:  Invalid argument supplied for foreach() in /home4/grayson/public_html/scavenger/platforms/twitter/functions.php on line 437
+[27-Jan-2016 16:09:03 America/Denver] PHP Warning:  array_merge(): Argument #1 is not an array in /home4/grayson/public_html/scavenger/platforms/twitter/functions.php on line 393
+[27-Jan-2016 16:09:03 America/Denver] PHP Warning:  Invalid argument supplied for foreach() in /home4/grayson/public_html/scavenger/platforms/twitter/functions.php on line 437
+[27-Jan-2016 17:08:02 America/Denver] PHP Warning:  array_merge(): Argument #1 is not an array in /home4/grayson/public_html/scavenger/platforms/twitter/functions.php on line 393
+[27-Jan-2016 17:08:03 America/Denver] PHP Warning:  Invalid argument supplied for foreach() in /home4/grayson/public_html/scavenger/platforms/twitter/functions.php on line 437
+[27-Jan-2016 18:03:04 America/Denver] PHP Warning:  array_merge(): Argument #1 is not an array in /home4/grayson/public_html/scavenger/platforms/twitter/functions.php on line 393
+[27-Jan-2016 18:03:04 America/Denver] PHP Warning:  Invalid argument supplied for foreach() in /home4/grayson/public_html/scavenger/platforms/twitter/functions.php on line 437
+[29-Jan-2016 06:10:05 America/Denver] PHP Warning:  array_merge(): Argument #1 is not an array in /home4/grayson/public_html/scavenger/platforms/twitter/functions.php on line 393
+[29-Jan-2016 06:10:06 America/Denver] PHP Warning:  Invalid argument supplied for foreach() in /home4/grayson/public_html/scavenger/platforms/twitter/functions.php on line 437
+[29-Jan-2016 07:10:05 America/Denver] PHP Warning:  array_merge(): Argument #1 is not an array in /home4/grayson/public_html/scavenger/platforms/twitter/functions.php on line 393
+[29-Jan-2016 07:10:05 America/Denver] PHP Warning:  Invalid argument supplied for foreach() in /home4/grayson/public_html/scavenger/platforms/twitter/functions.php on line 437
+[29-Jan-2016 08:06:05 America/Denver] PHP Warning:  array_merge(): Argument #1 is not an array in /home4/grayson/public_html/scavenger/platforms/twitter/functions.php on line 393
+[29-Jan-2016 08:06:05 America/Denver] PHP Warning:  Invalid argument supplied for foreach() in /home4/grayson/public_html/scavenger/platforms/twitter/functions.php on line 437
+[29-Jan-2016 11:05:06 America/Denver] PHP Warning:  array_merge(): Argument #1 is not an array in /home4/grayson/public_html/scavenger/platforms/twitter/functions.php on line 393
+[29-Jan-2016 11:05:06 America/Denver] PHP Warning:  Invalid argument supplied for foreach() in /home4/grayson/public_html/scavenger/platforms/twitter/functions.php on line 437
+[29-Jan-2016 12:03:05 America/Denver] PHP Warning:  array_merge(): Argument #1 is not an array in /home4/grayson/public_html/scavenger/platforms/twitter/functions.php on line 393
+[29-Jan-2016 12:03:05 America/Denver] PHP Warning:  Invalid argument supplied for foreach() in /home4/grayson/public_html/scavenger/platforms/twitter/functions.php on line 437
+[29-Jan-2016 16:02:05 America/Denver] PHP Warning:  array_merge(): Argument #1 is not an array in /home4/grayson/public_html/scavenger/platforms/twitter/functions.php on line 393
+[29-Jan-2016 16:02:05 America/Denver] PHP Warning:  Invalid argument supplied for foreach() in /home4/grayson/public_html/scavenger/platforms/twitter/functions.php on line 437
+[29-Jan-2016 17:08:05 America/Denver] PHP Warning:  array_merge(): Argument #1 is not an array in /home4/grayson/public_html/scavenger/platforms/twitter/functions.php on line 393
+[29-Jan-2016 17:08:05 America/Denver] PHP Warning:  Invalid argument supplied for foreach() in /home4/grayson/public_html/scavenger/platforms/twitter/functions.php on line 437
+[29-Jan-2016 18:05:05 America/Denver] PHP Warning:  array_merge(): Argument #1 is not an array in /home4/grayson/public_html/scavenger/platforms/twitter/functions.php on line 393
+[29-Jan-2016 18:05:06 America/Denver] PHP Warning:  Invalid argument supplied for foreach() in /home4/grayson/public_html/scavenger/platforms/twitter/functions.php on line 437
+[31-Jan-2016 06:10:05 America/Denver] PHP Warning:  array_merge(): Argument #1 is not an array in /home4/grayson/public_html/scavenger/platforms/twitter/functions.php on line 393
+[31-Jan-2016 06:10:05 America/Denver] PHP Warning:  Invalid argument supplied for foreach() in /home4/grayson/public_html/scavenger/platforms/twitter/functions.php on line 437
+[31-Jan-2016 07:04:05 America/Denver] PHP Warning:  array_merge(): Argument #1 is not an array in /home4/grayson/public_html/scavenger/platforms/twitter/functions.php on line 393
+[31-Jan-2016 07:04:06 America/Denver] PHP Warning:  Invalid argument supplied for foreach() in /home4/grayson/public_html/scavenger/platforms/twitter/functions.php on line 437
+[31-Jan-2016 08:11:06 America/Denver] PHP Warning:  array_merge(): Argument #1 is not an array in /home4/grayson/public_html/scavenger/platforms/twitter/functions.php on line 393
+[31-Jan-2016 08:11:06 America/Denver] PHP Warning:  Invalid argument supplied for foreach() in /home4/grayson/public_html/scavenger/platforms/twitter/functions.php on line 437
+[31-Jan-2016 11:03:05 America/Denver] PHP Warning:  array_merge(): Argument #1 is not an array in /home4/grayson/public_html/scavenger/platforms/twitter/functions.php on line 393
+[31-Jan-2016 11:03:06 America/Denver] PHP Warning:  Invalid argument supplied for foreach() in /home4/grayson/public_html/scavenger/platforms/twitter/functions.php on line 437
+[31-Jan-2016 12:08:05 America/Denver] PHP Warning:  array_merge(): Argument #1 is not an array in /home4/grayson/public_html/scavenger/platforms/twitter/functions.php on line 393
+[31-Jan-2016 12:08:05 America/Denver] PHP Warning:  Invalid argument supplied for foreach() in /home4/grayson/public_html/scavenger/platforms/twitter/functions.php on line 437
+[31-Jan-2016 16:07:05 America/Denver] PHP Warning:  array_merge(): Argument #1 is not an array in /home4/grayson/public_html/scavenger/platforms/twitter/functions.php on line 393
+[31-Jan-2016 16:07:05 America/Denver] PHP Warning:  Invalid argument supplied for foreach() in /home4/grayson/public_html/scavenger/platforms/twitter/functions.php on line 437
+[31-Jan-2016 17:03:05 America/Denver] PHP Warning:  array_merge(): Argument #1 is not an array in /home4/grayson/public_html/scavenger/platforms/twitter/functions.php on line 393
+[31-Jan-2016 17:03:05 America/Denver] PHP Warning:  Invalid argument supplied for foreach() in /home4/grayson/public_html/scavenger/platforms/twitter/functions.php on line 437
+[31-Jan-2016 18:07:05 America/Denver] PHP Warning:  array_merge(): Argument #1 is not an array in /home4/grayson/public_html/scavenger/platforms/twitter/functions.php on line 393
+[31-Jan-2016 18:07:05 America/Denver] PHP Warning:  Invalid argument supplied for foreach() in /home4/grayson/public_html/scavenger/platforms/twitter/functions.php on line 437
+[01-Feb-2016 06:09:05 America/Denver] PHP Warning:  array_merge(): Argument #1 is not an array in /home4/grayson/public_html/scavenger/platforms/twitter/functions.php on line 393
+[01-Feb-2016 06:09:05 America/Denver] PHP Warning:  Invalid argument supplied for foreach() in /home4/grayson/public_html/scavenger/platforms/twitter/functions.php on line 437
+[01-Feb-2016 07:02:06 America/Denver] PHP Warning:  array_merge(): Argument #1 is not an array in /home4/grayson/public_html/scavenger/platforms/twitter/functions.php on line 393
+[01-Feb-2016 07:02:06 America/Denver] PHP Warning:  Invalid argument supplied for foreach() in /home4/grayson/public_html/scavenger/platforms/twitter/functions.php on line 437
+[01-Feb-2016 08:02:05 America/Denver] PHP Warning:  array_merge(): Argument #1 is not an array in /home4/grayson/public_html/scavenger/platforms/twitter/functions.php on line 393
+[01-Feb-2016 08:02:05 America/Denver] PHP Warning:  Invalid argument supplied for foreach() in /home4/grayson/public_html/scavenger/platforms/twitter/functions.php on line 437
+[01-Feb-2016 11:07:05 America/Denver] PHP Warning:  array_merge(): Argument #1 is not an array in /home4/grayson/public_html/scavenger/platforms/twitter/functions.php on line 393
+[01-Feb-2016 11:07:05 America/Denver] PHP Warning:  Invalid argument supplied for foreach() in /home4/grayson/public_html/scavenger/platforms/twitter/functions.php on line 437
+[01-Feb-2016 12:11:05 America/Denver] PHP Warning:  array_merge(): Argument #1 is not an array in /home4/grayson/public_html/scavenger/platforms/twitter/functions.php on line 393
+[01-Feb-2016 12:11:05 America/Denver] PHP Warning:  Invalid argument supplied for foreach() in /home4/grayson/public_html/scavenger/platforms/twitter/functions.php on line 437

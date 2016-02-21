@@ -1,0 +1,126 @@
+<?php if(isset($currentUser)): ?>
+
+<?php if(!$editMovie): ?>
+
+<!-- start: MAIN NAVIGATION MENU -->            
+<ul class="main-navigation-menu global">
+  <li class="active">
+    <a href="<?php echo e(url('/admin')); ?>">
+      <div class="item-content">
+        <div class="item-inner">
+          <span class="title"> All Movies </span>
+        </div>
+      </div>
+    </a>
+  </li>
+  <li class="active">
+    <a href="<?php echo e(url('/users')); ?>">
+      <div class="item-content">
+        <div class="item-inner">
+          <span class="title"> Users </span>
+        </div>
+      </div>
+    </a>
+  </li>
+  <li class="active">
+    <a href="<?php echo e(url('/settings')); ?>">
+      <div class="item-content">
+        <div class="item-inner">
+          <span class="title"> Global Site Settings</span>
+        </div>
+      </div>
+    </a>
+  </li>
+</ul>
+<?php else: ?>
+
+<!-- @todo: show if in single movie view -->
+<div class="navbar-subtitle">
+  <a href="<?php echo e(url('/admin')); ?>">
+    BACK TO <br/><b>All Movies</b>
+  </a>
+</div>
+
+<ul class="main-navigation-menu">
+  <li class="parent active">
+    <a href="#">
+      <div class="item-content">
+        <div class="item-media">
+					<i class="ti-layout"></i>
+				</div>
+        <div class="item-inner">
+          <span class="title"> Content Blocks</span>
+          <i class="icon-arrow"></i>
+        </div>
+      </div>
+    </a>
+    <ul class="sub-menu">
+      <li class="active">
+        <a href="<?php echo e(url('/admin/movies/'.$movie->id.'/edit')); ?>">
+          <div class="item-content">
+            <div class="item-inner">
+              <span class="title"> Overview </span>
+            </div>
+          </div>
+        </a>
+      </li>					
+
+
+      <?php foreach($sections as $section): ?>
+
+
+      <li class="active">
+        <a href="<?php echo e(url('/admin/movies/'.$movie->id.'/edit/sections/'.$section->id)); ?>">
+          <div class="item-content">
+            <div class="item-inner">
+              <span class="title"><?php echo e($section->title); ?></span>
+            </div>
+          </div>
+        </a>
+      </li>
+
+      <?php endforeach; ?>
+
+    </ul>
+  </li>
+  <li class="active">
+    <a href="<?php echo e(url('/admin/movies/'.$movie->id.'/edit/publishing')); ?>">
+      <div class="item-content">
+        <div class="item-media">
+					<i class="ti-world"></i>
+				</div>
+        <div class="item-inner">
+          <span class="title"> Site Publishing </span>
+        </div>
+      </div>
+    </a>
+  </li>
+  <li class="active">
+    <a href="<?php echo e(url('/admin/movies/'.$movie->id.'/edit/design')); ?>">
+      <div class="item-content">
+        <div class="item-media">
+					<i class="ti-brush"></i>
+				</div>
+        <div class="item-inner">
+          <span class="title"> Design </span>
+        </div>
+      </div>
+    </a>
+  </li>
+  <li class="active">
+    <a href="<?php echo e(url('/admin/movies/'.$movie->id.'/edit/seo-social')); ?>">
+      <div class="item-content">
+        <div class="item-media">
+					<i class="ti-comments"></i>
+				</div>
+        <div class="item-inner">
+          <span class="title"> SEO & Social </span>
+        </div>
+      </div>
+    </a>
+  </li>
+</ul>
+<?php endif; ?>
+
+<!-- end: MAIN NAVIGATION MENU -->
+<?php endif; ?>

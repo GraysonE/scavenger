@@ -1,0 +1,231 @@
+<?php $__env->startSection('content'); ?>
+
+<?php echo $__env->make('movies.title', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+
+
+<div class="container-fluid container-fullw block-reviews">
+
+  <div class="row page-description">
+    <div class="col-sm-8 col-lg-9">
+      <p class="main-description">Add Awards images as PNG depending on the front-end design. Reviews images are SVG files and can be added to the system <a href="#">here</a>:</p>
+    </div>
+
+    <?php if(Auth::user() && $editMovie): ?>
+    <?php echo $__env->make('admin.publish', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+    <?php endif; ?>
+
+  </div>
+
+
+  <div class="row">
+    <div class="col-sm-12">
+
+      <form method="post" id="main-form" action="<?php echo e(url('admin/movies/'.$movie->id.'/edit/sections/'.$currentSection->id.'/featured')); ?>" enctype="multipart/form-data">
+        <?php echo e(csrf_field()); ?>
+
+        <div class="panel panel-white panel-main">
+          <div class="panel-body no-padding">
+            <table class="table-sortable expandable">
+              <tbody class="ui-sortable" data-type="featured">
+
+                <?php foreach($featuredContents as $featuredContent): ?>
+
+                <tr class="subpanel subpanel-review" id="<?php echo e($featuredContent->id); ?>" data-id="<?php echo e($featuredContent->id); ?>">
+                  <td class="form-inline">
+                    <?php if($featuredContent->type == 'review'): ?>
+                    <h4>Review Media Outlet</h4>
+
+                    <?php
+                      $outlets = array(
+                        'aarp' => 'AARP',
+                        'access-hollywood' => 'Access Hollywood',
+                        'cbs-radio' => 'CBS Radio',
+                        'chicago-sun-times' => 'Chicago Sun-Times',
+                        'deadline' => 'Deadline',
+                        'elle' => 'Elle',
+                        'entertainment-weekly' => 'Entertainment Weekly',
+                        'forbes' => 'Forbes',
+                        'hitfix' => 'Hitfix',
+                        'indiewire' => 'Indiewire',
+                        'intouch-weekly' => 'In Touch Weekly',
+                        'la-times' => 'Los Angeles Times',
+                        'larry-king-now' => 'Larry King Now',
+                        'new-york-daily-news' => 'New York Daily News',
+                        'new-york-magazine' => 'New York Magazine',
+                        'ny-observer' => 'New York Observer',
+                        'ny-times' => 'New York Times',
+                        'people-magazine' => 'People Magazine',
+                        'people-pick' => 'People Pick',
+                        'roger-ebert' => 'Roger Ebert',
+                        'rolling-stone' => 'Rolling Stone',
+                        'star' => 'Star',
+                        'the-boston-globe' => 'The Boston Globe',
+                        'the-examiner' => 'The Examiner',
+                        'the-guardian' => 'The Guardian',
+                        'the-hollywood-reporter' => 'The Hollywood Reporter',
+                        'the-huffington-post' => 'The Huffington Post',
+                        'the-new-york-times-critics-pick' => 'The New York Times Critics Pick',
+                        'the-new-yorker' => 'The New Yorker',
+                        'the-playlist' => 'The Playlist',
+                        'the-village-voice' => 'The Village Voice',
+                        'the-washington-post' => 'The Washington Post',
+                        'time' => 'Time',
+                        'usa-today' => 'USA Today',
+                        'vanity-fair' => 'Vanity Fair',
+                        'variety' => 'Variety',
+                        'zeal-nyc' => 'Zeal NYC'
+                      );
+                    ?>
+                    
+                    <i class="ti-move handle"></i>
+                    <div class="on input-group input-group-select">
+                      <select class="form-control" name="name-<?php echo e($featuredContent->id); ?>" type="text" placehold="Outlet Name" data-orig-value="<?php echo e($featuredContent->name); ?>"">
+                        <option value="">- Select media outlet -</option>
+                        <?php foreach($outlets as $key=>$outlet): ?>
+                          <?php if($featuredContent->name == $key): ?>
+                            <option value="<?php echo e($key); ?>" selected><?php echo e($outlet); ?></option>
+                          <?php else: ?>
+                            <option value="<?php echo e($key); ?>"><?php echo e($outlet); ?></option>
+                          <?php endif; ?>
+                        <?php endforeach; ?>
+                      </select>
+                    </div>
+                    
+                    <?php elseif($featuredContent->type == 'award'): ?>
+                    
+                      <h4>Award Name</h4>
+                      <i class="ti-move handle"></i>
+                      <input class="on" name="name-<?php echo e($featuredContent->id); ?>" type="text" placeholder="Outlet Name" data-orig-value="<?php echo e($featuredContent->name); ?>" value="<?php echo e($featuredContent->name); ?>"/>
+                      
+                    <?php endif; ?>
+                    
+                  </td>
+                  <td class="">
+
+                    <?php if($featuredContent->type == 'review'): ?>
+                    <h4>Author Credit</h4>
+                    <input class="on form-control" name="url-<?php echo e($featuredContent->id); ?>" type="text" placeholder="John Doe" data-orig-value="<?php echo e($featuredContent->url); ?>" value="<?php echo e($featuredContent->url); ?>"/>
+                    <?php endif; ?>
+
+
+                  </td>
+
+                  <td class="col-actions">
+                    <br/>
+                    <a><i class="ti-pencil icon-actions pull-left"></i></a>
+                    <a class="delete-confirm" data-object="<?php echo e($featuredContent->type); ?>" href="<?php echo e(url('admin/movies/'.$movie->id.'/edit/sections/'.$currentSection->id.'/featured/'.$featuredContent->id.'/delete')); ?>">
+                      <i class="fa fa-close icon-actions pull-left"></i>
+                    </a>
+                  </td>
+
+
+
+
+                  <td class="fullspan">
+                    <!-- FILE UPLOADER WIDGET -->
+                    <div class="file-uploader featured-uploader">
+                      <div class="row">
+                        
+                        <?php if($featuredContent->type == 'review'): ?>
+                        
+                          <?php if(!empty($featuredContent->name) && stripos($featuredContent->name, 'Example Name') === FALSE): ?>
+                            <img class="svg outlet-logo" data-path="<?php echo e(url('assets/images/logos')); ?>" data-src="<?php echo e(url('assets/images/logos/'.$featuredContent->name.'.svg')); ?>">
+                          <?php else: ?>
+                            <div class="outlet-logo" data-path="<?php echo e(url('assets/images/logos')); ?>"></div>
+                          <?php endif; ?>
+                        
+                        <?php elseif($featuredContent->type == 'award'): ?>
+
+                          <div class="col-sm-10">
+                            <!-- EMPTY FILE PREVIEW -->
+
+                            <?php foreach($featuredImages as $featuredImage): ?>
+                            <?php if($featuredImage->site_location == $featuredContent->id): ?>
+                            <img src="<?php echo e(asset($featuredImage->path)); ?>" class="imagePreview"/>
+                            <?php endif; ?>
+                            <?php endforeach; ?>
+
+                          </div>
+                          <div class="col-sm-2">
+                            <div class="panel-file-upload-btns">
+                              <span class="pull-left btn-file icon-actions-clear">
+                                <i class="ti-pencil-alt"></i>
+                                <input type="file" nv-file-select="" uploader="uploader" name="image-<?php echo e($featuredContent->id); ?>" />
+                              </span>
+                              <?php foreach($featuredImages as $featuredImage): ?>
+                              <?php if($featuredImage->site_location == $featuredContent->id): ?>
+                              <a href="<?php echo e(url('admin/movies/'.$movie->id.'/edit/sections/'.$currentSection->id.'/image/'.$featuredImage->id.'/delete')); ?>" class="delete-confirm pull-left icon-actions fa fa-close" data-object="image"></a>
+                              <?php endif; ?>
+                              <?php endforeach; ?>
+
+                            </div>
+                          </div>
+                        
+                        <?php endif; ?>
+
+                      </div>
+                    </div>
+                    <!-- end: FILE UPLOADER WIDGET -->
+
+
+
+                    <div class="on">
+                      <h5>Description&nbsp;&nbsp;<span class="text-red text-small">*optional</span></h5>
+
+                      <pre class="hidden orig-textarea"><?php echo e($featuredContent->body); ?></pre>
+                      <textarea id="description_<?php echo e($featuredContent->id); ?>" name="body-<?php echo e($featuredContent->id); ?>" class="ckeditor form-control" rows="3"><?php echo e($featuredContent->body); ?></textarea>
+
+
+                      <button type="button" class="btn btn-cancel btn-grey pull-right">CANCEL</button>
+                      <button type="submit" class="btn btn-orange pull-right btn-save">SAVE CHANGES</button>
+                    </div>
+                  </td>
+                </tr>
+                <?php endforeach; ?>
+                <tr class="nosort">
+                  <td>
+                    <br/>
+                    <a href="<?php echo e(url('admin/movies/'.$movie->id.'/edit/sections/'.$currentSection->id.'/featured/create?type=review')); ?>" class="btn btn-success">Add New Review</a>
+                    <br/>
+                    <a href="<?php echo e(url('admin/movies/'.$movie->id.'/edit/sections/'.$currentSection->id.'/featured/create?type=award')); ?>" class="btn btn-success">Add New Award</a>
+                  </td>
+                </tr>
+
+              </tbody>
+            </table>
+          </div>
+      </form>
+
+    </div>
+
+
+
+
+
+    <!-- BACKGROUND CONTENT PANEL -->
+    <div class="panel panel-white panel-file-upload">
+      <div class="panel-heading">
+        <h5 class="panel-title">Reviews &amp; Awards Block Background Content</h5>
+      </div>
+
+      <div class="panel-body">
+
+        <!-- FILE UPLOADER WIDGET -->
+        <div class="file-uploader">
+          <div class="row">
+            <?php echo $__env->make('sections.images.edit', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+            <?php echo $__env->make('sections.images.create', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+          </div>
+        </div>
+        <!-- end: FILE UPLOADER WIDGET -->
+
+        <!-- COLOR PICKER -->
+        <?php echo $__env->make('sections.colorpicker.edit', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+      </div>
+    </div>
+
+  </div>
+</div>
+</div>
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('master', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

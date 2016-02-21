@@ -1,0 +1,14 @@
+<?php $__env->startSection('content'); ?>
+<h1><?php echo e($movie->title); ?></h1> 
+
+<div class="editWrap">
+	
+	<?php echo $__env->make('sections.videos.index', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+	
+	<?php echo $__env->make('sections.videos.create', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+</div>
+
+
+
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('master', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

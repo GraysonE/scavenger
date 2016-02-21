@@ -1,0 +1,14 @@
+/*
+Theme Name:         Satus Child for Scavenger App
+Description:        Satus Framework for WordPress is a minimalist, LESS powered, mobile first responsive theme for developers that uses RDFa Lite 1.1 and schema.org rather than microformats and is based off of Satus Framework and inspired by Roots Theme.
+Version:            2.5.0
+Author:             Grayson Erhard
+Author URI:         http://websites.graysonerhard.com\
+Template: satuswp-master
+*/
+
+body {
+	background-color: #222;
+	color: #999;
+	
+}

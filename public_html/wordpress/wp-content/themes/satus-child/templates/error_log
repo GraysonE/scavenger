@@ -1,0 +1,2 @@
+[07-Jul-2015 12:14:29 America/Chicago] PHP Fatal error:  Call to undefined function the_content() in /home4/grayson/public_html/wp-content/themes/satus-child/templates/content-copy-followers.php on line 2
+[07-Jul-2015 12:23:07 America/Chicago] PHP Fatal error:  Call to undefined function get_stylesheet_directory_uri() in /home4/grayson/public_html/wp-content/themes/satus-child/templates/content-copy-followers.php on line 5

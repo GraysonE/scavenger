@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>STX Entertainment</title>
+    <meta charset="utf-8" />
+    <meta id="mvp" name="viewport" content="width=device-width" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0">
+    
+    <?php foreach($global_social_media as $social): ?>
+      <?php if(empty($socials[$social->tag]) && stripos($social->tag, 'og_') === 0): ?>      
+        <?php if($social->tag == 'og_image'): ?>
+          <?php if(!empty($global_social_media->social_image)): ?>
+            <meta name="og:image" content="<?php echo e($basepath); ?><?php echo e($global_social_media->social_image); ?>"/>
+          <?php endif; ?>
+        <?php elseif(!empty($social->url)): ?>
+          <meta name="<?php echo e(str_replace('_', ':', $social->tag)); ?>" content="<?php echo e($social->url); ?>"/>
+        <?php endif; ?>
+      <?php endif; ?>
+    <?php endforeach; ?>
+
+    <link href="<?php echo e($basepath); ?>/assets/css/jquery-ui.css" rel="stylesheet"/>
+    <link href="<?php echo e($basepath); ?>/assets/css/swiper.min.css" rel="stylesheet"/>
+    <link href="<?php echo e($basepath); ?>/assets/css/settings.css" rel="stylesheet"/>
+    <link href="<?php echo e($basepath); ?>/assets/css/style.css" rel="stylesheet"/>
+    <link href="<?php echo e($basepath); ?>/assets/fonts/font-awesome.min.css" rel="stylesheet"/>
+    <link href='https://fonts.googleapis.com/css?family=Maven+Pro:400,500,700,900' rel='stylesheet' type='text/css'>
+  </head>
+
+  <body id="movie-listing" data-list-type="<?php echo e($type); ?>">
+    <div class="wrapper secondary">
+
+      <header>
+        <div class="title-line">
+          <div class="box">
+            <a href="#"></a>
+            <ul class="mobile-only">
+              <li></li>
+              <li></li>
+              <li></li>
+            </ul>
+          </div>
+        </div>
+        <div class="title-menu">
+          <div class="box">
+            <div>
+              <ul class="site-menu">
+                <li><a href="<?php echo e($basepath); ?>/shared<?php echo e($server); ?>/in-theaters.html" data-menu="in-theaters"><span>IN THEATERS</span></a></li>
+                <li><a href="<?php echo e($basepath); ?>/shared<?php echo e($server); ?>/at-home.html" data-menu="at-home"><span>AT HOME</span></a></li>
+                <li><a href="<?php echo e($basepath); ?>/shared<?php echo e($server); ?>/coming-soon.html" data-menu="coming-soon"><span>COMING SOON</span></a></li>
+              </ul>
+              <ul>
+                <li><a class="btn white get-updates" href="#"><span>GET UPDATES</span></a></li>
+              </ul>
+            </div>
+          </div>
+          <div class="social mobile-only">
+            <ul>
+              <?php foreach($global_social_media as $social): ?>
+                <?php if($social->tag == 'custom'): ?>
+                <?php $service = preg_replace('/^(\/\/|http:\/\/|https:\/\/)?(www\.)?([^\/]+)\..*/', '$3', $social->url); ?>
+                <li><a href="<?php echo e($social->url); ?>" target="_blank"><span><div class="icon icon-custom fa fa-<?php echo e($service); ?>"></div></span></a></li>
+                <?php elseif(strpos($social->tag, 'og_') !== 0): ?>
+                <li><a href="<?php echo e($social->url); ?>" target="_blank"><span><div class="icon fa fa-<?php echo e($social->tag); ?>"></div></span></a></li>
+                <?php endif; ?>
+              <?php endforeach; ?>
+            </ul>
+          </div>
+        </div>
+        <nav>
+          
+          <div class="mobile-only divider"></div>
+          
+          <div id="global-attach-menu" data-path="<?php echo e($basepath); ?>/shared<?php echo e($server); ?>/menu.html"></div>
+
+        </nav>
+      </header>
+
+      <main>
+
+
+
+        <section class="related">
+          <div class="box">
+            <h1>
+              <?php if($type == 'in_theaters'): ?>
+              IN THEATERS
+              <?php elseif($type == 'coming_soon'): ?>
+              COMING SOON
+              <?php else: ?>
+              AT HOME
+              <?php endif; ?>
+            </h1>
+            <div class="divider"></div>
+            <ul>
+              <?php foreach($movies as $movie): ?>
+                
+                <li data-rd="<?php echo e($movie->release_dates); ?>" data-od="<?php echo e($movie->official_release); ?>">
+                  <a href="<?php echo e($basepath); ?>/<?php echo e($movie->url); ?><?php echo e($server); ?>">
+                    
+                    <div class="preview">
+                      <?php if(!empty($movie->images) && !empty($movie->images['coming-soon'])): ?>
+                        <img src="<?php echo e($basepath); ?>/<?php echo e($movie->images['coming-soon']); ?>" class="r2x" alt="">
+                      <?php endif; ?>
+                    </div>
+                    <div class="info">
+                      <h6><?php echo e(strtoupper($movie->title)); ?></h6>
+                      <p class="releasedate"></p>
+                    </div>
+                    <div class="icon fa fa-plus"></div>
+                  </a>
+                </li>
+
+              <?php endforeach; ?>
+            </ul>
+          </div>
+        </section>
+
+      </main>
+      
+      <div id="global-attach-footer" data-path="<?php echo e($basepath); ?>/shared<?php echo e($server); ?>/footer.html"></div>
+
+      <div class="get-updates-popup">
+        <div class="block-click"></div>
+        <div class="block">
+          <h3>Get exclusive updates, insider news and more.</h3>
+          <p>By signing up below, I agree to the STX <a href="//stxentertainment.com/privacy_policy" target="_blank">Privacy Policy</a> and <a href="//stxentertainment.com/terms_of_use" target="_blank">Terms of Use.</a></p>
+          <div class="email-form">
+            <input id="email" type="text" placeholder="Your email adress" >
+            <a href="#" class="btn submit"><span>SIGN UP</span></a>
+            <div></div>
+          </div>
+          <a href="#" class="close"><img src="<?php echo e($basepath); ?>/assets/images/permanent/close.png"></a>
+        </div>
+      </div>
+
+    </div>
+    <script src="<?php echo e($basepath); ?>/assets/js/plugins.js"></script>
+    <script src="<?php echo e($basepath); ?>/assets/js/main.js"></script>
+  </body>
+</html>

@@ -1,0 +1,171 @@
+<?php $__env->startSection('content'); ?>
+
+<?php echo $__env->make('movies.title', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+
+<div class="container-fluid container-fullw block-partners">
+
+  <div class="row page-description">
+    <div class="col-sm-8 col-lg-9">
+      <p class="main-description">Add partner logos as transparent PNG, links and optional text description below:</p>
+    </div>	
+	
+    <?php if(Auth::user() && $editMovie): ?>
+    <?php echo $__env->make('admin.publish', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+    <?php endif; ?>
+
+  </div>
+
+
+  <div class="row">
+    <div class="col-sm-12">
+
+    <form method="post" action="<?php echo e(url('admin/movies/'.$movie->id.'/edit/sections/'.$currentSection->id.'/featured')); ?>" enctype="multipart/form-data" id="main-form">
+      <?php echo e(csrf_field()); ?>
+
+
+      <div class="panel panel-white panel-main">
+        <div class="panel-body no-padding">
+          <table class="table-sortable expandable">
+            <thead>
+              <tr>
+                <th class="">Partner Name</th>
+                <th class="">External URL</th>
+                <th class="col-actions"></th>
+              </tr>
+            </thead>
+            <tbody class="ui-sortable" data-type="featured">
+				<?php foreach($featuredContents as $featuredContent): ?>
+	              <tr class="subpanel" data-id="<?php echo e($featuredContent->id); ?>">
+	                <td class="">
+	                  <i class="ti-move handle"></i>
+	                  <input class="on" name="name-<?php echo e($featuredContent->id); ?>" type="text" placeholder="Partner Name" data-orig-value="<?php echo e($featuredContent->name); ?>" value="<?php echo e($featuredContent->name); ?>"/>
+	                </td>
+	                <td class="">
+	                  <input class="on" name="url-<?php echo e($featuredContent->id); ?>" type="text" placeholder="External URL" data-orig-value="<?php echo e($featuredContent->url); ?>" value="<?php echo e($featuredContent->url); ?>"/>
+	                </td>
+	                <td class="col-actions">
+	                  <div>
+	                    <a><i class="ti-pencil icon-actions pull-left"></i></a>
+	                    <a class="delete-confirm" data-object="partner" href="<?php echo e(url('admin/movies/'.$movie->id.'/edit/sections/'.$currentSection->id.'/featured/'.$featuredContent->id.'/delete')); ?>">
+		                    <i class="fa fa-close icon-actions pull-left"></i>
+		                </a>
+	                  </div>
+	                </td>
+	                
+	               
+	                
+	                
+	                <td class="fullspan">
+	                  <!-- FILE UPLOADER WIDGET -->
+	                  <div class="file-uploader featured-uploader">
+	                    <div class="row">
+	                      <div class="col-sm-10">
+	                        <!-- EMPTY FILE PREVIEW -->
+	                        
+		                        
+		                        <?php foreach($featuredImages as $featuredImage): ?> 
+		                        	<?php if($featuredImage->site_location == $featuredContent->id): ?> 
+		                        		<img src="<?php echo e(asset($featuredImage->path)); ?>" class="imagePreview"/>
+		                        	<?php else: ?>
+<!-- 		                        		<i class="ti-image"></i> -->
+		                        	<?php endif; ?>
+		                        <?php endforeach; ?>
+		                        
+<!--
+	                        <div class="file-preview-empty file-banner">
+	                        </div>
+-->
+	                      </div>
+	                      <div class="col-sm-2">
+	                        <div class="panel-file-upload-btns">
+	                          <span class="pull-left btn-file icon-actions-clear">
+	                            <i class="ti-pencil-alt"></i>
+	                            <input type="file" nv-file-select="" uploader="uploader" name="image-<?php echo e($featuredContent->id); ?>" />
+	                          </span>
+	                          <?php foreach($featuredImages as $featuredImage): ?> 
+		                        	<?php if($featuredImage->site_location == $featuredContent->id): ?> 
+		                        		<a href="<?php echo e(url('admin/movies/'.$movie->id.'/edit/sections/'.$currentSection->id.'/image/'.$featuredImage->id.'/delete')); ?>" class="delete-confirm pull-left icon-actions fa fa-close" data-object="image"></a>
+		                        	<?php endif; ?>
+		                      <?php endforeach; ?>
+	                        </div>
+	                      </div>
+	
+	                    </div>
+	                  </div>
+	                  <!-- end: FILE UPLOADER WIDGET -->
+	                  
+	                  
+	                  
+	                  <div class="on">
+	                    <h5>Description&nbsp;&nbsp;<span class="text-red text-small">*optional</span></h5>
+	                    
+	                    <pre class="hidden orig-textarea"><?php echo e($featuredContent->body); ?></pre>
+	                    <textarea id="description_<?php echo e($featuredContent->id); ?>" name="body-<?php echo e($featuredContent->id); ?>" class="ckeditor form-control" rows="3"><?php echo e($featuredContent->body); ?></textarea>
+	                    
+	                    
+	                    <button type="button" class="btn btn-cancel btn-grey pull-right">CANCEL</button>
+	                    <button type="submit" class="btn btn-orange pull-right btn-save">SAVE CHANGES</button>
+	                  </div>
+	                </td>
+	              </tr>
+            <?php endforeach; ?>
+
+            <tr class="nosort">
+	              <td>
+		              <a href="<?php echo e(url('admin/movies/'.$movie->id.'/edit/sections/'.$currentSection->id.'/featured/create?type=partner')); ?>" class="btn btn-success">Add New Partner</a>
+	              </td>				
+	          </tr> 
+            </tbody>
+          </table>
+        </div>
+
+<!--
+        <div class="panel-heading">
+          <h5 class="panel-title">Add a Partner</h5>
+        </div>
+        <div class="panel-body">
+          <form name="" role="form" class="form-inline">
+            <div class="form-group">
+              <input type="text" name="actor" placeholder="Name" class="form-control">
+            </div>
+            <div class="form-group">
+              <input type="text" name="character" placeholder="External URL" class="form-control">
+            </div>
+            <button class="btn btn-success" type="submit">Add Partner</button>
+          </form>
+        </div>
+-->
+      </div>
+      </form>
+      
+
+
+      <!-- BACKGROUND CONTENT PANEL -->
+      <div class="panel panel-white panel-file-upload">
+        <div class="panel-heading">
+          <h5 class="panel-title">Partners Block Background Content</h5>
+        </div>
+
+        <div class="panel-body">
+
+          <!-- FILE UPLOADER WIDGET -->
+          <div class="file-uploader">
+            <div class="row">
+              <?php echo $__env->make('sections.images.edit', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+              <?php echo $__env->make('sections.images.create', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+            </div>
+          </div>
+          <!-- end: FILE UPLOADER WIDGET -->
+
+          <!-- COLOR PICKER -->
+          <?php echo $__env->make('sections.colorpicker.edit', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+
+        </div>
+      </div>
+
+
+    </div>
+  </div>
+</div>
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('master', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

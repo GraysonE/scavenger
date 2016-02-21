@@ -1,0 +1,7 @@
+<?php $__env->startSection('content'); ?>
+
+	<h3>HTTP Error Code: <?php echo $http_code; ?></h3>
+	<h4>You are not authorized. Your API access token may need to be regenerated. Contact Grayson.</h4> 
+
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('master', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

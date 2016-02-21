@@ -1,0 +1,295 @@
+/* ---------------------------------------------------------------------- */
+/* Tabs
+/* ---------------------------------------------------------------------- */
+
+.nav-tabs {
+    margin-bottom: 0;
+    padding: 0;
+    max-width:$max-panel-width;
+    border:none;
+
+    > li {
+        //margin-bottom: -3px;
+        text-align: center;
+        font-size:$font-size-large;
+
+        a {
+            border: 0;
+            border-radius: 0;
+            color: $text-dark;
+            min-width: 150px;
+            padding: 8px 15px;
+            padding-bottom:16px;
+            background:$lightGrey;
+            border:1px solid $grey;
+            border-bottom:none;
+            box-shadow: 0px -12px 10px -10px #ddd inset;
+        }
+        a:hover
+        {
+          background-color:transparent;
+          border-color:$lightPrimary;
+          color:$lightPrimary;
+        }
+    }
+
+    > li.active {
+        background:$primary;
+        padding-bottom:8px;
+        margin-right:2px;
+        a, a:hover, a:focus {
+            border:0;
+            padding-bottom:8px;
+            border:1px solid $lightGrey;
+            background:white;
+            color: $primary;
+            box-shadow:none;
+            margin-right:0;
+        }
+    }
+}
+
+.tab-pane
+{
+  background-color: #FFFFFF;
+  border:1px solid $lightGrey;
+ .panel
+  {
+    margin-bottom:0;
+  }
+  .panel-white
+  {
+    margin:25px;
+    width:auto;
+  }
+  .table-sortable th:first-child
+  {
+    padding-left:38px;
+  } 
+}
+
+table.expandable, .tab-pane .panel
+{
+  .btn-success
+  {
+    margin: 15px 0 25px 25px;
+  }
+}
+.panel-tabs, .tabbable {
+    background-color: #E6E8E8;
+    padding: 1px;
+    margin-bottom: 15px;
+}
+
+.tabbable.pills {
+    background: none;
+
+    > .nav {
+        margin-bottom: 10px;
+    }
+}
+
+.panel-tabs {
+    padding: 0;
+
+    .panel-heading {
+        background: #EFEFF4;
+    }
+
+    .panel-body {
+        padding: 0;
+    }
+
+    .tabbable {
+        margin: 0;
+        padding: 0;
+    }
+
+    .nav-tabs {
+        border: medium none;
+        float: right;
+        margin-top: -48px;
+
+        > li > a {
+            border-top-left-radius: 3px;
+            border-top-right-radius: 3px;
+        }
+    }
+}
+
+.tab-content {
+    position: relative;
+    margin-left:15px;
+    width:100%;
+}
+
+.tab-content > .tab-pane, .pill-content > .pill-pane {
+    display: none;
+    padding: 0 0 15px 0;
+}
+
+.tab-content > .active, .pill-content > .active {
+    display: block;
+}
+
+.tabs-left {
+    &.tabbable {
+        background-color: none;
+        padding: 0;
+    }
+
+    .tab-content {
+        border-top: 1px solid #EFEFF4;
+        border-right: 1px solid #EFEFF4;
+        border-bottom: 1px solid #EFEFF4;
+        overflow: hidden;
+    }
+
+    > .nav-tabs {
+        border: none;
+        float: left;
+        margin-bottom: 0;
+        top: auto;
+
+        > li {
+            float: none;
+            text-align: left;
+
+            > a, a:focus, a:hover {
+                border-color: #EFEFF4;
+                margin: 0 -1px 0 0;
+            }
+
+            &.active {
+                > a, a:focus, a:hover {
+                    border-color: #EFEFF4;
+                    border-right: none;
+                    border-left: 1px solid #EFEFF4;
+                    border-top-width: 1px;
+                    margin: 0 -1px;
+                }
+            }
+        }
+    }
+}
+
+.tabs-right {
+    &.tabbable {
+        background-color: none;
+        padding: 0;
+    }
+
+    .tab-content {
+        border-top: 1px solid #EFEFF4;
+        border-left: 1px solid #EFEFF4;
+        border-bottom: 1px solid #EFEFF4;
+        overflow: hidden;
+    }
+
+    > .nav-tabs {
+        border: none;
+        float: right;
+        margin-bottom: 0;
+        top: auto;
+
+        > li {
+            text-align: left;
+            float: none;
+
+            > a, a:focus, a:hover {
+                border-color: #EFEFF4;
+                margin: 0 0 0 -1px;
+            }
+
+            &.active {
+                > a, a:focus, a:hover {
+                    border-color: #EFEFF4;
+                    border-right: 1px solid #EFEFF4 !important;
+                    border-left: none;
+                    border-top-width: 1px;
+                    margin: 0 -1px;
+                }
+            }
+        }
+    }
+}
+
+.tabs-below > .nav-tabs {
+    border-bottom-width: 0;
+    border-color: #EFEFF4;
+    margin-bottom: 0;
+    margin-top: 0;
+    top: auto;
+
+    > li {
+        margin-bottom: 0;
+
+        > a, a:focus, a:hover {
+            border-color: #EFEFF4;
+        }
+
+        &.active {
+            > a, a:focus, a:hover {
+                border-bottom: none;
+                border-color: transparent #EFEFF4 #EFEFF4;
+                margin-top: 0;
+            }
+        }
+    }
+}
+
+.partition-dark {
+    .nav-tabs {
+        border: none;
+
+        > li {
+            margin-bottom: 0;
+
+            &.active {
+                > a, > a:hover, a:focus {
+                    background-color: $black;
+                    border: none;
+                    color: $white;
+                }
+
+                > a:before, a:after {
+                    border-color: rgba(0, 0, 0, 0);
+                    border-style: solid;
+                    display: block;
+                    height: 0;
+                    position: absolute;
+                    width: 0;
+                }
+
+                > a:after {
+                    content: " ";
+                    height: 0;
+                    position: absolute;
+                    width: 0;
+                    border: 5px solid transparent;
+                    border-top-color: $black;
+                    top: 100%;
+                    left: 50%;
+                    margin-left: -5px;
+                    z-index: 1;
+                }
+            }
+
+            > a {
+                border: none;
+                color: $lightGrey;
+                padding: 10px 15px;
+                @include border-radius(0);
+            }
+
+            > a:hover, a:focus {
+                background-color: $black;
+            }
+        }
+    }
+
+    .tab-content {
+        z-index: 0;
+        color: $black;
+    }
+}

@@ -1,0 +1,23 @@
+<?php $__env->startSection('content'); ?>
+<h1><?php echo e($movie->title); ?></h1> 
+
+<div class="editWrap">
+	<h3>For the Main Marquee image or animated section. Upload a video, gif or jpeg:</h3>
+	
+	<div id="mainMarquee">
+		
+		<?php echo $__env->make('sections.images.create', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+		
+	</div>
+	
+		<?php echo $__env->make('sections.cta.index', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+
+		<?php echo $__env->make('sections.cta.create', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+</div>
+
+
+
+<?php $__env->stopSection(); ?>
+
+
+<?php echo $__env->make('master', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

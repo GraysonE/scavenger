@@ -1,0 +1,41 @@
+<?php $__env->startSection('content'); ?>
+
+    <?php echo $__env->make('admin.publish', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+
+    <div class="container-fluid container-fullw page-login">
+        <div class="row">
+            <div class="col-sm-12">
+
+                <form id="main-form" method="POST" action="<?php echo e(url('accounts')); ?>">
+                    <?php echo csrf_field(); ?>
+
+                    <?php foreach($socialMediaAccounts as $sma): ?>
+                        <div class="">
+                            <input name="account_type-<?php echo e($sma->id); ?>" value="<?php echo e($sma->account_type); ?>" placeholder="Account Type"/>
+                            <br>
+                            <input name="screen_name-<?php echo e($sma->id); ?>" value="<?php echo e($sma->screen_name); ?>" placeholder="Screen Name"/>
+                            <br>
+                            <input name="account_id-<?php echo e($sma->id); ?>" value="<?php echo e($sma->account_id); ?>" placeholder="Account ID"/>
+                            <br>
+                            <label>Auto-Follow:</label>
+                            <input type="checkbox" name="auto_follow-<?php echo e($sma->id); ?>" value="1" <?php echo e(($sma->auto_follow) ? 'checked' : ''); ?>/>
+                            <br>
+                            <label>Auto-Unfollow:</label>
+                            <input type="checkbox" name="auto_unfollow-<?php echo e($sma->id); ?>" value="1" <?php echo e(($sma->auto_unfollow) ? 'checked' : ''); ?>/>
+                            <br>
+                            <label>Auto-Whitelist:</label>
+                            <input type="checkbox" name="auto_whitelist-<?php echo e($sma->id); ?>" value="1" <?php echo e(($sma->auto_whitelist) ? 'checked' : ''); ?>/>
+                            <br>
+                            <a href="<?php echo e(url('accounts/destroy/'.$sma->id)); ?>">Delete Account</a>
+                        </div>
+                    <?php endforeach; ?>
+                </form>
+
+
+                <?php echo $__env->make('accounts.create', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+
+            </div>
+        </div>
+    </div>
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('master', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

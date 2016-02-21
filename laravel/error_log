@@ -1,0 +1,12 @@
+[19-Jan-2016 13:54:29 America/Chicago] PHP Parse error:  syntax error, unexpected 'class' (T_CLASS), expecting identifier (T_STRING) or variable (T_VARIABLE) or '{' or '$' in /home4/grayson/public_html/laravel/artisan on line 31
+[25-Jan-2016 17:38:58 America/Chicago] PHP Parse error:  syntax error, unexpected 'class' (T_CLASS), expecting identifier (T_STRING) or variable (T_VARIABLE) or '{' or '$' in /home4/grayson/public_html/laravel/artisan on line 31
+[25-Jan-2016 23:54:59 UTC] PHP Fatal error:  Class 'FriendsTable' not found in /home4/grayson/public_html/laravel/vendor/laravel/framework/src/Illuminate/Database/Migrations/Migrator.php on line 324
+[26-Jan-2016 00:07:56 UTC] PHP Fatal error:  Class 'FriendsTable' not found in /home4/grayson/public_html/laravel/vendor/laravel/framework/src/Illuminate/Database/Migrations/Migrator.php on line 324
+[26-Jan-2016 01:56:57 UTC] PHP Fatal error:  Class 'FriendsTable' not found in /home4/grayson/public_html/laravel/vendor/laravel/framework/src/Illuminate/Database/Migrations/Migrator.php on line 324
+[26-Jan-2016 01:57:41 UTC] PHP Fatal error:  Class 'FriendsTable' not found in /home4/grayson/public_html/laravel/vendor/laravel/framework/src/Illuminate/Database/Migrations/Migrator.php on line 324
+[26-Jan-2016 02:13:33 UTC] PHP Fatal error:  Class 'FollowersTable' not found in /home4/grayson/public_html/laravel/vendor/laravel/framework/src/Illuminate/Database/Migrations/Migrator.php on line 324
+[26-Jan-2016 02:13:40 UTC] PHP Fatal error:  Class 'FollowersTable' not found in /home4/grayson/public_html/laravel/vendor/laravel/framework/src/Illuminate/Database/Migrations/Migrator.php on line 324
+[28-Jan-2016 11:56:26 America/Chicago] PHP Parse error:  syntax error, unexpected 'class' (T_CLASS), expecting identifier (T_STRING) or variable (T_VARIABLE) or '{' or '$' in /home4/grayson/laravel/artisan on line 31
+[28-Jan-2016 17:58:19 UTC] PHP Fatal error:  Class 'SocialMediaAccountTable' not found in /home4/grayson/laravel/vendor/laravel/framework/src/Illuminate/Database/Migrations/Migrator.php on line 324
+[28-Jan-2016 17:59:37 UTC] PHP Fatal error:  Class 'SocialMediaAccountTable' not found in /home4/grayson/laravel/vendor/laravel/framework/src/Illuminate/Database/Migrations/Migrator.php on line 324
+[28-Jan-2016 18:00:42 UTC] PHP Fatal error:  Class 'SocialMediaAccountTable' not found in /home4/grayson/laravel/vendor/laravel/framework/src/Illuminate/Database/Migrations/Migrator.php on line 324

@@ -1,0 +1,6 @@
+[branch "master"]
+remote = master
+merge = master
+
+[remote "master"]
+url = https://github.com/GraysonE/scavenger.git

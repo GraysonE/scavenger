@@ -1,0 +1,1 @@
+[27-Jan-2016 09:21:34 America/Chicago] PHP Fatal error:  Call to undefined function env() in /home4/grayson/public_html/laravel/config/app.php on line 16
