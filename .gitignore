@@ -26,7 +26,6 @@ public_html/web.config
 
 laravel/storage/logs/laravel.log
 laravel/storage/framework/sessions/**
-laravel/storage/framework/views/**
 .bash_history
 .bash_logout
 .bash_profile
@@ -54,7 +53,9 @@ php.ini-1452721971
 php.ini-1452722054
 www
 
-
+*.sql
+*.zip
+*.tar.gz
 
 *node_modules
 *.sass-cache

@@ -77,10 +77,6 @@ class ForeignKeys extends Migration
 //            $table->integer('social_media_account_id');
         });
 
-        Schema::table('temp_target_users', function (Blueprint $table) {
-//            $table->integer('social_media_account_id');
-        });
-
         Schema::table('model_accounts', function (Blueprint $table) {
 //            $table->integer('social_media_account_id');
         });
