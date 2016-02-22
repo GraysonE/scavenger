@@ -35,6 +35,7 @@ laravel/storage/framework/sessions/**
 .emacs
 .ftpquota
 .gemrc
+.htaccess
 .htaccess-1452618104
 .htaccess-1452618138
 .htaccess-1453765183
