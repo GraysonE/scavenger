@@ -25,7 +25,7 @@ class FollowController extends Controller
     public function index()
     {
         $socialMediaAccounts = SocialMediaAccount::where('account_type', 'twitter')
-	        ->where('auto-follow', 1)
+	        ->where('auto_follow', 1)
 	        ->get()
 	        ->all();	
 
@@ -52,9 +52,9 @@ class FollowController extends Controller
 
             $targetUsers = TargetUser::where('social_media_account_id', $socialMediaAccount->id)
             	->where('to_follow', 1)
+            	->take(120)
             	->get();
-
-			$limit = 142;
+            	
 			$i=1;
 
             if (is_null($targetUsers)) {
@@ -65,10 +65,6 @@ class FollowController extends Controller
             } else {
 	            
                 foreach ($targetUsers as $targetUser) {
-	                
-	                if ($limit == 0) {
-		                break;
-	                }
 	                
                     $follow = $connection->post("https://api.twitter.com/1.1/friendships/create.json?user_id=$targetUser->account_id&follow=true");
 
@@ -101,7 +97,6 @@ class FollowController extends Controller
                         
                         
                     }
-                    $limit--;
                     $i++;
                 }
             }
@@ -109,7 +104,13 @@ class FollowController extends Controller
             $i--; // Accurate amount of friendships
             
             
-            $message = "$i friendships created for $socialMediaAccount->screen_name!";
+            if ($i == 0) {
+	            $message = "$i friendships created for $socialMediaAccount->screen_name! Please check to see if you have a user scheduled.";
+            } else {
+	            $message = "$i friendships created for $socialMediaAccount->screen_name!";
+            }
+            
+            
             Helper::email_user($message, $socialMediaAccount->user_id);
             
             if ($errorCount > 0) {

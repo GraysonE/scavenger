@@ -75,7 +75,7 @@ class ModelAccountController extends Controller
         $data->screen_name = $requestData->screen_name;
         $data->social_media_account_id = $id;
         $data->api_cursor = '-1';
-        $data->sort_order = 1;
+        $data->sort_order = 0;
         $data->save();
 
         return redirect("set-user/$id");

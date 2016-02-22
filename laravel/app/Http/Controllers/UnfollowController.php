@@ -24,7 +24,7 @@ class UnfollowController extends Controller
     {
 	    
         $socialMediaAccounts = SocialMediaAccount::where('account_type', 'twitter')
-	        ->where('auto-unfollow', 1)
+	        ->where('auto_unfollow', 1)
 	        ->get()
 	        ->all();
 
@@ -51,7 +51,7 @@ class UnfollowController extends Controller
             	->where('whitelisted', 0)
             	->where('created_at', '<=', Carbon::today('America/Denver')->subweek())
             	->select('account_id')
-            	->take(141)
+            	->take(120)
             	->get()
             	->toArray();
 
@@ -65,7 +65,6 @@ class UnfollowController extends Controller
 				$oldFriends_ids[] = $account_id['account_id'];
 			}
 
-			$limit = 141;
 
             if (is_null($oldFriends_ids)) {
 	            
@@ -74,10 +73,6 @@ class UnfollowController extends Controller
             } else {
 	            
                 foreach ($oldFriends_ids as $oldFriend) {
-	                
-	                if ($limit == 0) {
-		                break;
-	                }
 	                
 	                
 	                
@@ -112,7 +107,6 @@ class UnfollowController extends Controller
                         
                         
                     }
-                    $limit--;
                     $i++;
                 }
             }

@@ -1,0 +1,43 @@
+<?php $__env->startSection('content'); ?>
+
+    
+
+    <div class="container-fluid container-fullw page-login">
+
+		<?php echo $__env->make('accounts.create', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+
+        <form id="main-form" method="POST" action="<?php echo e(url('accounts')); ?>">
+	        <?php echo $__env->make('admin.publish', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+            <?php echo csrf_field(); ?>
+
+            <div class="panel col-lg-12" id="account_accordion">
+                <?php foreach($socialMediaAccounts as $sma): ?>
+                        <h3 class="<?php echo e(($sma->account_type == 'crunch') ? 'crunch_account' : 'twitter_account'); ?>"><input type="text" name="screen_name-<?php echo e($sma->id); ?>" value="<?php echo e($sma->screen_name); ?>" placeholder="Screen Name"/></h3>
+                    <div>
+                        <br>
+<!--
+                        <input name="account_id-<?php echo e($sma->id); ?>" value="<?php echo e($sma->account_id); ?>" placeholder="Account ID"/>
+                        <br>
+-->
+                        <label>Auto-Follow:</label>
+                        <input type="checkbox" name="auto_follow-<?php echo e($sma->id); ?>" value="1" <?php echo e(($sma->auto_follow) ? 'checked' : ''); ?>/>
+                        <br>
+                        <label>Auto-Unfollow:</label>
+                        <input type="checkbox" name="auto_unfollow-<?php echo e($sma->id); ?>" value="1" <?php echo e(($sma->auto_unfollow) ? 'checked' : ''); ?>/>
+                        <br>
+                        <label>Auto-Whitelist:</label>
+                        <input type="checkbox" name="auto_whitelist-<?php echo e($sma->id); ?>" value="1" <?php echo e(($sma->auto_whitelist) ? 'checked' : ''); ?>/>
+                        <br>
+                        <a class="btn btn-danger" href="<?php echo e(url('accounts/destroy/'.$sma->id)); ?>">Delete Account</a>
+                    </div>
+                <?php endforeach; ?>
+        	</div>
+            
+        </form>
+
+
+        
+
+    </div>
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('master', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

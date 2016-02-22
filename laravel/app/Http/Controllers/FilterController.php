@@ -97,7 +97,7 @@ class FilterController extends Controller
 						$errorMessage .= "<br>CONTINUE";
 						$target = TargetUser::where('account_id', $temp_account_id)->get()->first();
 						if (isset($target)) {
-							TargetUser::findOrFail($target['id'])->delete();
+							TargetUser::find($target['id'])->delete();
 						}
 						
 						
@@ -197,7 +197,7 @@ class FilterController extends Controller
                 
                 if (isset($target)) {
 	                if (!$to_follow) {
-		                TargetUser::findOrFail($target['id'])->delete();
+		                TargetUser::find($target['id'])->delete();
 						echo " - DELETED.";
 	                }
 					
