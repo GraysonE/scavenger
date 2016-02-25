@@ -32,7 +32,7 @@ class CronController extends Controller
     {
         $now = Carbon::now('America/Denver');
         echo "<br>$now";                              // 2016-01-11 12:38:36
-
+        
         $today = Carbon::today('America/Denver');
         echo "<br>$today";                            // 2016-01-11 00:00:00
 
@@ -54,6 +54,8 @@ class CronController extends Controller
         $minute = $now->minute;
         echo "<br>$minute";                             // 38
 
+
+
         if (($hour == 0) || ($hour == 12) || ($hour == 16)) {
 
 			if ($minute == 0) {
@@ -63,7 +65,7 @@ class CronController extends Controller
 				$automate = new AutomationController();
 				$automate->index();
 				
-			} elseif (($minute == 15) || ($minute == 30) || ($minute == 45)) {
+			} elseif ($minute % 15 == 0) {
 				
 				sleep(120);
 				echo '<br>Minute 15/30/45 Filter';
@@ -74,7 +76,7 @@ class CronController extends Controller
 			
         } else {
 	        
-	        if ($minute % 15 == 0) {
+	        if (($minute == 0) || ($minute % 15 == 0)) {
 	        
 	        	sleep(120);
 	        	echo '<br>Minute 0/15/30/45 Automation';
@@ -84,18 +86,19 @@ class CronController extends Controller
 			}
 			
         }
-	       
+	    
 	    
 	        
-        if ($weekOfMonth % 2 != 0) { // if week is 1st or 3rd of month, follow
-
+        if ($weekOfMonth % 2 == 0) { // if week is 1st or 3rd of month, follow
+				
 			if ($hour == 12) {
 				
-				if ($minute % 15 == 0) {
-					echo '<br>Minute 15/30/45 Follow';
-					$follow = new FollowController();
-					$follow->index();
-				
+				if (($minute == 0) || ($minute % 15 == 0)) {
+					
+					echo '<br>Minute 15/30/45 Unfollow';
+					$unfollow = new UnfollowController();
+					$unfollow->index();
+									
 				}
 				
 			}
@@ -104,18 +107,17 @@ class CronController extends Controller
 			
 			if ($hour == 12) {
 				
-				if ($minute % 15 == 0) {
-					echo '<br>Minute 15/30/45 Unfollow';
-					$unfollow = new UnfollowController();
-					$unfollow->index();
+				if (($minute == 0) || ($minute % 15 == 0)) {
+				
+					echo '<br>Minute 15/30/45 Follow';
+					$follow = new FollowController();
+					$follow->index();
 				
 				}
 				
 			}
 		
 		}
-		
-// 		return false;
 
 
     }
