@@ -36,8 +36,11 @@ Route::post('password/reset', 'Auth\PasswordController@postReset');
 // AUTOMATION - Cron Job
 Route::get('cron', 'CronController@index');
 
-// AUTOMATION - Friends, Followers, Whitelist, Model Account Temp Users
+// AUTOMATION - Friends, Followers, and Whitelist
 Route::get('automate', 'AutomationController@index');
+
+// AUTOMATION - Model Account and Target Users
+Route::get('copy', 'ModelAccountController@filter');
 
 // AUTOMATION - Follow accounts in Target_Users Table
 Route::get('follow', 'FollowController@index');

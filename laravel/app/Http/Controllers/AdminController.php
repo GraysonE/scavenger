@@ -24,7 +24,7 @@ class AdminController extends Controller
   		$currentAccount = Auth::user()->username;
   		
 			  			
-	    return redirect('accounts');	
+	    return redirect('/set-user/select');	
 	    
     }
 

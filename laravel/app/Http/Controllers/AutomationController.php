@@ -15,6 +15,10 @@ use Scavenger\TargetUser;
 use Carbon\Carbon;
 use Scavenger\Helpers\Helper;
 
+error_reporting(E_ALL);
+
+ini_set('display_errors', 1);
+
 /**
  * Class AutomationController
  * @package Scavenger\Http\Controllers
@@ -35,12 +39,21 @@ class AutomationController extends Controller
 		
         foreach($socialMediaAccounts as $socialMediaAccount) {
 
+/*
+$targetUsers = TargetUser::where('social_media_account_id', $socialMediaAccount->id)->select('account_id')->get()->all();
+			dd($targetUsers);
+*/
+
 			$errorCount = 0;
 			$errorMessage = "";
 
-//  			$socialMediaAccount = SocialMediaAccount::findOrFail(7);
-
-
+//   			$socialMediaAccount = SocialMediaAccount::find(5);
+			
+/*
+			if ($socialMediaAccount->id == 3) {
+				 continue;
+			}
+*/
 
             $api_requests = 15;
 
@@ -159,51 +172,61 @@ class AutomationController extends Controller
             } while ($cursor > 0);
 
 			
-			if (isset($oldFriends_ids)) {
+			if (!isset($friends->errors)) {
+				
+				if (!empty($oldFriends_ids)) {
 				
 				
-				// FIND FRIENDS THAT ARE NOT IN THE DATABASE BUT ARE ONLINE AND ADD THEM
-				$friendsToAdd_ids = array_diff($onlineFriends_ids, $oldFriends_ids);
-				
-				foreach($friendsToAdd_ids as $friend_id) {
+					// FIND FRIENDS THAT ARE NOT IN THE DATABASE BUT ARE ONLINE AND ADD THEM
+					$friendsToAdd_ids = array_diff($onlineFriends_ids, $oldFriends_ids);
 					
-					$newFriend = Friend::create([
-                        'account_id' => $friend_id,
-                        'social_media_account_id' => $socialMediaAccount->id
-                    ]);
-                    
+					foreach($friendsToAdd_ids as $friend_id) {
+						
+						$newFriend = Friend::create([
+		                    'account_id' => $friend_id,
+		                    'social_media_account_id' => $socialMediaAccount->id
+		                ]);
+		                
+					}
+					    
+					
+					// FIND FRIENDS THAT ARE IN THE DATABASE BUT NOT ONLINE AND DELETE THEM
+					$friendsToDelete_ids = array_diff($oldFriends_ids, $onlineFriends_ids);
+					
+					foreach($friendsToDelete_ids as $friend_id) {
+						
+						$friendToDelete = Friend::where('social_media_account_id', $socialMediaAccount->id)
+							->where('account_id', $friend_id)
+							->get()
+							->first();
+						
+						$friendToDelete->unfollowed = 1;
+						$friendToDelete->unfollowed_timestamp = Carbon::now('America/Denver');
+				        $friendToDelete->save();
+		                
+					}
+		
+					
+				} else {
+					
+					echo "<h3>Adding all friends</h3>";
+					
+					foreach($onlineFriends_ids as $friend_id) {
+						// IF THIS IS THE FIRST TIME YOU SIGN UP YOUR ACCOUNT, ADD EVERYONE
+						$newFriend = Friend::create([
+		                    'account_id' => $friend_id,
+		                    'social_media_account_id' => $socialMediaAccount->id
+		                ]);
+		                
+					}
+					
 				}
-				    
-				
-				// FIND FRIENDS THAT ARE IN THE DATABASE BUT NOT ONLINE AND DELETE THEM
-				$friendsToDelete_ids = array_diff($oldFriends_ids, $onlineFriends_ids);
-				
-				foreach($friendsToDelete_ids as $friend_id) {
-					
-					$friendToDelete = Friend::where('social_media_account_id', $socialMediaAccount->id)
-						->where('account_id', $friend_id)
-						->get()
-						->first();
-					
-					$friendToDelete->unfollowed = 1;
-					$friendToDelete->unfollowed_timestamp = Carbon::now('America/Denver');
-			        $friendToDelete->save();
-                    
-				}
-
 				
 			} else {
-				
-				foreach($onlineFriends_ids as $friend_id) {
-					// IF THIS IS THE FIRST TIME YOU SIGN UP YOUR ACCOUNT, ADD EVERYONE
-					$newFriend = Friend::create([
-                        'account_id' => $friend_id,
-                        'social_media_account_id' => $socialMediaAccount->id
-                    ]);
-                    
-				}
-				
+				echo "<h3>Friend api error</h3>";
 			}
+			
+			
 
 
 
@@ -273,54 +296,58 @@ class AutomationController extends Controller
                 $api_requests--;
 
             } while ($cursor > 0);
+            
+            
 
-			if (isset($oldFollowers_ids)) {
-				
-				
-				// FIND followers THAT ARE NOT IN THE DATABASE BUT ARE ONLINE AND ADD THEM
-				$followersToAdd_ids = array_diff($onlineFollowers_ids, $oldFollowers_ids);
-				
-				foreach($followersToAdd_ids as $follower_id) {
+			if (!isset($followers->errors)) {
+
+				if (!empty($oldFollowers_ids)) {
 					
-					$newFollower = Follower::create([
-                        'account_id' => $follower_id,
-                        'social_media_account_id' => $socialMediaAccount->id
-                    ]);
-                    
-				}
-				
-				// FIND followers THAT ARE IN THE DATABASE BUT NOT ONLINE AND DELETE THEM
-				$followersToDelete_ids = array_diff($oldFollowers_ids, $onlineFollowers_ids);
-				
-				foreach($followersToDelete_ids as $follower_id) {
 					
-					$followerToDelete = Follower::where('social_media_account_id', $socialMediaAccount->id)
-						->where('account_id', $follower_id)
-						->get()->first();
+					// FIND followers THAT ARE NOT IN THE DATABASE BUT ARE ONLINE AND ADD THEM
+					$followersToAdd_ids = array_diff($onlineFollowers_ids, $oldFollowers_ids);
 					
-					if (isset($followerToDelete)) {
-						Follower::findOrFail($followerToDelete['id'])->delete();
+					foreach($followersToAdd_ids as $follower_id) {
+						
+						$newFollower = Follower::create([
+		                    'account_id' => $follower_id,
+		                    'social_media_account_id' => $socialMediaAccount->id
+		                ]);
+		                
 					}
 					
-					                 
-				}
-
-
-			} else {
-				// IF THIS IS THE FIRST TIME YOU SIGN UP YOUR ACCOUNT, ADD EVERYONE
-				foreach($onlineFollowers_ids as $follower_id) {
+					// FIND followers THAT ARE IN THE DATABASE BUT NOT ONLINE AND DELETE THEM
+					$followersToDelete_ids = array_diff($oldFollowers_ids, $onlineFollowers_ids);
 					
-					$newFollower = Follower::create([
-                        'account_id' => $follower_id,
-                        'social_media_account_id' => $socialMediaAccount->id
-                    ]);
-                    
+					foreach($followersToDelete_ids as $follower_id) {
+						
+						$followerToDelete = Follower::where('social_media_account_id', $socialMediaAccount->id)
+							->where('account_id', $follower_id)
+							->get()->first();
+						
+						if (isset($followerToDelete)) {
+							Follower::find($followerToDelete['id'])->delete();
+						}
+						
+						                 
+					}
+		
+		
+				} else {
+					// IF THIS IS THE FIRST TIME YOU SIGN UP YOUR ACCOUNT, ADD EVERYONE
+					foreach($onlineFollowers_ids as $follower_id) {
+						
+						$newFollower = Follower::create([
+		                    'account_id' => $follower_id,
+		                    'social_media_account_id' => $socialMediaAccount->id
+		                ]);
+		                
+					}
+					
 				}
-				
+
+
 			}
-
-
-
 
 
             /** 
@@ -460,6 +487,7 @@ class AutomationController extends Controller
 
             // FIND VALID MENTIONS
             echo "<h2>VALID MENTIONS</h2>";
+            echo "<h3>". Carbon::now()."</h3>";
             echo "<h4>API requests left: $api_requests</h4>";
             $searchMentionsAPI = "https://api.twitter.com/1.1/statuses/mentions_timeline.json?count=200";
 
@@ -501,19 +529,28 @@ class AutomationController extends Controller
             }
             
             
+            
+            
+            
+            
+            echo "<h3>before target ". Carbon::now()."</h3>";
 			
 			// GET ALL TARGET USERS AND PROCESS INTO ARRAY
-			$targetUsers = TargetUser::where('social_media_account_id', $socialMediaAccount->id)->get()->all();
+			$targetUsers = TargetUser::where('social_media_account_id', $socialMediaAccount->id)->select('account_id')->get()->all();
+			
+ 			echo "<h3>after target ". Carbon::now()."</h3>";
 			
 			$targetUsers_ids = array();
 			
-			foreach($targetUsers as $account_id) {
-				$targetUsers_ids[] = $account_id['account_id'];
+			foreach($targetUsers as $id) {
+				$targetUsers_ids[] = $id->account_id;
 			}
 			
 			
+			echo "<h3>after array processing ". Carbon::now()."</h3>";
+			
 			// WHITELIST ACTIVE MENTIONS and DMs
-			if((isset($goodMentionsArray_IDs)) && (isset($dmArray_IDs)) && (isset($targetUsers_ids))){
+			if((!empty($goodMentionsArray_IDs)) && (!empty($dmArray_IDs)) && (!empty($targetUsers_ids))){
 				
 				
 				// FIND MENTIONS TARGET USERS THAT ARE NOT IN THE DATABASE
@@ -561,7 +598,7 @@ class AutomationController extends Controller
                             ->get()
                             ->first();
                         if (isset($target)) {
-	                        TargetUser::findOrFail($target['id'])->delete();
+	                        TargetUser::find($target['id'])->delete();
                         }
                             
 	                	
@@ -572,106 +609,10 @@ class AutomationController extends Controller
 			} 
 			
 
-
-
-
+			echo "<h3>". Carbon::now()."</h3>";
 			
 			
-			/** 
-             *
-             *
-             * GET MODEL ACCOUNTS'S FOLLOWERS, FILTER IF ALREADY FOLLOWING OR FRIEND, ADD TO TARGET USERS TABLE
-             *
-             *
-             */
-
-            echo "<h4>API requests left before model user: $api_requests</h4>";
-
-
-            // GET MODEL ACCOUNT
-            $modelAccount = ModelAccount::where('social_media_account_id', $socialMediaAccount->id)
-                ->where('api_cursor', '!=', 0)
-                ->where('sort_order', 1)
-                ->get()
-                ->first();
-			
-
-            if (!is_null($modelAccount)) {
-				
-				$cursor = (int)$modelAccount->api_cursor;
-				
-				echo "<h2>@". $modelAccount->screen_name . "'s ONLINE FOLLOWERS</h2><br>";
-
-                $searchFollowersAPI = "https://api.twitter.com/1.1/followers/ids.json?cursor=$cursor&screen_name=$modelAccount->screen_name&count=5000";
-				
-                $followers = $connection->get("$searchFollowersAPI");
-
-                if (isset($followers->errors)) {
-					
-					$errorCount++;
-                    $errorObject = $followers->errors;
-                    $error = $errorObject[0]->code;
-                    
-                    $errorMessage .= "<h2>Error $errorCount</h2>";
-                    $errorMessage .= "Model account follower lookup to needs to refresh. " . $errorObject[0]->message;
-
-                    echo "<div class='errorMessage'>$errorMessage</div>";
-
-                    break;
-
-                } else {
-
-
-                    $modelFollowers = $followers->ids;
-
-                    foreach ($modelFollowers as $id) {
-						$modelFollowers_ids[] = $id;
-					}
-					
-					if (isset($modelFollowers_ids)) {
 						
-						$filterFollowers = array_diff($modelFollowers_ids, $oldFollowers_ids);
-						$filterFriends = array_diff($filterFollowers, $oldFriends_ids);
-						$filterTargets = array_diff($filterFriends, $targetUsers_ids);
- 						
-						
-						foreach ($filterTargets as $id) {
-							
-							$newTarget = TargetUser::create([
-                                        'account_id' => $id,
-                                        'social_media_account_id' => $socialMediaAccount->id
-                                    ]);
-							
-						}
-							
-					}
-					
-					if (count($modelFollowers) > 0) {
-						$modelAccount->api_cursor = $followers->next_cursor;
-						$modelAccount->save();
-						
-						if ($modelAccount->api_cursor == 0) {
-							$errorCount++;
-							$errorMessage .= "<h2>Error $errorCount</h2>";
-			                $errorMessage .= "Model Account API cursor equals 0.<br>";
-			                $errorMessage .= "Out of a list of 5000, $i were added to target_users table.<br>";
-			                
-			            }
-					}
-					
-					
-					echo "<br><br><strong>Next Cursor: </strong>$followers->next_cursor";
-
-                }
-                
-                $api_requests--;
-
-                
-
-            } else {
-	            echo "<h1>Add a model account that hasn't been finished!</h1>";
-            }
-			
 
 
 

@@ -30,6 +30,8 @@ class CronController extends Controller
      */
     public function index()
     {
+ 	    
+	    
         $now = Carbon::now('America/Denver');
         echo "<br>$now";                              // 2016-01-11 12:38:36
         
@@ -55,7 +57,6 @@ class CronController extends Controller
         echo "<br>$minute";                             // 38
 
 
-
         if (($hour == 0) || ($hour == 12) || ($hour == 16)) {
 
 			if ($minute == 0) {
@@ -63,11 +64,24 @@ class CronController extends Controller
 				echo '<br>Minute 0 Automation';
 				
 				$automate = new AutomationController();
+				
 				$automate->index();
 				
-			} elseif ($minute % 15 == 0) {
+				
+			} elseif ($minute == 15) {
+				
+				echo '<br>Minute 15 Targeting';
+				$target = new ModelAccountController();
+				$target->filter();
+				
+			} elseif (($minute == 30) || ($minute == 45)) {
 				
 				sleep(120);
+				
+				echo '<br>Minute 15/30/45 Targeting';
+				$target = new ModelAccountController();
+				$target->filter();
+				
 				echo '<br>Minute 15/30/45 Filter';
 				$filter = new FilterController();
 				$filter->index();
@@ -79,6 +93,11 @@ class CronController extends Controller
 	        if (($minute == 0) || ($minute % 15 == 0)) {
 	        
 	        	sleep(120);
+	        	
+	        	echo '<br>Minute 0/15/30/45 Targeting';
+				$target = new ModelAccountController();
+				$target->filter();
+	        	
 	        	echo '<br>Minute 0/15/30/45 Automation';
 		        $filter = new FilterController();
 				$filter->index();

@@ -83,7 +83,7 @@ class AuthController extends Controller
 
     }
     
-    private $redirectTo = '/accounts';
+    private $redirectTo = '/set-user/select';
     
    
     

@@ -12,6 +12,10 @@ use Scavenger\Twitter\TwitterOAuth;
 use Scavenger\ModelAccount;
 use Scavenger\User;
 use Scavenger\Helpers\Helper;
+use Scavenger\Friend;
+use Scavenger\Follower;
+use Scavenger\TargetUser;
+use Carbon\Carbon;
 
 class ModelAccountController extends Controller
 {
@@ -130,6 +134,174 @@ class ModelAccountController extends Controller
 
         
     }
+    
+    
+    
+    
+    public function filter() 
+    {
+
+		$count = 500;
+
+        $socialMediaAccounts = SocialMediaAccount::where('account_type', 'twitter')->get()->all();
+		
+        foreach($socialMediaAccounts as $socialMediaAccount) {
+	    
+	    
+			$errorCount = 0;
+			$errorMessage = "";
+
+            $connection = new TwitterOAuth(
+                $socialMediaAccount->consumer_key,
+                $socialMediaAccount->consumer_secret,
+                $socialMediaAccount->access_token,
+                $socialMediaAccount->access_token_secret);
+			
+            $myScreenName = $socialMediaAccount->screen_name;
+
+            echo "<h1>$myScreenName</h1>";
+            
+            
+            
+            
+            
+            
+            // GET CURRENT DB Followers
+			$oldFollowers = Follower::where('social_media_account_id', $socialMediaAccount->id)->select('account_id')->get()->all();
+			
+			$oldFollowers_ids = array();
+			foreach($oldFollowers as $account_id) {
+				$oldFollowers_ids[] = $account_id['account_id'];
+				
+			}
+			
+			// GET CURRENT DB FRIENDS
+			$oldFriends = Friend::where('social_media_account_id', $socialMediaAccount->id)->select('account_id')->get()->all();
+			
+			$oldFriends_ids = array();
+			foreach($oldFriends as $account_id) {
+				$oldFriends_ids[] = $account_id['account_id'];
+				
+			}
+            
+            // GET ALL TARGET USERS AND PROCESS INTO ARRAY
+			$targetUsers = TargetUser::where('social_media_account_id', $socialMediaAccount->id)->select('account_id')->get()->all();
+			
+			$targetUsers_ids = array();
+			foreach($targetUsers as $id) {
+				$targetUsers_ids[] = $id['account_id'];
+			}
+            
+            
+			
+			
+			
+			/** 
+             *
+             *
+             * GET MODEL ACCOUNTS'S FOLLOWERS, FILTER IF ALREADY FOLLOWING OR FRIEND, ADD TO TARGET USERS TABLE
+             *
+             *
+             */
+             
+
+
+            // GET MODEL ACCOUNT
+            $modelAccount = ModelAccount::where('social_media_account_id', $socialMediaAccount->id)
+                ->where('api_cursor', '!=', 0)
+                ->where('sort_order', 1)
+                ->get()
+                ->first();
+			
+
+            if (!is_null($modelAccount)) {
+				
+				$cursor = (int)$modelAccount->api_cursor;
+				
+				echo "<h2>@". $modelAccount->screen_name . "'s ONLINE FOLLOWERS</h2><br>";
+
+                $searchFollowersAPI = "https://api.twitter.com/1.1/followers/ids.json?cursor=$cursor&screen_name=$modelAccount->screen_name&count=$count";
+				
+                $followers = $connection->get("$searchFollowersAPI");
+
+                if (isset($followers->errors)) {
+					
+					$errorCount++;
+                    $errorObject = $followers->errors;
+                    $error = $errorObject[0]->code;
+                    
+                    $errorMessage .= "<h2>Error $errorCount</h2>";
+                    $errorMessage .= "Model account follower lookup to needs to refresh. " . $errorObject[0]->message;
+
+                    echo "<div class='errorMessage'>$errorMessage</div>";
+
+                    continue;
+
+                } else {
+
+
+                    $modelFollowers = $followers->ids;
+
+                    foreach ($modelFollowers as $id) {
+						$modelFollowers_ids[] = $id;
+					}
+					
+					if (isset($modelFollowers_ids)) {
+						
+						$filterFollowers = array_diff($modelFollowers_ids, $oldFollowers_ids);
+						$filterFriends = array_diff($filterFollowers, $oldFriends_ids);
+						$filterTargets = array_diff($filterFriends, $targetUsers_ids);
+ 						
+						
+						foreach ($filterTargets as $id) {
+							
+							$newTarget = TargetUser::create([
+                                        'account_id' => $id,
+                                        'social_media_account_id' => $socialMediaAccount->id
+                                    ]);
+							
+						}
+							
+					}
+					
+					if (count($modelFollowers) > 0) {
+						$modelAccount->api_cursor = $followers->next_cursor;
+						$modelAccount->save();
+						
+						if ($modelAccount->api_cursor == 0) {
+							$errorCount++;
+							$errorMessage .= "<h2>Error $errorCount</h2>";
+			                $errorMessage .= "Model Account API cursor equals 0.<br>";
+			                $errorMessage .= "Out of a list of 5000, $i were added to target_users table.<br>";
+			                
+			            }
+					}
+					
+					
+					echo "<br><br><strong>Next Cursor: </strong>$followers->next_cursor";
+
+                }
+
+                
+
+            } else {
+	            echo "<h1>Add a model account that hasn't been finished!</h1>";
+            }
+            
+        }
+        
+        echo '<hr>';
+        $now = Carbon::now('America/Denver');
+        echo "<br>$now";
+        
+        if ($errorCount > 0) {
+            Helper::email_admin($errorMessage, $errorCount, "ModelAccountController", $socialMediaAccount->screen_name);
+            
+        }
+    }
+    
+    
+    
 
     /**
      * Display the specified resource.
