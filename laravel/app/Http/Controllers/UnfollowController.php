@@ -35,11 +35,6 @@ class UnfollowController extends Controller
 			$i = 1;
 
             echo "<h2>$socialMediaAccount->screen_name</h2>";
-            
-            if ($socialMediaAccount->id == 4) {
-	            echo "<h3>SKIPPED!</h3>";
-				continue;
-			}
 
             $connection = new TwitterOAuth(
                 $socialMediaAccount->consumer_key,
@@ -49,9 +44,10 @@ class UnfollowController extends Controller
 
             $friends = Friend::where('social_media_account_id', $socialMediaAccount->id)
             	->where('whitelisted', 0)
+            	->where('unfollowed', 0)
             	->where('created_at', '<=', Carbon::today('America/Denver')->subweek())
             	->select('account_id')
-            	->take(100)
+            	->take(99)
             	->get()
             	->toArray();
 
@@ -74,9 +70,7 @@ class UnfollowController extends Controller
 	            
                 foreach ($oldFriends_ids as $oldFriend) {
 	                
-	                
-	                
-                    $destroyFriendship = $connection->post("https://api.twitter.com/1.1/friendships/destroy.json?user_id=$oldFriend&follow=true");
+                    $destroyFriendship = $connection->post("https://api.twitter.com/1.1/friendships/destroy.json?user_id=$oldFriend");
 
                     if (isset($destroyFriendship->errors)) {
 
@@ -84,7 +78,7 @@ class UnfollowController extends Controller
                         $error = $errorObject[0]->code;
                         $errorCount++;
 						$errorMessage .= "<h2>Error $errorCount</h2>";
-                        $errorMessage .= "Friend destroyer to needs to refresh. " . $errorObject[0]->message;
+                        $errorMessage .= "Friend destroyer needs to refresh. " . $errorObject[0]->message;
 
                         echo "<div class='errorMessage'>$errorMessage</div>";
 
