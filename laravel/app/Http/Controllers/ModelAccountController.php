@@ -141,9 +141,12 @@ class ModelAccountController extends Controller
     public function filter() 
     {
 
-		$count = 500;
-
         $socialMediaAccounts = SocialMediaAccount::where('account_type', 'twitter')->get()->all();
+		
+		$crunchAccounts = SocialMediaAccount::where('account_type', 'crunch')->get()->all();
+		
+		// Calculate how many accounts to grab from the API to filter
+		$count = (count($crunchAccounts) / count($socialMediaAccounts)) * 180;
 		
         foreach($socialMediaAccounts as $socialMediaAccount) {
 	    

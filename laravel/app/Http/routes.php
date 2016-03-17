@@ -53,6 +53,11 @@ Route::get('filter', 'FilterController@index');
 
 
 
+// TEST
+Route::get('test', 'CronController@test');
+
+
+
 
 Route::group(array('middleware' => 'auth'), function(){
 	

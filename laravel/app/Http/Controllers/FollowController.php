@@ -52,7 +52,7 @@ class FollowController extends Controller
 
             $targetUsers = TargetUser::where('social_media_account_id', $socialMediaAccount->id)
             	->where('to_follow', 1)
-            	->take(120)
+            	->take(100)
             	->get();
             	
 			$i=1;
@@ -78,6 +78,20 @@ class FollowController extends Controller
 
                         echo "<div class='errorMessage'>$errorMessage</div>";
 
+						$breakableError = "You are unable to follow more people at this time.";
+						$blockedError = 'You have been blocked from following this account at the request of the user.';
+
+						if ($errorObject[0]->message == $blockedError) {
+							
+							$oldTargetUser = TargetUser::find($targetUser->id)->delete();
+							echo " - Target User deleted from DB.";
+							
+						} elseif (strpos($errorObject[0]->message, $breakableError) !== false) {
+							
+							break;
+							
+						}
+
                         continue;
 
                     } else {
@@ -91,7 +105,7 @@ class FollowController extends Controller
                             'social_media_account_id' => $socialMediaAccount->id
                         ]);
 
-                        $oldTargetUser = TargetUser::findOrFail($targetUser->id)->delete();
+                        $oldTargetUser = TargetUser::find($targetUser->id)->delete();
                         echo " - Target User deleted from DB.";
                         
                         

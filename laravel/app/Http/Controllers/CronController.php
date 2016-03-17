@@ -142,6 +142,47 @@ class CronController extends Controller
     }
     
     
+    
+    
+    public function test() {
+	    
+	    
+	    $weekOfMonth = 3;
+	    $hour = 12;
+	    $minute = 30;
+	    
+	    if ($weekOfMonth % 2 == 0) { // if week is 1st or 3rd of month, follow
+				
+			if ($hour == 12) {
+				
+				if (($minute == 0) || ($minute % 15 == 0)) {
+					
+					echo '<br>Minute 15/30/45 Unfollow';
+					$unfollow = new UnfollowController();
+					$unfollow->index();
+									
+				}
+				
+			}
+			
+    	} else {
+			
+			if ($hour == 12) {
+				
+				if (($minute == 0) || ($minute % 15 == 0)) {
+				
+					echo '<br>Minute 15/30/45 Follow';
+					$follow = new FollowController();
+					$follow->index();
+				
+				}
+				
+			}
+		
+		}
+	    
+	    
+    }
 
 
 

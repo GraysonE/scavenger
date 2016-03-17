@@ -47,7 +47,7 @@ class UnfollowController extends Controller
             	->where('unfollowed', 0)
             	->where('created_at', '<=', Carbon::today('America/Denver')->subweek())
             	->select('account_id')
-            	->take(99)
+            	->take(100)
             	->get()
             	->toArray();
 
