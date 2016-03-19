@@ -275,7 +275,11 @@ class ModelAccountController extends Controller
 							$errorCount++;
 							$errorMessage .= "<h2>Error $errorCount</h2>";
 			                $errorMessage .= "Model Account API cursor equals 0.<br>";
-			                $errorMessage .= "Out of a list of 5000, $i were added to target_users table.<br>";
+			                $errorMessage .= "$i were added to target_users table.<br>";
+			                
+			                $data = "You reached the end of $modelAccount->screen_name. Please double check to see if you have any other users scheduled so Scavenger can keep working on your account!";
+			                
+			                Helper::email_user($data, $socialMediaAccount->user_id);
 			                
 			            }
 					}

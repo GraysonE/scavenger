@@ -55,7 +55,7 @@ class FilterController extends Controller
 			// TODO: LOAD ONLY 180 ACCOUNTS
             $tempAccounts = TargetUser::where('social_media_account_id', $socialMediaAccount->id)
             	->where('to_follow', 0)
-            	->take(179)
+            	->take(175)
                 ->get();
                 
             
@@ -64,7 +64,7 @@ class FilterController extends Controller
                 
             if ($tempAccounts->isEmpty()) {
 	            $tempAccounts = TargetUser::where('to_follow', 0)
-            	->take(179)
+            	->take(175)
                 ->get();
                 
                 $crunchAccount = true;

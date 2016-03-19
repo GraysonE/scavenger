@@ -13,6 +13,7 @@ use Auth;
 use Scavenger\Twitter\TwitterOAuth;
 use Scavenger\ModelAccount;
 use Scavenger\Friend;
+use Scavenger\User;
 use Scavenger\Follower;
 use Scavenger\TargetUser;
 use Scavenger\Http\Controllers\AutomationController;
@@ -76,11 +77,9 @@ class CronController extends Controller
 				
 			} elseif (($minute == 30) || ($minute == 45)) {
 				
-				sleep(120);
-				
 				echo '<br>Minute 15/30/45 Targeting';
-				$target = new ModelAccountController();
-				$target->filter();
+				//$target = new ModelAccountController();
+				//$target->filter();
 				
 				echo '<br>Minute 15/30/45 Filter';
 				$filter = new FilterController();
@@ -91,12 +90,10 @@ class CronController extends Controller
         } else {
 	        
 	        if (($minute == 0) || ($minute % 15 == 0)) {
-	        
-	        	sleep(120);
 	        	
 	        	echo '<br>Minute 0/15/30/45 Targeting';
-				$target = new ModelAccountController();
-				$target->filter();
+				//$target = new ModelAccountController();
+				//$target->filter();
 	        	
 	        	echo '<br>Minute 0/15/30/45 Automation';
 		        $filter = new FilterController();
@@ -146,40 +143,6 @@ class CronController extends Controller
     
     public function test() {
 	    
-	    
-	    $weekOfMonth = 3;
-	    $hour = 12;
-	    $minute = 30;
-	    
-	    if ($weekOfMonth % 2 == 0) { // if week is 1st or 3rd of month, follow
-				
-			if ($hour == 12) {
-				
-				if (($minute == 0) || ($minute % 15 == 0)) {
-					
-					echo '<br>Minute 15/30/45 Unfollow';
-					$unfollow = new UnfollowController();
-					$unfollow->index();
-									
-				}
-				
-			}
-			
-    	} else {
-			
-			if ($hour == 12) {
-				
-				if (($minute == 0) || ($minute % 15 == 0)) {
-				
-					echo '<br>Minute 15/30/45 Follow';
-					$follow = new FollowController();
-					$follow->index();
-				
-				}
-				
-			}
-		
-		}
 	    
 	    
     }

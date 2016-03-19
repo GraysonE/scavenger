@@ -43,6 +43,7 @@ class Helper {
 		$time = Carbon::now('America/Denver');
 		$name = "Scavenger Update";
 		$applicationEmail = "grayson@gator3029.hostgator.com";
+		$adminEmail = "web@graysonerhard.com";
 
 		$user = User::findOrFail($userID);
 
@@ -61,7 +62,8 @@ class Helper {
 		$message = wordwrap($message, 70, "\r\n");
 
 		// Send
-		$success = mail($user->email, "Scavenger Update", $message, $headers);
+		//$success = mail($user->email, "Scavenger Update", $message, $headers);
+		$success = mail($adminEmail, "Scavenger Update", $message, $headers);
 		
 		if ($success) {
 			echo "<h2>MAIL SENT.</h2>";
