@@ -76,7 +76,7 @@ class FilterController extends Controller
 				$errorCount = 0;
                 $temp_account_id = (int)$tempAccount->account_id;
 
-                echo "<br>Target Account: $temp_account_id";
+                echo "<br>Target Account: ";
 
                 //Investigate User Before Following
                 $userInvestigationURL = "https://api.twitter.com/1.1/users/lookup.json?user_id=$temp_account_id";
@@ -111,8 +111,7 @@ class FilterController extends Controller
                 } else {
 
                     $userInvestigation = $userInvestigation_json[0];
-
-
+					
                     $time = (int)strtotime(Carbon::now());
                     $one_month_unix_time = (int)86400*30;
                     $one_day_unix_time = (int)86400;
@@ -132,7 +131,7 @@ class FilterController extends Controller
                      *
                      */
 
-					 $to_follow = 0;
+					$to_follow = 0;
 
 
                     if (isset($userInvestigation->status->created_at)) {
@@ -149,7 +148,7 @@ class FilterController extends Controller
 
                                         if ($friendsCount >= ($followersCount - 50)) { // MORE PEOPLE FOLLOWING THAN FOLLOWING THEM
 
-                                                echo "<br>Target id: $temp_account_id";
+                                                echo "$temp_account_id";
                                                 
                                                 if ($crunchAccount) {
 	                                                $target = TargetUser::where('account_id', $temp_account_id)->get()->first();
@@ -198,7 +197,7 @@ class FilterController extends Controller
                 if (isset($target)) {
 	                if (!$to_follow) {
 		                TargetUser::find($target['id'])->delete();
-						echo " - DELETED.";
+						echo " $temp_account_id - DELETED.";
 	                }
 					
                 }

@@ -36,6 +36,26 @@
 	  </li>
 	  
 	  <li class="active">
+	    <a href="{{ url('/copy') }}">
+	      <div class="item-content">
+	        <div class="item-inner">
+	          <span class="title"> Copy </span>
+	        </div>
+	      </div>
+	    </a>
+	  </li>
+	  
+	  <li class="active">
+	    <a href="{{ url('/filter') }}">
+	      <div class="item-content">
+	        <div class="item-inner">
+	          <span class="title"> Filter </span>
+	        </div>
+	      </div>
+	    </a>
+	  </li>
+	  
+	  <li class="active">
 	    <a href="{{ url('/follow') }}">
 	      <div class="item-content">
 	        <div class="item-inner">

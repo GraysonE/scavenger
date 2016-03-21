@@ -63,9 +63,7 @@ class CronController extends Controller
 			if ($minute == 0) {
 				
 				echo '<br>Minute 0 Automation';
-				
 				$automate = new AutomationController();
-				
 				$automate->index();
 				
 				
@@ -85,6 +83,14 @@ class CronController extends Controller
 				$filter = new FilterController();
 				$filter->index();
 				
+			} else {
+				
+				$errorMessage = "Did nothing in hour 0, 12, or 16.";
+				$controller = "CronController";
+				$screen_name = "ScavengerDebug";
+				
+// 				Helper::email_admin($errorMessage, 0, $controller, $screen_name);
+				
 			}
 			
         } else {
@@ -99,6 +105,12 @@ class CronController extends Controller
 		        $filter = new FilterController();
 				$filter->index();
 			
+			} else {
+				$errorMessage = "$now<br>Did nothing in hours NOT 0, 12, or 16.";
+				$controller = "CronController";
+				$screen_name = "ScavengerDebug";
+				
+// 				Helper::email_admin($errorMessage, 0, $controller, $screen_name);
 			}
 			
         }
