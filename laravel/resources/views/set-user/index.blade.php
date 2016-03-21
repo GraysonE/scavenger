@@ -11,7 +11,7 @@
 
                 @foreach($socialMediaAccounts as $sma)
                     <a class="panel-white" href="{{ url('set-user/'.$sma->id) }}" {{($sma->account_type == 'twitter') ? "style=background:#0084b4;" : ''}}>
-                        <h4>{{$sma->screen_name}}</h4>
+                        <h4 class="user_screen_name">{{$sma->screen_name}}</h4>
                     </a>
                 @endforeach
 

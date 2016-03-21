@@ -41,7 +41,7 @@ class ModelAccountController extends Controller
         } else {
 
 			if (Auth::user()->id == 1) {
-				$socialMediaAccounts = SocialMediaAccount::get();
+				$socialMediaAccounts = SocialMediaAccount::where('account_type', 'twitter')->get();
 			} else {
 				$socialMediaAccounts = SocialMediaAccount::where('user_id', Auth::user()->id)->get();
 			}

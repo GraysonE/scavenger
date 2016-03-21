@@ -35,8 +35,8 @@ class FilterController extends Controller
 	            $socialMediaAccount->access_token_secret);
 
 /*
-			if ($socialMediaAccount->id == 4) {
-				continue;
+			if ($socialMediaAccount->id != 3) {
+				break;
 			}
 */
         
@@ -58,7 +58,7 @@ class FilterController extends Controller
             	->take(175)
                 ->get();
                 
-            
+//             dd($tempAccounts);
                 
             $crunchAccount = false;
                 
@@ -70,13 +70,13 @@ class FilterController extends Controller
                 $crunchAccount = true;
             }
 
+			
+
             foreach($tempAccounts as $tempAccount) {
 
 				$errorMessage = "";
 				$errorCount = 0;
                 $temp_account_id = (int)$tempAccount->account_id;
-
-                echo "<br>Target Account: ";
 
                 //Investigate User Before Following
                 $userInvestigationURL = "https://api.twitter.com/1.1/users/lookup.json?user_id=$temp_account_id";
@@ -148,23 +148,21 @@ class FilterController extends Controller
 
                                         if ($friendsCount >= ($followersCount - 50)) { // MORE PEOPLE FOLLOWING THAN FOLLOWING THEM
 
-                                                echo "$temp_account_id";
+                                                echo "<br>$temp_account_id";
                                                 
-                                                if ($crunchAccount) {
-	                                                $target = TargetUser::where('account_id', $temp_account_id)->get()->first();
-                                                } else {
-	                                                $target = TargetUser::where('social_media_account_id', $socialMediaAccount->id)
-                                                			->where('account_id', $temp_account_id)->get()->first();
+                                                $target = TargetUser::find($tempAccount->id);
+                                                $target->screen_name = $requestScreenName;
+                                                $target->to_follow = 1;
+                                                $saved = $target->save();
+                                                
+                                                if ($saved) {
+	                                                
+	                                                $to_follow = 1;                                             
+
+													echo " - $requestScreenName - <strong><em>FLAGGED!!!</em></strong>";
+	                                                
                                                 }
                                                 
-                                                $target->screen_name = $requestScreenName;
-                                                $target->whitelist = 0;
-                                                $target->to_follow = 1;
-                                                $target->save();   
-                                                
-                                                $to_follow = 1;                                             
-
-                                                echo " - $requestScreenName - <strong><em>FLAGGED!!!</em></strong>";
                                                 
                                         } else {
                                             echo " - Doesn't have more friends than followers.";

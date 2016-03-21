@@ -9,7 +9,7 @@
 
                 <?php foreach($socialMediaAccounts as $sma): ?>
                     <a class="panel-white" href="<?php echo e(url('set-user/'.$sma->id)); ?>" <?php echo e(($sma->account_type == 'twitter') ? "style=background:#0084b4;" : ''); ?>>
-                        <h4><?php echo e($sma->screen_name); ?></h4>
+                        <h4 class="user_screen_name"><?php echo e($sma->screen_name); ?></h4>
                     </a>
                 <?php endforeach; ?>
 
