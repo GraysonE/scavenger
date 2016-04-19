@@ -58,26 +58,37 @@ class CronController extends Controller
         echo "<br>$minute";                             // 38
 
 
-        if (($hour == 0) || ($hour == 12) || ($hour == 16)) {
+		$hour = 16;
+		$minute = 30;
+
+        if (0 || 12 || 16 == $hour) {
 
 			if ($minute == 0) {
 				
-				echo '<br>Minute 0 Automation';
-				$automate = new AutomationController();
+				echo '<br>Minute 0 Friend Crunch';
+				$automate = new FriendController();
 				$automate->index();
 				
 				
+			} elseif ($minute == 5) {
+			
+				echo '<br>Minute 5 Follower Crunch';
+				$automate = new FollowerController();
+				$automate->index();
+			
+			} elseif ($minute == 10) {
+			
+				echo '<br>Minute 10 Whitelist Crunch';
+				$automate = new WhitelistController();
+				$automate->index();
+			
 			} elseif ($minute == 15) {
 				
 				echo '<br>Minute 15 Targeting';
 				$target = new ModelAccountController();
 				$target->filter();
 				
-			} elseif (($minute == 30) || ($minute == 45)) {
-				
-				echo '<br>Minute 15/30/45 Targeting';
-				//$target = new ModelAccountController();
-				//$target->filter();
+			} elseif (30 || 45 == $minute) {
 				
 				echo '<br>Minute 15/30/45 Filter';
 				$filter = new FilterController();

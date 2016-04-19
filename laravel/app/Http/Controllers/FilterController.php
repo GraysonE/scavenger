@@ -34,6 +34,8 @@ class FilterController extends Controller
 	            $socialMediaAccount->access_token,
 	            $socialMediaAccount->access_token_secret);
 
+
+			$errorCount = 0;
 /*
 			if ($socialMediaAccount->id != 3) {
 				break;
@@ -132,7 +134,7 @@ class FilterController extends Controller
                      */
 
 					$to_follow = 0;
-
+					echo "<br>$tempAccount->id";
 
                     if (isset($userInvestigation->status->created_at)) {
 
@@ -148,7 +150,7 @@ class FilterController extends Controller
 
                                         if ($friendsCount >= ($followersCount - 50)) { // MORE PEOPLE FOLLOWING THAN FOLLOWING THEM
 
-                                                echo "<br>$temp_account_id";
+                                                
                                                 
                                                 $target = TargetUser::find($tempAccount->id);
                                                 $target->screen_name = $requestScreenName;
@@ -195,7 +197,7 @@ class FilterController extends Controller
                 if (isset($target)) {
 	                if (!$to_follow) {
 		                TargetUser::find($target['id'])->delete();
-						echo " $temp_account_id - DELETED.";
+						echo " - DELETED.";
 	                }
 					
                 }

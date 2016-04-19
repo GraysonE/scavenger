@@ -33,23 +33,35 @@ Route::get('password/reset/{token}', 'Auth\PasswordController@getReset');
 Route::post('password/reset', 'Auth\PasswordController@postReset');
 
 
-// AUTOMATION - Cron Job
+// CRON
 Route::get('cron', 'CronController@index');
 
-// AUTOMATION - Friends, Followers, and Whitelist
-Route::get('automate', 'AutomationController@index');
+
+
+// AUTOMATION - Friends
+Route::get('friends', 'FriendController@index');
+
+// AUTOMATION - Followers
+Route::get('followers', 'FollowerController@index');
+
+// AUTOMATION - Whitelist
+Route::get('whitelist', 'WhitelistController@index');
 
 // AUTOMATION - Model Account and Target Users
 Route::get('copy', 'ModelAccountController@filter');
 
-// AUTOMATION - Follow accounts in Target_Users Table
-Route::get('follow', 'FollowController@index');
-
-// AUTOMATION - Unfollow accounts in Target_Users Table
-Route::get('unfollow', 'UnfollowController@index');
-
 // FILTER
 Route::get('filter', 'FilterController@index');
+
+
+
+// FOLLOW
+Route::get('follow', 'FollowController@index');
+
+// UNFOLLOW
+Route::get('unfollow', 'UnfollowController@index');
+
+
 
 
 

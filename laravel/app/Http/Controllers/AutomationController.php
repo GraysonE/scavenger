@@ -608,15 +608,9 @@ $targetUsers = TargetUser::where('social_media_account_id', $socialMediaAccount-
 				
 			} 
 			
-
-			echo "<h3>". Carbon::now()."</h3>";
 			
 			
-						
-
-
-
-
+			
 
             echo '<hr>';
             $now = Carbon::now('America/Denver');
