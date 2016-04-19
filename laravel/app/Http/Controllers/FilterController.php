@@ -134,7 +134,7 @@ class FilterController extends Controller
                      */
 
 					$to_follow = 0;
-					echo "<br>$tempAccount->id";
+					echo "<br>$temp_account_id";
 
                     if (isset($userInvestigation->status->created_at)) {
 

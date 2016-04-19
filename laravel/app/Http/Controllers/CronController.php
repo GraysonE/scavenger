@@ -58,9 +58,6 @@ class CronController extends Controller
         echo "<br>$minute";                             // 38
 
 
-		$hour = 16;
-		$minute = 30;
-
         if (0 || 12 || 16 == $hour) {
 
 			if ($minute == 0) {
