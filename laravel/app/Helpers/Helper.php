@@ -29,7 +29,8 @@ class Helper {
 		$message = wordwrap($message, 70, "\r\n");
 
 		// Send
-		$success = mail($adminEmail, "Scavenger Error Report", $message, $headers);
+		//$success = mail($adminEmail, "Scavenger Error Report", $message, $headers);
+		$success = false;
 		
 		if ($success) {
 			echo "<h2>MAIL SENT.</h2>";
@@ -63,7 +64,8 @@ class Helper {
 
 		// Send
 		//$success = mail($user->email, "Scavenger Update", $message, $headers);
-		$success = mail($adminEmail, "Scavenger Update", $message, $headers);
+		//$success = mail($adminEmail, "Scavenger Update", $message, $headers);
+		$success = false;
 		
 		if ($success) {
 			echo "<h2>MAIL SENT.</h2>";

@@ -26,10 +26,20 @@
 	  </li>
 	  
 	  <li class="active">
-	    <a href="<?php echo e(url('/automate')); ?>">
+	    <a href="<?php echo e(url('/friends')); ?>">
 	      <div class="item-content">
 	        <div class="item-inner">
-	          <span class="title"> Automate </span>
+	          <span class="title"> Get Friends </span>
+	        </div>
+	      </div>
+	    </a>
+	  </li>
+	  
+	  <li class="active">
+	    <a href="<?php echo e(url('/followers')); ?>">
+	      <div class="item-content">
+	        <div class="item-inner">
+	          <span class="title"> Get Followers </span>
 	        </div>
 	      </div>
 	    </a>

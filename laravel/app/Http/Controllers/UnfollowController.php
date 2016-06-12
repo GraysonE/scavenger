@@ -34,8 +34,12 @@ class UnfollowController extends Controller
 			$errorCount = 0;
 			$i = 1;
 
-            echo "<h2>$socialMediaAccount->screen_name</h2>";
+			if ($socialMediaAccount->id != 10) {
+				continue;
+			}
 
+            echo "<h2>$socialMediaAccount->screen_name</h2>";
+			
             $connection = new TwitterOAuth(
                 $socialMediaAccount->consumer_key,
                 $socialMediaAccount->consumer_secret,
@@ -44,8 +48,8 @@ class UnfollowController extends Controller
 
             $friends = Friend::where('social_media_account_id', $socialMediaAccount->id)
             	->where('whitelisted', 0)
-            	->where('unfollowed', 0)
-            	->where('created_at', '<=', Carbon::today('America/Denver')->subweek())
+//             	->where('unfollowed', 0)
+//             	->where('created_at', '<=', Carbon::today('America/Denver')->subweek())
             	->select('account_id')
             	->take(100)
             	->get()
@@ -69,20 +73,34 @@ class UnfollowController extends Controller
             } else {
 	            
                 foreach ($oldFriends_ids as $oldFriend) {
-	                
-                    $destroyFriendship = $connection->post("https://api.twitter.com/1.1/friendships/destroy.json?user_id=$oldFriend");
 
+                    $destroyFriendship = $connection->post("https://api.twitter.com/1.1/friendships/destroy.json?user_id=$oldFriend");
+										
                     if (isset($destroyFriendship->errors)) {
 
                         $errorObject = $destroyFriendship->errors;
                         $error = $errorObject[0]->code;
+                        $errorCode = $errorObject[0]->code;
                         $errorCount++;
 						$errorMessage .= "<h2>Error $errorCount</h2>";
-                        $errorMessage .= "Friend destroyer needs to refresh. " . $errorObject[0]->message;
+                        $errorMessage .= $errorObject[0]->message;
 
                         echo "<div class='errorMessage'>$errorMessage</div>";
-
-                        continue;
+						
+						if (261 == $errorCode) {
+							
+							Helper::email_admin("Need to reset Twitter Auth Tokens", 1, "UnfollowController", $socialMediaAccount->screen_name);
+							break;
+							
+						} elseif (34 == $errorCode) {
+							
+							break;
+							
+						} else {
+							
+							continue;
+							
+						}
 
                     } else {
 	                    

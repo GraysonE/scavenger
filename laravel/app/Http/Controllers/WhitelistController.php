@@ -283,10 +283,21 @@ class WhitelistController extends Controller
 				
 				
 				// FIND MENTIONS TARGET USERS THAT ARE NOT IN THE DATABASE
-				$targetUsersToAdd_ids = array_diff($goodMentionsArray_IDs, $targetUsers_ids);
+				$mentionsToAdd_ids = array_diff($goodMentionsArray_IDs, $targetUsers_ids);
 				
 				// FIND DMs THAT ARE NOT IN THE DATABASE AND ADD THEM
-				$targetUsersToAdd_ids = array_diff($dmArray_IDs, $targetUsers_ids);
+				$dmsToAdd_ids = array_diff($dmArray_IDs, $targetUsers_ids);
+				
+				$targetUsersToAdd_ids = array_diff($dmsToAdd_ids, $mentionsToAdd_ids);
+				
+				// GET CURRENT DB FRIENDS
+				$oldFriends = Friend::where('social_media_account_id', $socialMediaAccount->id)->select('account_id')->get()->all();
+				
+				// PROCESS THEM INTO AN ARRAY
+				$oldFriends_ids = array();
+				foreach($oldFriends as $account_id) {
+					$oldFriends_ids[] = $account_id['account_id'];
+				}
 				
 				// FILTER OUT FRIENDS
 				$targetUsersToAdd_ids = array_diff($targetUsersToAdd_ids, $oldFriends_ids);
@@ -342,7 +353,7 @@ class WhitelistController extends Controller
             echo "<br>$now";
             
             if ($errorCount > 0) {
-	            Helper::email_admin($errorMessage, $errorCount, "AutomationController", $socialMediaAccount->screen_name);
+	            Helper::email_admin($errorMessage, $errorCount, "WhitelistController", $socialMediaAccount->screen_name);
             }
             
             

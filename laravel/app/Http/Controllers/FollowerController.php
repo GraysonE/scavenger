@@ -195,7 +195,7 @@ class FollowerController extends Controller
             echo "<br>$now";
             
             if ($errorCount > 0) {
-	            Helper::email_admin($errorMessage, $errorCount, "AutomationController", $socialMediaAccount->screen_name);
+	            Helper::email_admin($errorMessage, $errorCount, "FollowerController", $socialMediaAccount->screen_name);
             }
             
             

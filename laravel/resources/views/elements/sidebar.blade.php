@@ -26,10 +26,20 @@
 	  </li>
 	  
 	  <li class="active">
-	    <a href="{{ url('/automate') }}">
+	    <a href="{{ url('/friends') }}">
 	      <div class="item-content">
 	        <div class="item-inner">
-	          <span class="title"> Automate </span>
+	          <span class="title"> Get Friends </span>
+	        </div>
+	      </div>
+	    </a>
+	  </li>
+	  
+	  <li class="active">
+	    <a href="{{ url('/followers') }}">
+	      <div class="item-content">
+	        <div class="item-inner">
+	          <span class="title"> Get Followers </span>
 	        </div>
 	      </div>
 	    </a>

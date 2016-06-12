@@ -29,12 +29,16 @@ class FriendController extends Controller
 
 			$errorCount = 0;
 			$errorMessage = "";
+			$api_requests = 15;
 
-//   			$socialMediaAccount = SocialMediaAccount::find(5);
+			if (isset($_GET['id'])) {
+				if ($socialMediaAccount->id != $_GET['id']) {
+		   			continue;
+	   			}	
+			}
+   			
 			
- 
-
-            $api_requests = 15;
+            
 
             $connection = new TwitterOAuth(
                 $socialMediaAccount->consumer_key,
@@ -105,7 +109,7 @@ class FriendController extends Controller
             do {
 
                 $searchFriendsAPI = "https://api.twitter.com/1.1/friends/ids.json?cursor=$cursor&screen_name=$myScreenName&skip_status=true&include_user_entities=false&count=$count";
-
+				//$searchFriendsAPI = "";
                 $friends = $connection->get("$searchFriendsAPI");
 
                 if (isset($friends->errors)) {
@@ -203,7 +207,7 @@ class FriendController extends Controller
             echo "<br>$now";
             
             if ($errorCount > 0) {
-	            Helper::email_admin($errorMessage, $errorCount, "AutomationController", $socialMediaAccount->screen_name);
+	            Helper::email_admin($errorMessage, $errorCount, "FriendController", $socialMediaAccount->screen_name);
             }
             
         }

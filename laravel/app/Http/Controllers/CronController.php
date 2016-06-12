@@ -55,105 +55,107 @@ class CronController extends Controller
         echo "<br>$hour";                             // 12
         
         $minute = $now->minute;
-        echo "<br>$minute";                             // 38
+        echo "<br>$minute";                           // 38
 
+		if ($hour % 4 == 0) {
+			if (0 || 12 || 16 == $hour) {
 
-        if (0 || 12 || 16 == $hour) {
-
-			if ($minute == 0) {
-				
-				echo '<br>Minute 0 Friend Crunch';
-				$automate = new FriendController();
-				$automate->index();
-				
-				
-			} elseif ($minute == 5) {
-			
-				echo '<br>Minute 5 Follower Crunch';
-				$automate = new FollowerController();
-				$automate->index();
-			
-			} elseif ($minute == 10) {
-			
-				echo '<br>Minute 10 Whitelist Crunch';
-				$automate = new WhitelistController();
-				$automate->index();
-			
-			} elseif ($minute == 15) {
-				
-				echo '<br>Minute 15 Targeting';
-				$target = new ModelAccountController();
-				$target->filter();
-				
-			} elseif (30 || 45 == $minute) {
-				
-				echo '<br>Minute 15/30/45 Filter';
-				$filter = new FilterController();
-				$filter->index();
-				
-			} else {
-				
-				$errorMessage = "Did nothing in hour 0, 12, or 16.";
-				$controller = "CronController";
-				$screen_name = "ScavengerDebug";
-				
-// 				Helper::email_admin($errorMessage, 0, $controller, $screen_name);
-				
-			}
-			
-        } else {
-	        
-	        if (($minute == 0) || ($minute % 15 == 0)) {
-	        	
-	        	echo '<br>Minute 0/15/30/45 Targeting';
-				//$target = new ModelAccountController();
-				//$target->filter();
-	        	
-	        	echo '<br>Minute 0/15/30/45 Automation';
-		        $filter = new FilterController();
-				$filter->index();
-			
-			} else {
-				$errorMessage = "$now<br>Did nothing in hours NOT 0, 12, or 16.";
-				$controller = "CronController";
-				$screen_name = "ScavengerDebug";
-				
-// 				Helper::email_admin($errorMessage, 0, $controller, $screen_name);
-			}
-			
-        }
-	    
-	    
-	        
-        if ($weekOfMonth % 2 == 0) { // if week is 1st or 3rd of month, follow
-				
-			if ($hour == 12) {
-				
-				if (($minute == 0) || ($minute % 15 == 0)) {
+				if ($minute == 0) {
 					
-					echo '<br>Minute 15/30/45 Unfollow';
-					$unfollow = new UnfollowController();
-					$unfollow->index();
-									
+					echo '<br>Minute 0 Friend Crunch';
+					$automate = new FriendController();
+					$automate->index();
+					
+					
+				} elseif ($minute == 5) {
+				
+					echo '<br>Minute 5 Follower Crunch';
+					$automate = new FollowerController();
+					$automate->index();
+				
+				} elseif ($minute == 10) {
+				
+					echo '<br>Minute 10 Whitelist Crunch';
+					$automate = new WhitelistController();
+					$automate->index();
+				
+				} elseif ($minute == 15) {
+					
+					echo '<br>Minute 15 Targeting';
+					$target = new ModelAccountController();
+					$target->filter();
+					
+				} elseif (30 || 45 == $minute) {
+					
+					echo '<br>Minute 15/30/45 Filter';
+					$filter = new FilterController();
+					$filter->index();
+					
+				} else {
+					
+					$errorMessage = "Did nothing in hour 0, 12, or 16.";
+					$controller = "CronController";
+					$screen_name = "ScavengerDebug";
+					
+	// 				Helper::email_admin($errorMessage, 0, $controller, $screen_name);
+					
 				}
 				
-			}
-			
-    	} else {
-			
-			if ($hour == 12) {
+	        } else {
+		        
+		        if (($minute == 0) || ($minute % 15 == 0)) {
+		        	
+		        	echo '<br>Minute 0/15/30/45 Targeting';
+					//$target = new ModelAccountController();
+					//$target->filter();
+		        	
+		        	echo '<br>Minute 0/15/30/45 Automation';
+			        $filter = new FilterController();
+					$filter->index();
 				
-				if (($minute == 0) || ($minute % 15 == 0)) {
-				
-					echo '<br>Minute 15/30/45 Follow';
-					$follow = new FollowController();
-					$follow->index();
-				
+				} else {
+					$errorMessage = "$now<br>Did nothing in hours NOT 0, 12, or 16.";
+					$controller = "CronController";
+					$screen_name = "ScavengerDebug";
+					
+	// 				Helper::email_admin($errorMessage, 0, $controller, $screen_name);
 				}
 				
+	        }
+		    
+		    
+		        
+	        if ($weekOfMonth % 2 == 0) { // if week is 1st or 3rd of month, follow
+					
+				if ($hour == 12) {
+					
+					if (($minute == 0) || ($minute % 15 == 0)) {
+						
+						echo '<br>Minute 15/30/45 Unfollow';
+						$unfollow = new UnfollowController();
+						$unfollow->index();
+										
+					}
+					
+				}
+				
+	    	} else {
+				
+				if ($hour == 12) {
+					
+					if (($minute == 0) || ($minute % 15 == 0)) {
+					
+						echo '<br>Minute 15/30/45 Follow';
+						$follow = new FollowController();
+						$follow->index();
+					
+					}
+					
+				}
+			
 			}
-		
 		}
+        
 
 
     }
